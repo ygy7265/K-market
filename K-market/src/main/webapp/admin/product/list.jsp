@@ -30,8 +30,8 @@
             <li>
                 <a href="#"><i class="fas fa-box-open" aria-hidden="true"></i>상품관리</a>
                 <ol>
-                    <li><a href="#">상품현황</a></li>
-                    <li><a href="#">상품등록</a></li>
+                    <li><a href="/K-market/admin/product/list.do">상품현황</a></li>
+                    <li><a href="/K-market/admin/product/productregister.do">상품등록</a></li>
                     <li><a href="#">재고관리</a></li>
                 </ol>
             </li>
@@ -88,7 +88,7 @@
 
                 <tr>
                     <td><input type="checkbox" name="상품코드"/></td>
-                    <td><img src="../img/sample_thumb.jpg" class="thumb"></td>
+                    <td><img src="/K-market/admin/img/sample_thumb.jpg" class="thumb"></td>
                     <td>201603292</td>
                     <td>FreeMovement BLUEFORCE</td>
                     <td>36,000</td>
@@ -104,7 +104,7 @@
                 </tr>
                 <tr>
                     <td><input type="checkbox" name="상품코드"/></td>
-                    <td><img src="../img/sample_thumb.jpg" class="thumb"></td>
+                    <td><img src="/K-market/admin/img/sample_thumb.jpg" class="thumb"></td>
                     <td>201603292</td>
                     <td>FreeMovement BLUEFORCE</td>
                     <td>36,000</td>
@@ -120,7 +120,7 @@
                 </tr>
                 <tr>
                     <td><input type="checkbox" name="상품코드"/></td>
-                    <td><img src="../img/sample_thumb.jpg" class="thumb"></td>
+                    <td><img src="/K-market/admin/img/sample_thumb.jpg" class="thumb"></td>
                     <td>201603292</td>
                     <td>FreeMovement BLUEFORCE</td>
                     <td>36,000</td>
@@ -143,19 +143,19 @@
 
             <div class="paging">
                 <span class="prev">
-                    <a href="#"><&nbsp;이전</a>
+                    <a href="/K-market/admin/product/list.do"><&nbsp;이전</a>
                 </span>
                 <span class="num">
-                    <a href="#" class="on">1</a>
-                    <a href="#">2</a>
-                    <a href="#">3</a>
-                    <a href="#">4</a>
-                    <a href="#">5</a>
-                    <a href="#">6</a>
-                    <a href="#">7</a>
+                    <a href="/K-market/admin/product/list.do" class="on">1</a>
+                    <a href="/K-market/admin/product/list.do">2</a>
+                    <a href="/K-market/admin/product/list.do">3</a>
+                    <a href="/K-market/admin/product/list.do">4</a>
+                    <a href="/K-market/admin/product/list.do">5</a>
+                    <a href="/K-market/admin/product/list.do">6</a>
+                    <a href="/K-market/admin/product/list.do">7</a>
                 </span>
                 <span class="next">
-                    <a href="#">다음&nbsp;></a>
+                    <a href="/K-market/admin/product/list.do">다음&nbsp;></a>
                 </span>
                 </div>
 

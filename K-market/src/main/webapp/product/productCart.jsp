@@ -7,37 +7,37 @@
             <li>
                 <a href="#"><i class="fas fa-tshirt" aria-hidden="true"></i>패션·의류·뷰티</a>
                 <ol>
-                    <li><a href="#">남성의류</a></li>
-                    <li><a href="#">여성의류</a></li>
-                    <li><a href="#">잡화</a></li>
-                    <li><a href="#">뷰티</a></li>
+                    <li><a href="/K-market/product/productlist.do">남성의류</a></li>
+                    <li><a href="/K-market/product/productlist.do">여성의류</a></li>
+                    <li><a href="/K-market/product/productlist.do">잡화</a></li>
+                    <li><a href="/K-market/product/productlist.do">뷰티</a></li>
                 </ol>
             </li>
             <li>
-                <a href="#"><i class="fas fa-laptop" aria-hidden="true"></i>가전·디지털</a>
+                <a href="/K-market/product/productlist.do"><i class="fas fa-laptop" aria-hidden="true"></i>가전·디지털</a>
                 <ol>
-                    <li><a href="#">노트북</a></li>
-                    <li><a href="#">가전</a></li>
-                    <li><a href="#">휴대폰</a></li>
-                    <li><a href="#">기타</a></li>
+                    <li><a href="/K-market/product/productlist.do">노트북</a></li>
+                    <li><a href="/K-market/product/productlist.do">가전</a></li>
+                    <li><a href="/K-market/product/productlist.do">휴대폰</a></li>
+                    <li><a href="/K-market/product/productlist.do">기타</a></li>
                 </ol>
             </li>
             <li>
-                <a href="#"><i class="fas fa-utensils" aria-hidden="true"></i>식품·생필품</a>
+                <a href="/K-market/product/productlist.do"><i class="fas fa-utensils" aria-hidden="true"></i>식품·생필품</a>
                 <ol>
-                    <li><a href="#">신선식품</a></li>
-                    <li><a href="#">가공식품</a></li>
-                    <li><a href="#">건강식품</a></li>
-                    <li><a href="#">생필품</a></li>
+                    <li><a href="/K-market/product/productlist.do">신선식품</a></li>
+                    <li><a href="/K-market/product/productlist.do">가공식품</a></li>
+                    <li><a href="/K-market/product/productlist.do">건강식품</a></li>
+                    <li><a href="/K-market/product/productlist.do">생필품</a></li>
                 </ol>
             </li>
             <li>
                 <a href="#"><i class="fas fa-home" aria-hidden="true"></i>홈·문구·취미</a>
                 <ol>
-                    <li><a href="#">가구/DIY</a></li>
-                    <li><a href="#">침구·커튼</a></li>
-                    <li><a href="#">생활용품</a></li>
-                    <li><a href="#">사무용품</a></li>
+                    <li><a href="/K-market/product/productlist.do">가구/DIY</a></li>
+                    <li><a href="/K-market/product/productlist.do">침구·커튼</a></li>
+                    <li><a href="/K-market/product/productlist.do">생활용품</a></li>
+                    <li><a href="/K-market/product/productlist.do">사무용품</a></li>
                 </ol>
             </li>
         </ul>
@@ -76,9 +76,9 @@
               <td><input type="checkbox" name=""></td>
               <td>
                 <article>
-                  <a href="#"><img src="https://via.placeholder.com/80x80" alt=""></a>
+                  <a href="/K-market/product/"><img src="https://via.placeholder.com/80x80" alt=""></a>
                   <div>
-                    <h2><a href="#">상품명</a></h2>
+                    <h2><a href="/K-market/product/">상품명</a></h2>
                     <p>상품설명</p>
                   </div>
                 </article>
@@ -94,9 +94,9 @@
               <td><input type="checkbox" name=""></td>
               <td>
                 <article>
-                  <a href="#"><img src="https://via.placeholder.com/80x80" alt=""></a>
+                  <a href="/K-market/product/"><img src="https://via.placeholder.com/80x80" alt=""></a>
                   <div>
-                    <h2><a href="#">상품명</a></h2>
+                    <h2><a href="/K-market/product/">상품명</a></h2>
                     <p>상품설명</p>
                   </div>
                 </article>
@@ -112,9 +112,9 @@
               <td><input type="checkbox" name=""></td>
               <td>
                 <article>
-                  <a href="#"><img src="https://via.placeholder.com/80x80" alt=""></a>
+                  <a href="/K-market/product/"><img src="https://via.placeholder.com/80x80" alt=""></a>
                   <div>
-                    <h2><a href="#">상품명</a></h2>
+                    <h2><a href="/K-market/product/">상품명</a></h2>
                     <p>상품설명</p>
                   </div>
                 </article>

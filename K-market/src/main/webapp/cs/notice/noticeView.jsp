@@ -11,11 +11,11 @@
       <aside>
         <h2>공지사항</h2>
         <ul>
-          <li class="on"><a href="#">전체</a></li>
-          <li><a href="#">고객서비스</a></li>
-          <li><a href="#">안전거래</a></li>
-          <li><a href="#">위해상품</a></li>
-          <li><a href="#">이벤트당첨</a></li>
+          <li class="on"><a href="/K-market/cs/notice/noticeList.do">전체</a></li>
+          <li><a href="/K-market/cs/notice/noticeList.do">고객서비스</a></li>
+          <li><a href="/K-market/cs/notice/noticeList.do">안전거래</a></li>
+          <li><a href="/K-market/cs/notice/noticeList.do">위해상품</a></li>
+          <li><a href="/K-market/cs/notice/noticeList.do">이벤트당첨</a></li>
         </ul>
       </aside>
       <article>
@@ -43,7 +43,7 @@
             감사합니다.<br />
           </p>
         </div>
-        <a href="./list.html" class="btnList">목록보기</a>
+        <a href="/K-market/cs/notice/noticeList.do" class="btnList">목록보기</a>
       </article>
     </section>
   </div>

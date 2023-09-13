@@ -7,8 +7,8 @@
             <li>
                 <a href="#"><i class="fa fa-cogs" aria-hidden="true"></i>환경설정</a>
                 <ol>
-                    <li><a href="./config/info.html">기본환경정보</a></li>
-                    <li><a href="./config/banner.html">배너관리</a></li>
+                    <li><a href="#">기본환경정보</a></li>
+                    <li><a href="#">배너관리</a></li>
                 </ol>
             </li>
             <li>
@@ -30,8 +30,8 @@
             <li>
                 <a href="#"><i class="fas fa-box-open" aria-hidden="true"></i>상품관리</a>
                 <ol>
-                    <li><a href="./product/list.html">상품현황</a></li>
-                    <li><a href="./product/register.html">상품등록</a></li>
+                    <li><a href="/K-market/admin/product/list.do">상품현황</a></li>
+                    <li><a href="/K-market/admin/product/productregister.do">상품등록</a></li>
                     <li><a href="#">재고관리</a></li>
                 </ol>
             </li>

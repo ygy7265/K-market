@@ -7,37 +7,37 @@
             <li>
                 <a href="#"><i class="fas fa-tshirt" aria-hidden="true"></i>패션·의류·뷰티</a>
                 <ol>
-                    <li><a href="#">남성의류</a></li>
-                    <li><a href="#">여성의류</a></li>
-                    <li><a href="#">잡화</a></li>
-                    <li><a href="#">뷰티</a></li>
+                    <li><a href="/K-market/product/productlist.do">남성의류</a></li>
+                    <li><a href="/K-market/product/productlist.do">여성의류</a></li>
+                    <li><a href="/K-market/product/productlist.do">잡화</a></li>
+                    <li><a href="/K-market/product/productlist.do">뷰티</a></li>
                 </ol>
             </li>
             <li>
                 <a href="#"><i class="fas fa-laptop" aria-hidden="true"></i>가전·디지털</a>
                 <ol>
-                    <li><a href="#">노트북</a></li>
-                    <li><a href="#">가전</a></li>
-                    <li><a href="#">휴대폰</a></li>
-                    <li><a href="#">기타</a></li>
+                    <li><a href="/K-market/product/productlist.do">노트북</a></li>
+                    <li><a href="/K-market/product/productlist.do">가전</a></li>
+                    <li><a href="/K-market/product/productlist.do">휴대폰</a></li>
+                    <li><a href="/K-market/product/productlist.do">기타</a></li>
                 </ol>
             </li>
             <li>
                 <a href="#"><i class="fas fa-utensils" aria-hidden="true"></i>식품·생필품</a>
                 <ol>
-                    <li><a href="#">신선식품</a></li>
-                    <li><a href="#">가공식품</a></li>
-                    <li><a href="#">건강식품</a></li>
-                    <li><a href="#">생필품</a></li>
+                    <li><a href="/K-market/product/productlist.do">신선식품</a></li>
+                    <li><a href="/K-market/product/productlist.do">가공식품</a></li>
+                    <li><a href="/K-market/product/productlist.do">건강식품</a></li>
+                    <li><a href="/K-market/product/productlist.do">생필품</a></li>
                 </ol>
             </li>
             <li>
                 <a href="#"><i class="fas fa-home" aria-hidden="true"></i>홈·문구·취미</a>
                 <ol>
-                    <li><a href="#">가구/DIY</a></li>
-                    <li><a href="#">침구·커튼</a></li>
-                    <li><a href="#">생활용품</a></li>
-                    <li><a href="#">사무용품</a></li>
+                    <li><a href="/K-market/product/productlist.do">가구/DIY</a></li>
+                    <li><a href="/K-market/product/productlist.do">침구·커튼</a></li>
+                    <li><a href="/K-market/product/productlist.do">생활용품</a></li>
+                    <li><a href="/K-market/product/productlist.do">사무용품</a></li>
                 </ol>
             </li>
         </ul>
@@ -51,21 +51,21 @@
 
       <!-- 정렬 메뉴 -->
       <ul class="sort">
-          <li><a href="#" class="on">판매많은순</a></li>
-          <li><a href="#">낮은가격순</a></li>
-          <li><a href="#">높은가격순</a></li>
-          <li><a href="#">평점높은순</a></li>
-          <li><a href="#">후기많은순</a></li>
-          <li><a href="#">최근등록순</a></li>
+          <li><a href="/K-market/product/productlist.do" class="on">판매많은순</a></li>
+          <li><a href="/K-market/product/productlist.do">낮은가격순</a></li>
+          <li><a href="/K-market/product/productlist.do">높은가격순</a></li>
+          <li><a href="/K-market/product/productlist.do">평점높은순</a></li>
+          <li><a href="/K-market/product/productlist.do">후기많은순</a></li>
+          <li><a href="/K-market/product/productlist.do">최근등록순</a></li>
       </ul>
 
       <!-- 상품목록 -->              
       <table border="0">                  
         <tr>
-          <td><a href="#" class="thumb"><img src="https://via.placeholder.com/120x120" alt="상품이미지"/></a></td>
+          <td><a href="/K-market/product/productview.do" class="thumb"><img src="https://via.placeholder.com/120x120" alt="상품이미지"/></a></td>
           <td>
             <h3 class="name">상품명</h3>
-            <a href="#" class="desc">상품설명</a>
+            <a href="/K-market/product/productview.do" class="desc">상품설명</a>
           </td>
           <td>
             <ul>
@@ -84,10 +84,10 @@
           </td>
         </tr>
         <tr>
-          <td><a href="#" class="thumb"><img src="https://via.placeholder.com/120x120" alt="상품이미지"/></a></td>
+          <td><a href="/K-market/product/productview.do" class="thumb"><img src="https://via.placeholder.com/120x120" alt="상품이미지"/></a></td>
           <td>
             <h3 class="name">상품명</h3>
-            <a href="#" class="desc">상품설명</a>
+            <a href="/K-market/product/productview.do" class="desc">상품설명</a>
           </td>
           <td>
             <ul>
@@ -106,10 +106,10 @@
           </td>
         </tr>
         <tr>
-          <td><a href="#" class="thumb"><img src="https://via.placeholder.com/120x120" alt="상품이미지"/></a></td>
+          <td><a href="/K-market/product/productview.do" class="thumb"><img src="https://via.placeholder.com/120x120" alt="상품이미지"/></a></td>
           <td>
             <h3 class="name">상품명</h3>
-            <a href="#" class="desc">상품설명</a>
+            <a href="/K-market/product/productview.do" class="desc">상품설명</a>
           </td>
           <td>
             <ul>
@@ -128,10 +128,10 @@
           </td>
         </tr>
         <tr>
-          <td><a href="#" class="thumb"><img src="https://via.placeholder.com/120x120" alt="상품이미지"/></a></td>
+          <td><a href="/K-market/product/productview.do" class="thumb"><img src="https://via.placeholder.com/120x120" alt="상품이미지"/></a></td>
           <td>
             <h3 class="name">상품명</h3>
-            <a href="#" class="desc">상품설명</a>
+            <a href="/K-market/product/productview.do" class="desc">상품설명</a>
           </td>
           <td>
             <ul>
@@ -150,10 +150,10 @@
           </td>
         </tr>
         <tr>
-          <td><a href="#" class="thumb"><img src="https://via.placeholder.com/120x120" alt="상품이미지"/></a></td>
+          <td><a href="/K-market/product/productview.do" class="thumb"><img src="https://via.placeholder.com/120x120" alt="상품이미지"/></a></td>
           <td>
             <h3 class="name">상품명</h3>
-            <a href="#" class="desc">상품설명</a>
+            <a href="/K-market/product/productview.do" class="desc">상품설명</a>
           </td>
           <td>
             <ul>
@@ -177,19 +177,19 @@
       <!-- 상품목록 페이지번호 -->
       <div class="paging">
         <span class="prev">
-          <a href="#"><&nbsp;이전</a>
+          <a href="/K-market/product/productlist.do"><&nbsp;이전</a>
         </span>
         <span class="num">
-          <a href="#" class="on">1</a>
-          <a href="#">2</a>
-          <a href="#">3</a>
-          <a href="#">4</a>
-          <a href="#">5</a>
-          <a href="#">6</a>
-          <a href="#">7</a>
+          <a href="/K-market/product/productlist.do" class="on">1</a>
+          <a href="/K-market/product/productlist.do">2</a>
+          <a href="/K-market/product/productlist.do">3</a>
+          <a href="/K-market/product/productlist.do">4</a>
+          <a href="/K-market/product/productlist.do">5</a>
+          <a href="/K-market/product/productlist.do">6</a>
+          <a href="/K-market/product/productlist.do">7</a>
         </span>
         <span class="next">
-          <a href="#">다음&nbsp;></a>
+          <a href="/K-market/product/productlist.do">다음&nbsp;></a>
         </span>
       </div>
     </section>

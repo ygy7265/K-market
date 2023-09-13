@@ -19,9 +19,9 @@
                 <a href="/K-market/admin/index.do" class="logo"><img src="/K-market/admin/img/admin_logo.png" alt="admin_logo"/></a>
                 <p>
                     <span>홍길동님 반갑습니다.</span>
-                    <a href="#">HOME |</a>
-                    <a href="#">로그아웃 |</a>
-                    <a href="#">고객센터</a>
+                    <a href="/K-market/index.do">HOME |</a>
+                    <a href="/K-market/member/logout.do">로그아웃 |</a>
+                    <a href="/K-market/cs/index.do">고객센터</a>
                 </p>
             </div>
         </header>
