@@ -11,13 +11,13 @@
       <aside>
         <h2>자주묻는 질문</h2>
         <ul>
-          <li class="on"><a href="#">회원</a></li>
-          <li><a href="#">쿠폰/이벤트</a></li>
-          <li><a href="#">주문/결제</a></li>
-          <li><a href="#">배송</a></li>
-          <li><a href="#">취소/반품/교환</a></li>
-          <li><a href="#">여행/숙박/항공</a></li>
-          <li><a href="#">안전거래</a></li>
+          <li class="on"><a href="/K-market/cs/faq/faqList.do">회원</a></li>
+          <li><a href="/K-market/cs/faq/faqList.do">쿠폰/이벤트</a></li>
+          <li><a href="/K-market/cs/faq/faqList.do">주문/결제</a></li>
+          <li><a href="/K-market/cs/faq/faqList.do">배송</a></li>
+          <li><a href="/K-market/cs/faq/faqList.do">취소/반품/교환</a></li>
+          <li><a href="/K-market/cs/faq/faqList.do">여행/숙박/항공</a></li>
+          <li><a href="/K-market/cs/faq/faqList.do">안전거래</a></li>
         </ul>
       </aside>
       <article>
@@ -38,7 +38,7 @@
             감사합니다.<br />
           </p>
         </div>
-        <a href="./list.html" class="btnList">목록보기</a>
+        <a href="/K-market/cs/faq/faqList.do" class="btnList">목록보기</a>
       </article>
     </section>
   </div>

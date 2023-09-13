@@ -14,16 +14,16 @@
             <div class="top">
                 <div>
                     <p>
-                        <a href="#">로그인</a>
-                        <a href="#">회원가입</a>
+                        <a href="/K-market/member/login.do">로그인</a>
+                        <a href="/K-market/member/join.do">회원가입</a>
                         <a href="#">마이페이지</a>
-                        <a href="#">장바구니</a>
+                        <a href="/K-market/product/productcart.do">장바구니</a>
                     </p>
                 </div>
             </div>
             <div class="logo">
                 <div>
-                    <a href="#">
+                    <a href="/K-market/cs/index.do">
                         <img src="/K-market/images/logo.png" alt="Kmarket">고객센터
                     </a>
                 </div>

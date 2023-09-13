@@ -35,13 +35,13 @@
       <aside>
         <h2>자주묻는 질문</h2>
         <ul>
-          <li class="on"><a href="#">회원</a></li>
-          <li><a href="#">쿠폰/이벤트</a></li>
-          <li><a href="#">주문/결제</a></li>
-          <li><a href="#">배송</a></li>
-          <li><a href="#">취소/반품/교환</a></li>
-          <li><a href="#">여행/숙박/항공</a></li>
-          <li><a href="#">안전거래</a></li>
+          <li class="on"><a href="/K-market/cs/faq/faqList.do">회원</a></li>
+          <li><a href="/K-market/cs/faq/faqList.do">쿠폰/이벤트</a></li>
+          <li><a href="/K-market/cs/faq/faqList.do">주문/결제</a></li>
+          <li><a href="/K-market/cs/faq/faqList.do">배송</a></li>
+          <li><a href="/K-market/cs/faq/faqList.do">취소/반품/교환</a></li>
+          <li><a href="/K-market/cs/faq/faqList.do">여행/숙박/항공</a></li>
+          <li><a href="/K-market/cs/faq/faqList.do">안전거래</a></li>
         </ul>
       </aside>
       <article>              
@@ -53,44 +53,44 @@
         <div>
           <h3>가입</h3>
           <ul>
-            <li><a href="./view.html"><span>Q.</span>개인회원과 법인회원에 차이가 있나요?</a></li>
-            <li><a href="#"><span>Q.</span>개인회원과 법인회원에 차이가 있나요?</a></li>
-            <li><a href="#"><span>Q.</span>개인회원과 법인회원에 차이가 있나요?</a></li>
-            <li><a href="#"><span>Q.</span>개인회원과 법인회원에 차이가 있나요?</a></li>
-            <li><a href="#"><span>Q.</span>개인회원과 법인회원에 차이가 있나요?</a></li>
+            <li><a href="/K-market/cs/faq/faqview.do"><span>Q.</span>개인회원과 법인회원에 차이가 있나요?</a></li>
+            <li><a href="/K-market/cs/faq/faqview.do"><span>Q.</span>개인회원과 법인회원에 차이가 있나요?</a></li>
+            <li><a href="/K-market/cs/faq/faqview.do"><span>Q.</span>개인회원과 법인회원에 차이가 있나요?</a></li>
+            <li><a href="/K-market/cs/faq/faqview.do"><span>Q.</span>개인회원과 법인회원에 차이가 있나요?</a></li>
+            <li><a href="/K-market/cs/faq/faqview.do"><span>Q.</span>개인회원과 법인회원에 차이가 있나요?</a></li>
             <li class="more"><a href="#">더보기</a></li>
           </ul>
         </div>
         <div>
           <h3>탈퇴</h3>
           <ul>
-            <li><a href="#"><span>Q.</span>회원탈퇴 후 재가입이 가능한가요?</a></li>
-            <li><a href="#"><span>Q.</span>회원탈퇴 후 재가입이 가능한가요?</a></li>
-            <li><a href="#"><span>Q.</span>회원탈퇴 후 재가입이 가능한가요?</a></li>
-            <li><a href="#"><span>Q.</span>회원탈퇴 후 재가입이 가능한가요?</a></li>
-            <li><a href="#"><span>Q.</span>회원탈퇴 후 재가입이 가능한가요?</a></li>
+            <li><a href="/K-market/cs/faq/faqview.do"><span>Q.</span>회원탈퇴 후 재가입이 가능한가요?</a></li>
+            <li><a href="/K-market/cs/faq/faqview.do"><span>Q.</span>회원탈퇴 후 재가입이 가능한가요?</a></li>
+            <li><a href="/K-market/cs/faq/faqview.do"><span>Q.</span>회원탈퇴 후 재가입이 가능한가요?</a></li>
+            <li><a href="/K-market/cs/faq/faqview.do"><span>Q.</span>회원탈퇴 후 재가입이 가능한가요?</a></li>
+            <li><a href="/K-market/cs/faq/faqview.do"><span>Q.</span>회원탈퇴 후 재가입이 가능한가요?</a></li>
             <li class="more"><a href="#">더보기</a></li>
           </ul>
         </div>
         <div>
           <h3>회원정보</h3>
           <ul>
-            <li><a href="#"><span>Q.</span>회원정보를 수정하고 싶어요.</a></li>
-            <li><a href="#"><span>Q.</span>회원정보를 수정하고 싶어요.</a></li>
-            <li><a href="#"><span>Q.</span>회원정보를 수정하고 싶어요.</a></li>
-            <li><a href="#"><span>Q.</span>회원정보를 수정하고 싶어요.</a></li>
-            <li><a href="#"><span>Q.</span>회원정보를 수정하고 싶어요.</a></li>
+            <li><a href="/K-market/cs/faq/faqview.do"><span>Q.</span>회원정보를 수정하고 싶어요.</a></li>
+            <li><a href="/K-market/cs/faq/faqview.do"><span>Q.</span>회원정보를 수정하고 싶어요.</a></li>
+            <li><a href="/K-market/cs/faq/faqview.do"><span>Q.</span>회원정보를 수정하고 싶어요.</a></li>
+            <li><a href="/K-market/cs/faq/faqview.do"><span>Q.</span>회원정보를 수정하고 싶어요.</a></li>
+            <li><a href="/K-market/cs/faq/faqview.do"><span>Q.</span>회원정보를 수정하고 싶어요.</a></li>
             <li class="more"><a href="#">더보기</a></li>
           </ul>
         </div>
         <div>
           <h3>로그인</h3>
           <ul>
-            <li><a href="#"><span>Q.</span>로그인에 문제가 있어요.</a></li>
-            <li><a href="#"><span>Q.</span>로그인에 문제가 있어요.</a></li>
-            <li><a href="#"><span>Q.</span>로그인에 문제가 있어요.</a></li>
-            <li><a href="#"><span>Q.</span>로그인에 문제가 있어요.</a></li>
-            <li><a href="#"><span>Q.</span>로그인에 문제가 있어요.</a></li>
+            <li><a href="/K-market/cs/faq/faqview.do"><span>Q.</span>로그인에 문제가 있어요.</a></li>
+            <li><a href="/K-market/cs/faq/faqview.do"><span>Q.</span>로그인에 문제가 있어요.</a></li>
+            <li><a href="/K-market/cs/faq/faqview.do"><span>Q.</span>로그인에 문제가 있어요.</a></li>
+            <li><a href="/K-market/cs/faq/faqview.do"><span>Q.</span>로그인에 문제가 있어요.</a></li>
+            <li><a href="/K-market/cs/faq/faqview.do"><span>Q.</span>로그인에 문제가 있어요.</a></li>
             <li class="more"><a href="#">더보기</a></li>
           </ul>
         </div>

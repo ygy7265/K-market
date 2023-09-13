@@ -13,10 +13,10 @@
           ></i
         ></a>
         <ol>
-          <li><a href="#">남성의류</a></li>
-          <li><a href="#">여성의류</a></li>
-          <li><a href="#">잡화</a></li>
-          <li><a href="#">뷰티</a></li>
+          <li><a href="/K-market/product/productlist.do">남성의류</a></li>
+          <li><a href="/K-market/product/productlist.do">여성의류</a></li>
+          <li><a href="/K-market/product/productlist.do">잡화</a></li>
+          <li><a href="/K-market/product/productlist.do">뷰티</a></li>
         </ol>
       </li>
       <li>
@@ -26,10 +26,10 @@
           ></i
         ></a>
         <ol>
-          <li><a href="#">노트북/PC</a></li>
-          <li><a href="#">가전</a></li>
-          <li><a href="#">휴대폰</a></li>
-          <li><a href="#">기타</a></li>
+          <li><a href="/K-market/product/productlist.do">노트북/PC</a></li>
+          <li><a href="/K-market/product/productlist.do">가전</a></li>
+          <li><a href="/K-market/product/productlist.do">휴대폰</a></li>
+          <li><a href="/K-market/product/productlist.do">기타</a></li>
         </ol>
       </li>
       <li>
@@ -39,10 +39,10 @@
           ></i
         ></a>
         <ol>
-          <li><a href="#">신선식품</a></li>
-          <li><a href="#">가공식품</a></li>
-          <li><a href="#">건강식품</a></li>
-          <li><a href="#">생필품</a></li>
+          <li><a href="/K-market/product/productlist.do">신선식품</a></li>
+          <li><a href="/K-market/product/productlist.do">가공식품</a></li>
+          <li><a href="/K-market/product/productlist.do">건강식품</a></li>
+          <li><a href="/K-market/product/productlist.do">생필품</a></li>
         </ol>
       </li>
       <li>
@@ -52,10 +52,10 @@
           ></i
         ></a>
         <ol>
-          <li><a href="#">가구/DIY</a></li>
-          <li><a href="#">침구·커튼</a></li>
-          <li><a href="#">생활용품</a></li>
-          <li><a href="#">사무용품</a></li>
+          <li><a href="/K-market/product/productlist.do">가구/DIY</a></li>
+          <li><a href="/K-market/product/productlist.do">침구·커튼</a></li>
+          <li><a href="/K-market/product/productlist.do">생활용품</a></li>
+          <li><a href="/K-market/product/productlist.do">사무용품</a></li>
         </ol>
       </li>
     </ul>
