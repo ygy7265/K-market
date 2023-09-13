@@ -9,11 +9,33 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/member/registerSeller.do")
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import kr.co.kmarket.dto.TermsDTO;
+import kr.co.kmarket.service.TermsService;
+
+@WebServlet("/member/signup.do")
 public class SignUpController extends HttpServlet{
+	
+	private static final long serialVersionUID = 1L;
+	
+	private TermsService service = TermsService.INSTANCE;
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
+	
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/member/registerSeller.jsp");
+		
+		TermsDTO dto = service.selectTerm();
+		req.setAttribute("dto", dto);
+		
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/member/signup.jsp");
 		dispatcher.forward(req, resp);	
+		
+		
 	}
+	
+
+
 }
