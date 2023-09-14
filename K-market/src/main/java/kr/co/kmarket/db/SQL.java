@@ -6,7 +6,10 @@ public class SQL {
 	public static final String SELECT_TERMS = "SELECT * FROM `km_member_terms` WHERE type =?";
 
 	public static final String SELECT_TERMS = "SELECT * FROM `km_member_terms`";
-	
+
+	//product
+	public static final String SELECT_PRODUCT = "SELECT * FROM `km_product` WHERE `prodNo` = ?";
+	public static final String SELECT_PRODUCTS = "SELECT * FROM `km_product` WHERE `cate1` = ? and `cate2` = ?";
 	
 	// member_insert
 	public static final String INSERT_MEMBER_NORMAR = "INSERT INTO `km_member` SET "
@@ -26,4 +29,3 @@ public class SQL {
 	public static final String SELECT_COUNT_EMAIL = "SELECT COUNT(*) FROM `km_member` WHERE `email`=?";
 	public static final String SELECT_COUNT_HP = "SELECT COUNT(*) FROM `km_member` WHERE `hp`=?";	
 }
-
