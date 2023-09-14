@@ -13,8 +13,10 @@ public enum TermsService {
 	private TermsDAO dao = TermsDAO.getInstance();
 	
 	// service
-	
-	public TermsDTO selectTerm() {
-		return dao.selectTerm();
+	public TermsDTO selectTerm(String type) {
+		return dao.selectTerm(type);
 	}
+	
+	
+	
 }
