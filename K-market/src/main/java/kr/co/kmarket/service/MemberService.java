@@ -14,16 +14,19 @@ public enum MemberService {
 	public void insertMember(MemberDTO dto) {
 		dao.insertMember(dto);
 	}
+	public void insertMemberSeller(MemberDTO dto) {
+		dao.insertMemberSeller(dto);
+	}
 	
-	public MemberDAO selectMember(String uid) {
+	public MemberDTO selectMember(String uid) {
 		return dao.selectMember(uid);
 	}
 	
-	public List<MemberDAO> selectMembers() {
+	public List<MemberDTO> selectMembers() {
 		return dao.selectMembers();
 	}
 	
-	public void updateMember(MemberDAO dto) {
+	public void updateMember(MemberDTO dto) {
 		dao.updateMember(dto);
 	}
 	
