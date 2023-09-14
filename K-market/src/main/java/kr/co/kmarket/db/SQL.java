@@ -3,9 +3,9 @@ package kr.co.kmarket.db;
 public class SQL {
 	
 	// SELECT
+	public static final String SELECT_TERMS = "SELECT * FROM `km_member_terms` WHERE type =?";
+
 	public static final String SELECT_TERMS = "SELECT * FROM `km_member_terms`";
-	
-	
 	
 	
 	// member_insert
@@ -24,77 +24,6 @@ public class SQL {
 													+ "`rdate`=NOW() ";
 	public static final String SELECT_COUNT_UID = "SELECT COUNT(*) FROM `km_member` WHERE `uid`=?";
 	public static final String SELECT_COUNT_EMAIL = "SELECT COUNT(*) FROM `km_member` WHERE `email`=?";
-	public static final String SELECT_COUNT_HP = "SELECT COUNT(*) FROM `km_member` WHERE `hp`=?";
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	public static final String SELECT_COUNT_HP = "SELECT COUNT(*) FROM `km_member` WHERE `hp`=?";	
 }
+

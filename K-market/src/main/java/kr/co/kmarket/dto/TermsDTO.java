@@ -6,6 +6,7 @@ public class TermsDTO {
 	private String location;
 	private String finance;
 	private String tax;
+	private String type;
 	
 	public String getTerms() {
 		return terms;
@@ -37,6 +38,15 @@ public class TermsDTO {
 	public void setTax(String tax) {
 		this.tax = tax;
 	}
+	
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	
 	
 	
 }

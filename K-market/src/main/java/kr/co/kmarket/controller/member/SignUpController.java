@@ -27,8 +27,12 @@ public class SignUpController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		TermsDTO dto = service.selectTerm();
+		String type = req.getParameter("type");
+		
+		TermsDTO dto = service.selectTerm(type);
 		req.setAttribute("dto", dto);
+		req.setAttribute("type", type);
+		logger.debug("signUpController... dto : "+ dto);
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/member/signup.jsp");
 		dispatcher.forward(req, resp);	
