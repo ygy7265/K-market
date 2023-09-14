@@ -8,7 +8,7 @@ public class NoticeDTO {
 	private String content;
 	private String writer;
 	private int hit;
-	private String ip;
+	private String rdate;
 	
 	public int getNoticeNo() {
 		return noticeNo;
@@ -46,16 +46,19 @@ public class NoticeDTO {
 	public void setHit(int hit) {
 		this.hit = hit;
 	}
-	public String getIp() {
-		return ip;
+
+	
+	
+	public String getRdate() {
+		return rdate;
 	}
-	public void setIp(String ip) {
-		this.ip = ip;
+	public void setRdate(String rdate) {
+		this.rdate = rdate;
 	}
 	@Override
 	public String toString() {
 		return "NoticeDAO [noticeNo=" + noticeNo + ", cate=" + cate + ", title=" + title + ", content=" + content
-				+ ", writer=" + writer + ", hit=" + hit + ", ip=" + ip + "]";
+				+ ", writer=" + writer + ", hit=" + hit + " ]";
 	}
 	
 }

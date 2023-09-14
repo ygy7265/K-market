@@ -5,6 +5,8 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import kr.co.kmarket.dto.QnaDTO;
+
 public class QnaDAO {
 	
 	// 싱글톤 생성
@@ -20,19 +22,19 @@ public class QnaDAO {
 	
 	
 	// 기본 CRUD
-	public void insertQna(QnaDAO dto) {
+	public void insertQna(QnaDTO dto) {
 		
 	}
 	
-	public QnaDAO selectQna(String qnaNo) { // 편의를 위해서 int qnaNo 가 아닌 String 으로 설정해둠 
+	public QnaDTO selectQna(String qnaNo) { // 편의를 위해서 int qnaNo 가 아닌 String 으로 설정해둠 
 		return null;
 	}
 	
-	public List<QnaDAO> selectQnas() {
+	public List<QnaDTO> selectQnas() {
 		return null;
 	}
 	
-	public void updateQna(QnaDAO dto) {
+	public void updateQna(QnaDTO dto) {
 		
 	}
 	

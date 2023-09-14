@@ -1,5 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../_header.jsp" %>  
+		<!-- 
+			날짜 : 2023/09/14
+			이름 : 이현정
+			내용 : CS_Notice 기능구현
+		 -->
 <section id="cs">
   <div class="notice">
     <nav>
@@ -8,16 +13,7 @@
       </div>
     </nav>
     <section class="list">
-      <aside>
-        <h2>공지사항</h2>
-        <ul>
-          <li class="on"><a href="/K-market/cs/notice/noticeList.do">전체</a></li>
-          <li><a href="/K-market/cs/notice/noticeList.do">고객서비스</a></li>
-          <li><a href="/K-market/cs/notice/noticeList.do">안전거래</a></li>
-          <li><a href="/K-market/cs/notice/noticeList.do">위해상품</a></li>
-          <li><a href="/K-market/cs/notice/noticeList.do">이벤트당첨</a></li>
-        </ul>
-      </aside>
+     <jsp:include page="../_asideNotice.jsp"/>
       <article>
         <nav>
           <h1>전체</h1>
@@ -25,56 +21,27 @@
         </nav>
 
         <table>
+        <c:forEach var ="notice" items="${notices}">
           <tr>
-            <td><a href="/K-market/cs/notice/noticeview.do">[안내] 해외결제 사칭 문자 주의</a></td>
-            <td>2022.11.21</td>
+            <td><a href="/K-market/cs/notice/noticeView.do?cate=${cate}">[안내]${notice.title}</a></td>
+            <td>${notice.rdate}</td>
           </tr>
-          <tr>
-            <td><a href="/K-market/cs/notice/noticeview.do">[발표]『G.Live X SK스토아(하남쭈꾸미)』 이벤트 당첨자</a></td>
-            <td>2022.11.21</td>
-          </tr>
-          <tr>
-            <td><a href="/K-market/cs/notice/noticeview.do">[안내] 로젠택배 반품/교환 수거지시 지연 안내</a></td>
-            <td>2022.11.21</td>
-          </tr>
-          <tr>
-            <td><a href="/K-market/cs/notice/noticeview.do">[안내] 해외직구셀러 특별약관 개정</a></td>
-            <td>2022.11.21</td>
-          </tr>
-          <tr>
-            <td><a href="/K-market/cs/notice/noticeview.do">[안내] 위치정보이용 약관 개정 공지</a></td>
-            <td>2022.11.21</td>
-          </tr>
-          <tr>
-            <td><a href="/K-market/cs/notice/noticeview.do">[발표]『써모스 상품 구매』 이벤트 당첨자</a></td>
-            <td>2022.11.21</td>
-          </tr>
-          <tr>
-            <td><a href="/K-market/cs/notice/noticeview.do">한국소비자원, '22년 OECD 글로벌 제품안전 캠페인</a></td>
-            <td>2022.11.21</td>
-          </tr>
-          <tr>
-            <td><a href="/K-market/cs/notice/noticeview.do">[점검] G마켓 사이트 이용 일시 중단</a></td>
-            <td>2022.11.21</td>
-          </tr>
-          <tr>
-            <td><a href="/K-market/cs/notice/noticeview.do">[안내] 구매회원 이용약관 개정</a></td>
-            <td>2022.11.21</td>
-          </tr>
-          <tr>
-            <td><a href="/K-market/cs/notice/noticeview.do">[안내] 씨티은행 시스템 점검에 따른 계좌, 체크카드결제 서비스 일시 중단</a></td>
-            <td>2022.11.21</td>
-          </tr>
+        <c:set var="pageStartNum" value="${pageStartNum - 1}" />
+		</c:forEach>
         </table>
-
+		<!-- 페이지 네비게이션 -->
         <div class="page">
-          <a href="/K-market/cs/notice/noticeList.do" class="prev">이전</a>
-          <a href="/K-market/cs/notice/noticeList.do" class="num on">1</a>
-          <a href="/K-market/cs/notice/noticeList.do" class="num">2</a>
-          <a href="/K-market/cs/notice/noticeList.do" class="num">3</a>
-          <a href="/K-market/cs/notice/noticeList.do" class="next">다음</a>
+       		<c:if test="${pageGroupStart > 1}">
+          		<a href="/K-market/cs/notice/noticeList.do?cate=${cate}&pg=${pageGroupStart - 1}" class="prev">이전</a>
+	        </c:if>
+	        <c:forEach var="i" begin="${pageGroupStart}" end="${pageGroupEnd}" step="1">
+	        	<c:set var="isOn" value="${currentPage == i}"/>
+         		<a href="/K-market/cs/notice/noticeList.do?cate=${cate}&pg=${i}" class="num ${isOn ? 'on' : ''}">${i}</a>
+	       </c:forEach>
+	       <c:if test="${pageGroupEnd < lastPageNum}">
+          		<a href="/K-market/cs/notice/noticeList.do?cate=${cate}&pg=${pageGroupEnd + 1}" class="next">다음</a>
+          </c:if>
         </div>
-
       </article>
     </section>
   </div>

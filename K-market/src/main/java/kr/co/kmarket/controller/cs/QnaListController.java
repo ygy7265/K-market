@@ -11,9 +11,13 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/cs/qna/qnaList.do")
 public class QnaListController extends HttpServlet{
+	private static final long serialVersionUID = 1L;
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/cs/qna/qnaList.jsp");
 		dispatcher.forward(req, resp);	
+		
+		String cate = req.getParameter("cate");
 	}
 }

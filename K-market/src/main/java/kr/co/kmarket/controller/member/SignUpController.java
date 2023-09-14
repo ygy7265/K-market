@@ -14,7 +14,12 @@ import org.slf4j.LoggerFactory;
 
 import kr.co.kmarket.dto.TermsDTO;
 import kr.co.kmarket.service.TermsService;
-
+/*
+ * 	날짜 : 2023/09/13
+ *  이름 : 이현정
+ * 	내용 : Terms 약관 페이지 내용 출력 및 약관 동의 기능 추가 
+ * 
+ * */
 @WebServlet("/member/signup.do")
 public class SignUpController extends HttpServlet{
 	
