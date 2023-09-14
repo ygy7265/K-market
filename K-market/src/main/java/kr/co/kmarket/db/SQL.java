@@ -5,7 +5,6 @@ public class SQL {
 	// SELECT
 	public static final String SELECT_TERMS = "SELECT * FROM `km_member_terms` WHERE type =?";
 
-	public static final String SELECT_TERMS = "SELECT * FROM `km_member_terms`";
 
 	//product
 	public static final String SELECT_PRODUCT = "SELECT * FROM `km_product` WHERE `prodNo` = ?";
