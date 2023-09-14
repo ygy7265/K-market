@@ -28,4 +28,7 @@ public enum ProductService {
 	public void deleteProduct(int prodNo) {
 		dao.deleteProduct(prodNo);
 	}
+	public void cartProduct() {
+		
+	}
 }

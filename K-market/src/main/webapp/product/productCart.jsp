@@ -1,46 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<!-- 
+	이름 : 윤경엽
+	내용 : 상품 담기 구현
+	날짜 : 2023/09/14
+ -->
 <%@ include file="./_header.jsp" %>
 <main id="product">
-    <aside>
-        <ul class="category">
-            <li><i class="fa fa-bars" aria-hidden="true"></i>카테고리</li>
-            <li>
-                <a href="#"><i class="fas fa-tshirt" aria-hidden="true"></i>패션·의류·뷰티</a>
-                <ol>
-                    <li><a href="/K-market/product/productlist.do">남성의류</a></li>
-                    <li><a href="/K-market/product/productlist.do">여성의류</a></li>
-                    <li><a href="/K-market/product/productlist.do">잡화</a></li>
-                    <li><a href="/K-market/product/productlist.do">뷰티</a></li>
-                </ol>
-            </li>
-            <li>
-                <a href="/K-market/product/productlist.do"><i class="fas fa-laptop" aria-hidden="true"></i>가전·디지털</a>
-                <ol>
-                    <li><a href="/K-market/product/productlist.do">노트북</a></li>
-                    <li><a href="/K-market/product/productlist.do">가전</a></li>
-                    <li><a href="/K-market/product/productlist.do">휴대폰</a></li>
-                    <li><a href="/K-market/product/productlist.do">기타</a></li>
-                </ol>
-            </li>
-            <li>
-                <a href="/K-market/product/productlist.do"><i class="fas fa-utensils" aria-hidden="true"></i>식품·생필품</a>
-                <ol>
-                    <li><a href="/K-market/product/productlist.do">신선식품</a></li>
-                    <li><a href="/K-market/product/productlist.do">가공식품</a></li>
-                    <li><a href="/K-market/product/productlist.do">건강식품</a></li>
-                    <li><a href="/K-market/product/productlist.do">생필품</a></li>
-                </ol>
-            </li>
-            <li>
-                <a href="#"><i class="fas fa-home" aria-hidden="true"></i>홈·문구·취미</a>
-                <ol>
-                    <li><a href="/K-market/product/productlist.do">가구/DIY</a></li>
-                    <li><a href="/K-market/product/productlist.do">침구·커튼</a></li>
-                    <li><a href="/K-market/product/productlist.do">생활용품</a></li>
-                    <li><a href="/K-market/product/productlist.do">사무용품</a></li>
-                </ol>
-            </li>
-        </ul>
+<%@ include file="../_aside.jsp" %>  
     </aside>
     <!-- 장바구니 페이지 시작 -->
     <section class="cart">

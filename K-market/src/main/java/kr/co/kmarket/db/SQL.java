@@ -26,5 +26,17 @@ public class SQL {
 													+ "`rdate`=NOW() ";
 	public static final String SELECT_COUNT_UID = "SELECT COUNT(*) FROM `km_member` WHERE `uid`=?";
 	public static final String SELECT_COUNT_EMAIL = "SELECT COUNT(*) FROM `km_member` WHERE `email`=?";
-	public static final String SELECT_COUNT_HP = "SELECT COUNT(*) FROM `km_member` WHERE `hp`=?";	
+	public static final String SELECT_COUNT_HP = "SELECT COUNT(*) FROM `km_member` WHERE `hp`=?";
+	
+	//cart
+	public static final String INSERT_PRODUCT_CART= "INSERT INTO `km_product_cart` SET "
+			+ "`uid`=?, "
+			+ "`prodNo`=?, "
+			+ "`count`=?, "
+			+ "`price`=?, "
+			+ "`discount`=?, "
+			+ "`point`=?, "
+			+ "`delivery`=?, "
+			+ "`total`=?, "
+			+ "`rdate`=NOW() ";
 }
