@@ -62,7 +62,7 @@
         </nav>
         <!-- 상품등록 컨텐츠 시작 -->
         <article>
-            <form action="#">
+            <form action="#" method="POST">
 
                 <!-- 상품분류 -->
                 <section>
@@ -77,7 +77,7 @@
                                 <select name="category1">
                                     <option value="cate0">1차 분류 선택</option>
                                     <option value="cate11">패션·의류·뷰티</option>
-                                    <option value="cate12">가전·디지털</option>
+                                    <option value="cate15">가전·디지털</option>
                                     <option value="cate13">식품·생필품</option>
                                     <option value="cate14">홈·문구·취미</option>                                                
                                 </select>
