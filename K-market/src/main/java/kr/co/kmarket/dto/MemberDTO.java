@@ -56,6 +56,9 @@ public class MemberDTO {
 	public void setGender(int gender) {
 		this.gender = gender;
 	}
+	public void setGender(String gender) {
+		this.gender = Integer.parseInt(gender);
+	}
 	public String getHp() {
 		return hp;
 	}
@@ -202,6 +205,14 @@ public class MemberDTO {
 	}
 	
 	
-	
+	@Override
+	public String toString() {
+		return "MemberDTO [uid=" + uid + ", pass=" + pass + ", name=" + name + ", gender=" + gender + ", hp=" + hp
+				+ ", email=" + email + ", type=" + type + ", point=" + point + ", level=" + level + ", zip=" + zip
+				+ ", addr1=" + addr1 + ", addr2=" + addr2 + ", company=" + company + ", ceo=" + ceo + ", bizRegNum="
+				+ bizRegNum + ", comRegNum=" + comRegNum + ", tel=" + tel + ", manager=" + manager + ", managerHp="
+				+ managerHp + ", fax=" + fax + ", regip=" + regip + ", wdate=" + wdate + ", rdate=" + rdate + ", etc1="
+				+ etc1 + ", etc2=" + etc2 + ", etc3=" + etc3 + ", etc4=" + etc4 + ", etc5=" + etc5 + "]";
+	}
 	
 }
