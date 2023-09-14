@@ -1,7 +1,52 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<!-- 
+	이름 : 윤경엽
+	내용 : 상품 주문하기 구현
+	날짜 : 2023/09/14
+ -->
 <%@ include file="./_header.jsp" %>
 <main id="product">
 <%@ include file="../_aside.jsp" %>
+<script>
+$(function(){
+    let num = 1;
+    let price = ${proddto.price};
+    let delivery = ${proddto.delivery};
+    let discount = ${proddto.discount};
+    let discountPrice = price - (price * discount/100) 
+    // 초기 토탈 값 설정
+    updateTotal();
+
+    $('.increase').click(function(){
+        num++;
+        $('input[name=num]').val(num);
+        updateTotal(); // num이 증가할 때마다 total 업데이트
+    });
+
+    $('.decrease').click(function(){
+        if(num > 1){
+            num--;
+            $('input[name=num]').val(num);
+            updateTotal(); // num이 감소할 때마다 total 업데이트
+        }
+    });
+
+    function updateTotal() {
+        let count = num;
+        let total = discountPrice * count;
+        $('.total2').text(total.toLocaleString());
+        $('.total2').val(total);
+    }
+
+    $('.btnOrder').click(function(e){
+        e.preventDefault();
+        $('#formOrder').submit();
+    });
+    
+    $('.discount_price').text(discountPrice);
+    
+});
+</script>
     </aside>
       <!-- 상품 상세페이지 시작 -->
       <section class="view">
@@ -14,14 +59,15 @@
             </p>
         </nav>
 
-        <!-- 상품 전체 정보 내용 -->                
+        <!-- 상품 전체 정보 내용 -->
+        
         <article class="info">
             <div class="image">
                 <img src="https://via.placeholder.com/460x460" alt="상품이미지"/>
             </div>
             <div class="summary">
                 <nav>
-                    <h1>(주)판매자명</h1>
+                    <h1>${proddto.seller}</h1>
                     <h2>상품번호&nbsp;:&nbsp;<span>${proddto.prodNo}</span></h2>
                 </nav>                        
                 <nav>
@@ -31,15 +77,16 @@
                 </nav>
                 <nav>
                     <div class="org_price">
-                        <del>30,000</del>
-                        <span>10%</span>
+                        <del>${proddto.price}</del>
+                        <span>${proddto.discount}%</span>
                     </div>
                     <div class="dis_price">
-                        <ins>27,000</ins>
+                        <ins class="discount_price">${proddto.price}</ins>
                     </div>
+                   
                 </nav>
                 <nav>
-                    <span class="delivery">무료배송</span>
+                    <span class="delivery" >${proddto.delivery}</span>
                     <span class="arrival">모레(금) 7/8 도착예정</span>
                     <span class="desc">본 상품은 국내배송만 가능합니다.</span>
                 </nav>
@@ -53,23 +100,34 @@
                 <img src="/K-market/images/vip_plcc_banner.png" alt="100원만 결제해도 1만원 적립!" class="banner" />
                 
                 <div class="count">
-                    <button class="decrease">-</button>
-                    <input type="text" name="num" value="1" readonly/>
-                    <button class="increase">+</button>
+                    <button type="button" class="decrease">-</button>
+                    <input type="number" name="num" value="1" readonly/>
+                    <button type="button" class="increase">+</button>
                 </div>
                 
                 <div class="total">
-                    <span>35,000</span>
+                    <span class="total2">${proddto.price}</span>
                     <em>총 상품금액</em>
                 </div>
-
-                <div class="button">
-                    <input type="button" class="cart"  value="장바구니"/>
-                    <input type="button" class="order" value="구매하기"/>
-                </div>
+				<form action="/K-market/product/productcart.do" method="POST">
+				    <input type="hidden" name="uid" value="a101" />
+				    <input type="hidden" name="prodNo" value="${proddto.prodNo}" />
+				    <input type="hidden" name="prodName" value="${proddto.prodName}" />
+				    <input type="hidden" name="descript" value="${proddto.descript}" />
+				    <input type="hidden" name="price" value="${proddto.price}" />
+				    <input type="hidden" name="point" value="${proddto.point}" />
+				    <input type="hidden" name="num" value="1" readonly/>
+				    <input type="hidden" name="discount" value="${proddto.discount}" />
+				    <input type="hidden" name="delivery" value="${proddto.delivery}" />
+				    <input type="hidden" class="total2" name="total2"/>
+    				<div class="button">
+       					<input type="submit" class="cart"  value="장바구니"/>
+        				<input type="submit" class="order" value="구매하기"/>
+   				 	</div>
+				</form>
             </div>
         </article>
-
+		
         <!-- 상품 정보 내용 -->
         <article class="detail">
             <nav>
@@ -90,23 +148,23 @@
             <table border="0">
                 <tr>
                     <td>상품번호</td>
-                    <td>10110125435</td>
+                    <td>${proddto.prodNo}</td>
                 </tr>
                 <tr>
                     <td>상품상태</td>
-                    <td>새상품</td>
+                    <td>${proddto.status}</td>
                 </tr>
                 <tr>
                     <td>부가세 면세여부</td>
-                    <td>과세상품</td>
+                    <td>${proddto.duty}</td>
                 </tr>
                 <tr>
                     <td>영수증발행</td>
-                    <td>발행가능 - 신용카드 전표, 온라인 현금영수증</td>
+                    <td>${proddto.receipt}</td>
                 </tr>
                 <tr>
                     <td>사업자구분</td>
-                    <td>사업자 판매자</td>
+                    <td>${proddto.bizType}</td>
                 </tr>
                 <tr>
                     <td>브랜드</td>

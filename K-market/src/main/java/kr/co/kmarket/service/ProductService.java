@@ -30,7 +30,6 @@ public enum ProductService {
 	public void deleteProduct(int prodNo) {
 		dao.deleteProduct(prodNo);
 	}
-	
 	// admin 추가
 	public List<Cate1DTO> selectCate1s() {
 		return dao.selectCate1s();
