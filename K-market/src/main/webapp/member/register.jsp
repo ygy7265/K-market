@@ -1,11 +1,15 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./_header.jsp" %>
+<script>
+	
+</script>
+<script src="/K-market/js/checkMember.js"></script>
     <main id="member">
         <div class="register">
             <nav>
                 <h1>일반 회원가입</h1>
             </nav>
-				<form action="#" method="POST">
+				<form action="/K-market/member/register.do" method="POST">
 					<section>
 						<table>
 							<caption>필수 정보입력</caption>
@@ -16,12 +20,12 @@
 							</tr>
 							<tr>
 								<th><span class="essential">*</span>비밀번호</th>
-								<td><input type="password" name="km_pass" placeholder="비밀번호를 입력"required />
+								<td><input type="password" name="km_pass1" placeholder="비밀번호를 입력"required />
 								<span class="msgPass">영문, 숫자, 특수문자를 조합하여 8~12자까지 설정해 주세요.</span></td>
 								</tr>
 							<tr>
 								<th><span class="essential">*</span>비밀번호확인</th>
-								<td><input type="password" name="km_pass" placeholder="비밀번호를 확인" required />
+								<td><input type="password" name="km_pass2" placeholder="비밀번호를 확인" required />
 								<span class="msgPass">비밀번호 재입력</span></td>
 							</tr>
 						</table>
@@ -37,13 +41,13 @@
 					<tr>
 						<th><span class="essential">*</span>성별</th>
 						<td><label><input type="radio" name="km_gender"
-								value="1" checked>&nbsp;남</label> <label><input
-								type="radio" name="gender" value="2">&nbsp;여</label></td>
+								value="1">&nbsp;남</label> <label><input
+								type="radio" name="km_gender" value="2">&nbsp;여</label></td>
 					</tr>
 					<tr>
 						<th><span class="essential">*</span>EMAIL</th>
-						<td><input type="email" name="km_email" placeholder="이메일 입력"
-							required /></td>
+						<td><input type="email" name="km_email" placeholder="이메일 입력" required />
+						<span class="msgEmail"></span></td>
 					</tr>
 					<tr>
 						<th><span class="essential">*</span>휴대폰</th>
