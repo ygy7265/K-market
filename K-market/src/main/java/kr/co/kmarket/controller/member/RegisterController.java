@@ -18,6 +18,8 @@ import kr.co.kmarket.service.MemberService;
 @WebServlet("/member/register.do")
 public class RegisterController extends HttpServlet{
 	
+	private static final long serialVersionUID = 910359876733017164L;
+	
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	private MemberService service = MemberService.INSTANCE;
 	

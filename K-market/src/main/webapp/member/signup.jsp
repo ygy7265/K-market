@@ -8,6 +8,9 @@
 		const agree3 = document.getElementsByName('agree3')[0];
 		const agree4 = document.getElementsByName('agree4')[0];
 		
+		const typeInput = document.getElementsByName('type')[0];
+		const type = typeInput.value;
+		
 		const agree = document.querySelector('.agree');
 		agree.addEventListener('click', function(e){
 			e.preventDefault();
@@ -22,7 +25,13 @@
 				alert('개인정보 수집동의에 동의하셔야 합니다.');
 				return;
 			}else{
-				location.href ="/K-market/member/register.do";
+				
+				// 일반 회원, 판매 회원 구분
+				if(type == 'normal'){
+					location.href ="/K-market/member/register.do";
+				}else{
+					location.href ="/K-market/member/registerSeller.do";
+				}
 			}
 		})
 	}
