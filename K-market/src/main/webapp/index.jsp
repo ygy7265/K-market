@@ -1,64 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./_header.jsp" %>
 <main>
-  <!-- 카테고리/베스트 상품 영역 -->
-  <aside>
-    <!-- 카테고리 -->
-    <ul class="category">
-      <li><i class="fa fa-bars" aria-hidden="true"></i>카테고리</li>
-      <li>
-        <a href="#"
-          ><i class="fas fa-tshirt"></i>패션·의류·뷰티<i
-            class="fas fa-angle-right"
-          ></i
-        ></a>
-        <ol>
-          <li><a href="/K-market/product/productlist.do">남성의류</a></li>
-          <li><a href="/K-market/product/productlist.do">여성의류</a></li>
-          <li><a href="/K-market/product/productlist.do">잡화</a></li>
-          <li><a href="/K-market/product/productlist.do">뷰티</a></li>
-        </ol>
-      </li>
-      <li>
-        <a href="#"
-          ><i class="fas fa-laptop"></i>가전·디지털<i
-            class="fas fa-angle-right"
-          ></i
-        ></a>
-        <ol>
-          <li><a href="/K-market/product/productlist.do">노트북/PC</a></li>
-          <li><a href="/K-market/product/productlist.do">가전</a></li>
-          <li><a href="/K-market/product/productlist.do">휴대폰</a></li>
-          <li><a href="/K-market/product/productlist.do">기타</a></li>
-        </ol>
-      </li>
-      <li>
-        <a href="#"
-          ><i class="fas fa-utensils"></i>식품·생필품<i
-            class="fas fa-angle-right"
-          ></i
-        ></a>
-        <ol>
-          <li><a href="/K-market/product/productlist.do">신선식품</a></li>
-          <li><a href="/K-market/product/productlist.do">가공식품</a></li>
-          <li><a href="/K-market/product/productlist.do">건강식품</a></li>
-          <li><a href="/K-market/product/productlist.do">생필품</a></li>
-        </ol>
-      </li>
-      <li>
-        <a href="#"
-          ><i class="fas fa-home"></i>홈·문구·취미<i
-            class="fas fa-angle-right"
-          ></i
-        ></a>
-        <ol>
-          <li><a href="/K-market/product/productlist.do">가구/DIY</a></li>
-          <li><a href="/K-market/product/productlist.do">침구·커튼</a></li>
-          <li><a href="/K-market/product/productlist.do">생활용품</a></li>
-          <li><a href="/K-market/product/productlist.do">사무용품</a></li>
-        </ol>
-      </li>
-    </ul>
+<%@ include file="./_aside.jsp" %>
 
     <!-- 베스트상품 배너 -->
     <article class="best">
@@ -161,29 +104,23 @@
       <ul>
         <li>
           <a href="#"
-            ><img src="https://via.placeholder.com/985x447" alt="item1"
+            ><img src="./images/977e463a0eac4249.jpg" alt="item1"
           /></a>
         </li>
-        <li>
-          <a href="#"
-            ><img src="https://via.placeholder.com/985x447" alt="item2"
-          /></a>
+         <li>
+          <a href="#"><img src="./images/eaef5e849af44f1b.jpg" alt="item1"/></a>
         </li>
-        <li>
-          <a href="#"
-            ><img src="https://via.placeholder.com/985x447" alt="item3"
-          /></a>
+         <li>
+          <a href="#"><img src="./images/64f78d70f729468a.jpg" alt="item2"/></a>
         </li>
-        <li>
-          <a href="#"
-            ><img src="https://via.placeholder.com/985x447" alt="item4"
-          /></a>
+         <li>
+          <a href="#"><img src="./images/3484b119be884292.jpg" alt="item3"/></a>
         </li>
-        <li>
-          <a href="#"
-            ><img src="https://via.placeholder.com/985x447" alt="item5"
-          /></a>
+         <li>
+          <a href="#"><img src="./images/6476792d613d460a.jpg" alt="item4"/></a>
         </li>
+        
+       	
       </ul>
     </section>
     <!-- 히트상품 영역 -->

@@ -23,7 +23,7 @@ public class TermsDAO extends DBHelper {
 	
 	
 	// 기본 CRUD
-	public TermsDTO selectTerm() {
+	public TermsDTO selectTerm(String type) {
 		
 		TermsDTO dto = new TermsDTO();
 		logger.debug("TermsDAO dto... 1 : "+dto);
@@ -31,6 +31,7 @@ public class TermsDAO extends DBHelper {
 		try {
 			conn = getConnection();
 			psmt = conn.prepareStatement(SQL.SELECT_TERMS);
+			psmt.setString(1, type);
 			rs = psmt.executeQuery();
 			
 			if(rs.next()) {

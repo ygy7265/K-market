@@ -5,7 +5,7 @@ public class ProductDTO {
 	private int cate1;
 	private int cate2;
 	private String prodName;
-	private String descipt;
+	private String descript;
 	private String company;
 	private String seller;
 	private int price;
@@ -58,11 +58,11 @@ public class ProductDTO {
 	public void setProdName(String prodName) {
 		this.prodName = prodName;
 	}
-	public String getDescipt() {
-		return descipt;
+	public String getDescript() {
+		return descript;
 	}
-	public void setDescipt(String descipt) {
-		this.descipt = descipt;
+	public void setDescript(String descipt) {
+		this.descript = descipt;
 	}
 	public String getCompany() {
 		return company;
