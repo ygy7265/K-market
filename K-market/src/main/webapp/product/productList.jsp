@@ -1,47 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./_header.jsp" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <main id="product">
-    <aside>
-        <ul class="category">
-            <li><i class="fa fa-bars" aria-hidden="true"></i>카테고리</li>
-            <li>
-                <a href="#"><i class="fas fa-tshirt" aria-hidden="true"></i>패션·의류·뷰티</a>
-                <ol>
-                    <li><a href="/K-market/product/productlist.do">남성의류</a></li>
-                    <li><a href="/K-market/product/productlist.do">여성의류</a></li>
-                    <li><a href="/K-market/product/productlist.do">잡화</a></li>
-                    <li><a href="/K-market/product/productlist.do">뷰티</a></li>
-                </ol>
-            </li>
-            <li>
-                <a href="#"><i class="fas fa-laptop" aria-hidden="true"></i>가전·디지털</a>
-                <ol>
-                    <li><a href="/K-market/product/productlist.do">노트북</a></li>
-                    <li><a href="/K-market/product/productlist.do">가전</a></li>
-                    <li><a href="/K-market/product/productlist.do">휴대폰</a></li>
-                    <li><a href="/K-market/product/productlist.do">기타</a></li>
-                </ol>
-            </li>
-            <li>
-                <a href="#"><i class="fas fa-utensils" aria-hidden="true"></i>식품·생필품</a>
-                <ol>
-                    <li><a href="/K-market/product/productlist.do">신선식품</a></li>
-                    <li><a href="/K-market/product/productlist.do">가공식품</a></li>
-                    <li><a href="/K-market/product/productlist.do">건강식품</a></li>
-                    <li><a href="/K-market/product/productlist.do">생필품</a></li>
-                </ol>
-            </li>
-            <li>
-                <a href="#"><i class="fas fa-home" aria-hidden="true"></i>홈·문구·취미</a>
-                <ol>
-                    <li><a href="/K-market/product/productlist.do">가구/DIY</a></li>
-                    <li><a href="/K-market/product/productlist.do">침구·커튼</a></li>
-                    <li><a href="/K-market/product/productlist.do">생활용품</a></li>
-                    <li><a href="/K-market/product/productlist.do">사무용품</a></li>
-                </ol>
-            </li>
-        </ul>
-    </aside>
+<%@ include file="../_aside.jsp" %>   
+</aside>
     <section class="list">
     <!-- 제목, 페이지 네비게이션 -->
     <nav>
@@ -59,121 +21,36 @@
           <li><a href="/K-market/product/productlist.do">최근등록순</a></li>
       </ul>
 
+	  
       <!-- 상품목록 -->              
-      <table border="0">                  
+      <table border="0">
+      	<c:forEach var="product" items="${list}">
+      
         <tr>
-          <td><a href="/K-market/product/productview.do" class="thumb"><img src="https://via.placeholder.com/120x120" alt="상품이미지"/></a></td>
+          <td><a href="/K-market/product/productview.do?prodNo=${product.prodNo}" class="thumb"><img src="https://via.placeholder.com/120x120" alt="상품이미지"/></a></td>
           <td>
-            <h3 class="name">상품명</h3>
+            <h3 class="name">${product.prodName}</h3>
             <a href="/K-market/product/productview.do" class="desc">상품설명</a>
           </td>
           <td>
             <ul>
-              <li><ins class="dis-price">27,000</ins></li>
+              <li><ins class="dis-price">${product.price}</ins></li>
               <li>
-                <del class="org-price">30,000</del>
-                <span class="discount">10%</span>
+                <del class="org-price">${product.price}</del>
+                <span class="discount">${product.prodName}%</span>
               </li>
               <li><span class="free-delivery">무료배송</span></li>
             </ul>
           </td>
           <td>
-            <h4 class="seller"><i class="fas fa-home"></i>&nbsp;판매자</h4>
-            <h5 class="badge power">판매자등급</h5>
+            <h4 class="seller"><i class="fas fa-home"></i>&nbsp;${product.seller}</h4>
+            <h5 class="badge power">${product.seller}</h5>
             <h6 class="rating star1">상품평</h6>
           </td>
         </tr>
-        <tr>
-          <td><a href="/K-market/product/productview.do" class="thumb"><img src="https://via.placeholder.com/120x120" alt="상품이미지"/></a></td>
-          <td>
-            <h3 class="name">상품명</h3>
-            <a href="/K-market/product/productview.do" class="desc">상품설명</a>
-          </td>
-          <td>
-            <ul>
-              <li><ins class="dis-price">27,000</ins></li>
-              <li>
-                <del class="org-price">30,000</del>
-                <span class="discount">10%</span>
-              </li>
-              <li><span class="free-delivery">무료배송</span></li>
-            </ul>
-          </td>
-          <td>
-            <h4 class="seller"><i class="fas fa-home"></i>&nbsp;판매자</h4>
-            <h5 class="badge power">판매자등급</h5>
-            <h6 class="rating star2">상품평</h6>
-          </td>
-        </tr>
-        <tr>
-          <td><a href="/K-market/product/productview.do" class="thumb"><img src="https://via.placeholder.com/120x120" alt="상품이미지"/></a></td>
-          <td>
-            <h3 class="name">상품명</h3>
-            <a href="/K-market/product/productview.do" class="desc">상품설명</a>
-          </td>
-          <td>
-            <ul>
-              <li><ins class="dis-price">27,000</ins></li>
-              <li>
-                <del class="org-price">30,000</del>
-                <span class="discount">10%</span>
-              </li>
-              <li><span class="free-delivery">무료배송</span></li>
-            </ul>
-          </td>
-          <td>
-            <h4 class="seller"><i class="fas fa-home"></i>&nbsp;판매자명</h4>
-            <h5 class="badge power">판매자등급</h5>
-            <h6 class="rating star3">상품평</h6>
-          </td>
-        </tr>
-        <tr>
-          <td><a href="/K-market/product/productview.do" class="thumb"><img src="https://via.placeholder.com/120x120" alt="상품이미지"/></a></td>
-          <td>
-            <h3 class="name">상품명</h3>
-            <a href="/K-market/product/productview.do" class="desc">상품설명</a>
-          </td>
-          <td>
-            <ul>
-              <li><ins class="dis-price">27,000</ins></li>
-              <li>
-                <del class="org-price">30,000</del>
-                <span class="discount">10%</span>
-              </li>
-              <li><span class="free-delivery">무료배송</span></li>
-            </ul>
-          </td>
-          <td>
-            <h4 class="seller"><i class="fas fa-home"></i>&nbsp;판매자명</h4>
-            <h5 class="badge power">판매자등급</h5>
-            <h6 class="rating star4">상품평</h6>
-          </td>
-        </tr>
-        <tr>
-          <td><a href="/K-market/product/productview.do" class="thumb"><img src="https://via.placeholder.com/120x120" alt="상품이미지"/></a></td>
-          <td>
-            <h3 class="name">상품명</h3>
-            <a href="/K-market/product/productview.do" class="desc">상품설명</a>
-          </td>
-          <td>
-            <ul>
-              <li><ins class="dis-price">27,000</ins></li>
-              <li>
-                <del class="org-price">30,000</del>
-                <span class="discount">10%</span>
-              </li>
-              <li><span>배송비 2500</span></li>
-            </ul>
-          </td>
-          <td>
-            <h4 class="seller"><i class="fas fa-home"></i>&nbsp;판매자명</h4>
-            <h5 class="badge power">판매자등급</h5>
-            <h6 class="rating star5">상품평</h6>
-          </td>
-        </tr>
-        
+        </c:forEach>
       </table>            
-
+	  
       <!-- 상품목록 페이지번호 -->
       <div class="paging">
         <span class="prev">
