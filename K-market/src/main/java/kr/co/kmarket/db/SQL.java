@@ -43,9 +43,7 @@ public class SQL {
 			+ "`delivery`=?, "
 			+ "`total`=?, "
 			+ "`rdate`=NOW() ";
-
-	public static final String SELECT_COUNT_HP = "SELECT COUNT(*) FROM `km_member` WHERE `hp`=?";
-
+	public static final String INSERT_MEMBER_NORMAR= "";
 
 	// admin_register 
 	public static final String SELECT_CATE1S = "SELECT * FROM `km_product_cate1` ORDER BY `cate1` ASC";
