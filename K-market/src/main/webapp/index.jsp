@@ -8,12 +8,12 @@
     <article class="best">
       <h1><i class="fas fa-crown"></i>베스트상품</h1>
       <ol>
-      	<c:forEach var="bestList" items="${bestList}">
+      	<c:forEach var="bestList" items="${bestList}" varStatus="loopStatus">
       	
         <li>
           <a href="/K-market/product/productview.do?prodNo=${bestList.prodNo}">
             <div class="thumb">
-              <i>1</i>
+              <i>${loopStatus.index + 1}</i>
               <img src="./images/product/301.jpeg" alt="item1" />
             </div>
             <h2>${bestList.prodName}</h2>
