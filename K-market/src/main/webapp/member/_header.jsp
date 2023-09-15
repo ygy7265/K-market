@@ -1,7 +1,22 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
-
+<script>
+	const success = ${success};
+	switch (success) {
+	case 101:
+		alert('로그인 성공.');
+		break;
+	case 102:
+		alert('로그인 실패');
+		break;
+	case 200:
+		alert('정상적으로 로그아웃 되었습니다.');
+		break;
+	default:
+		break;
+	}
+</script>
 <head>
     <meta charset="UTF-8">    
     <title>케이마켓::대한민국 1등 온라인 쇼핑몰</title>    
