@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <tr>
                             <td>1차 분류</td>
                             <td>
-                           		<select name="category1" id="category1">
+                           		<select name="cate1" id="category1">
                             		<c:forEach var="cate1s" items="${cate1s}">
 	                                    <option value="${cate1s.cate1}">${cate1s.c1Name}</option>
                                     </c:forEach>                                           
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <tr>
                             <td>2차 분류</td>
                             <td>
-				                <select id="category2" name="category2">
+				                <select name="cate2" id="category2">
 				                    <c:forEach var="cate2s" items="${cate2s}">
 				                        <option value="${cate2s.cate2}">${cate2s.c2Name}</option>
 				                    </c:forEach>
