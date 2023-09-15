@@ -25,11 +25,14 @@ public class SQL {
 												+ "duty=?, "
 												+ "receipt=?, "
 												+ "bizType=?, "
-												+ "origin=? "
+												+ "origin=?, "
+												+ "seller=?, "
+												+ "ip=?, "
 												+ "rdate=NOW()";
 	
 	public static final String SELECT_PRODUCT = "SELECT * FROM `km_product` WHERE `prodNo` = ?";
 	public static final String SELECT_PRODUCTS = "SELECT * FROM `km_product` WHERE `cate1` = ? and `cate2` = ?";
+	public static final String SELECT_PRODUCTS_ALL = "SELECT * FROM `km_product` ORDER BY `rdate` DESC";
 	
 	// member_insert
 	public static final String INSERT_MEMBER_NORMAR = "INSERT INTO `km_member` SET "

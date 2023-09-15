@@ -46,11 +46,17 @@ public class ProductDTO {
 	public void setCate1(int cate1) {
 		this.cate1 = cate1;
 	}
+	public void setCate1(String cate1) {
+		this.cate1 = Integer.parseInt(cate1);
+	}
 	public int getCate2() {
 		return cate2;
 	}
 	public void setCate2(int cate2) {
 		this.cate2 = cate2;
+	}
+	public void setCate2(String cate2) {
+		this.cate2 = Integer.parseInt(cate2);
 	}
 	public String getProdName() {
 		return prodName;
@@ -82,11 +88,17 @@ public class ProductDTO {
 	public void setPrice(int price) {
 		this.price = price;
 	}
+	public void setPrice(String price) {
+		this.price = Integer.parseInt(price);
+	}
 	public int getDiscount() {
 		return discount;
 	}
 	public void setDiscount(int discount) {
 		this.discount = discount;
+	}
+	public void setDiscount(String discount) {
+		this.discount = Integer.parseInt(discount);
 	}
 	public int getPoint() {
 		return point;
@@ -94,11 +106,17 @@ public class ProductDTO {
 	public void setPoint(int point) {
 		this.point = point;
 	}
+	public void setPoint(String point) {
+		this.point = Integer.parseInt(point);
+	}
 	public int getStock() {
 		return stock;
 	}
 	public void setStock(int stock) {
 		this.stock = stock;
+	}
+	public void setStock(String stock) {
+		this.stock = Integer.parseInt(stock);
 	}
 	public int getSold() {
 		return sold;
@@ -111,6 +129,9 @@ public class ProductDTO {
 	}
 	public void setDelivery(int delivery) {
 		this.delivery = delivery;
+	}
+	public void setDelivery(String delivery) {
+		this.delivery = Integer.parseInt(delivery);
 	}
 	public int getHit() {
 		return hit;
@@ -227,5 +248,22 @@ public class ProductDTO {
 		this.etc5 = etc5;
 	}
 	
-	
+	// toString
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("ProductDTO [prodNo=").append(prodNo).append(", cate1=").append(cate1).append(", cate2=")
+				.append(cate2).append(", prodName=").append(prodName).append(", descript=").append(descript)
+				.append(", company=").append(company).append(", seller=").append(seller).append(", price=")
+				.append(price).append(", discount=").append(discount).append(", point=").append(point)
+				.append(", stock=").append(stock).append(", sold=").append(sold).append(", delivery=").append(delivery)
+				.append(", hit=").append(hit).append(", score=").append(score).append(", review=").append(review)
+				.append(", thumb1=").append(thumb1).append(", thumb2=").append(thumb2).append(", thumb3=")
+				.append(thumb3).append(", detail=").append(detail).append(", status=").append(status).append(", duty=")
+				.append(duty).append(", receipt=").append(receipt).append(", bizType=").append(bizType)
+				.append(", origin=").append(origin).append(", ip=").append(ip).append(", rdate=").append(rdate)
+				.append(", etc1=").append(etc1).append(", etc2=").append(etc2).append(", etc3=").append(etc3)
+				.append(", etc4=").append(etc4).append(", etc5=").append(etc5).append("]");
+		return builder.toString();
+	}
 }
