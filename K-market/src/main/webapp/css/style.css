@@ -833,6 +833,18 @@ footer p > strong {
   margin-bottom: 12px;
   overflow: hidden;
 } 
+#product > .view > article > nav {
+  border-bottom: 1px solid #a4a9b0;
+  padding: 6px 0;
+  margin-bottom: 12px;
+  overflow: hidden;
+} 
+#product > .view > article > nav > h1 {
+  float: left;
+  color: #1e2732;
+  font-weight: bold;
+  font-size: 1.5em;
+}
 #product > .view > article > nav > h1 {
   float: left;
   color: #1e2732;
@@ -851,8 +863,14 @@ footer p > strong {
   height: 100%;
   padding: 10px;
   box-sizing: border-box;
+}#product > .view > .info > div {
+  float: left;
+  width: 50%;
+  height: 100%;
+  padding: 10px;
+  box-sizing: border-box;
 }
-#product > .view > .info > .image > img {
+#product > .view > .info >.image > img {
   width: 100%;
 }
 
@@ -862,27 +880,27 @@ footer p > strong {
   margin-bottom: 12px;
   overflow: hidden;
 }
-#product > .view > .info > .summary .rating > a {
+#product > .view > .info >.summary .rating > a {
   color: #346aff;
   text-decoration: underline;
 }
-#product > .view > .info > .summary > nav > h1 {
+#product > .view > .info >.summary > nav > h1 {
   float: left;
   color: #0231a6;
   font-weight: bold;
   font-size: 1.5em;
 }
-#product > .view > .info > .summary > nav > h2 {
+#product > .view > .info >.summary > nav > h2 {
   float: right;
   color: #777;
   margin-top: 8px;
 }
-#product > .view > .info > .summary > nav > h3 {
+#product > .view > .info >.summary > nav > h3 {
   font-size: 18px;
   font-weight: bold;
   color: #1e2732;
 }
-#product > .view > .info > .summary > nav > p {
+#product > .view > .info >.summary > nav > p {
   font-size: 14px;
   color: #474747;
   line-height: 36px;
@@ -913,7 +931,7 @@ footer p > strong {
 #product > .view > .info > .summary .org_price > span::after {
   content: "↓";
 }
-#product > .view > .info > .summary .org_price > ins {
+#product > .view > .info >.summary .org_price > ins {
   font-size: 26px;
   font-weight: bold;
   text-decoration: none;
@@ -926,16 +944,16 @@ footer p > strong {
   font-weight: bold;
   text-decoration: none;
 }
-#product > .view > .info > .summary .dis_price > ins::after {
+#product > .view > .info >.summary .dis_price > ins::after {
   content: "원";
 }
 
 
-#product > .view > .info > .summary .delivery {
+#product > .view > .info >.summary .delivery {
   font-size: 16px;
   color: #2e8de5;
 }
-#product > .view > .info > .summary .arrival {
+#product > .view > .info >.summary .arrival {
   font-size: 14px;
   margin-left: 10px;
 }
@@ -955,10 +973,10 @@ footer p > strong {
 #product > .view > .info > .summary .cardfree > i{
   background-position: -126px 0;
 }
-#product > .view > .info > .summary .cardadd > i {
+#product > .view > .info >.summary .cardadd > i {
   background-position: -51px -21px;
 }
-#product > .view > .info > .summary > nav {
+#product > .view > .info >.summary > nav {
   border-bottom: 1px solid #eaeaea;
   padding-bottom: 10px;
   margin-bottom: 12px;
@@ -967,7 +985,7 @@ footer p > strong {
 #product > .view > .info > .summary .origin {
   font-size: 16px;
 }
-#product > .view > .info > .summary .banner {
+#product > .view > .info >.summary .banner {
   width: 100%;
 }
 
@@ -977,7 +995,7 @@ footer p > strong {
   width: 100px;
   height: 40px;
 }
-#product > .view > .info > .summary .count > button {
+#product > .view > .info >.summary .count > button {
   position: absolute;
   width: 21px;
   height: 21px;
@@ -991,7 +1009,7 @@ footer p > strong {
   top: 0;
   background-position: 0px -74px;
 }
-#product > .view > .info > .summary .count > .increase {
+#product > .view > .info >.summary .count > .increase {
   left: 70px;
   top: 0;
   background-position: -48px -74px;
@@ -1011,7 +1029,7 @@ footer p > strong {
   overflow: hidden;
   margin-top: 16px;
 }
-#product > .view > .info > .summary .total > span {
+#product > .view > .info >.summary .total > span {
   float: right;
   display: inline-block;
   line-height: 38px;
@@ -1035,11 +1053,11 @@ footer p > strong {
   color: #5e636d;
   letter-spacing: -1px;
 }
-#product > .view > .info > .summary > .button {
+#product > .view > .info > .summary > form >.button {
   overflow: hidden;
   margin-top: 16px;
 }
-#product > .view > .info > .summary > .button > input {
+#product > .view > .info > .summary > form >.button > input {
   float: left;
   width: 49%;
   height: 50px;
@@ -1049,12 +1067,12 @@ footer p > strong {
   border-radius: 2px;
   cursor: pointer;
 }
-#product > .view > .info > .summary > .button > .cart {
+#product > .view > .info >.summary > form >.button > .cart {
   background: #fff;
   border: 1px solid #d9d9d9;
   color: #233549;
 }
-#product > .view > .info > .summary > .button > .order {
+#product > .view > .info > .summary > form >.button > .order {
   background: #2e8de5;
   border: 1px solid #217fd7;
   color: #fff;
@@ -1427,22 +1445,22 @@ footer p > strong {
 }
 
 
-#product > .order > form > .discount {}
-#product > .order > form > .discount > div {
+#product > form > .order > .discount {}
+#product > form > .order >.discount > div {
   overflow: hidden;
 }
-#product > .order > form > .discount > div > p {
+#product > form > .order > .discount > div > p {
   float: left;
 }
-#product > .order > form > .discount > div > label{
+#product >form > .order > .discount > div > label{
   float: right;
 }
 
-#product > .order > form > .discount > div > label > input[type=text] {
+#product > form > .order > .discount > div > label > input[type=text] {
   display: inline-block;
   outline: none;
 }
-#product > .order > form > .discount > div > label > input[type=button]{
+#product > form > .order > .discount > div > label > input[type=button]{
   padding: 4px 6px;
   border: 1px solid #ccc;
   background-color: #F0F4F9;

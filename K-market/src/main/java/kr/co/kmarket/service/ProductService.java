@@ -3,6 +3,8 @@ package kr.co.kmarket.service;
 import java.util.List;
 
 import kr.co.kmarket.dao.ProductDAO;
+import kr.co.kmarket.dto.Cate1DTO;
+import kr.co.kmarket.dto.Cate2DTO;
 import kr.co.kmarket.dto.ProductDTO;
 
 public enum ProductService {
@@ -27,5 +29,12 @@ public enum ProductService {
 	}
 	public void deleteProduct(int prodNo) {
 		dao.deleteProduct(prodNo);
+	}
+	// admin 추가
+	public List<Cate1DTO> selectCate1s() {
+		return dao.selectCate1s();
+	}
+	public List<Cate2DTO> selectCate2s() {
+		return dao.selectCate2s();
 	}
 }

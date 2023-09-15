@@ -2,6 +2,17 @@
  * 아이디, 이메일, 휴대폰 번호 중복 체크
  */
 
+/*	let isUidOk		= false;
+	let isPassOk	= false;
+	let isNameOk	= false;
+	let isEmailOk	= false;
+	let isHpOk		= false;
+	
+	let reUid   = /^[a-z]+[a-z0-9]{4,12}$/g;
+	let rePass  = /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,12}$/;
+	let reName  = /^[가-힣]{2,10}$/ 
+	let reEmail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+	let reHp    = /^01(?:0|1|[6-9])-(?:\d{4})-\d{4}$/;*/
  
 // 중복 검사
 $(function(){
@@ -10,7 +21,12 @@ $(function(){
 	$('input[name=km_uid]').focusout(function(){
 		const uid = $(this).val();
 		
-		console.log(uid);
+		// 아이디 유효성 검증
+		if(!uid.match(reUid)){
+			$('.msgId').css('color', 'red').text('유효한 아이디가 아닙니다.');
+			isUidOk = false;
+			return; // 종료
+		}
 		
 		const jsonData = {
 			"uid": uid	
@@ -25,8 +41,10 @@ $(function(){
 				
 				if(data.result >= 1){
 					$(".msgId").css('color','red').text('이미 사용중인 아이디 입니다.');
+					isUidOk = false;
 				}else{
 					$(".msgId").css('color','green').text('사용가능한 아이디 입니다.');
+					isUidOk = true;
 				}
 				
 			}
@@ -39,7 +57,11 @@ $(function(){
 	$('input[name=km_email]').focusout(function(){
 		const email = $(this).val();
 		
-		console.log(email);
+		if(!email.match(reEmail)){
+			$('.msgEmail').css('color', 'red').text('유효한 이메일이 아닙니다.');
+			isEmailOk = false;
+			return; // 종료
+		}
 		
 		const jsonData = {
 			"email": email	
@@ -68,7 +90,11 @@ $(function(){
 	$('input[name=km_hp]').focusout(function(){
 		const hp = $(this).val();
 		
-		console.log(hp);
+		if(!hp.match(reHp)){
+			$('.msgHp').css('color', 'red').text('유효한 휴대폰 번호가 아닙니다.');
+			isHpOk = false;
+			return; // 종료
+		}
 		
 		const jsonData = {
 			"hp": hp	

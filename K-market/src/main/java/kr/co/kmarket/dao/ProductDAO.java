@@ -4,11 +4,15 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.jsp.tagext.TryCatchFinally;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import kr.co.kmarket.db.DBHelper;
 import kr.co.kmarket.db.SQL;
+import kr.co.kmarket.dto.Cate1DTO;
+import kr.co.kmarket.dto.Cate2DTO;
 import kr.co.kmarket.dto.ProductDTO;
 
 public class ProductDAO extends DBHelper {
@@ -45,13 +49,14 @@ public class ProductDAO extends DBHelper {
 				dto.setPoint(rs.getInt(10));
 				dto.setStock(rs.getInt(11));
 				dto.setSold(rs.getInt(12));
-				dto.setDelivery(rs.getInt(14));
-				dto.setHit(rs.getInt(15));
-				dto.setScore(rs.getInt(16));
-				dto.setReview(rs.getInt(17));
-				dto.setThumb1(rs.getString(18));
-				dto.setThumb2(rs.getString(19));
-				dto.setThumb3(rs.getString(20));
+				dto.setDelivery(rs.getInt(13));
+				dto.setHit(rs.getInt(14));
+				dto.setScore(rs.getInt(15));
+				dto.setReview(rs.getInt(16));
+				dto.setThumb1(rs.getString(17));
+				dto.setThumb2(rs.getString(18));
+				dto.setThumb3(rs.getString(19));
+				dto.setDetail(rs.getString(20));
 				dto.setStatus(rs.getString(21));
 				dto.setDuty(rs.getString(22));
 				dto.setReceipt(rs.getString(23));
@@ -92,13 +97,14 @@ public class ProductDAO extends DBHelper {
 				dto.setPoint(rs.getInt(10));
 				dto.setStock(rs.getInt(11));
 				dto.setSold(rs.getInt(12));
-				dto.setDelivery(rs.getInt(14));
-				dto.setHit(rs.getInt(15));
-				dto.setScore(rs.getInt(16));
-				dto.setReview(rs.getInt(17));
-				dto.setThumb1(rs.getString(18));
-				dto.setThumb2(rs.getString(19));
-				dto.setThumb3(rs.getString(20));
+				dto.setDelivery(rs.getInt(13));
+				dto.setHit(rs.getInt(14));
+				dto.setScore(rs.getInt(15));
+				dto.setReview(rs.getInt(16));
+				dto.setThumb1(rs.getString(17));
+				dto.setThumb2(rs.getString(18));
+				dto.setThumb3(rs.getString(19));
+				dto.setDetail(rs.getString(20));
 				dto.setStatus(rs.getString(21));
 				dto.setDuty(rs.getString(22));
 				dto.setReceipt(rs.getString(23));
@@ -120,4 +126,53 @@ public class ProductDAO extends DBHelper {
 	}
 	public void updateProduct(ProductDTO dto) {}
 	public void deleteProduct(int prodNo) {}
+	
+	// admin_Product_Register
+	public List<Cate1DTO> selectCate1s() {
+		
+		List<Cate1DTO> cate1s = new ArrayList<>();
+		
+		try {
+			
+			conn = getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(SQL.SELECT_CATE1S);
+			
+			while(rs.next()) {
+				Cate1DTO dto = new Cate1DTO();
+				dto.setCate1(rs.getInt(1));
+				dto.setC1Name(rs.getString(2));
+				cate1s.add(dto);
+			}
+			close();
+		} catch (Exception e) {
+			logger.error("admin Cate1 List Error = "+e.getMessage());
+		}
+		return cate1s;
+	} // selectCate1s() END
+	
+	public List<Cate2DTO> selectCate2s() {
+		List<Cate2DTO> cate2s = new ArrayList<>();
+
+		try {
+		
+			conn = getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(SQL.SELECT_CATE2S);
+			
+			while(rs.next()) {
+				Cate2DTO dto = new Cate2DTO();
+				dto.setCate1(rs.getInt(1));
+				dto.setCate2(rs.getInt(2));
+				dto.setC2Name(rs.getString(3));
+				cate2s.add(dto);
+			}
+			close();
+		} catch (Exception e) {
+			logger.error("admin Cate2 List Error = "+e.getMessage());
+		}
+		return cate2s;
+	} // selectCate2s() END
+	
+
 }

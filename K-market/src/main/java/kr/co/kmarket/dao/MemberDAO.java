@@ -47,16 +47,45 @@ public class MemberDAO extends DBHelper{
 			logger.error("insertMember() error : "+e.getMessage());
 		}
 	}
+	public void insertMemberSeller(MemberDTO dto) {
+		
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.INSERT_MEMBER_SELLER);
+			psmt.setString(1, dto.getUid());
+			psmt.setString(2, dto.getPass());
+			psmt.setString(3, dto.getCompany());
+			psmt.setString(4, dto.getName());
+			psmt.setString(5, dto.getBizRegNum());
+			psmt.setString(6, dto.getComRegNum());
+			psmt.setString(7, dto.getHp());
+			psmt.setString(8, dto.getFax());
+			psmt.setString(9, dto.getEmail());
+			psmt.setString(10, dto.getZip());
+			psmt.setString(11, dto.getAddr1());
+			psmt.setString(12, dto.getAddr2());
+			psmt.setString(13, dto.getManager());
+			psmt.setString(14, dto.getManagerHp());
+			psmt.setString(15, dto.getRegip());
+			
+			psmt.executeUpdate();
+			
+			close();
+			
+		} catch(Exception e) {
+			logger.error("insertMemberSeller() error : "+e.getMessage());
+		}
+	}
 	
-	public MemberDAO selectMember(String uid) {
+	public MemberDTO selectMember(String uid) {
 		return null;
 	}
 	
-	public List<MemberDAO> selectMembers() {
+	public List<MemberDTO> selectMembers() {
 		return null;
 	}
 	
-	public void updateMember(MemberDAO dto) {
+	public void updateMember(MemberDTO dto) {
 		
 	}
 	
