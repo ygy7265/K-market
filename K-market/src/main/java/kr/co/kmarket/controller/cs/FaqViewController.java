@@ -11,9 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/cs/faq/faqview.do")
 public class FaqViewController extends HttpServlet{
+	private static final long serialVersionUID = 1L;
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/cs/faq/faqView.jsp");
 		dispatcher.forward(req, resp);	
+		
+		String cate = req.getParameter("cate");
 	}
 }

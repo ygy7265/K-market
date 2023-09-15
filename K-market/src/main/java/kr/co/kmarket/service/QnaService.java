@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import kr.co.kmarket.dao.QnaDAO;
+import kr.co.kmarket.dto.QnaDTO;
 
 public enum QnaService {
 	
@@ -17,19 +18,19 @@ public enum QnaService {
 	
 	
 
-	public void insertQna(QnaDAO dto) {
+	public void insertQna(QnaDTO dto) {
 		dao.insertQna(dto);
 	}
 	
-	public QnaDAO selectQna(String qnaNo) { // 편의를 위해서 int qnaNo 가 아닌 String 으로 설정해둠 
+	public QnaDTO selectQna(String qnaNo) { // 편의를 위해서 int qnaNo 가 아닌 String 으로 설정해둠 
 		return dao.selectQna(qnaNo);
 	}
 	
-	public List<QnaDAO> selectQnas() {
+	public List<QnaDTO> selectQnas() {
 		return dao.selectQnas();
 	}
 	
-	public void updateQna(QnaDAO dto) {
+	public void updateQna(QnaDTO dto) {
 		dao.updateQna(dto);
 	}
 	

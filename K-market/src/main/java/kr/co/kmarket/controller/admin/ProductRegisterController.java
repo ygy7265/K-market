@@ -42,9 +42,8 @@ public class ProductRegisterController extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		String category1 = req.getParameter("category1");
-		String category2 = req.getParameter("category2");
-
+		String cate1 = req.getParameter("cate1");
+		String cate2 = req.getParameter("cate2");
 		String prodName = req.getParameter("prodName");
 		String descript = req.getParameter("descript");
 		String company = req.getParameter("company");
@@ -64,8 +63,6 @@ public class ProductRegisterController extends HttpServlet{
 		String origin = req.getParameter("origin");
 		
 		
-		logger.debug("1 : "+category1);
-		logger.debug("2 : "+category2);
-	
+		
 	}
 }

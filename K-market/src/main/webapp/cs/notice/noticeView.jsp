@@ -8,16 +8,7 @@
       </div>
     </nav>
     <section class="view">
-      <aside>
-        <h2>공지사항</h2>
-        <ul>
-          <li class="on"><a href="/K-market/cs/notice/noticeList.do">전체</a></li>
-          <li><a href="/K-market/cs/notice/noticeList.do">고객서비스</a></li>
-          <li><a href="/K-market/cs/notice/noticeList.do">안전거래</a></li>
-          <li><a href="/K-market/cs/notice/noticeList.do">위해상품</a></li>
-          <li><a href="/K-market/cs/notice/noticeList.do">이벤트당첨</a></li>
-        </ul>
-      </aside>
+	<jsp:include page="../_asideNotice.jsp"/>
       <article>
         <nav>
           <h2 class="title">[안내] 해외결제 사칭 문자 주의</h2>

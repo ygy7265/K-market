@@ -10,7 +10,6 @@ public class FaqDTO {
 	private int hit;
 	private String writer;
 	private String rdate;
-	private String ip;
 	
 	public int getFaqNo() {
 		return faqNo;
@@ -60,16 +59,11 @@ public class FaqDTO {
 	public void setRdate(String rdate) {
 		this.rdate = rdate;
 	}
-	public String getIp() {
-		return ip;
-	}
-	public void setIp(String ip) {
-		this.ip = ip;
-	}
+
 	@Override
 	public String toString() {
 		return "FaqDTO [faqNo=" + faqNo + ", cate1=" + cate1 + ", cate2=" + cate2 + ", title=" + title + ", content="
-				+ content + ", hit=" + hit + ", writer=" + writer + ", rdate=" + rdate + ", ip=" + ip + "]";
+				+ content + ", hit=" + hit + ", writer=" + writer + ", rdate=" + rdate +  "]";
 	}
 	
 	

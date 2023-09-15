@@ -9,23 +9,23 @@
             <h1>공지사항<a href="/K-market/cs/notice/noticeList.do">전체보기</a></h1>
             <ul>
                 <li>
-                    <a href="/K-market/cs/notice/noticeview.do" class="title">[안내] 해외결제 사칭 문자 주의</a>
+                    <a href="/K-market/cs/notice/noticeView.do?cate=${cate}" class="title">[안내] 해외결제 사칭 문자 주의</a>
                     <span class="date">22.10.31</span>
                 </li>
                 <li>
-                    <a href="/K-market/cs/notice/noticeview.do" class="title">[안내] 해외결제 사칭 문자 주의</a>
+                    <a href="/K-market/cs/notice/noticeView.do?cate=${cate}" class="title">[안내] 해외결제 사칭 문자 주의</a>
                     <span class="date">22.10.31</span>
                 </li>
                 <li>
-                    <a href="/K-market/cs/notice/noticeview.do" class="title">[안내] 해외결제 사칭 문자 주의</a>
+                    <a href="/K-market/cs/notice/noticeView.do?cate=${cate}" class="title">[안내] 해외결제 사칭 문자 주의</a>
                     <span class="date">22.10.31</span>
                 </li>
                 <li>
-                    <a href="/K-market/cs/notice/noticeview.do" class="title">[안내] 해외결제 사칭 문자 주의</a>
+                    <a href="/K-market/cs/notice/noticeView.do?cate=${cate}" class="title">[안내] 해외결제 사칭 문자 주의</a>
                     <span class="date">22.10.31</span>
                 </li>
                 <li>
-                    <a href="/K-market/cs/notice/noticeview.do" class="title">[안내] 해외결제 사칭 문자 주의</a>
+                    <a href="/K-market/cs/notice/noticeView.do?cate=${cate}" class="title">[안내] 해외결제 사칭 문자 주의</a>
                     <span class="date">22.10.31</span>
                 </li>
             </ul>
@@ -74,42 +74,42 @@
             <h1>문의하기<a href="/K-market/cs/qna/qnaList.do">전체 보기</a></h1>
             <ul>
                 <li>
-                    <a href="/K-market/cs/qna/qnaview.do" class="title">[회원] 개인회원과 법인회원에 차이가 있나요?</a>
+                    <a href="/K-market/cs/qna/qnaView.do?cate=${cate}" class="title">[회원] 개인회원과 법인회원에 차이가 있나요?</a>
                     <p>
                         <span class="uid">chh**</span>
                         <span class="date">22.10.31</span>
                     </p>
                 </li>
                 <li>
-                    <a href="/K-market/cs/qna/qnaview.do" class="title">[회원] 개인회원과 법인회원에 차이가 있나요?</a>
+                    <a href="/K-market/cs/qna/qnaView.do?cate=${cate}" class="title">[회원] 개인회원과 법인회원에 차이가 있나요?</a>
                     <p>
                         <span class="uid">chh**</span>
                         <span class="date">22.10.31</span>
                     </p>
                 </li>
                 <li>
-                    <a href="/K-market/cs/qna/qnaview.do" class="title">[회원] 개인회원과 법인회원에 차이가 있나요?</a>
+                    <a href="/K-market/cs/qna/qnaView.do?cate=${cate}" class="title">[회원] 개인회원과 법인회원에 차이가 있나요?</a>
                     <p>
                         <span class="uid">chh**</span>
                         <span class="date">22.10.31</span>
                     </p>
                 </li>
                 <li>
-                    <a href="/K-market/cs/qna/qnaview.do" class="title">[회원] 개인회원과 법인회원에 차이가 있나요?</a>
+                    <a href="/K-market/cs/qna/qnaView.do?cate=${cate}" class="title">[회원] 개인회원과 법인회원에 차이가 있나요?</a>
                     <p>
                         <span class="uid">chh**</span>
                         <span class="date">22.10.31</span>
                     </p>
                 </li>
                 <li>
-                    <a href="/K-market/cs/qna/qnaview.do" class="title">[회원] 개인회원과 법인회원에 차이가 있나요?</a>
+                    <a href="/K-market/cs/qna/qnaView.do?cate=${cate}" class="title">[회원] 개인회원과 법인회원에 차이가 있나요?</a>
                     <p>
                         <span class="uid">chh**</span>
                         <span class="date">22.10.31</span>
                     </p>
                 </li>
             </ul>
-            <a href="/K-market/cs/qna/qnawrite.do" class="ask">문의글 작성 ></a>
+            <a href="/K-market/cs/qna/qnaWrite.do" class="ask">문의글 작성 ></a>
         </section>
         <section class="tel">
             <h1>1:1 상담이 필요하신가요? </h1>

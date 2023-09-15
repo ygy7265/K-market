@@ -1,5 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./_header.jsp"%>
+		<!-- 
+			날짜 : 2023/09/13
+			이름 : 이현정
+			내용 : Terms 약관 페이지 내용 출력 및 약관 동의 기능 추가 
+		 -->
 <script>
 	window.onload = function(){
 		
