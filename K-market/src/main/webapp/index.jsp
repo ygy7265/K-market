@@ -1,7 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<!--
+	이름 : 윤경엽
+	내용 : 상품별리스트 출력
+	날짜 : 2023/09/15
+  -->
 <%@ include file="./_header.jsp" %>
+<%@ include file="./product/_discount.jsp" %>
 <main>
-
 <%@ include file="./_aside.jsp" %>
 
     <!-- 베스트상품 배너 -->
@@ -9,7 +14,7 @@
       <h1><i class="fas fa-crown"></i>베스트상품</h1>
       <ol>
       	<c:forEach var="bestList" items="${bestList}" varStatus="loopStatus">
-      	
+    
         <li>
           <a href="/K-market/product/productview.do?prodNo=${bestList.prodNo}">
             <div class="thumb">
@@ -22,7 +27,7 @@
               <span>${bestList.discount}%</span>
             </div>
             <div class="dis_price">
-              <ins>27,000</ins>
+              <ins class="product-row">${bestList.price}</ins>
             </div>
           </a>
         </li>
@@ -71,7 +76,7 @@
             <span>${hitList.discount}%</span>
           </div>
           <div class="dis_price">
-            <ins>27,000</ins>
+            <ins>${hitList.price}</ins>
             <span class="free">${hitList.delivery}</span>
           </div>
         </a>
@@ -95,7 +100,7 @@
             <span>${scoreList.discount}%</span>
           </div>
           <div class="dis_price">
-            <ins>27,000</ins>
+            <ins class="product-row">${scoreList.price}</ins>
             <span class="free">${scoreList.delivery}</span>
           </div>
         </a>
@@ -118,7 +123,7 @@
             <span>${newList.discount}%</span>
           </div>
           <div class="dis_price">
-            <ins>27,000</ins>
+            <ins class="product-row">${newList.price}</ins>
             <span class="free">${newList.delivery}</span>
           </div>
         </a>
@@ -141,8 +146,15 @@
             <span>${discountList.discount}%</span>
           </div>
           <div class="dis_price">
-            <ins>27,000</ins>
-            <span class="free">${discountList.delivery}</span>
+            <ins class="product-row">${discountList.price}</ins>
+            <c:choose>
+  			  <c:when test="0 < ${discountList.delivery}">
+        		 <span class="nofree">${discountList.delivery}</span>
+   			  </c:when>
+   			 <c:otherwise>
+        		 <span class="free">${discountList.delivery}</span>
+  			  </c:otherwise>
+			</c:choose>
           </div>
         </a>
       </article>
