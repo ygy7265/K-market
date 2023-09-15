@@ -56,9 +56,9 @@
       <header>
         <div class="top">
           <div>
-          	<c:if test="${succe eq true}">
+          	
             <a href="/K-market/member/login.do">로그인</a>
-            </c:if>
+            
             <a href="/K-market/member/join.do">회원가입</a>
             <a href="#">마이페이지</a>
             <a href="/K-market/product/productcart.do"
