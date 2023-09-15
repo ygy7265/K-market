@@ -30,8 +30,39 @@ public class NoticeDAO extends DBHelper{
 	}
 	
 	public NoticeDTO selectNotice(String noticeNo) { // 편의를 위해서 int noticeNo 가 아닌 String 으로 설정해둠 
-		return null;
+		
+		NoticeDTO dto = new NoticeDTO();
+		
+		try {
+			
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.SELECT_NOTICE);
+			psmt.setString(1, noticeNo);
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				dto.setNoticeNo(rs.getInt(1));
+				dto.setCate(rs.getString(2));
+				dto.setTitle(rs.getString(3));
+				dto.setContent(rs.getString(4));
+				dto.setWriter(rs.getString(5));
+				dto.setHit(rs.getInt(6));
+				dto.setRdate(rs.getString(7));
+			}			
+			
+			logger.debug("NoticeDAO dto ... : "+dto.toString());
+			close();
+			
+			
+			
+		}catch(Exception e) {
+			logger.error("NoticeDAO selectNotice error : "+e.getMessage());
+		}
+		
+		return dto;
 	}
+	
+	
 	
 	public List<NoticeDTO> selectNotices(String cate, int start){
 		
