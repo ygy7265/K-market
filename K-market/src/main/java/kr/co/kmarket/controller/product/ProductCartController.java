@@ -63,7 +63,7 @@ public class ProductCartController extends HttpServlet{
 		dto.setDelivery(delivery);
 		dto.setTotal(total2);
 		service.insertCart(dto);
-		
+		resp.sendRedirect("/K-market/product/productcart.do");
 		
 	
 		
