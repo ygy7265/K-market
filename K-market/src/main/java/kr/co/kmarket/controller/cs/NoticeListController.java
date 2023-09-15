@@ -38,8 +38,15 @@ public class NoticeListController extends HttpServlet{
 		
         logger.debug("cate : " + cate);
         logger.debug("pg : " + pg);
+        
+        if(cate != null) {
+            if(cate.isEmpty()) {
+            	cate = null;
+            }
 
-
+        };
+        	
+    
 		// DAO 객체 생성
         NoticeDAO dao = new NoticeDAO();
         
@@ -62,7 +69,7 @@ public class NoticeListController extends HttpServlet{
 		start = (currentPage - 1) * 10;
 		
 		// 전체 게시글 갯수 조회
-		total = service.selectCountTotal();
+		total = service.selectCountTotal(cate);
 		logger.debug("NoticeListController.. total : "+total);
 		
 		// 페이지 번호 계산
@@ -97,7 +104,8 @@ public class NoticeListController extends HttpServlet{
 		req.setAttribute("cate", cate);
 	
 		// Notice 목록 출력 _ List 
-		List<NoticeDTO> notices = service.selectNotices(start);
+		List<NoticeDTO> notices = service.selectNotices(cate, start);
+		
 		logger.debug(notices.toString());
 		
 		req.setAttribute("notices", notices);

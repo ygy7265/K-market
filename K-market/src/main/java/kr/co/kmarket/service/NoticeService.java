@@ -26,8 +26,8 @@ public enum NoticeService {
 		return dao.selectNotice(noticeNo);
 	}
 	
-	public List<NoticeDTO> selectNotices(int start) {
-		return dao.selectNotices(start);
+	public List<NoticeDTO> selectNotices(String cate, int start) {
+		return dao.selectNotices(cate, start);
 	}
 	
 	public void updateNotice(NoticeDTO dto) {
@@ -40,8 +40,8 @@ public enum NoticeService {
 	
 	
 	// 추가
-	public int selectCountTotal() {
-		return dao.selectCountTotal();
+	public int selectCountTotal(String cate) {
+		return dao.selectCountTotal(cate);
 	}
 	
 
