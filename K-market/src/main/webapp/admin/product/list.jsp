@@ -33,56 +33,24 @@
                     <th>조회</th>
                     <th>관리</th>
                 </tr>
-
+				<c:forEach var="product" items="${products}">
                 <tr>
                     <td><input type="checkbox" name="상품코드"/></td>
                     <td><img src="/K-market/admin/img/sample_thumb.jpg" class="thumb"></td>
-                    <td>201603292</td>
-                    <td>FreeMovement BLUEFORCE</td>
-                    <td>36,000</td>
-                    <td>10</td>
-                    <td>360</td>
-                    <td>400</td>
-                    <td>홍길동</td>
-                    <td>126</td>
+                    <td>${product.prodNo}</td>
+                    <td>${product.prodName}</td>
+                    <td>${product.price}</td>
+                    <td>${product.discount}%</td>
+                    <td>${product.point}</td>
+                    <td>${product.stock}</td>
+                    <td>${product.seller}</td>
+                    <td>${product.hit}</td>
                     <td>
                         <a href="#">[삭제]</a>
                         <a href="#">[수정]</a>
                     </td>
                 </tr>
-                <tr>
-                    <td><input type="checkbox" name="상품코드"/></td>
-                    <td><img src="/K-market/admin/img/sample_thumb.jpg" class="thumb"></td>
-                    <td>201603292</td>
-                    <td>FreeMovement BLUEFORCE</td>
-                    <td>36,000</td>
-                    <td>10</td>
-                    <td>360</td>
-                    <td>400</td>
-                    <td>홍길동</td>
-                    <td>126</td>
-                    <td>
-                        <a href="#">[삭제]</a>
-                        <a href="#">[수정]</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="상품코드"/></td>
-                    <td><img src="/K-market/admin/img/sample_thumb.jpg" class="thumb"></td>
-                    <td>201603292</td>
-                    <td>FreeMovement BLUEFORCE</td>
-                    <td>36,000</td>
-                    <td>10</td>
-                    <td>360</td>
-                    <td>400</td>
-                    <td>홍길동</td>
-                    <td>126</td>
-                    <td>
-                        <a href="#">[삭제]</a>
-                        <a href="#">[수정]</a>
-                    </td>
-                </tr>
-                
+                </c:forEach>
             </table>
 
             

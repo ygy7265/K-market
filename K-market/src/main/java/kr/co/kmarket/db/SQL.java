@@ -38,11 +38,14 @@ public class SQL {
 												+ "duty=?, "
 												+ "receipt=?, "
 												+ "bizType=?, "
-												+ "origin=? "
+												+ "origin=?, "
+												+ "seller=?, "
+												+ "ip=?, "
 												+ "rdate=NOW()";
 	
 	public static final String SELECT_PRODUCT = "SELECT * FROM `km_product` WHERE `prodNo` = ?";
 	public static final String SELECT_PRODUCTS = "SELECT * FROM `km_product` WHERE `cate1` = ? and `cate2` = ?";
+	public static final String SELECT_PRODUCTS_ALL = "SELECT * FROM `km_product` ORDER BY `rdate` DESC";
 	
 	//Member 
 	//member_Login
@@ -89,9 +92,13 @@ public class SQL {
 	
 	
 	// cs_notice
-	public static final String SELECT_NOTICES = "SELECT * FROM `km_cs_notice` ORDER BY `noticeNo` LIMIT ?,10";
+	public static final String SELECT_NOTICES= "SELECT * "
+												+ "FROM `km_cs_notice` "
+												+ "WHERE ISNULL(cate = ?) OR cate=? "
+												+ "ORDER BY `noticeNo` DESC "
+												+ "LIMIT ?,10";
 	public static final String SELECT_NOTICES_FOR_CATE = "SELECT * FROM `km_cs_notice` WHERE `cate`=?";
-	public static final String SELECT_COUNT_TOTAL = "SELECT COUNT(*) FROM `km_cs_notice`";
+	public static final String SELECT_COUNT_TOTAL = "SELECT COUNT(*) FROM `km_cs_notice` WHERE ISNULL(cate = ?) OR cate=?";
 
 	
 	//cart
