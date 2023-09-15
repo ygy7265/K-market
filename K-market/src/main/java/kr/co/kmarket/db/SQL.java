@@ -97,7 +97,6 @@ public class SQL {
 			+ "`rdate`=NOW() ";
 
 
-
 	// admin_register 
 	public static final String SELECT_CATE1S = "SELECT * FROM `km_product_cate1` ORDER BY `cate1` ASC";
 	public static final String SELECT_CATE2S = "SELECT * FROM `km_product_cate2` ORDER BY `cate1` ASC";
