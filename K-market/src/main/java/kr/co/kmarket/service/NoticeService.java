@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import kr.co.kmarket.dao.NoticeDAO;
+import kr.co.kmarket.dto.NoticeDTO;
 
 public enum NoticeService {
 	
@@ -21,21 +22,30 @@ public enum NoticeService {
 		dao.insertNotice(dto);
 	}
 	
-	public NoticeDAO selectNotice(String noticeNo) { // 편의를 위해서 int noticeNo 가 아닌 String 으로 설정해둠 
+	public NoticeDTO selectNotice(String noticeNo) { // 편의를 위해서 int noticeNo 가 아닌 String 으로 설정해둠 
 		return dao.selectNotice(noticeNo);
 	}
 	
-	public List<NoticeDAO> selectNotices() {
-		return dao.selectNotices();
+	public List<NoticeDTO> selectNotices(int start) {
+		return dao.selectNotices(start);
 	}
 	
-	public void updateNotice(NoticeDAO dto) {
+	public void updateNotice(NoticeDTO dto) {
 		dao.updateNotice(dto);
 	}
 	
 	public void deleteNotice(String noticeNo) {
 		dao.deleteNotice(noticeNo);
 	}
+	
+	
+	// 추가
+	public int selectCountTotal() {
+		return dao.selectCountTotal();
+	}
+	
+
+	
 	
 	
 }
