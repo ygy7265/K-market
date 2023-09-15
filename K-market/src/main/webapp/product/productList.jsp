@@ -27,7 +27,7 @@
       	<c:forEach var="product" items="${list}">
       
         <tr>
-          <td><a href="/K-market/product/productview.do?prodNo=${product.prodNo}" class="thumb"><img src="https://via.placeholder.com/120x120" alt="상품이미지"/></a></td>
+          <td><a href="/K-market/product/productview.do?prodNo=${product.prodNo}" class="thumb"><img src="../images/product/300 (1).jpeg" alt="상품이미지"/></a></td>
           <td>
             <h3 class="name">${product.prodName}</h3>
             <a href="/K-market/product/productview.do" class="desc">상품설명</a>

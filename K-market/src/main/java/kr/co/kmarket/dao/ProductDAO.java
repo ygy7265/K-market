@@ -262,5 +262,251 @@ public class ProductDAO extends DBHelper {
 		return cate2s;
 	} // selectCate2s() END
 	
-
+	//INDEX SELECT
+		//BEST
+	public List<ProductDTO> selectBestProducts() {
+		List<ProductDTO> list = new ArrayList<>();
+		conn = getConnection();
+		try {
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(SQL.SELECT_BEST_PRODUCT);
+			
+			while(rs.next()) {
+				ProductDTO dto = new ProductDTO();
+				dto.setProdNo(rs.getInt(1));
+				dto.setCate1(rs.getInt(2));
+				dto.setCate2(rs.getInt(3));
+				dto.setProdName(rs.getString(4));
+				dto.setDescript(rs.getString(5));
+				dto.setCompany(rs.getString(6));
+				dto.setSeller(rs.getString(7));
+				dto.setPrice(rs.getInt(8));
+				dto.setDiscount(rs.getInt(9));
+				dto.setPoint(rs.getInt(10));
+				dto.setStock(rs.getInt(11));
+				dto.setSold(rs.getInt(12));
+				dto.setDelivery(rs.getInt(13));
+				dto.setHit(rs.getInt(14));
+				dto.setScore(rs.getInt(15));
+				dto.setReview(rs.getInt(16));
+				dto.setThumb1(rs.getString(17));
+				dto.setThumb2(rs.getString(18));
+				dto.setThumb3(rs.getString(19));
+				dto.setDetail(rs.getString(20));
+				dto.setStatus(rs.getString(21));
+				dto.setDuty(rs.getString(22));
+				dto.setReceipt(rs.getString(23));
+				dto.setBizType(rs.getString(24));
+				dto.setOrigin(rs.getString(25));
+				dto.setIp(rs.getString(26));
+				dto.setRdate(rs.getString(27));
+				
+				list.add(dto);	
+			}
+			
+			logger.debug("bestdao = " + list.toString());
+			close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			logger.error("Product List Error = "+e.getMessage());
+		}
+		return list;
+	}
+	//Discount
+	public List<ProductDTO> selectDiscountProducts() {
+		List<ProductDTO> list = new ArrayList<>();
+		conn = getConnection();
+		try {
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(SQL.SELECT_DISCOUNT_PRODUCT);
+			
+			while(rs.next()) {
+				ProductDTO dto = new ProductDTO();
+				dto.setProdNo(rs.getInt(1));
+				dto.setCate1(rs.getInt(2));
+				dto.setCate2(rs.getInt(3));
+				dto.setProdName(rs.getString(4));
+				dto.setDescript(rs.getString(5));
+				dto.setCompany(rs.getString(6));
+				dto.setSeller(rs.getString(7));
+				dto.setPrice(rs.getInt(8));
+				dto.setDiscount(rs.getInt(9));
+				dto.setPoint(rs.getInt(10));
+				dto.setStock(rs.getInt(11));
+				dto.setSold(rs.getInt(12));
+				dto.setDelivery(rs.getInt(13));
+				dto.setHit(rs.getInt(14));
+				dto.setScore(rs.getInt(15));
+				dto.setReview(rs.getInt(16));
+				dto.setThumb1(rs.getString(17));
+				dto.setThumb2(rs.getString(18));
+				dto.setThumb3(rs.getString(19));
+				dto.setDetail(rs.getString(20));
+				dto.setStatus(rs.getString(21));
+				dto.setDuty(rs.getString(22));
+				dto.setReceipt(rs.getString(23));
+				dto.setBizType(rs.getString(24));
+				dto.setOrigin(rs.getString(25));
+				dto.setIp(rs.getString(26));
+				dto.setRdate(rs.getString(27));
+				
+				list.add(dto);	
+			}
+			
+			logger.debug(list.toString());
+			close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			logger.error("Product List Error = "+e.getMessage());
+		}
+		return list;
+	}
+	//Hit
+	public List<ProductDTO> selectHitProducts() {
+		List<ProductDTO> list = new ArrayList<>();
+		conn = getConnection();
+		try {
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(SQL.SELECT_HIT_PRODUCT);
+			
+			while(rs.next()) {
+				ProductDTO dto = new ProductDTO();
+				dto.setProdNo(rs.getInt(1));
+				dto.setCate1(rs.getInt(2));
+				dto.setCate2(rs.getInt(3));
+				dto.setProdName(rs.getString(4));
+				dto.setDescript(rs.getString(5));
+				dto.setCompany(rs.getString(6));
+				dto.setSeller(rs.getString(7));
+				dto.setPrice(rs.getInt(8));
+				dto.setDiscount(rs.getInt(9));
+				dto.setPoint(rs.getInt(10));
+				dto.setStock(rs.getInt(11));
+				dto.setSold(rs.getInt(12));
+				dto.setDelivery(rs.getInt(13));
+				dto.setHit(rs.getInt(14));
+				dto.setScore(rs.getInt(15));
+				dto.setReview(rs.getInt(16));
+				dto.setThumb1(rs.getString(17));
+				dto.setThumb2(rs.getString(18));
+				dto.setThumb3(rs.getString(19));
+				dto.setDetail(rs.getString(20));
+				dto.setStatus(rs.getString(21));
+				dto.setDuty(rs.getString(22));
+				dto.setReceipt(rs.getString(23));
+				dto.setBizType(rs.getString(24));
+				dto.setOrigin(rs.getString(25));
+				dto.setIp(rs.getString(26));
+				dto.setRdate(rs.getString(27));
+				
+				list.add(dto);	
+			}
+			
+			logger.debug(list.toString());
+			close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			logger.error("Product List Error = "+e.getMessage());
+		}
+		return list;
+	}
+	//socore
+	public List<ProductDTO> selectScoreProducts() {
+		List<ProductDTO> list = new ArrayList<>();
+		conn = getConnection();
+		try {
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(SQL.SELECT_SCORE_PRODUCT);
+			
+			while(rs.next()) {
+				ProductDTO dto = new ProductDTO();
+				dto.setProdNo(rs.getInt(1));
+				dto.setCate1(rs.getInt(2));
+				dto.setCate2(rs.getInt(3));
+				dto.setProdName(rs.getString(4));
+				dto.setDescript(rs.getString(5));
+				dto.setCompany(rs.getString(6));
+				dto.setSeller(rs.getString(7));
+				dto.setPrice(rs.getInt(8));
+				dto.setDiscount(rs.getInt(9));
+				dto.setPoint(rs.getInt(10));
+				dto.setStock(rs.getInt(11));
+				dto.setSold(rs.getInt(12));
+				dto.setDelivery(rs.getInt(13));
+				dto.setHit(rs.getInt(14));
+				dto.setScore(rs.getInt(15));
+				dto.setReview(rs.getInt(16));
+				dto.setThumb1(rs.getString(17));
+				dto.setThumb2(rs.getString(18));
+				dto.setThumb3(rs.getString(19));
+				dto.setDetail(rs.getString(20));
+				dto.setStatus(rs.getString(21));
+				dto.setDuty(rs.getString(22));
+				dto.setReceipt(rs.getString(23));
+				dto.setBizType(rs.getString(24));
+				dto.setOrigin(rs.getString(25));
+				dto.setIp(rs.getString(26));
+				dto.setRdate(rs.getString(27));
+				
+				list.add(dto);	
+			}
+			
+			logger.debug(list.toString());
+			close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			logger.error("Product List Error = "+e.getMessage());
+		}
+		return list;
+	}
+	//New
+	public List<ProductDTO> selectNewProducts() {
+		List<ProductDTO> list = new ArrayList<>();
+		conn = getConnection();
+		try {
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(SQL.SELECT_NEW_PRODUCT);
+			
+			while(rs.next()) {
+				ProductDTO dto = new ProductDTO();
+				dto.setProdNo(rs.getInt(1));
+				dto.setCate1(rs.getInt(2));
+				dto.setCate2(rs.getInt(3));
+				dto.setProdName(rs.getString(4));
+				dto.setDescript(rs.getString(5));
+				dto.setCompany(rs.getString(6));
+				dto.setSeller(rs.getString(7));
+				dto.setPrice(rs.getInt(8));
+				dto.setDiscount(rs.getInt(9));
+				dto.setPoint(rs.getInt(10));
+				dto.setStock(rs.getInt(11));
+				dto.setSold(rs.getInt(12));
+				dto.setDelivery(rs.getInt(13));
+				dto.setHit(rs.getInt(14));
+				dto.setScore(rs.getInt(15));
+				dto.setReview(rs.getInt(16));
+				dto.setThumb1(rs.getString(17));
+				dto.setThumb2(rs.getString(18));
+				dto.setThumb3(rs.getString(19));
+				dto.setDetail(rs.getString(20));
+				dto.setStatus(rs.getString(21));
+				dto.setDuty(rs.getString(22));
+				dto.setReceipt(rs.getString(23));
+				dto.setBizType(rs.getString(24));
+				dto.setOrigin(rs.getString(25));
+				dto.setIp(rs.getString(26));
+				dto.setRdate(rs.getString(27));
+				
+				list.add(dto);	
+			}
+			
+			logger.debug(list.toString());
+			close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			logger.error("Product List Error = "+e.getMessage());
+		}
+		return list;
+	}
+	
 }

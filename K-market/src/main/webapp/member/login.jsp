@@ -6,7 +6,7 @@
 		    <h1>로그인</h1>                    
 		</nav>
 		   
-		<form action="#">
+		<form action="/K-market/member/login.do" method="POST">
 		
 			<table border="0">
 				<tr>

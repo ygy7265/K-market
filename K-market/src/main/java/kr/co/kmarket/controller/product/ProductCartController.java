@@ -5,6 +5,7 @@ package kr.co.kmarket.controller.product;
   날짜 : 2023/09/14 
  */
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -28,6 +29,9 @@ public class ProductCartController extends HttpServlet{
 	CartDTO dto = null;
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		List<CartDTO> list = service.selectCarts();
+		req.setAttribute("list", list);
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/product/productCart.jsp");
 		dispatcher.forward(req, resp);	
 	}

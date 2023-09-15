@@ -11,6 +11,22 @@ public class CartDTO {
 	private int delivery;
 	private int total;
 	private String rdate;
+	private String pName;
+	private String descript;
+	
+	
+	public String getpName() {
+		return pName;
+	}
+	public void setpName(String pName) {
+		this.pName = pName;
+	}
+	public String getDescript() {
+		return descript;
+	}
+	public void setDescript(String descript) {
+		this.descript = descript;
+	}
 	public int getCartNo() {
 		return cartNo;
 	}

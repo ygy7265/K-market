@@ -19,7 +19,7 @@ public enum CartService {
 		return dao.selectCart(cartNo);
 	}
 	
-	public List<CartDTO> selectOrders() {
+	public List<CartDTO> selectCarts() {
 		return dao.selectCarts();
 	}
 	
