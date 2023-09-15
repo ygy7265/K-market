@@ -4,14 +4,61 @@
   <div class="faq">
     <nav>
       <div>
-        <p>홈<span>></span>자주묻는 질문</p>
+        <p>
+        	홈<span>></span>자주묻는 질문<span>></span>
+        	<c:choose>
+        		<c:when test="${param.cate1 == '10'}">
+        			회원
+		    	</c:when>
+			    <c:when test="${param.cate1 == '20'}">
+			        쿠폰/이벤트
+			    </c:when>
+			    <c:when test="${param.cate1 == '30'}">
+			        주문/결제
+			    </c:when>
+			    <c:when test="${param.cate1 == '40'}">
+			        배송
+			    </c:when>
+			    <c:when test="${param.cate1 == '50'}">
+			        취소/반품/교환
+			    </c:when>
+			    <c:when test="${param.cate1 == '60'}">
+			        여행/숙박/항공
+			    </c:when>
+			    <c:when test="${param.cate1 == '70'}">
+			        안전거래
+			    </c:when>
+			</c:choose>
+        </p>
       </div>
     </nav>
     <section class="list">
 	<jsp:include page="../_asideFaq.jsp"/>
      <article>   
         <nav>
-          <h1>회원</h1>
+          <c:choose>
+       		<c:when test="${param.cate1 == '10'}">
+       			<h1>회원</h1>
+	    	</c:when>
+		    <c:when test="${param.cate1 == '20'}">
+		        <h1>쿠폰/이벤트</h1>
+		    </c:when>
+		    <c:when test="${param.cate1 == '30'}">
+		        <h1>주문/결제</h1>
+		    </c:when>
+		    <c:when test="${param.cate1 == '40'}"> 
+		        <h1>배송</h1>
+		    </c:when>
+		    <c:when test="${param.cate1 == '50'}">
+		        <h1>취소/반품/교환</h1>
+		    </c:when>
+		    <c:when test="${param.cate1 == '60'}">
+		        <h1>여행/숙박/항공</h1>
+		    </c:when>
+		    <c:when test="${param.cate1 == '70'}">
+		        <h1>안전거래</h1>
+		    </c:when>
+		</c:choose>
           <h2>가장 자주 묻는 질문입니다.</h2>
         </nav>
         <div>

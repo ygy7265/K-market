@@ -34,7 +34,23 @@
      <jsp:include page="../_asideNotice.jsp"/>
      <article>
     	<nav>
-          <h1>전체</h1>
+    	<c:choose>
+         	 	<c:when test="${cate == null}">
+			        <h1>공지사항</h1>
+			    </c:when>
+			    <c:when test="${cate eq 'customer'}">
+			        <h1>고객서비스</h1>
+			    </c:when>
+			    <c:when test="${cate eq 'safety'}">
+			       <h1>안전거래</h1>
+			    </c:when>
+			    <c:when test="${cate eq 'product'}">
+			        <h1>위해상품</h1>
+			    </c:when>
+			    <c:when test="${cate eq 'event'}">
+			        <h1>이벤트당첨</h1>
+			    </c:when>
+			</c:choose>
           <h2>
          	<c:choose>
          	 	<c:when test="${cate == null}">
@@ -59,10 +75,9 @@
         <table>
         <c:forEach var ="notice" items="${notices}">
           <tr>
-            <td><a href="/K-market/cs/notice/noticeView.do?cate=${cate}">[안내]${notice.title}</a></td>
+            <td><a href="/K-market/cs/notice/noticeView.do?cate=${cate}&noticeNo=${notice.noticeNo}">[안내]${notice.title}</a></td>
             <td>${notice.formatDate()}</td>
           </tr>
-        <c:set var="pageStartNum" value="${pageStartNum - 1}" />
 		</c:forEach>
         </table>
 		<!-- 페이지 네비게이션 -->
