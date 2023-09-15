@@ -11,16 +11,17 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-@WebServlet("/admin/index.do")
-public class IndexController extends HttpServlet{
-	private static final long serialVersionUID = 137124123L;
+@WebServlet("/admin/cs/notice/view.do")
+public class NoticeViewController extends HttpServlet{
+	private static final long serialVersionUID = 13111123L;
 	private Logger logger = LoggerFactory.getLogger(getClass());
-	
-	
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/admin/index.jsp");
+		
+		
+		
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/admin/cs/notice/view.jsp");
 		dispatcher.forward(req, resp);	
 	}
 }
