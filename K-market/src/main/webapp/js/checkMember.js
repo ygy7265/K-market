@@ -2,18 +2,6 @@
  * 아이디, 이메일, 휴대폰 번호 중복 체크
  */
 
-/*	let isUidOk		= false;
-	let isPassOk	= false;
-	let isNameOk	= false;
-	let isEmailOk	= false;
-	let isHpOk		= false;
-	
-	let reUid   = /^[a-z]+[a-z0-9]{4,12}$/g;
-	let rePass  = /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,12}$/;
-	let reName  = /^[가-힣]{2,10}$/ 
-	let reEmail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
-	let reHp    = /^01(?:0|1|[6-9])-(?:\d{4})-\d{4}$/;*/
- 
 // 중복 검사
 $(function(){
 	
@@ -76,8 +64,10 @@ $(function(){
 				
 				if(data.result >= 1){
 					$(".msgEmail").css('color','red').text('이미 사용중인 이메일 입니다.');
+					isEmailOk = false;
 				}else{
 					$(".msgEmail").css('color','green').text('사용가능한 이메일 입니다.');
+					isEmailOk = true;
 				}
 				
 			}
@@ -86,21 +76,22 @@ $(function(){
 		}); // ajax end
 	});
 	
-	// 휴대폰 중복 검사
+	
+	// 휴대폰 중복 검사(일반, 회사 전화번호)
 	$('input[name=km_hp]').focusout(function(){
 		const hp = $(this).val();
 		
 		if(!hp.match(reHp)){
-			$('.msgHp').css('color', 'red').text('유효한 휴대폰 번호가 아닙니다.');
+			$('.msgHp').css('color', 'red').text('유효한 번호가 아닙니다.');
 			isHpOk = false;
-			return; // 종료
+			return;
 		}
 		
 		const jsonData = {
 			"hp": hp	
 		};
 		
-		$.ajax({
+    	$.ajax({
 			url : '/K-market/member/checkHp.do',
 			type: 'GET',
 			data: jsonData,
@@ -108,14 +99,17 @@ $(function(){
 			success:function(data){
 				
 				if(data.result >= 1){
-					$(".msgHp").css('color','red').text('이미 사용중인 휴대폰번호 입니다.');
+					$(".msgHp").css('color','red').text('이미 사용중인 번호 입니다.');
+					isHpOk = false;
 				}else{
-					$(".msgHp").css('color','green').text('사용가능한 휴대폰번호 입니다.');
+					$(".msgHp").css('color','green').text('사용가능한 번호 입니다.');
+					isHpOk = true;
 				}
 				
 			}
-			
-			
+
 		}); // ajax end
+		
 	});
+	
 });

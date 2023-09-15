@@ -68,9 +68,9 @@ public class SQL {
   
 	public static final String INSERT_MEMBER_SELLER = "INSERT INTO `km_member` SET "
 													+ "`uid`=?, "
-													+ "`pass`=?, "
+													+ "`pass`=SHA2(?, 256), "
 													+ "`gender`=0, "
-													+ "`type`=2, "
+													+ "`type`=5, "
 													+ "`company`=?, "
 													+ "`Name`=?, "
 													+ "`bizRegNum`=?, "

@@ -8,6 +8,10 @@ let isPassOk	= false;
 let isNameOk	= false;
 let isEmailOk	= false;
 let isHpOk		= false;
+let isCompanyOk	= false;
+let isBizOk		= false;
+let isManagerOk	= false;
+let isManagerHpOk= false;
 
 // 데이터 검증에 사용하는 정규표현식
 let reUid   = /^[a-z]+[a-z0-9]{4,12}$/g;
@@ -15,7 +19,9 @@ let rePass  = /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,12}
 let reName  = /^[가-힣]{2,10}$/ 
 let reEmail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
 let reHp    = /^01(?:0|1|[6-9])-(?:\d{4})-\d{4}$/;
-	
+let reCompany = /^\(주\)[a-zA-Z가-힣]{2,}$/;
+let reBiz = /^[0-9]{3}-[0-9]{2}-[0-9]{5}$/;
+
 // 유효성 검사(Validation)
 $(function(){
 	
@@ -42,17 +48,87 @@ $(function(){
 		
 	});
 	
-	// 이름 검사
+	// 이름 검사(일반 회원, 대표자)
 	$('input[name=km_name]').focusout(function(){
 		
 		const name = $(this).val();
 		
 		if(name.match(reName)){
 			$('.msgName').text('');
+			$('.msgCeo').text('');
 			isNameOk = true;
 		}else{
 			$('.msgName').css('color', 'red').text('유효한 이름이 아닙니다.');
-			isNameOk = false;					
+			$('.msgCeo').css('color', 'red').text('유효한 대표자명이 아닙니다.');
+			isNameOk = false;
+		}
+		
+	});
+	// 이름 검사(담당자)
+	$('input[name=kms_manager]').focusout(function(){
+		
+		const manager = $(this).val();
+		
+		if(manager.match(reName)){
+			$('.msgManager').text('');
+			isManagerOk = true;
+		} else {
+			$('.msgManager').css('color', 'red').text('유효한 이름이 아닙니다.');
+			isManagerOk = false;
+		}
+		
+	});
+	
+	// 회사명 검사
+	$('input[name=kms_company]').focusout(function(){
+		const company = $(this).val();
+		
+		if(company.match(reCompany)){
+			$('.msgCompany').css('color', 'black').html('&nbsp;&nbsp;(주)포함 입력, 예) (주)케이마켓');
+			isCompanyOk = true;
+		} else {
+			$('.msgCompany').css('color', 'red').text('(주)포함하여 다시 입력해주십시오.');
+			isCompanyOk = false;
+		}
+		
+	});
+	
+	// 사업자등록번호 검사
+	$('input[name=kms_corp_reg]').focusout(function(){
+		const bizNum = $(this).val();
+		
+		if(bizNum.match(reBiz)){
+			$('.msgCorp').css('color', 'black').html('&nbsp;&nbsp;- 표시 포함 12자리 입력, 예) 123-45-67890');
+			isBizOk = true;
+		} else {
+			$('.msgCorp').css('color', 'red').text('유효하지 않은 사업자등록번호입니다.');
+			isBizOk = false;
+		}
+	});
+	
+	// 회사 이메일 검사
+	$('input[name=kms_email]').focusout(function(){
+		const email = $(this).val();
+		
+		if(email.match(reEmail)){
+			$('.msgEmail').text('');
+			isEmailOk = true;
+		} else {
+			$('.msgEmail').css('color', 'red').text('유효하지 않은 이메일입니다.');
+			isEmailOk = false;
+		}
+	});
+	
+	// 담당자 번호 검사
+	$('input[name=kms_managerHp]').focusout(function(){
+		const managerHp = $(this).val();
+		
+		if(managerHp.match(reHp)){
+			$('.msgManagerHp').css('color', 'black').html('&nbsp;&nbsp;- 포함 13자리를 입력하세요.');
+			isManagerHpOk = true;
+		} else {
+			$('.msgManagerHp').css('color', 'red').text('유효하지 않은 번호입니다.');
+			isManagerHpOk = false;
 		}
 	});
 	
@@ -74,20 +150,36 @@ $(function(){
 			return false; // 폼 전송 취소	
 		}
 		
-		if(!isNickOk){
-			alert('별명을 확인 하십시요.');
-			return false; // 폼 전송 취소	
-		}
-		
 		if(!isEmailOk){
 			alert('이메일을 확인 하십시요.');
 			return false; // 폼 전송 취소	
 		}
 		
 		if(!isHpOk){
-			alert('휴대폰을 확인 하십시요.');
+			alert('번호를 확인 하십시요.');
 			return false; // 폼 전송 취소	
 		}
+		
+		if(!isCompanyOk){
+			alert('회사명을 확인 하십시요.');
+			return false; // 폼 전송 취소	
+		}
+		
+		if(!isBizOk){
+			alert('사업자등록번호를 확인 하십시요.');
+			return false; // 폼 전송 취소	
+		}
+		
+		if(!isManagerOk){
+			alert('담당자 이름을 확인 하십시요.');
+			return false; // 폼 전송 취소	
+		}
+		
+		if(!isManagerHpOk){
+			alert('담당자 번호를 확인 하십시요.');
+			return false; // 폼 전송 취소	
+		}
+		
 						
 		return true; // 폼 전송 시작
 	});
