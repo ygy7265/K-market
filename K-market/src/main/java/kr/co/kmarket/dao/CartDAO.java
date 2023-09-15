@@ -1,6 +1,7 @@
 package kr.co.kmarket.dao;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -54,7 +55,36 @@ public class CartDAO extends DBHelper{
 	}
 	
 	public List<CartDTO> selectCarts() {
-		return null;
+		conn = getConnection();
+		CartDTO dto = null;
+		List<CartDTO> list = new ArrayList<>();
+		try {
+		
+			psmt = conn.prepareStatement(SQL.SELECT_CARTS);
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				dto = new CartDTO();
+				dto.setCartNo(rs.getInt(1));
+				dto.setUid(rs.getString(2));
+				dto.setProdNo(rs.getInt(3));
+				dto.setCount(rs.getInt(4));
+				dto.setPrice(rs.getInt(5));
+				dto.setDiscount(rs.getInt(6));
+				dto.setPoint(rs.getInt(7));
+				dto.setDelivery(rs.getInt(8));
+				dto.setTotal(rs.getInt(9));
+				dto.setRdate(rs.getString(10));
+				dto.setpName(rs.getString(11));
+				dto.setDescript(rs.getString(12));
+				list.add(dto);
+			}
+			
+			close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
 	}
 	
 	public void updateCart(CartDTO dto) {

@@ -37,4 +37,21 @@ public enum ProductService {
 	public List<Cate2DTO> selectCate2s() {
 		return dao.selectCate2s();
 	}
+	
+	// INDEX
+	public List<ProductDTO> selectBestProducts() {
+		return dao.selectBestProducts();
+	}
+	public List<ProductDTO> selectHitProducts() {
+		return dao.selectHitProducts();
+	}
+	public List<ProductDTO> selectScoreProducts() {
+		return dao.selectScoreProducts();
+	}
+	public List<ProductDTO> selectDiscountProducts() {
+		return dao.selectDiscountProducts();
+	}
+	public List<ProductDTO> selectNewProducts() {
+		return dao.selectNewProducts();
+	}
 }

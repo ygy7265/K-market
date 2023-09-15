@@ -1,6 +1,22 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> 
+<script>
+	const success = ${success};
+	switch (success) {
+	case 101:
+		alert('로그인 성공.');
+		break;
+	case 102:
+		alert('로그인 실패');
+		break;
+	case 200:
+		alert('정상적으로 로그아웃 되었습니다.');
+		break;
+	default:
+		break;
+	}
+</script>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -40,7 +56,9 @@
       <header>
         <div class="top">
           <div>
+          	<c:if test="${succe eq true}">
             <a href="/K-market/member/login.do">로그인</a>
+            </c:if>
             <a href="/K-market/member/join.do">회원가입</a>
             <a href="#">마이페이지</a>
             <a href="/K-market/product/productcart.do"

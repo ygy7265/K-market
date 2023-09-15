@@ -21,6 +21,9 @@ public enum MemberService {
 	public MemberDTO selectMember(String uid) {
 		return dao.selectMember(uid);
 	}
+	public MemberDTO selectMemberLogin(String uid,String pass) {
+		return dao.selectMemberLogin(uid,pass);
+	}
 	
 	public List<MemberDTO> selectMembers() {
 		return dao.selectMembers();

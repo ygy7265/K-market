@@ -38,61 +38,26 @@
             <tr class="empty">
               <td colspan="7">장바구니에 상품이 없습니다.</td>
             </tr>
+            <c:forEach var="list" items="${list}">
             <tr>
               <td><input type="checkbox" name=""></td>
               <td>
                 <article>
-                  <a href="/K-market/product/"><img src="https://via.placeholder.com/80x80" alt=""></a>
+                  <a href="/K-market/product/"><img src="/K-market/images/product/301.jpeg" alt=""></a>
                   <div>
-                    <h2><a href="/K-market/product/">상품명</a></h2>
-                    <p>상품설명</p>
+                    <h2><a href="/K-market/product/">${list.pName}</a></h2>
+                    <p>${list.descript}</p>
                   </div>
                 </article>
               </td>
-              <td>1</td>
-              <td>27,000</td>
-              <td>5%</td>
-              <td>270</td>
-              <td>무료배송</td>
-              <td>27,000</td>
+              <td>${list.count}</td>
+              <td>${list.price}</td>
+              <td>${list.discount}%</td>
+              <td>${list.point}</td>
+              <td>${list.delivery}</td>
+              <td>${list.total}</td>
             </tr>
-            <tr>
-              <td><input type="checkbox" name=""></td>
-              <td>
-                <article>
-                  <a href="/K-market/product/"><img src="https://via.placeholder.com/80x80" alt=""></a>
-                  <div>
-                    <h2><a href="/K-market/product/">상품명</a></h2>
-                    <p>상품설명</p>
-                  </div>
-                </article>
-              </td>
-              <td>1</td>
-              <td>27,000</td>
-              <td>5%</td>
-              <td>270</td>
-              <td>무료배송</td>
-              <td>27,000</td>
-            </tr>
-            <tr>
-              <td><input type="checkbox" name=""></td>
-              <td>
-                <article>
-                  <a href="/K-market/product/"><img src="https://via.placeholder.com/80x80" alt=""></a>
-                  <div>
-                    <h2><a href="/K-market/product/">상품명</a></h2>
-                    <p>상품설명</p>
-                  </div>
-                </article>
-              </td>
-              <td>1</td>
-              <td>27,000</td>
-              <td>5%</td>
-              <td>270</td>
-              <td>무료배송</td>
-              <td>27,000</td>
-            </tr>
-            
+          	</c:forEach>
           </tbody>
         </table>
         <input type="button" name="del" value="선택삭제">

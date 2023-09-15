@@ -63,7 +63,7 @@ $(function(){
         
         <article class="info">
             <div class="image">
-                <img src="https://via.placeholder.com/460x460" alt="상품이미지"/>
+                <img src="../images/product/노트북_600.jpeg" alt="상품이미지"/>
             </div>
             <div class="summary">
                 <nav>
@@ -134,9 +134,8 @@ $(function(){
                 <h1>상품정보</h1>
             </nav>
             <!-- 상품상세페이지 이미지 -->
-            <img src="https://via.placeholder.com/860x460" alt="상세페이지1">
-            <img src="https://via.placeholder.com/860x460" alt="상세페이지2">
-            <img src="https://via.placeholder.com/860x460" alt="상세페이지3">
+            <img src="/K-market/images/product/802.jpg" alt="상세페이지1">
+
         </article>
 
         <!-- 상품 정보 제공 고시 내용 -->
