@@ -26,7 +26,43 @@ public class ProductDAO extends DBHelper {
 	private ProductDAO() {}
 	
 	// 기본 CRUD
-	public void insertProduct(ProductDTO dto) {}
+	public void insertProduct(ProductDTO dto) {
+		
+		try {
+			
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.INSERT_PRODUCT);
+			psmt.setInt(1, dto.getCate1());
+			psmt.setInt(2, dto.getCate2());
+			psmt.setString(3, dto.getProdName());
+			psmt.setString(4, dto.getDescript());
+			psmt.setString(5, dto.getCompany());
+			psmt.setInt(6, dto.getPrice());
+			psmt.setString(1, null);
+			psmt.setString(1, null);
+			psmt.setString(1, null);
+			psmt.setString(1, null);
+			psmt.setString(1, null);
+			psmt.setString(1, null);
+			psmt.setString(1, null);
+			psmt.setString(1, null);
+			psmt.setString(1, null);
+			psmt.setString(1, null);
+			psmt.setString(1, null);
+			psmt.setString(1, null);
+			psmt.setString(1, null);
+			psmt.setString(1, null);
+			psmt.setString(1, null);
+			psmt.setString(1, null);
+			psmt.setString(1, null);
+			
+			close();
+			
+		} catch (Exception e) {
+			logger.error("insertProduct Error = "+e.getMessage());
+		}
+		
+	} //insertProduct END
 	public ProductDTO selectProduct(int prodNo) {
 		ProductDTO dto = null;
 		conn = getConnection();
@@ -73,6 +109,7 @@ public class ProductDAO extends DBHelper {
 		}
 		return dto;
 	}
+	
 	public List<ProductDTO> selectProducts(String cate1,String cate2) {
 		List<ProductDTO> list = new ArrayList<>();
 		conn = getConnection();
@@ -126,6 +163,7 @@ public class ProductDAO extends DBHelper {
 	public void deleteProduct(int prodNo) {}
 	
 	// admin_Product_Register
+	
 	public List<Cate1DTO> selectCate1s() {
 		
 		List<Cate1DTO> cate1s = new ArrayList<>();

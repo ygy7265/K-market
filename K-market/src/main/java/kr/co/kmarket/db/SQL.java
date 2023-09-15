@@ -6,6 +6,28 @@ public class SQL {
 	public static final String SELECT_TERMS = "SELECT * FROM `km_member_terms` WHERE type =?";
 
 	//product
+	public static final String INSERT_PRODUCT = "INSERT INTO `km_product` SET "
+												+ "cate1=?, "
+												+ "cate2=?, "
+												+ "prodName=?, "
+												+ "descript=?, "
+												+ "company=?, "
+												+ "price=?, "
+												+ "discount=?, "
+												+ "point=?, "
+												+ "stock=?, "
+												+ "delivery=?, "
+												+ "thumb1=?, "
+												+ "thumb2=?, "
+												+ "thumb3=?, "
+												+ "detail=?, "
+												+ "status=?, "
+												+ "duty=?, "
+												+ "receipt=?, "
+												+ "bizType=?, "
+												+ "origin=? "
+												+ "rdate=NOW()";
+	
 	public static final String SELECT_PRODUCT = "SELECT * FROM `km_product` WHERE `prodNo` = ?";
 	public static final String SELECT_PRODUCTS = "SELECT * FROM `km_product` WHERE `cate1` = ? and `cate2` = ?";
 	
@@ -23,6 +45,7 @@ public class SQL {
 													+ "`addr2`=?, "
 													+ "`regip`=?, "
 													+ "`rdate`=NOW() ";
+	
 	public static final String INSERT_MEMBER_SELLER = "INSERT INTO `km_member` SET "
 													+ "`uid`=?, "
 													+ "`pass`=?, "
@@ -42,17 +65,13 @@ public class SQL {
 													+ "`managerHp`=?, "
 													+ "`regip`=?, "
 													+ "`rdate`=NOW() ";
+	
 	public static final String SELECT_COUNT_UID = "SELECT COUNT(*) FROM `km_member` WHERE `uid`=?";
 	public static final String SELECT_COUNT_EMAIL = "SELECT COUNT(*) FROM `km_member` WHERE `email`=?";
 
 	public static final String SELECT_COUNT_HP = "SELECT COUNT(*) FROM `km_member` WHERE `hp`=?";
 	
-
-	public static final String SELECT_COUNT_HP = "SELECT COUNT(*) FROM `km_member` WHERE `hp`=?";	
-	
-	
-	
-	// admin_register 
+	// admin_register
 	public static final String SELECT_CATE1S = "SELECT * FROM `km_product_cate1` ORDER BY `cate1` ASC";
 	public static final String SELECT_CATE2S = "SELECT * FROM `km_product_cate2` ORDER BY `cate1` ASC";
 }
