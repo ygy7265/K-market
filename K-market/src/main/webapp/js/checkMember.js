@@ -6,12 +6,12 @@
 $(function(){
 	
 	// 아이디 중복 검사
-	$('input[name=km_uid]').focusout(function(){
-		const uid = $(this).val();
+	$('#btnId').click(function(){
+		const uid = $('input[name=km_uid]').val();
 		
 		// 아이디 유효성 검증
 		if(!uid.match(reUid)){
-			$('.msgId').css('color', 'red').text('유효한 아이디가 아닙니다.');
+			$('.msgId1').css('color', 'red').text('유효한 아이디가 아닙니다.');
 			isUidOk = false;
 			return; // 종료
 		}
@@ -28,10 +28,10 @@ $(function(){
 			success:function(data){
 				
 				if(data.result >= 1){
-					$(".msgId").css('color','red').text('이미 사용중인 아이디 입니다.');
+					$(".msgId1").css('color','red').text('이미 사용중인 아이디 입니다.');
 					isUidOk = false;
 				}else{
-					$(".msgId").css('color','green').text('사용가능한 아이디 입니다.');
+					$(".msgId1").css('color','green').text('사용가능한 아이디 입니다.');
 					isUidOk = true;
 				}
 				
@@ -82,7 +82,7 @@ $(function(){
 		const hp = $(this).val();
 		
 		if(!hp.match(reHp)){
-			$('.msgHp').css('color', 'red').text('유효한 번호가 아닙니다.');
+			$('.msgHp1').css('color', 'red').text('유효한 번호가 아닙니다.');
 			isHpOk = false;
 			return;
 		}
@@ -99,10 +99,10 @@ $(function(){
 			success:function(data){
 				
 				if(data.result >= 1){
-					$(".msgHp").css('color','red').text('이미 사용중인 번호 입니다.');
+					$(".msgHp1").css('color','red').text('이미 사용중인 번호 입니다.');
 					isHpOk = false;
 				}else{
-					$(".msgHp").css('color','green').text('사용가능한 번호 입니다.');
+					$(".msgHp1").css('color','green').text('사용가능한 번호 입니다.');
 					isHpOk = true;
 				}
 				

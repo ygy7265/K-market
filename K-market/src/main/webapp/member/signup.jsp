@@ -16,6 +16,18 @@
 		const typeInput = document.getElementsByName('type')[0];
 		const type = typeInput.value;
 		
+		// 모두 동의 체크
+		$('input[name=all]').change(function(){
+			const isChecked = $(this).is(':checked');
+			
+			if(isChecked){
+				$('input[type=checkbox]').prop('checked',true);
+			}else{
+				$('input[type=checkbox]').prop('checked',false);
+			}
+		});
+		
+		// 약관 동의
 		const agree = document.querySelector('.agree');
 		agree.addEventListener('click', function(e){
 			e.preventDefault();
@@ -73,7 +85,11 @@
 			<textarea class="location" readonly>${dto.location}</textarea>
 			<label><input type="checkbox" name="agree4" />동의합니다.</label>
 		</section>
-
+		
+		<div class="allCheck">
+			<label><input type="checkbox" name="all"/>모두 동의합니다.</label>
+		</div>
+		
 		<div>
 			<input type="button" class="agree" value="동의하기" />
 		</div>

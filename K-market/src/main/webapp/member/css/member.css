@@ -62,7 +62,27 @@ header {
   #member .btnNext:hover {
     background-color: #036dde;
   }
-  
+  #member .btnCheck {
+	display: inline-block;
+    width: 60px;
+    height: 33px;
+    text-align: center;
+    line-height: 20px;
+    background-color: #0e6ad3;
+    border: 1px solid #0063ce;
+    border-radius: 3px;
+    font-weight: bold;
+    color: #fff;
+    box-sizing: border-box;
+  }
+  #member .btnCheck:hover {
+	  background-color: #004C99;
+  }
+  #btnZip {
+	position: absolute;
+	top: 15px;
+	left: 206px;
+  }
   /* member > .login */
   #member > .login {
     width: 900px;
@@ -283,6 +303,16 @@ header {
     cursor: pointer;
   }
   
+  #member > .signup .allCheck {
+	  float: right;
+	  width: 100%;
+	  height: auto;
+	  border-top: 1px solid #d9d9d9;
+	  margin: 20px 0;
+  }
+  #member > .signup .allCheck label {
+	  margin-top: 10px;
+  }
   /* member > .register */
   #member > .register {
     width: 900px;
@@ -353,7 +383,7 @@ header {
     width: 60px;
     font-size: 17px;
   }
-  
+
   #member > .register table .addr input {
     margin-top: 6px;
   }
@@ -406,6 +436,7 @@ header {
   }
   #member > .registerSeller table * {
   }
+
   #member > .registerSeller table caption {
     text-align: left;
     font-size: 16px;

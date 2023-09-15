@@ -8,6 +8,7 @@ let isPassOk	= false;
 let isNameOk	= false;
 let isEmailOk	= false;
 let isHpOk		= false;
+let isFaxOk		= false;
 let isCompanyOk	= false;
 let isBizOk		= false;
 let isManagerOk	= false;
@@ -19,11 +20,19 @@ let rePass  = /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,12}
 let reName  = /^[가-힣]{2,10}$/ 
 let reEmail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
 let reHp    = /^01(?:0|1|[6-9])-(?:\d{4})-\d{4}$/;
+let reFax	= /^(0[2-8][0-5]?)-?([1-9]{1}[0-9]{2,3})-?([0-9]{4})$/;
 let reCompany = /^\(주\)[a-zA-Z가-힣]{2,}$/;
 let reBiz = /^[0-9]{3}-[0-9]{2}-[0-9]{5}$/;
 
 // 유효성 검사(Validation)
 $(function(){
+	
+	
+	// 아이디 검사
+	$('input[name=km_uid]').keydown(function(){ // 유효한 아이디를 검사한 후 다시 아이디 값을 조작할 시
+		$('.msgId1').text('');
+		isUidOk = false;
+	});
 	
 	// 비밀번호 검사
 	$('input[name=km_pass2]').focusout(function(){
@@ -34,15 +43,15 @@ $(function(){
 		if(pass1 == pass2){
 			
 			if(pass1.match(rePass)){ // 유효성 검사
-				$('.msgPass2').css('color','green').text('사용할 수 있는 비밀번호 입니다.');
+				$('.msgPass1').css('color','green').text('사용할 수 있는 비밀번호 입니다.');
 				isPassOk = true;
 			} else {
-				$('.msgPass2').css('color', 'red').text('비밀번호는 숫자, 영문, 특수문자 조합 8자리 이상이어야 합니다.');
+				$('.msgPass1').css('color', 'red').text('비밀번호는 숫자, 영문, 특수문자 조합 8자리 이상이어야 합니다.');
 				isPassOk = false;
 			}
 			
 		} else { // 두 비밀번호가 일치하지 않을 시
-			$('.msgPass2').css('color', 'red').text('비밀번호가 일치하지 않습니다.');
+			$('.msgPass1').css('color', 'red').text('비밀번호가 일치하지 않습니다.');
 			isPassOk = false;
 		}
 		
@@ -84,10 +93,10 @@ $(function(){
 		const company = $(this).val();
 		
 		if(company.match(reCompany)){
-			$('.msgCompany').css('color', 'black').html('&nbsp;&nbsp;(주)포함 입력, 예) (주)케이마켓');
+			$('.msgCompany1').text('');
 			isCompanyOk = true;
 		} else {
-			$('.msgCompany').css('color', 'red').text('(주)포함하여 다시 입력해주십시오.');
+			$('.msgCompany1').css('color', 'red').text('(주)포함하여 다시 입력해주십시오.');
 			isCompanyOk = false;
 		}
 		
@@ -98,11 +107,24 @@ $(function(){
 		const bizNum = $(this).val();
 		
 		if(bizNum.match(reBiz)){
-			$('.msgCorp').css('color', 'black').html('&nbsp;&nbsp;- 표시 포함 12자리 입력, 예) 123-45-67890');
+			$('.msgCorp1').text('');
 			isBizOk = true;
 		} else {
-			$('.msgCorp').css('color', 'red').text('유효하지 않은 사업자등록번호입니다.');
+			$('.msgCorp1').css('color', 'red').text('유효하지 않은 사업자등록번호입니다.');
 			isBizOk = false;
+		}
+	});
+	
+	// 팩스번호 검사
+	$('input[name=kms_fax]').focusout(function(){
+		const fax = $(this).val();
+		
+		if(fax.match(reFax)){
+			$('.msgFax1').text('');
+			isFaxOk = true;
+		} else {
+			$('.msgFax1').css('color', 'red').text('유효하지 않은 번호입니다.');
+			isFaxOk = false;
 		}
 	});
 	
@@ -124,10 +146,10 @@ $(function(){
 		const managerHp = $(this).val();
 		
 		if(managerHp.match(reHp)){
-			$('.msgManagerHp').css('color', 'black').html('&nbsp;&nbsp;- 포함 13자리를 입력하세요.');
+			$('.msgManagerHp1').text('');
 			isManagerHpOk = true;
 		} else {
-			$('.msgManagerHp').css('color', 'red').text('유효하지 않은 번호입니다.');
+			$('.msgManagerHp1').css('color', 'red').text('유효하지 않은 번호입니다.');
 			isManagerHpOk = false;
 		}
 	});
@@ -157,6 +179,11 @@ $(function(){
 		
 		if(!isHpOk){
 			alert('번호를 확인 하십시요.');
+			return false; // 폼 전송 취소	
+		}
+		
+		if(!isFaxOk){
+			alert('팩스 번호를 확인 하십시요.');
 			return false; // 폼 전송 취소	
 		}
 		
