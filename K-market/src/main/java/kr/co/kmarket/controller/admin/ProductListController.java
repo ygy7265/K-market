@@ -17,7 +17,7 @@ import kr.co.kmarket.dto.ProductDTO;
 import kr.co.kmarket.service.ProductService;
 @WebServlet("/admin/product/list.do")
 public class ProductListController extends HttpServlet{
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 4531L;
 	private Logger logger = LoggerFactory.getLogger(getClass());
 	private ProductService pService = ProductService.INSTANCE;
 	@Override
