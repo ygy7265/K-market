@@ -6,25 +6,61 @@
 			내용 : CS_Notice 기능구현
 		 -->
 <section id="cs">
-  <div class="notice">
-    <nav>
+  	<div class="notice">
+ 	<nav>
       <div>
-        <p>홈<span>></span>공지사항</p>
+        <p>
+        	홈<span>></span>공지사항<span>></span>
+        	<c:choose>
+        		<c:when test="${cate == null}">
+		    	</c:when>
+			    <c:when test="${cate eq 'customer'}">
+			        고객서비스
+			    </c:when>
+			    <c:when test="${cate eq 'safety'}">
+			        안전거래
+			    </c:when>
+			    <c:when test="${cate eq 'product'}">
+			        위해상품
+			    </c:when>
+			    <c:when test="${cate eq 'event'}">
+			        이벤트당첨
+			    </c:when>
+			</c:choose>
+        </p>
       </div>
     </nav>
-    <section class="list">
+  	<section class="list">	
      <jsp:include page="../_asideNotice.jsp"/>
-      <article>
-        <nav>
+     <article>
+    	<nav>
           <h1>전체</h1>
-          <h2>공지사항 전체 내용입니다.</h2>
+          <h2>
+         	<c:choose>
+         	 	<c:when test="${cate == null}">
+			        공지사항
+			    </c:when>
+			    <c:when test="${cate eq 'customer'}">
+			        고객서비스
+			    </c:when>
+			    <c:when test="${cate eq 'safety'}">
+			        안전거래
+			    </c:when>
+			    <c:when test="${cate eq 'product'}">
+			        위해상품
+			    </c:when>
+			    <c:when test="${cate eq 'event'}">
+			        이벤트당첨
+			    </c:when>
+			</c:choose>
+          	전체 내용입니다.
+          </h2>
         </nav>
-
         <table>
         <c:forEach var ="notice" items="${notices}">
           <tr>
             <td><a href="/K-market/cs/notice/noticeView.do?cate=${cate}">[안내]${notice.title}</a></td>
-            <td>${notice.rdate}</td>
+            <td>${notice.formatDate()}</td>
           </tr>
         <c:set var="pageStartNum" value="${pageStartNum - 1}" />
 		</c:forEach>

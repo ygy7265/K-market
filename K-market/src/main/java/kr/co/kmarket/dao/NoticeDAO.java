@@ -33,14 +33,16 @@ public class NoticeDAO extends DBHelper{
 		return null;
 	}
 	
-	public List<NoticeDTO> selectNotices(int start){
+	public List<NoticeDTO> selectNotices(String cate, int start){
 		
 		List<NoticeDTO> notices = new ArrayList<>();
 		
 		try {
 			conn = getConnection();
 			psmt = conn.prepareStatement(SQL.SELECT_NOTICES);
-			psmt.setInt(1, start);
+			psmt.setString(1, cate);
+			psmt.setString(2, cate);
+			psmt.setInt(3, start);
 			rs = psmt.executeQuery();
 			
 			while(rs.next()) {
@@ -76,7 +78,7 @@ public class NoticeDAO extends DBHelper{
 		
 	}
 	
-	public int selectCountTotal() {
+	public int selectCountTotal(String cate) {
 		
 		int total = 0;
 		
@@ -84,6 +86,8 @@ public class NoticeDAO extends DBHelper{
 			
 			conn = getConnection();
 			psmt = conn.prepareStatement(SQL.SELECT_COUNT_TOTAL);
+			psmt.setString(1, cate);
+			psmt.setString(2, cate);
 			rs = psmt.executeQuery();
 			
 			if(rs.next()) {

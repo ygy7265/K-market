@@ -1,5 +1,8 @@
 package kr.co.kmarket.dto;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class NoticeDTO {
 	
 	private int noticeNo;
@@ -55,6 +58,19 @@ public class NoticeDTO {
 	public void setRdate(String rdate) {
 		this.rdate = rdate;
 	}
+	
+    public String formatDate() {
+        try {
+            SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");
+            SimpleDateFormat outputFormat = new SimpleDateFormat("yy-MM-dd");
+            Date date = inputFormat.parse(rdate);
+            return outputFormat.format(date);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return rdate;
+        }
+    }
+
 	@Override
 	public String toString() {
 		return "NoticeDAO [noticeNo=" + noticeNo + ", cate=" + cate + ", title=" + title + ", content=" + content
