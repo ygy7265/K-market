@@ -23,8 +23,9 @@ document.addEventListener('DOMContentLoaded', function() {
         </nav>
         <!-- 상품등록 컨텐츠 시작 -->
         <article>
-            <form action="/K-market/admin/product/register.do" method="POST">
-
+            <form action="${ctxPath}/admin/product/register.do" method="POST" enctype="multipart/form-data">
+            <!-- seller 로그인정보 받아올 수 있게 수정 필요_insert완료/09_15 -->
+			<input type="hidden" value="seller1" name="seller1"/>
                 <!-- 상품분류 -->
                 <section>
                     <h4>상품분류</h4>
@@ -86,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             <td>할인율</td>
                             <td>
                                 <span>0을 입력하면 할인율 없음</span>
-                                <input type="text" name="discount"/>원
+                                <input type="text" name="discount"/>%
                             </td>
                         </tr>
                         <tr>
