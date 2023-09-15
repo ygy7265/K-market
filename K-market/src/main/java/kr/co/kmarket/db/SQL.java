@@ -92,7 +92,8 @@ public class SQL {
 	
 	
 	// cs_notice
-	public static final String SELECT_NOTICES= "SELECT * "
+	public static final String SELECT_NOTICE = "SELECT * FROM `km_cs_notice` WHERE `noticeNo`=?";
+	public static final String SELECT_NOTICES = "SELECT * "
 												+ "FROM `km_cs_notice` "
 												+ "WHERE ISNULL(cate = ?) OR cate=? "
 												+ "ORDER BY `noticeNo` DESC "

@@ -331,7 +331,7 @@ footer{
 #cs > .notice > section > aside li {
     margin-bottom: 16px;
 }
-#cs > .notice > section > aside > ul > .on > a {
+#cs > .notice > section > aside > ul > li.on > a {
     color: #111;
     text-decoration: underline;
 }
@@ -503,10 +503,12 @@ footer{
   color: #111;
   text-decoration: underline;
 }
-#cs > .faq > section > aside > ul > .on > a {
+#cs > .faq > section > aside > ul > li.on > a {
   color: #111;
   text-decoration: underline;
 }
+
+
 
 #cs > .faq > section > article {
   padding: 26px;
