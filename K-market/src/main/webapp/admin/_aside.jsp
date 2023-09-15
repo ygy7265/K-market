@@ -2,6 +2,7 @@
 <main>
     <aside>
         <!-- Global Navigation Bar -->
+        
         <ul id="gnb">
             <li>
                 <a href="#"><i class="fa fa-cogs" aria-hidden="true"></i>환경설정</a>
@@ -29,8 +30,8 @@
             <li>
                 <a href="#"><i class="fas fa-box-open" aria-hidden="true"></i>상품관리</a>
                 <ol>
-                    <li><a href="/K-market/admin/product/list.do">- 상품현황</a></li>
-                    <li><a href="/K-market/admin/product/register.do">- 상품등록</a></li>
+                    <li><a href="${ctxPath}/admin/product/list.do">- 상품현황</a></li>
+                    <li><a href="${ctxPath}/admin/product/register.do">- 상품등록</a></li>
                     <li><a href="#">- 재고관리</a></li>
                 </ol>
             </li>
@@ -46,10 +47,11 @@
             <li>
                 <a href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>고객센터</a>
                 <ol>
-                    <li><a href="/K-market/admin/cs/notice/list.do">- 공지사항</a></li>
-                    <li><a href="/K-market/admin/cs/faq/list.do">- 자주묻는질문</a></li>
-                    <li><a href="/K-market/admin/cs/qna/list.do">- 문의하기</a></li>
+                    <li><a href="${ctxPath}/admin/cs/notice/list.do">- 공지사항</a></li>
+                    <li><a href="${ctxPath}/admin/cs/faq/list.do">- 자주묻는질문</a></li>
+                    <li><a href="${ctxPath}/admin/cs/qna/list.do">- 문의하기</a></li>
                 </ol>
             </li>
         </ul>
+        
     </aside>
