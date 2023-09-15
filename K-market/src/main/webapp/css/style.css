@@ -326,6 +326,10 @@ main > aside > .best > ol > li:first-child > a > .thumb > i {
 main > aside > .best > ol > li > a > .thumb > img {
   width: 100%;
 }
+main > aside > .best > ol > li > a > .thumb > img:nthchild(1) {
+  width: 100%;
+  
+}
 
 main > aside > .best > ol > li > a > article {
   float: left;
@@ -433,6 +437,13 @@ main > section > section > article .dis_price > .free {
   width: 55px;
   height: 13px;
   background: url("../images/ico_freeshipping.gif") no-repeat;
+}
+main > section > section > article .dis_price > .nofree {
+  display: inline-block;
+  font-size: 0;
+  vertical-align: text-bottom;
+  width: 55px;
+  height: 13px;
 }
 
 /* 슬라이드*/

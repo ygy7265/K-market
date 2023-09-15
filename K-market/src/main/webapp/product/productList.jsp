@@ -1,6 +1,19 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./_header.jsp" %>
-
+<script>
+	$(function(){
+		 <c:forEach var="product" items="${list}" varStatus="loopStatus">
+	      // 함수를 사용하여 새로운 스코프를 생성합니다.
+	      (function() {
+	        let price = ${product.price};
+	        let delivery = ${product.delivery};
+	        let discountPrice = price - (price * ${product.discount}/100);
+	        $('.product-row:eq(${loopStatus.index}) .dis-price').text(discountPrice);
+	        // ...
+	      })();
+	    </c:forEach>
+	})
+</script>
 <main id="product">
 <%@ include file="../_aside.jsp" %>   
 </aside>
@@ -34,10 +47,10 @@
           </td>
           <td>
             <ul>
-              <li><ins class="dis-price">${product.price}</ins></li>
+              <li class="product-row"><ins class="dis-price"></ins></li>
               <li>
                 <del class="org-price">${product.price}</del>
-                <span class="discount">${product.prodName}%</span>
+                <span class="discount">${product.discount}%</span>
               </li>
               <li><span class="free-delivery">무료배송</span></li>
             </ul>
