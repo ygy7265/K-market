@@ -52,28 +52,29 @@
                 </tr>
                 </c:forEach>
             </table>
-
             
             <input type="button" value="선택삭제" />                          
 
-
+            <!-- admin_ProductList_paging 구현중 -->
+			
             <div class="paging">
                 <span class="prev">
+            	<c:if test="${pageGroupStart > 1}">
                     <a href="/K-market/admin/product/list.do"><&nbsp;이전</a>
+                </c:if>
                 </span>
+				<c:forEach var="i" begin="${pageGroupStart}" end="${pageGroupEnd}" step="1">
                 <span class="num">
-                    <a href="/K-market/admin/product/list.do" class="on">1</a>
-                    <a href="/K-market/admin/product/list.do">2</a>
-                    <a href="/K-market/admin/product/list.do">3</a>
-                    <a href="/K-market/admin/product/list.do">4</a>
-                    <a href="/K-market/admin/product/list.do">5</a>
-                    <a href="/K-market/admin/product/list.do">6</a>
-                    <a href="/K-market/admin/product/list.do">7</a>
+					<c:set var="on" value="${currentPage == i}"/>
+                    <a href="/K-market/admin/product/list.do?pg=${i}" class="on">${i}</a>
                 </span>
+				</c:forEach>
                 <span class="next">
+    			<c:if test="${pageGroupEnd < lastPageNum}">
                     <a href="/K-market/admin/product/list.do">다음&nbsp;></a>
+	            </c:if>
                 </span>
-                </div>
+			</div>
 
         </section>                
 

@@ -51,6 +51,9 @@ public enum ProductService {
 	public List<Cate2DTO> selectCate2s() {
 		return dao.selectCate2s();
 	}
+	public int selectProductCountTotal() {
+		return dao.selectProductCountTotal();
+	}
 	// INDEX
 	public List<ProductDTO> selectBestProducts() {
 		return dao.selectBestProducts();
@@ -67,8 +70,8 @@ public enum ProductService {
 	public List<ProductDTO> selectNewProducts() {
 		return dao.selectNewProducts();
 	}
-	public List<ProductDTO> selectProductsAll() {
-		return dao.selectProductsAll();
+	public List<ProductDTO> selectProductsTotal(int start) {
+		return dao.selectProductsTotal(start);
 	}
 	
 	// admin_product_file 2023/09/15

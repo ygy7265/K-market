@@ -166,12 +166,13 @@ public class ProductDAO extends DBHelper {
 	
 	// admin_Product_Register
 	
-	// 0915_Product_Register_ListAll
-	public List<ProductDTO> selectProductsAll() {
+	// 0915_Product_Register_ListTOTAL
+	public List<ProductDTO> selectProductsTotal(int start) {
 		List<ProductDTO> pList = new ArrayList<>();
 		try {
 			conn = getConnection();
-			psmt = conn.prepareStatement(SQL.SELECT_PRODUCTS_ALL);
+			psmt = conn.prepareStatement(SQL.SELECT_PRODUCTS_TOTAL);
+			psmt.setInt(1, start);
 			rs = psmt.executeQuery();
 			
 			while(rs.next()) {
@@ -215,6 +216,30 @@ public class ProductDAO extends DBHelper {
 		}
 		return pList;
 	} // selectProductsAll END
+	
+	public int selectProductCountTotal() {
+		
+		int total = 0;
+		
+		try {
+			
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.SELECT_PRODUCTS_COUNT_TOTAL);
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				total = rs.getInt(1);
+			}
+			
+			logger.debug("ProductDAO() selectProductCountTotal : " + total);
+			close();
+			
+		} catch (Exception e) {
+			logger.error("selectProductCountTotal Error = "+e.getMessage());
+		}
+		
+		return total;
+	} //selectProductCountTotal END
 	
 	public List<Cate1DTO> selectCate1s() {
 		

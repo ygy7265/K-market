@@ -15,7 +15,7 @@ public class SQL {
 	/*할인율 (할인상품)*/
 	public static final String SELECT_DISCOUNT_PRODUCT = "SELECT * FROM `km_product` ORDER BY `discount` DESC LIMIT 0,8";
 	/*최신순 (최신상품)*/
-	public static final String SELECT_NEW_PRODUCT = "SELECT * FROM `km_product` ORDER BY `rdate` DESC LIMIT 0,8;";
+	public static final String SELECT_NEW_PRODUCT = "SELECT * FROM `km_product` ORDER BY `rdate` DESC LIMIT 0,8";
 	
 	
 	// Product
@@ -45,7 +45,9 @@ public class SQL {
 	
 	public static final String SELECT_PRODUCT = "SELECT * FROM `km_product` WHERE `prodNo` = ?";
 	public static final String SELECT_PRODUCTS = "SELECT * FROM `km_product` WHERE `cate1` = ? and `cate2` = ?";
-	public static final String SELECT_PRODUCTS_ALL = "SELECT * FROM `km_product` ORDER BY `rdate` DESC";
+	/* admin_product_list 작업중 */
+	public static final String SELECT_PRODUCTS_TOTAL = "SELECT * FROM `km_product` ORDER BY `rdate` DESC LIMIT ?,10";
+	public static final String SELECT_PRODUCTS_COUNT_TOTAL = "SELECT COUNT(*) FROM `km_product`";
 	
 	//Member 
 	//member_Login
