@@ -8,18 +8,7 @@
       </div>
     </nav>
     <section class="view">
-      <aside>
-        <h2>자주묻는 질문</h2>
-        <ul>
-          <li class="on"><a href="/K-market/cs/faq/faqList.do">회원</a></li>
-          <li><a href="/K-market/cs/faq/faqList.do">쿠폰/이벤트</a></li>
-          <li><a href="/K-market/cs/faq/faqList.do">주문/결제</a></li>
-          <li><a href="/K-market/cs/faq/faqList.do">배송</a></li>
-          <li><a href="/K-market/cs/faq/faqList.do">취소/반품/교환</a></li>
-          <li><a href="/K-market/cs/faq/faqList.do">여행/숙박/항공</a></li>
-          <li><a href="/K-market/cs/faq/faqList.do">안전거래</a></li>
-        </ul>
-      </aside>
+	<jsp:include page="../_asideFaq.jsp"/>
       <article>
         <nav>
           <h2 class="title"><span>Q.</span>개인회원과 법인회원에 차이가 있나요?</a></h2>                
