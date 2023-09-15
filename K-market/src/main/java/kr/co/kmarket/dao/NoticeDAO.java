@@ -57,6 +57,7 @@ public class NoticeDAO extends DBHelper{
 			
 		}catch(Exception e) {
 			logger.error("NoticeDAO selectNotice error : "+e.getMessage());
+			e.printStackTrace();
 		}
 		
 		return dto;

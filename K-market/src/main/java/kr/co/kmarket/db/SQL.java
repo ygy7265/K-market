@@ -100,7 +100,14 @@ public class SQL {
 												+ "LIMIT ?,10";
 	public static final String SELECT_NOTICES_FOR_CATE = "SELECT * FROM `km_cs_notice` WHERE `cate`=?";
 	public static final String SELECT_COUNT_TOTAL = "SELECT COUNT(*) FROM `km_cs_notice` WHERE ISNULL(cate = ?) OR cate=?";
-
+	
+	// cs_faq
+	public static final String SELECT_FAQS = "SELECT * "
+											+ "FROM `km_cs_faq` "
+											+ "WHERE ISNULL(cate1 = ?) OR cate1=? "
+											+ "ORDER BY `faqNo` DESC "
+											+ "LIMIT ?";
+	public static final String SELECT_FAQ_CATE = "SELECT DISTINCT `cate2` FROM `km_cs_faq` WHERE `cate1` = ?";
 	
 	//cart
 	public static final String INSERT_PRODUCT_CART= "INSERT INTO `km_product_cart` SET "
