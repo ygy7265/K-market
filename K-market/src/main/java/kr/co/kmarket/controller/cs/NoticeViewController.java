@@ -1,5 +1,10 @@
 package kr.co.kmarket.controller.cs;
-
+/*
+ * 	날짜 : 2023/09/15
+ *  이름 : 이현정
+ * 	내용 : 공지사항-리스트 (Notice/View) 기능 구현
+ * 
+ * */
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;

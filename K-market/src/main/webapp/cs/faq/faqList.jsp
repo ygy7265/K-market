@@ -8,7 +8,7 @@
         	홈<span>></span>자주묻는 질문<span>></span>
         	<c:choose>
         		<c:when test="${param.cate1 == '10'}">
-        			회원
+		    		회원
 		    	</c:when>
 			    <c:when test="${param.cate1 == '20'}">
 			        쿠폰/이벤트
@@ -62,15 +62,13 @@
           <h2>가장 자주 묻는 질문입니다.</h2>
         </nav>
         <div>
-          <h3>가입</h3>
-          <ul>
-            <li><a href="/K-market/cs/faq/faqview.do"><span>Q.</span>개인회원과 법인회원에 차이가 있나요?</a></li>
-            <li><a href="/K-market/cs/faq/faqview.do"><span>Q.</span>개인회원과 법인회원에 차이가 있나요?</a></li>
-            <li><a href="/K-market/cs/faq/faqview.do"><span>Q.</span>개인회원과 법인회원에 차이가 있나요?</a></li>
-            <li><a href="/K-market/cs/faq/faqview.do"><span>Q.</span>개인회원과 법인회원에 차이가 있나요?</a></li>
-            <li><a href="/K-market/cs/faq/faqview.do"><span>Q.</span>개인회원과 법인회원에 차이가 있나요?</a></li>
-            <li class="more"><a href="#">더보기</a></li>
-          </ul>
+        <c:forEach var ="cate1" items="${cate1}">
+          <h3>${cate1.cate2}</h3>
+          	<ul>
+	          	<li><a href="/K-market/cs/faq/faqview.do?cate1=${faqs.cate1}&cate2=${faqs.cate2}"><span>Q.</span>${faq.title}</a></li>
+            	<li class="more"><a href="#">더보기</a></li>
+            </ul>
+        </c:forEach>
         </div>
         <div>
           <h3>탈퇴</h3>
