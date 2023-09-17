@@ -39,12 +39,13 @@ public class FaqDAO extends DBHelper{
 		
 			try {
 				conn = getConnection();
-				psmt = conn.prepareStatement(SQL.SELECT_NOTICES);
+				psmt = conn.prepareStatement(SQL.SELECT_FAQS);
 				psmt.setString(1, cate);
-				psmt.setString(2, cate);
-				psmt.setInt(3, end);
+				psmt.setInt(2, end);
 				rs = psmt.executeQuery();
 				
+				logger.debug("List<FaqDTO> selectFaqs cate : "+cate);
+				logger.debug("List<FaqDTO> selectFaqs end : "+end);
 				while(rs.next()) {
 					
 					FaqDTO dto = new FaqDTO();
@@ -69,31 +70,30 @@ public class FaqDAO extends DBHelper{
 			
 	}
 	
-	public List<FaqDTO> selectFaqscate(String cate) {
+	public List<FaqDTO> selectFaqsCate(String cate) {
 		
-		List<FaqDTO> faqs = new ArrayList<>();
+		List<FaqDTO> cates = new ArrayList<>();
 		
 			try {
-					conn = getConnection();
-					psmt = conn.prepareStatement(SQL.SELECT_FAQ_CATE);
-					psmt.setString(1, cate);
-					rs = psmt.executeQuery();
+				conn = getConnection();
+				psmt = conn.prepareStatement(SQL.SELECT_FAQ_CATE);
+				psmt.setString(1, cate);
+				rs = psmt.executeQuery();
+				
+				while(rs.next()) {
 					
-					while(rs.next()) {
-						
-						FaqDTO dto = new FaqDTO();;
-						dto.setCate2(rs.getString(1));
-	
-						
-						faqs.add(dto);
+					FaqDTO dto = new FaqDTO();
+					dto.setCate2(rs.getString(1));
+					cates.add(dto);
 				}
-					logger.debug("List<FaqDTO> selectFaqs faqs : "+faqs);
-					close();
-					 
+				
+				logger.debug("List<FaqDTO> selectFaqsCate cates : "+cates);
+				close();
+				 
 			}catch(Exception e) {
 				logger.error("List<FaqDTO> selectFaqs error : "+e.getMessage());
 			}
-			return faqs;
+			return cates;
 	}
 	
 	

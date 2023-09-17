@@ -18,16 +18,16 @@ public enum QnaService {
 	
 	
 
-	public void insertQna(QnaDTO dto) {
-		dao.insertQna(dto);
+	public int insertQna(QnaDTO dto) {
+		return dao.insertQna(dto);
 	}
 	
 	public QnaDTO selectQna(String qnaNo) { // 편의를 위해서 int qnaNo 가 아닌 String 으로 설정해둠 
 		return dao.selectQna(qnaNo);
 	}
 	
-	public List<QnaDTO> selectQnas() {
-		return dao.selectQnas();
+	public List<QnaDTO> selectQnas(String cate1, int start) {
+		return dao.selectQnas(cate1,start);
 	}
 	
 	public void updateQna(QnaDTO dto) {
@@ -37,5 +37,11 @@ public enum QnaService {
 	public void deleteQna(String qnaNo) {
 		dao.deleteQna(qnaNo);
 	}
+	
+	// 추가
+	public int selectCountTotal(String cate) {
+		return dao.selectCountTotal(cate);
+	}
+	
 
 }

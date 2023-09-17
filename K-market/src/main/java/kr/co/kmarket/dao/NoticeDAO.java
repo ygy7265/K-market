@@ -117,7 +117,7 @@ public class NoticeDAO extends DBHelper{
 		try {
 			
 			conn = getConnection();
-			psmt = conn.prepareStatement(SQL.SELECT_COUNT_TOTAL);
+			psmt = conn.prepareStatement(SQL.SELECT_COUNT_TOTAL_NOTICE);
 			psmt.setString(1, cate);
 			psmt.setString(2, cate);
 			rs = psmt.executeQuery();
