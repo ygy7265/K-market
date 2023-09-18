@@ -4,10 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MapUtil {
-	public static Map<String, String> map = new HashMap<String, String>() {
+	public static final Map<String, String> map = new HashMap<String, String>() {
        private static final long serialVersionUID = 1L;{
-    	   
-    	  try {
+    
     		  // FAQ_Cate1
 	       	   map.put("10","회원");
 	       	   map.put("20","쿠폰/이벤트");
@@ -23,13 +22,13 @@ public class MapUtil {
 	       	   map.put("1012","회원정보");
 	       	   map.put("1013","로그인");
 	       	  
-	       	   
-    	   }catch(Exception e) {
-    		   e.printStackTrace();
-    	   }
-    	   
+	     
        } // serialVersionUID 괄호
    }; // HashMap end
-	
+
+   public static String getCateName(String cate) {
+       return map.get(cate);
+   }
+
 	
 }

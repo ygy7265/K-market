@@ -97,19 +97,41 @@ public class SQL {
 	public static final String SELECT_NOTICE = "SELECT * FROM `km_cs_notice` WHERE `noticeNo`=?";
 	public static final String SELECT_NOTICES = "SELECT * "
 												+ "FROM `km_cs_notice` "
-												+ "WHERE ISNULL(cate = ?) OR cate=? "
+												+ "WHERE ISNULL(cate = ?) OR `cate`=? "
 												+ "ORDER BY `noticeNo` DESC "
 												+ "LIMIT ?,10";
 	public static final String SELECT_NOTICES_FOR_CATE = "SELECT * FROM `km_cs_notice` WHERE `cate`=?";
-	public static final String SELECT_COUNT_TOTAL = "SELECT COUNT(*) FROM `km_cs_notice` WHERE ISNULL(cate = ?) OR cate=?";
+	public static final String SELECT_COUNT_TOTAL_NOTICE = "SELECT COUNT(*) FROM `km_cs_notice` WHERE ISNULL(cate = ?) OR cate=?";
 	
 	// cs_faq
 	public static final String SELECT_FAQS = "SELECT * "
 											+ "FROM `km_cs_faq` "
-											+ "WHERE ISNULL(cate1 = ?) OR cate1=? "
+											+ "WHERE `cate1`=? AND `cate2`=1010 "
 											+ "ORDER BY `faqNo` DESC "
 											+ "LIMIT ?";
-	public static final String SELECT_FAQ_CATE = "SELECT DISTINCT `cate2` FROM `km_cs_faq` WHERE `cate1` = ?";
+	public static final String SELECT_FAQ_CATE = "SELECT DISTINCT `cate2` FROM `km_cs_faq` WHERE `cate1` = ? ORDER BY `cate2`";
+	
+	// cs_Qna
+	public static final String INSERT_QNA= "INSERT INTO `km_cs_qna` SET "
+											+ "`qnaNo`=?, "
+											+ "`cate1`=?, "
+											+ "`cate2`=?, "
+											+ "`title`=?, "
+											+ "`content`=?, "
+											+ "`writer`=?, "
+											+ "`status`=?, "
+											+ "`reply`=?, "
+											+ "`rdate`=NOW(), "
+											+ "`ip`=? ";
+	
+	public static final String SELECT_QNAS = "SELECT * "
+											+ "FROM `km_cs_qna` "
+											+ "WHERE `cate1`=? "
+											+ "ORDER BY `qnaNo` DESC "
+											+ "LIMIT ?,10";
+	
+	public static final String SELECT_COUNT_TOTAL_QNA = "SELECT COUNT(*) FROM `km_cs_qna` WHERE `cate1`=?";
+	
 	
 	//cart
 	public static final String INSERT_PRODUCT_CART= "INSERT INTO `km_product_cart` SET "

@@ -1,13 +1,17 @@
 package kr.co.kmarket.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import kr.co.kmarket.db.DBHelper;
+import kr.co.kmarket.db.SQL;
+import kr.co.kmarket.dto.NoticeDTO;
 import kr.co.kmarket.dto.QnaDTO;
 
-public class QnaDAO {
+public class QnaDAO extends DBHelper{
 	
 	// 싱글톤 생성
 	private static QnaDAO instance = new QnaDAO();
@@ -22,7 +26,31 @@ public class QnaDAO {
 	
 	
 	// 기본 CRUD
-	public void insertQna(QnaDTO dto) {
+	public int insertQna(QnaDTO dto) {
+		
+		int result = 0;
+		
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.INSERT_QNA);
+			psmt.setInt(1, dto.getQnaNo());
+			psmt.setString(2, dto.getCate1());
+			psmt.setString(3, dto.getCate2());
+			psmt.setString(4, dto.getTitle());
+			psmt.setString(5, dto.getContent());
+			psmt.setString(6, dto.getWriter());
+			psmt.setString(7, dto.getStatus());
+			psmt.setString(8, dto.getReply());
+			psmt.setString(9, dto.getIp());
+			
+			result= psmt.executeUpdate();
+			
+			logger.debug("QnaDAO insertQna dto : "+dto.toString());
+			
+		}catch(Exception e) {
+			logger.error("QnaDAO insertQna error : "+e.getMessage());
+		}
+		return result;
 		
 	}
 	
@@ -30,8 +58,45 @@ public class QnaDAO {
 		return null;
 	}
 	
-	public List<QnaDTO> selectQnas() {
-		return null;
+	public List<QnaDTO> selectQnas(String cate1, int start) {
+		
+		List<QnaDTO> qnas = new ArrayList<>();
+		
+		
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.SELECT_QNAS);
+			psmt.setString(1, cate1);
+			psmt.setInt(2, start);
+			rs = psmt.executeQuery();
+			
+			logger.debug("cate1 : "+cate1);
+			logger.debug("start : "+start);
+			
+			while(rs.next()) {
+				
+				QnaDTO dto = new QnaDTO();
+				dto.setQnaNo(rs.getInt(1));
+				dto.setCate1(rs.getString(2));
+				dto.setCate2(rs.getString(3));
+				dto.setTitle(rs.getString(4));
+				dto.setContent(rs.getString(5));
+				dto.setWriter(rs.getString(6));
+				dto.setStatus(rs.getString(7));
+				dto.setReply(rs.getString(8));
+				dto.setRdate(rs.getString(9));
+				
+				qnas.add(dto);
+			}
+			
+			logger.debug("QnaDAO selectQnas qnas : "+qnas);
+			close();
+			 
+		}catch(Exception e) {
+			logger.error("QnaDAO selectQnas error : "+e.getMessage());
+		}
+		return qnas;
+
 	}
 	
 	public void updateQna(QnaDTO dto) {
@@ -41,5 +106,34 @@ public class QnaDAO {
 	public void deleteQna(String qnaNo) {
 		
 	}
+	
+
+	
+	// 추가
+	public int selectCountTotal(String cate) {
+		int total = 0;
+		
+		try {
+			
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.SELECT_COUNT_TOTAL_QNA);
+			psmt.setString(1, cate);
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				total = rs.getInt(1);
+			}
+			
+			logger.debug("NoticeDAO selectCountTotal total : "+total);
+			close();
+			
+		}catch(Exception e) {
+			logger.error("NoticeDAO selectCountTotal error : "+ e.getMessage());
+		}
+		
+		return total;
+	
+	}
+	
 
 }

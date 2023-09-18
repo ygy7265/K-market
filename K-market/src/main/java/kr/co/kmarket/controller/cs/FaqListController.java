@@ -25,11 +25,13 @@ public class FaqListController extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		String cate1 = req.getParameter("cate1");
+		String cate2 = req.getParameter("cate2");
 		String end = req.getParameter("end");
-		
-		List<FaqDTO> faqs = service.selectFaqscate(cate1);
-		
-		req.setAttribute("cate1", faqs);
+	
+		List<FaqDTO> cates = service.selectFaqsCate(cate1);
+		List<FaqDTO> faqs = service.selectFaqs(cate1, 3);
+		req.setAttribute("cates", cates);
+		req.setAttribute("faqs", faqs);
 		
 		
 		

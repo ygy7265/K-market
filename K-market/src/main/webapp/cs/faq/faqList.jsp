@@ -1,5 +1,33 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../_header.jsp" %>
+<script>
+
+	var list = document.querySelector(".list");
+	var cate2Name = list.querySelectorAll("h3");
+	
+	for (var i = 0; i < cate2Name.length; i++) {
+	    var cate2 = cate2Name[i].textContent; // h3 요소의 텍스트 값을 가져옴
+	
+	    // cate2 값을 원하는 방식으로 변경
+	    switch (cate2) {
+	        case "1010":
+	        	cate2Name[i].textContent = "회원가입";
+	            break;
+	        case "1011":
+	        	cate2Name[i].textContent = "탈퇴";
+	            break;
+	        case "1012":
+	        	cate2Name[i].textContent = "회원정보";
+	            break;
+	        case "1013":
+	        	cate2Name[i].textContent = "로그인";
+	            break;
+	        // 다른 cate2 값에 대한 변경 로직 추가
+	    }
+	}
+
+
+</script>
 <section id="cs">
   <div class="faq">
     <nav>
@@ -62,48 +90,19 @@
           <h2>가장 자주 묻는 질문입니다.</h2>
         </nav>
         <div>
-        <c:forEach var ="cate1" items="${cate1}">
-          <h3>${cate1.cate2}</h3>
-          	<ul>
-	          	<li><a href="/K-market/cs/faq/faqview.do?cate1=${faqs.cate1}&cate2=${faqs.cate2}"><span>Q.</span>${faq.title}</a></li>
-            	<li class="more"><a href="#">더보기</a></li>
-            </ul>
-        </c:forEach>
+		<c:forEach var="cate" items="${cates}">
+		    <h3>${cate.cate2}</h3>
+		    <ul>
+		        <c:forEach var="faq" items="${faqs}">
+		            <c:if test="${faq.cate1 == cate.cate1 && faq.cate2 == cate.cate2}">
+		                <li><a href="/K-market/cs/faq/faqView.do?cate1=${faq.cate1}&cate2=${faq.cate2}">
+		                    <span>Q.</span>${faq.title}</a></li>
+		            </c:if>
+		        </c:forEach>
+		        <li class="more"><a href="#">더보기</a></li>
+		    </ul>
+		</c:forEach>
         </div>
-        <div>
-          <h3>탈퇴</h3>
-          <ul>
-            <li><a href="/K-market/cs/faq/faqview.do"><span>Q.</span>회원탈퇴 후 재가입이 가능한가요?</a></li>
-            <li><a href="/K-market/cs/faq/faqview.do"><span>Q.</span>회원탈퇴 후 재가입이 가능한가요?</a></li>
-            <li><a href="/K-market/cs/faq/faqview.do"><span>Q.</span>회원탈퇴 후 재가입이 가능한가요?</a></li>
-            <li><a href="/K-market/cs/faq/faqview.do"><span>Q.</span>회원탈퇴 후 재가입이 가능한가요?</a></li>
-            <li><a href="/K-market/cs/faq/faqview.do"><span>Q.</span>회원탈퇴 후 재가입이 가능한가요?</a></li>
-            <li class="more"><a href="#">더보기</a></li>
-          </ul>
-        </div>
-        <div>
-          <h3>회원정보</h3>
-          <ul>
-            <li><a href="/K-market/cs/faq/faqview.do"><span>Q.</span>회원정보를 수정하고 싶어요.</a></li>
-            <li><a href="/K-market/cs/faq/faqview.do"><span>Q.</span>회원정보를 수정하고 싶어요.</a></li>
-            <li><a href="/K-market/cs/faq/faqview.do"><span>Q.</span>회원정보를 수정하고 싶어요.</a></li>
-            <li><a href="/K-market/cs/faq/faqview.do"><span>Q.</span>회원정보를 수정하고 싶어요.</a></li>
-            <li><a href="/K-market/cs/faq/faqview.do"><span>Q.</span>회원정보를 수정하고 싶어요.</a></li>
-            <li class="more"><a href="#">더보기</a></li>
-          </ul>
-        </div>
-        <div>
-          <h3>로그인</h3>
-          <ul>
-            <li><a href="/K-market/cs/faq/faqview.do"><span>Q.</span>로그인에 문제가 있어요.</a></li>
-            <li><a href="/K-market/cs/faq/faqview.do"><span>Q.</span>로그인에 문제가 있어요.</a></li>
-            <li><a href="/K-market/cs/faq/faqview.do"><span>Q.</span>로그인에 문제가 있어요.</a></li>
-            <li><a href="/K-market/cs/faq/faqview.do"><span>Q.</span>로그인에 문제가 있어요.</a></li>
-            <li><a href="/K-market/cs/faq/faqview.do"><span>Q.</span>로그인에 문제가 있어요.</a></li>
-            <li class="more"><a href="#">더보기</a></li>
-          </ul>
-        </div>
-
       </article>
     </section>
   </div>
