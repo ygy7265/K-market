@@ -3,7 +3,7 @@
 <script>
 
 	var list = document.querySelector(".list");
-	var cate2Name = list.querySelectorAll("h3");
+	/* var cate2Name = list.querySelectorAll("h3");
 	
 	for (var i = 0; i < cate2Name.length; i++) {
 	    var cate2 = cate2Name[i].textContent; // h3 요소의 텍스트 값을 가져옴
@@ -24,10 +24,69 @@
 	            break;
 	        // 다른 cate2 값에 대한 변경 로직 추가
 	    }
-	}
+	} */
+	
+	
+		
+		// 서버 결과 가져오기
+		
 
+		// 콘솔에 출력
+		
+		
+		// 서버에서 데이터를 가져오는 함수
+		
+		$(function(){
+		/* 	$.ajax({
+			    url: '/K-market/cs/faq/faqList.do',
+			    type: 'GET',
+			    data: { 'cate': '1010' },
+			    dataType: 'json',
+			    success: function (data) {
+			        // 서버에서 받은 JSON 응답을 파싱하여 원하는 데이터 추출
+			        var result = data.result;
+			        
+			    },
+			 
+			}); */
+			const jsondata1 = {
+					jsondatavalue: [] // cate2 값을 저장할 배열
+					};
 
-</script>
+					// cate2 값을 배열에 추가
+					
+
+					// jsondata 객체를 출력하여 확인
+					console.log(jsondata1);
+					console.log(typeof JSON.stringify(jsondata1));
+					const array =  [];
+					<c:forEach var="cate" items="${cates}">
+					  array.push("${cate.cate2}");
+					</c:forEach>;
+					console.log(typeof array);
+					console.log(typeof JSON.stringify(array));
+
+			$.ajax({
+				url:'/K-market/cs/faq/faqList.do',
+				type:'POST',
+				traditional : true,
+				data: {array:array},
+				contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+				dataType:'json',
+				success:function(data){
+					for (var i = 0; i < array.length; i++) {
+						$(".catename").eq(i).text(data.result[i]);
+						console.log("data = "+ data.result[i]);
+					}
+					
+					
+				}
+			});
+		});
+	</script>
+	<c:forEach var="cate" items="${cates}">
+	
+	</c:forEach>
 <section id="cs">
   <div class="faq">
     <nav>
@@ -91,7 +150,8 @@
         </nav>
         <div>
 		<c:forEach var="cate" items="${cates}">
-		    <h3>${cate.cate2}</h3>
+		    <h3 class="catename"></h3>
+	
 		    <ul>
 		        <c:forEach var="faq" items="${faqs}">
 		            <c:if test="${faq.cate1 == cate.cate1 && faq.cate2 == cate.cate2}">
