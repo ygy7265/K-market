@@ -13,6 +13,7 @@
         	홈<span>></span>공지사항<span>></span>
         	<c:choose>
         		<c:when test="${cate == null}">
+        			전체
 		    	</c:when>
 			    <c:when test="${cate eq 'customer'}">
 			        고객서비스

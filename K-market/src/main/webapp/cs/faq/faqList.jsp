@@ -1,5 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../_header.jsp" %>
+<!-- 
+	날짜 : 2023/09/17
+	이름 : 윤경엽, 이현정
+	내용 : FaqList 구현
+ -->
 <script>
 
 	var list = document.querySelector(".list");
@@ -136,15 +141,15 @@
         </nav>
         <div>
 		<c:forEach var="cate" items="${cates}">
-      <h3 class="catename"></h3>
+      	<h3 class="catename"></h3>
 		    <ul>
 		        <c:forEach var="faq" items="${faqs}">
-		            <c:if test="${faq.cate1 == cate.cate1 && faq.cate2 == cate.cate2}">
-		                <li><a href="/K-market/cs/faq/faqView.do?cate1=${faq.cate1}&cate2=${faq.cate2}">
-		                    <span>Q.</span>${faq.title}</a></li>
-		            </c:if>
+		                <li>
+		                	<a href="/K-market/cs/faq/faqView.do?cate1=${faq.cate1}&cate2=${faq.cate2}&faqNo=${faq.faqNo}&end=3">
+		                    <span>Q.</span>${faq.title}</a>
+		               	</li>
 		        </c:forEach>
-		        <li class="more"><a href="#">더보기</a></li>
+		        <li class="more"><a href="/K-market/cs/faq/faqView.do?cate1=${faq.cate1}&end=10">더보기</a></li>
 		    </ul>
 		</c:forEach>
         </div>

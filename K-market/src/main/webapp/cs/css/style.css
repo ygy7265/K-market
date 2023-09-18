@@ -432,6 +432,9 @@ footer{
   font-size: 16px;
   line-height: 32px;
 }
+#cs > div > section > article > a {
+	float: right;
+}
 
 /* faq */
 
@@ -522,7 +525,8 @@ footer{
 #cs > .faq > .list > article > div > h3 {
   font-size: 20px;
   font-weight: bold;
-  margin-bottom: 6px;
+  margin-bottom: 15px;
+  margin-top: 15px;
 }
 #cs > .faq > .list > article > div > ul {
   width: 100%;
@@ -567,6 +571,8 @@ footer{
   border-bottom: none;
   text-align: center;
 }
+
+
 
 /* faq - view */
 #cs > .faq > .view {}

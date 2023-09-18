@@ -26,8 +26,8 @@ public enum FaqService {
 		return dao.selectFaq(faqNo);
 	}
 	
-	public List<FaqDTO> selectFaqs(String cate, int end) {
-		return dao.selectFaqs(cate, end);
+	public List<FaqDTO> selectFaqs(String cate1, int end) {
+		return dao.selectFaqs(cate1, end);
 	}
 	
 

@@ -31,7 +31,7 @@
             </ul>
         </section>
         <section class="faq">
-            <h1>자주 묻는 질문<a href="/K-market/cs/faq/faqList.do">전체보기</a></h1>
+            <h1>자주 묻는 질문<a href="/K-market/cs/faq/faqList.do?cate1=10">전체보기</a></h1>
             <ol>
                 <li>
                     <a href="/K-market/cs/faq/faqList.do">
@@ -71,7 +71,7 @@
             </ol>
         </section>
         <section class="qna">
-            <h1>문의하기<a href="/K-market/cs/qna/qnaList.do">전체 보기</a></h1>
+            <h1>문의하기<a href="/K-market/cs/qna/qnaList.do?cate1=10">전체 보기</a></h1>
             <ul>
                 <li>
                     <a href="/K-market/cs/qna/qnaView.do?cate=${cate}" class="title">[회원] 개인회원과 법인회원에 차이가 있나요?</a>

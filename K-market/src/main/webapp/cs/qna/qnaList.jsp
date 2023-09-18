@@ -82,7 +82,7 @@
         <table>
         <c:forEach var="qna" items="${qnas}">
           <tr>
-            <td><a href="/K-market/cs/qna/qnaView.do?cate1=${qna.cate1}&cate2=${qna.cate2}&qnaNo=${qna.qnaNo}">[가입] ${qna.title}</a></td>
+            <td><a href="/K-market/cs/qna/qnaView.do?cate1=${qna.cate1}&cate2=${qna.cate2}&qnaNo=${qna.qnaNo}">[${qna.cate2}] ${qna.title}</a></td>
             <td>${qna.writer}</td>
             <td>${qna.formatDate()}</td>
           </tr>
@@ -102,9 +102,7 @@
           		<a href="/K-market/cs/qna/qnaList.do?cate1=${cate1}&pg=${pageGroupEnd + 1}" class="next">다음</a>
           </c:if>
         </div>
-
         <a href="/K-market/cs/qna/qnaWrite.do?cate1=${cate1}" class="btnWrite">문의하기</a>
-
       </article>
     </section>
   </div>
