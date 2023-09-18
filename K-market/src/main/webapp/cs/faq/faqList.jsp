@@ -94,27 +94,13 @@
         <p>
         	홈<span>></span>자주묻는 질문<span>></span>
         	<c:choose>
-        		<c:when test="${param.cate1 == '10'}">
-		    		회원
-		    	</c:when>
-			    <c:when test="${param.cate1 == '20'}">
-			        쿠폰/이벤트
-			    </c:when>
-			    <c:when test="${param.cate1 == '30'}">
-			        주문/결제
-			    </c:when>
-			    <c:when test="${param.cate1 == '40'}">
-			        배송
-			    </c:when>
-			    <c:when test="${param.cate1 == '50'}">
-			        취소/반품/교환
-			    </c:when>
-			    <c:when test="${param.cate1 == '60'}">
-			        여행/숙박/항공
-			    </c:when>
-			    <c:when test="${param.cate1 == '70'}">
-			        안전거래
-			    </c:when>
+        		<c:when test="${param.cate1 == '10'}">회원</c:when>
+			    <c:when test="${param.cate1 == '20'}">쿠폰/이벤트</c:when>
+			    <c:when test="${param.cate1 == '30'}">주문/결제</c:when>
+			    <c:when test="${param.cate1 == '40'}">배송</c:when>
+			    <c:when test="${param.cate1 == '50'}">취소/반품/교환</c:when>
+			    <c:when test="${param.cate1 == '60'}">여행/숙박/항공</c:when>
+			    <c:when test="${param.cate1 == '70'}">안전거래</c:when>
 			</c:choose>
         </p>
       </div>
@@ -150,8 +136,7 @@
         </nav>
         <div>
 		<c:forEach var="cate" items="${cates}">
-		    <h3 class="catename"></h3>
-	
+      <h3 class="catename"></h3>
 		    <ul>
 		        <c:forEach var="faq" items="${faqs}">
 		            <c:if test="${faq.cate1 == cate.cate1 && faq.cate2 == cate.cate2}">

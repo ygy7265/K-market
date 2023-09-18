@@ -28,7 +28,7 @@ public class QnaListController extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	
 	private QnaService qService = QnaService.INSTANCE;
-	private pageService pgSerivce = pageService.INSTANCE;
+	private pageService pgService = pageService.INSTANCE;
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	@Override
@@ -37,25 +37,36 @@ public class QnaListController extends HttpServlet{
 		
         String cate1 = req.getParameter("cate1");
 		String pg = req.getParameter("pg");
+		if(cate1 != null) {
+            if(cate1.isEmpty()) {
+            	cate1 = null;
+            }
+
+        };
+		
+        if(pg == null) {
+        	pg = "1";
+
+        };
 		
 		// 현제 페이지 번호 
-		int currentPage = pgSerivce.setCurrentPage(pg);
+		int currentPage = pgService.setCurrentPage(pg);
 		
 		// 현재 페이지 게시물 Limit 시작
-		int start = pgSerivce.getPageStart(currentPage);
+		int start = pgService.setStart(currentPage);
 		
 		// 전체 게시글 갯수 조회
 		int total = qService.selectCountTotal(cate1);
 		logger.debug("NoticeListController.. total : "+total);
 		
 		// 마지막 페이지 번호
-		int lastPageNum = pgSerivce.setLastPageNum(total);
+		int lastPageNum = pgService.setLastPageNum(total);
 		
 		// 페이지 그룹 계산
-		int [] pageGroupCurrent = pgSerivce.getPageGroupNum(currentPage,lastPageNum);
+		int [] pageGroupCurrent = pgService.getPageGroupNum(currentPage,lastPageNum);
 		
 		// 페이지 시작번호 계산
-		int pageStartNum = pgSerivce.setStart(currentPage);
+		int pageStartNum = pgService.getPageStart(total);
 		
 
 		

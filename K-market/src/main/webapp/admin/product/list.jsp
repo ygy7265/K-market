@@ -1,6 +1,25 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../_header.jsp" %>
 <%@ include file="../_aside.jsp" %>
+<<script>
+	function deleteSelected() {
+		var checkboxes = document.querySelectorAll('input[name="productNo"]:checked');
+		
+		if(checkboxes.length == 0){
+			alert("선택된 상품이 없습니다.");
+			return;
+		}
+		
+		var selectedProductNos = [];
+		
+        checkboxes.forEach(function (checkbox) {
+            selectedProductNos.push(checkbox.value);
+        });
+        
+        
+		
+	} // deleteSelected END
+</script>
     <section id="admin-product-list">
         <nav>
             <h3>상품목록</h3>
@@ -35,7 +54,7 @@
                 </tr>
 				<c:forEach var="product" items="${products}">
                 <tr>
-                    <td><input type="checkbox" name="상품코드"/></td>
+                    <td><input type="checkbox" name="productNo" value="${product.prodNo}"/></td>
                     <td><img src="/K-market/admin/img/sample_thumb.jpg" class="thumb"></td>
                     <td>${product.prodNo}</td>
                     <td>${product.prodName}</td>
@@ -46,37 +65,37 @@
                     <td>${product.seller}</td>
                     <td>${product.hit}</td>
                     <td>
-                        <a href="#">[삭제]</a>
-                        <a href="#">[수정]</a>
+                        <a href="${ctxPath}/admin/product/delete.do?prodNo=${product.prodNo}">[삭제]</a>
+                        <a href="${ctxPath}/admin/product/modify.do?no=${product.prodNo}">[수정]</a>
                     </td>
                 </tr>
                 </c:forEach>
             </table>
             
-            <input type="button" value="선택삭제" />                          
+            <input type="button" value="선택삭제" />
 
             <!-- admin_ProductList_paging 구현중 -->
 			
             <div class="paging">
                 <span class="prev">
             	<c:if test="${pageGroupStart > 1}">
-                    <a href="/K-market/admin/product/list.do"><&nbsp;이전</a>
+                    <a href="${ctxPath}/admin/product/list.do"><&nbsp;이전</a>
                 </c:if>
                 </span>
 				<c:forEach var="i" begin="${pageGroupStart}" end="${pageGroupEnd}" step="1">
                 <span class="num">
 					<c:set var="on" value="${currentPage == i}"/>
-                    <a href="/K-market/admin/product/list.do?pg=${i}" class="on">${i}</a>
+                    <a href="${ctxPath}/admin/product/list.do?pg=${i}" class="on">${i}</a>
                 </span>
 				</c:forEach>
                 <span class="next">
     			<c:if test="${pageGroupEnd < lastPageNum}">
-                    <a href="/K-market/admin/product/list.do">다음&nbsp;></a>
+                    <a href="${ctxPath}/admin/product/list.do">다음&nbsp;></a>
 	            </c:if>
                 </span>
 			</div>
 
-        </section>                
+        </section>
 
         
         <p class="ico info">

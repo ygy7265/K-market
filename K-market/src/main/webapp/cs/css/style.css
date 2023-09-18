@@ -748,6 +748,10 @@ footer{
   color: #fff;
 }
 
+#cs > div > section > article > form > div {
+	float: right;
+}
+
 /* qna - view */
 #cs > .qna > .view {}
 #cs > .qna > .view > article {}

@@ -43,8 +43,11 @@ public class SQL {
 												+ "ip=?, "
 												+ "rdate=NOW()";
 	
-	public static final String SELECT_PRODUCT = "SELECT * FROM `km_product` WHERE `prodNo` = ?";
-	public static final String SELECT_PRODUCTS = "SELECT * FROM `km_product` WHERE `cate1` = ? and `cate2` = ?";
+	public static final String SELECT_PRODUCT	= "SELECT * FROM `km_product` WHERE `prodNo` = ?";
+	public static final String SELECT_PRODUCTS	= "SELECT * FROM `km_product` WHERE `cate1` = ? and `cate2` = ?";
+	// DELETE_PRODUCT시 Review ALL Delete
+	public static final String DELETE_PRODUCT	 = "DELETE FROM `km_product` WHERE `prodNo`=?";
+	public static final String DELETE_REVIEW_ALL = "DELETE FROM `km_member_review` WHERE `prodNo`=?";
 	/* admin_product_list */
 	public static final String SELECT_PRODUCTS_TOTAL = "SELECT * FROM `km_product` ORDER BY `rdate` DESC LIMIT ?,10";
 	public static final String SELECT_PRODUCTS_COUNT_TOTAL = "SELECT COUNT(*) FROM `km_product`";
@@ -95,10 +98,10 @@ public class SQL {
 													+ "`regip`=?, "
 													+ "`rdate`=NOW() ";
 	
-	public static final String SELECT_COUNT_UID = "SELECT COUNT(*) FROM `km_member` WHERE `uid`=?";
+	public static final String SELECT_COUNT_UID	= "SELECT COUNT(*) FROM `km_member` WHERE `uid`=?";
 	public static final String SELECT_COUNT_EMAIL = "SELECT COUNT(*) FROM `km_member` WHERE `email`=?";
-	public static final String SELECT_COUNT_HP = "SELECT COUNT(*) FROM `km_member` WHERE `hp`=?";	
-	
+	public static final String SELECT_COUNT_HP	= "SELECT COUNT(*) FROM `km_member` WHERE `hp`=?";	
+
 	// member_Admin
 	public static final String SELECT_MEMBERS_TOTAL = "SELECT * FROM `km_member`ORDER BY `rdate` DESC LIMIT 0,10";
 	
@@ -114,6 +117,7 @@ public class SQL {
 	public static final String SELECT_COUNT_TOTAL_NOTICE = "SELECT COUNT(*) FROM `km_cs_notice` WHERE ISNULL(cate = ?) OR cate=?";
 	
 	// cs_faq
+	public static final String SELECT_FAQ = "SELECT * FROM `km_cs_faq` WHERE `faqNo`=?";
 	public static final String SELECT_FAQS = "SELECT * "
 											+ "FROM `km_cs_faq` "
 											+ "WHERE `cate1`=? AND `cate2`=1010 "
@@ -134,6 +138,7 @@ public class SQL {
 											+ "`rdate`=NOW(), "
 											+ "`ip`=? ";
 	
+	public static final String SELECT_QNA = "SELECT * FROM `km_cs_qna` WHERE `qnaNo`=?";
 	public static final String SELECT_QNAS = "SELECT * "
 											+ "FROM `km_cs_qna` "
 											+ "WHERE `cate1`=? "
