@@ -114,6 +114,7 @@ public class SQL {
 	public static final String SELECT_COUNT_TOTAL_NOTICE = "SELECT COUNT(*) FROM `km_cs_notice` WHERE ISNULL(cate = ?) OR cate=?";
 	
 	// cs_faq
+	public static final String SELECT_FAQ = "SELECT * FROM `km_cs_faq` WHERE `faqNo`=?";
 	public static final String SELECT_FAQS = "SELECT * "
 											+ "FROM `km_cs_faq` "
 											+ "WHERE `cate1`=? AND `cate2`=1010 "
@@ -134,6 +135,7 @@ public class SQL {
 											+ "`rdate`=NOW(), "
 											+ "`ip`=? ";
 	
+	public static final String SELECT_QNA = "SELECT * FROM `km_cs_qna` WHERE `qnaNo`=?";
 	public static final String SELECT_QNAS = "SELECT * "
 											+ "FROM `km_cs_qna` "
 											+ "WHERE `cate1`=? "

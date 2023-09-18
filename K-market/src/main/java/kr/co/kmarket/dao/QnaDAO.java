@@ -55,7 +55,40 @@ public class QnaDAO extends DBHelper{
 	}
 	
 	public QnaDTO selectQna(String qnaNo) { // 편의를 위해서 int qnaNo 가 아닌 String 으로 설정해둠 
-		return null;
+		
+		QnaDTO dto = new QnaDTO();
+		
+		try {
+			
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.SELECT_QNA);
+			psmt.setString(1, qnaNo);
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				dto.setQnaNo(rs.getInt(1));
+				dto.setCate1(rs.getString(2));
+				dto.setCate2(rs.getString(3));
+				dto.setTitle(rs.getString(4));
+				dto.setContent(rs.getString(5));
+				dto.setWriter(rs.getString(6));
+				dto.setStatus(rs.getString(7));
+				dto.setReply(rs.getString(8));
+				dto.setRdate(rs.getString(9));
+				
+			}			
+			
+			logger.debug("QnaDAO dto ... : "+dto.toString());
+			close();
+			
+		}catch(Exception e) {
+			logger.error("QnaDAO selectQna error : "+e.getMessage());
+			e.printStackTrace();
+		}
+		
+		return dto;
+		
+		
 	}
 	
 	public List<QnaDTO> selectQnas(String cate1, int start) {

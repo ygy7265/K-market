@@ -82,9 +82,9 @@
         <table>
         <c:forEach var="qna" items="${qnas}">
           <tr>
-            <td><a href="/K-market/cs/qna/qnaView.do">[가입] ${qna.title}</a></td>
+            <td><a href="/K-market/cs/qna/qnaView.do?cate1=${qna.cate1}&cate2=${qna.cate2}&qnaNo=${qna.qnaNo}">[가입] ${qna.title}</a></td>
             <td>${qna.writer}</td>
-            <td>${qna.rdate}</td>
+            <td>${qna.formatDate()}</td>
           </tr>
 		</c:forEach>
         </table>
@@ -93,9 +93,6 @@
        		<c:if test="${pageGroupStart > 1}">
           		<a href="/K-market/cs/qna/qnaList.do?cate1=${cate1}&pg=${pageGroupStart - 1}" class="prev">이전</a>
 	        </c:if>
-	        <c:if test="${pageGroupStart eq 1 }">
-                <a href="/K-market/cs/qna/qnaList.do?cate1=${cate1}&pg=1" class="prevOff">이전</a>
-            </c:if>
 	        <c:forEach var="i" begin="${pageGroupStart}" end="${pageGroupEnd}" step="1">
 	        	<c:set var="isOn" value="${currentPage == i}"/>
          		<a href="/K-market/cs/qna/qnaList.do?cate1=${cate1}&pg=${i}" 
