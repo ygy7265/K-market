@@ -12,11 +12,11 @@
         <section>
             <div>
                 <select name="search">
-                    <option value="search1">전체</option>
-                    <option value="search1">고객서비스</option>
-                    <option value="search1">안전거래</option>
-                    <option value="search1">위해상품</option>                                    
-                    <option value="search1">이벤트</option>                                    
+                    <option value="0">전체</option>
+                    <option value="customer">고객서비스</option>
+                    <option value="safety">안전거래</option>
+                    <option value="product">위해상품</option>                                    
+                    <option value="event">이벤트</option>                                    
                 </select>
                 <input type="text" name="search">
             </div>
