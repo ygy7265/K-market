@@ -59,7 +59,7 @@ public class ProductDAO extends DBHelper {
 			close();
 			
 		} catch (Exception e) {
-			logger.error("insertProduct Error = "+e.getMessage());
+			logger.error("ProductDAO insertProduct Error = "+e.getMessage());
 		}
 		
 	} //insertProduct END
@@ -106,7 +106,7 @@ public class ProductDAO extends DBHelper {
 			close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			logger.error("Product View Error = "+e.getMessage());
+			logger.error("ProductDAO Product View Error = "+e.getMessage());
 		}
 		return dto;
 	}
@@ -157,12 +157,33 @@ public class ProductDAO extends DBHelper {
 			close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			logger.error("Product List Error = "+e.getMessage());
+			logger.error("ProductDAO Product List Error = "+e.getMessage());
 		}
 		return list;
 	}
 	public void updateProduct(ProductDTO dto) {}
-	public void deleteProduct(int prodNo) {}
+	// 0918
+	public void deleteProduct(String prodNo) {
+		
+		try {
+			
+			conn = getConnection();
+			
+			psmt = conn.prepareStatement(SQL.DELETE_REVIEW_ALL);
+			psmt.setString(1, prodNo);
+			psmt.executeUpdate();
+			
+			psmt = conn.prepareStatement(SQL.DELETE_PRODUCT);
+			psmt.setString(1, prodNo);
+			psmt.executeUpdate();
+			
+			close();
+			
+		} catch (Exception e) {
+			logger.error("ProductDAO deleteProduct Error = "+e.getMessage());
+		}
+		
+	} // deleteProduct END
 	
 	// admin_Product_Register
 	
@@ -212,7 +233,7 @@ public class ProductDAO extends DBHelper {
 			close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			logger.error("Product List Error = "+e.getMessage());
+			logger.error("ProductDAO Product List Error = "+e.getMessage());
 		}
 		return pList;
 	} // selectProductsAll END
@@ -235,7 +256,7 @@ public class ProductDAO extends DBHelper {
 			close();
 			
 		} catch (Exception e) {
-			logger.error("selectProductCountTotal Error = "+e.getMessage());
+			logger.error("ProductDAO() selectProductCountTotal Error = "+e.getMessage());
 		}
 		
 		return total;
@@ -259,7 +280,7 @@ public class ProductDAO extends DBHelper {
 			}
 			close();
 		} catch (Exception e) {
-			logger.error("admin Cate1 List Error = "+e.getMessage());
+			logger.error("ProductDAO() admin Cate1 List Error = "+e.getMessage());
 		}
 		return cate1s;
 	} // selectCate1s() END
@@ -282,7 +303,7 @@ public class ProductDAO extends DBHelper {
 			}
 			close();
 		} catch (Exception e) {
-			logger.error("admin Cate2 List Error = "+e.getMessage());
+			logger.error("ProductDAO() admin Cate2 List Error = "+e.getMessage());
 		}
 		return cate2s;
 	} // selectCate2s() END
@@ -333,7 +354,7 @@ public class ProductDAO extends DBHelper {
 			close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			logger.error("Product List Error = "+e.getMessage());
+			logger.error("ProductDAO() Product List Error = "+e.getMessage());
 		}
 		return list;
 	}
@@ -382,7 +403,7 @@ public class ProductDAO extends DBHelper {
 			close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			logger.error("Product List Error = "+e.getMessage());
+			logger.error("ProductDAO() Product List Error = "+e.getMessage());
 		}
 		return list;
 	}
@@ -431,7 +452,7 @@ public class ProductDAO extends DBHelper {
 			close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			logger.error("Product List Error = "+e.getMessage());
+			logger.error("ProductDAO() Product List Error = "+e.getMessage());
 		}
 		return list;
 	}
@@ -480,7 +501,7 @@ public class ProductDAO extends DBHelper {
 			close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			logger.error("Product List Error = "+e.getMessage());
+			logger.error("ProductDAO() Product List Error = "+e.getMessage());
 		}
 		return list;
 	}
@@ -529,7 +550,7 @@ public class ProductDAO extends DBHelper {
 			close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			logger.error("Product List Error = "+e.getMessage());
+			logger.error("ProductDAO() Product List Error = "+e.getMessage());
 		}
 		return list;
 	}
