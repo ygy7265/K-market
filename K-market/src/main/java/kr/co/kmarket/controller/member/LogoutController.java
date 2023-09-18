@@ -25,6 +25,7 @@ public class LogoutController extends HttpServlet{
 
 		// 쿠키해제
 		Cookie cookie = new Cookie("keepLogin", null);
+		cookie.setPath(req.getContextPath());
 		cookie.setMaxAge(0); // 쿠키 유효기간
 		resp.addCookie(cookie);
 		
