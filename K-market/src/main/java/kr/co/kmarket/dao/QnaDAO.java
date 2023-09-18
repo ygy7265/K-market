@@ -87,8 +87,6 @@ public class QnaDAO extends DBHelper{
 		}
 		
 		return dto;
-		
-		
 	}
 	
 	public List<QnaDTO> selectQnas(String cate1, int start) {

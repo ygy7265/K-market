@@ -30,21 +30,52 @@ public class FaqDAO extends DBHelper{
 	}
 	
 	public FaqDTO selectFaq(String faqNo) { // 편의를 위해서 int faqNo 가 아닌 String 으로 설정해둠 
-		return null;
+		
+		
+		FaqDTO dto = new FaqDTO();
+		
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.SELECT_FAQ);
+			psmt.setString(1, faqNo);
+			rs = psmt.executeQuery();
+			
+
+			if(rs.next()) {
+				dto.setFaqNo(rs.getInt(1));
+				dto.setCate1(rs.getString(2));
+				dto.setCate2(rs.getString(3));
+				dto.setTitle(rs.getString(4));
+				dto.setContent(rs.getString(5));
+				dto.setHit(rs.getInt(6));
+				dto.setWriter(rs.getString(7));
+				dto.setRdate(rs.getString(8));
+				
+			}	
+			logger.debug("List<FaqDTO> selectFaqs dto : "+dto.toString());
+			close();
+			
+		}catch(Exception e) {
+			logger.error("FaqDAO selectFaq error : "+e.getMessage());
+			e.printStackTrace();
+		}
+		return dto;
 	}
 	
-	public List<FaqDTO> selectFaqs(String cate, int end) {
+	
+	
+	public List<FaqDTO> selectFaqs(String cate1, int end) {
 		
 		List<FaqDTO> faqs = new ArrayList<>();
 		
 			try {
 				conn = getConnection();
 				psmt = conn.prepareStatement(SQL.SELECT_FAQS);
-				psmt.setString(1, cate);
+				psmt.setString(1, cate1);
 				psmt.setInt(2, end);
 				rs = psmt.executeQuery();
 				
-				logger.debug("List<FaqDTO> selectFaqs cate : "+cate);
+				logger.debug("List<FaqDTO> selectFaqs cate1 : "+cate1);
 				logger.debug("List<FaqDTO> selectFaqs end : "+end);
 				while(rs.next()) {
 					

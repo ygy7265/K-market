@@ -120,7 +120,7 @@ public class SQL {
 	public static final String SELECT_FAQ = "SELECT * FROM `km_cs_faq` WHERE `faqNo`=?";
 	public static final String SELECT_FAQS = "SELECT * "
 											+ "FROM `km_cs_faq` "
-											+ "WHERE `cate1`=? AND `cate2`=1010 "
+											+ "WHERE `cate1`=? "
 											+ "ORDER BY `faqNo` DESC "
 											+ "LIMIT ?";
 	public static final String SELECT_FAQ_CATE = "SELECT DISTINCT `cate2` FROM `km_cs_faq` WHERE `cate1` = ? ORDER BY `cate2`";

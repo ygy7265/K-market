@@ -1,5 +1,11 @@
 package kr.co.kmarket.controller.cs;
-
+/*
+ *  날짜 : 2023/09/18
+ *  이름 : 윤경엽, 이현정
+ *  내용 : Map으로 전달받은 Cate1/2 내용 출력(챡임자: doGet_이현정/ doPost_윤경엽)
+ * 
+ * 
+ * */
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -38,18 +44,33 @@ public class FaqListController extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		String cate1 = req.getParameter("cate1");
-		String cate2 = req.getParameter("cate2");
-		String end = req.getParameter("end");
-	
+		String endParam = req.getParameter("end");
+		
+		int end = 10;
+		
+		// end 파라미터 값이 전달된 경우 파싱하여 설정
+	    if (endParam != null && !endParam.isEmpty()) {
+	        try {
+	            end = Integer.parseInt(endParam);
+	        } catch (NumberFormatException e) {
+	            end = 10; 
+	        }
+	    } else {
+	        end = 10; 
+	    }
+		
+		
+		logger.debug("FaqListController cate1 ... " +cate1);
+		logger.debug("FaqListController end ... " +end);
+		
 		List<FaqDTO> cates = service.selectFaqsCate(cate1);
-		List<FaqDTO> faqs = service.selectFaqs(cate1, 3);
+		List<FaqDTO> faqs = service.selectFaqs(cate1, end);
 		req.setAttribute("cates", cates);
 		req.setAttribute("faqs", faqs);
 		
-
-		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/cs/faq/faqList.jsp");
 		dispatcher.forward(req, resp);	
+	
 	}
 	
 	@Override
@@ -58,17 +79,17 @@ public class FaqListController extends HttpServlet{
 		String[] jsondatavalue = req.getParameterValues("array");
 		MapUtil map = new MapUtil();
 		int size = jsondatavalue.length;
-		    for(int i=0; i<size; i++) {
-		        System.out.println("JSP에서 받은 MSG : "+map.getCateName(jsondatavalue[i]));
-		    }
-		    
+//		    for(int i=0; i<size; i++) {
+//		        System.out.println("JSP에서 받은 MSG : "+map.getCateName(jsondatavalue[i]));
+//		    }
+//		    
 		    JsonArray jsonArray = new JsonArray();
 		    for (String value : jsondatavalue) {
 		    	  String cateName = map.getCateName(value);
 		    	    if (cateName != null) {
 		    	        jsonArray.add(new JsonPrimitive(cateName));
 		    	    };
-		    	    System.out.println("json array"+jsonArray);
+		    	    //System.out.println("json array"+jsonArray);
 		    }
 		    resp.setContentType("text/html;charset=UTF-8"); 
 		    // JSON 객체 생성 및 JSON 배열을 속성 값으로 설정

@@ -37,6 +37,9 @@ public class QnaListController extends HttpServlet{
 		
         String cate1 = req.getParameter("cate1");
 		String pg = req.getParameter("pg");
+		logger.debug("cate1 : " + cate1);
+		logger.debug("pg : " + pg);
+		
 		if(cate1 != null) {
             if(cate1.isEmpty()) {
             	cate1 = null;
@@ -66,22 +69,21 @@ public class QnaListController extends HttpServlet{
 		int [] pageGroupCurrent = pgService.getPageGroupNum(currentPage,lastPageNum);
 		
 		// 페이지 시작번호 계산
-		int pageStartNum = pgService.getPageStart(total);
+		int pageStartNum = pgService.getPageStart(currentPage);
 		
 
 		
 		// JSP페이지에서 사용할 데이터를 request 객체에 설정
 		req.setAttribute("pg", pg);
 		req.setAttribute("cate", cate1);
-		req.setAttribute("currentPage", currentPage);
 		req.setAttribute("start", start);
+		req.setAttribute("currentPage", currentPage);
 		req.setAttribute("total", total);
 		req.setAttribute("lastPageNum", lastPageNum);
 		req.setAttribute("pageGroupStart", pageGroupCurrent[0]);
 		req.setAttribute("pageGroupEnd", pageGroupCurrent[1]);
 		req.setAttribute("pageStartNum", pageStartNum);
 
-		
 		
 		List<QnaDTO> qnas = qService.selectQnas(cate1, start);
 		req.setAttribute("qnas", qnas);
