@@ -1,0 +1,117 @@
+/* notice - write */
+#cs > .notice {
+	margin-top: 50px;
+}
+
+#cs > .notice nav div p {
+	font-size: 30px;
+}
+
+#cs > .notice > .write > article table {
+  width: 100%;
+  border-collapse: collapse;
+  border-top: 2px solid #111;
+}
+#cs > .notice > .write > article table tr {
+  width: 100%;
+  height: 26px;
+}
+
+#cs > .notice > .write > article table td {
+  padding: 16px;
+  border-bottom: 1px solid #ccc;
+  font-size: 16px;        
+}
+
+#cs > .notice > .write > article table td:first-child {
+  width: 100px;
+}
+
+#cs > .notice > .write > article table input {
+  width: 100%;
+  height: 40px;
+  font-size: 16px;
+  box-sizing: border-box;
+  text-indent: 10px;
+}
+
+#cs > .notice > .write > article table select {
+  width: 100px;
+  height: 40px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+#cs > .notice > .write > article table select * {
+  font-size: inherit;
+}
+
+#cs > .notice > .write > article table textarea {
+  width: 100%;
+  height: 360px;
+  resize: none;
+  font-size: 16px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* cancel, submit */
+
+#cs .write form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+#cs .write form .btnList {
+  margin-right: 10px; /* "취소하기" 버튼과 "등록하기" 버튼 사이의 간격을 설정합니다 */
+}
+
+/* buttons */
+.btnWrite {
+  float: right;
+  padding: 10px 20px;
+  text-align: center;        
+  margin-top: -48px;
+  background-color: #067dfd;
+  border: 1px solid #0063ce;
+  border-radius: 2px;
+  font-size: 20px;
+  color: #fff;
+  box-sizing: border-box;
+}
+
+.btnList {
+  display: inline-block;
+  width: 200px;
+  height: 60px;
+  margin: 40px auto 0;
+  border: 1px solid #ccc;
+  border-radius: 34px;
+  font-size: 16px;
+  color: #000;
+  line-height: 58px;
+  text-align: center;
+  box-sizing: border-box;
+}
+.btnList:hover {
+  background-color: #f7f7f7;
+}
+
+.btnSubmit {
+  display: inline-block;
+  width: 200px;
+  height: 60px;
+  margin: 0px auto 0;
+  background-color: #067dfd;
+  border: 1px solid #0063ce;  
+  border-radius: 34px;
+  font-size: 16px;
+  color: #fff;
+  line-height: 58px;
+  text-align: center;
+  box-sizing: border-box;
+}
+.btnSubmit:hover {
+  background-color: #0954f6;
+}

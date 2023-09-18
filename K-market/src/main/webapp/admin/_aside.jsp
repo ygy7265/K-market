@@ -21,7 +21,7 @@
             <li>
                 <a href="#"><i class="fa fa-users" aria-hidden="true"></i>회원관리</a>
                 <ol>
-                    <li><a href="#">- 회원현황</a></li>
+                    <li><a href="${ctxPath}/admin/member/list.do">- 회원현황</a></li>
                     <li><a href="#">- 포인트관리</a></li>
                     <li><a href="#">- 비회원관리</a></li>
                     <li><a href="#">- 접속자집계</a></li>
