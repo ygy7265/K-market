@@ -3,12 +3,16 @@ package kr.co.kmarket.etc;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ *
+ */
 public class MapUtil {
-	public static final Map<String, String> map = new HashMap<String, String>() {
-       private static final long serialVersionUID = 1L;{
-    
+	public static final Map<String, String> map = new HashMap<String, String>();
+		
+      static {
+    	   	
     		  // FAQ_Cate1
-	       	   map.put("10","회원");
+	       	   map.put("10","가입");
 	       	   map.put("20","쿠폰/이벤트");
 	       	   map.put("30","주문/결제");
 	       	   map.put("40","배송");
@@ -20,11 +24,9 @@ public class MapUtil {
 	       	   map.put("1010","가입");
 	       	   map.put("1011","탈퇴");
 	       	   map.put("1012","회원정보");
-	       	   map.put("1013","로그인");
-	       	  
-	     
-       } // serialVersionUID 괄호
-   }; // HashMap end
+	       	   map.put("2010","쿠폰");
+       } 
+   
 
    public static String getCateName(String cate) {
        return map.get(cate);

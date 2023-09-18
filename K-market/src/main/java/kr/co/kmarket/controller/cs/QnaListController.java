@@ -19,6 +19,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import kr.co.kmarket.dto.QnaDTO;
+import kr.co.kmarket.etc.MapUtil;
 import kr.co.kmarket.service.QnaService;
 import kr.co.kmarket.service.pageService;
 
@@ -87,6 +88,9 @@ public class QnaListController extends HttpServlet{
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/cs/qna/qnaList.jsp");
 		dispatcher.forward(req, resp);	
+		
+	
+		
 		
 	}
 	
