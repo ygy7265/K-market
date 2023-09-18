@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,6 +28,24 @@ public class LoginController extends HttpServlet{
 			String success = req.getParameter("success");
 			req.setAttribute("success", success);
 			
+			// 자동 로그인 체크여부에 따라 로그인 처리
+			Cookie[] cookies = req.getCookies();
+			HttpSession session = req.getSession();
+			
+			for(Cookie cookie : cookies) {
+				if(cookie.getName().equals("keepLogin")){
+					String id = cookie.getValue();
+					
+					session.setAttribute("sessid", id);
+				}
+			}
+			// 로그인 여부
+			String sessid = (String) session.getAttribute("sessid");
+			
+			if(sessid != null) {
+				resp.sendRedirect("/K-market/");
+				return;
+			}
 			
 			RequestDispatcher dispatcher = req.getRequestDispatcher("/member/login.jsp");
 			dispatcher.forward(req, resp);	
@@ -35,13 +54,35 @@ public class LoginController extends HttpServlet{
 		protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 			String uid = req.getParameter("uid");
 			String pass = req.getParameter("pass");
+			String auto = req.getParameter("auto");
+			
+			logger.debug("auto : "+auto);
 			
 			MemberDTO dto = service.selectMemberLogin(uid, pass);
 			logger.debug("user = "+ dto);
-			if(dto != null) {
+			
+			// 자동 로그인 설정
+			String sessUid = null;
+			Cookie cookie = null;
+			
+			if(dto != null) { // 로그인 여부
 				HttpSession session = req.getSession();
+				// 자동 로그인 체크를 했을 시
+				if(auto != null) { 
+					sessUid = req.getSession().getId(); 
+					
+					logger.debug("sessUid : "+sessUid);
+					
+					cookie = new Cookie("keepLogin", sessUid);
+					cookie.setMaxAge(60 * 60 * 24 * 30); // 30일 유지
+					cookie.setPath(req.getContextPath());
+					resp.addCookie(cookie);
+				}
 				session.setAttribute("user", dto);
+				logger.debug("login user : "+dto.toString());
+				
 				resp.sendRedirect("/K-market/index.do?success=101");
+				
 			}
 			else {
 				resp.sendRedirect("/K-market/member/login.do?success=102");

@@ -43,6 +43,10 @@ header > .top > div {
   margin: 0 auto;
   text-align: right;
 }
+header > .top > div > span {
+	float: left;
+	line-height: 32px;
+}
 header > .top > div > a {
   display: inline-block;
   height: 100%;

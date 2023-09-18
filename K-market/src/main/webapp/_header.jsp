@@ -56,15 +56,21 @@
       <header>
         <div class="top">
           <div>
-          	
+          	<c:if test="${not empty user}">
+          	<span>${user.uid}님 환영합니다.</span>
+          	</c:if>
+          	<c:if test="${empty user}">
             <a href="/K-market/member/login.do">로그인</a>
-            
             <a href="/K-market/member/join.do">회원가입</a>
+            </c:if>
+            <c:if test="${not empty user}">
+            <a href="/K-market/member/logout.do">로그아웃</a>
             <a href="#">마이페이지</a>
             <a href="/K-market/product/productcart.do"
               ><i class="fa fa-shopping-cart" aria-hidden="true"></i
               >&nbsp;장바구니</a
             >
+            </c:if>
           </div>
         </div>
         <div class="logo">
