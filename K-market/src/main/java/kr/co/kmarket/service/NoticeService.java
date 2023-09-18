@@ -18,7 +18,7 @@ public enum NoticeService {
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 
-	public void insertNotice(NoticeDAO dto) {
+	public void insertNotice(NoticeDTO dto) {
 		dao.insertNotice(dto);
 	}
 	

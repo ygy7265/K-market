@@ -25,9 +25,25 @@ public class NoticeDAO extends DBHelper{
 	
 	
 	// 기본 CRUD
-	public void insertNotice(NoticeDAO dto) {
-		
-	}
+	// admin_notice_insert 0917
+	public void insertNotice(NoticeDTO dto) {
+		try {
+			
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.INSERT_NOTICE);
+			psmt.setString(1, dto.getCate());
+			psmt.setString(2, dto.getTitle());
+			psmt.setString(3, dto.getContent());
+			psmt.setString(4, dto.getWriter());
+			psmt.executeUpdate();
+			
+			close();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			logger.error("NoticeDAO insertNotice error : "+e.getMessage());
+		}
+	} // insertNotice END
 	
 	public NoticeDTO selectNotice(String noticeNo) { // 편의를 위해서 int noticeNo 가 아닌 String 으로 설정해둠 
 		
