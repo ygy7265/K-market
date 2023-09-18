@@ -1,12 +1,53 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./_header.jsp" %>
+<script>
+	
+	$(function(){
+		
+		const btnLogin = document.getElementById("btnLogin");
+		const uid = document.getElementsByName("uid")[0].value;
+		const pass = document.getElementsByName("pass")[0].value;
+		const autoCheck = document.getElementsByName("auto")[0];
+		let isChecked = false;
+		
+		// 자동로그인 체크 여부
+		autoCheck.addEventListener('change', function(){
+			isChecked = this.checked;
+
+			console.log('체크 여부 : ',isChecked);
+			
+			// 로그인 전송
+			btnLogin.addEventListener('click',function(){
+				
+				const loginData = {
+					"uid": uid,
+					"pass": pass,
+					"auto": isChecked
+				};
+				
+				$.ajax({
+					url : '/K-market/member/login.do',
+					type: 'POST',
+					contentType: 'text/plain',
+					data: loginData,
+					dataType: text,
+					success:function(data){
+						console.log(data);
+					}
+					
+				}); // ajax end
+			}); // btnLogin end
+		}); // autoCheck end
+		
+	});
+</script>
 <main id="member">
 	<div class="login">
 		<nav>
 		    <h1>로그인</h1>                    
 		</nav>
 		   
-		<form action="/K-market/member/login.do" method="POST">
+		<form action="#" method="POST">
 		
 			<table border="0">
 				<tr>
@@ -18,7 +59,7 @@
 				    <td><input type="password" name="pass" placeholder="비밀번호 입력"></td>
 				</tr>
 			</table>					
-			<input type="submit" value="로그인" />
+			<input type="submit" id="btnLogin" value="로그인" />
 			<span>
 				<label><input type="checkbox" name="auto"/>자동 로그인</label>
 				<a href="#">아이디찾기</a>
