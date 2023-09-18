@@ -87,7 +87,8 @@
 	        </c:if>
 	        <c:forEach var="i" begin="${pageGroupStart}" end="${pageGroupEnd}" step="1">
 	        	<c:set var="isOn" value="${currentPage == i}"/>
-         		<a href="/K-market/cs/notice/noticeList.do?cate=${cate}&pg=${i}" class="num ${isOn ? 'on' : ''}">${i}</a>
+         		<a href="/K-market/cs/notice/noticeList.do?cate=${cate}&pg=${i}" 
+         		class="num ${isOn ? 'on' : ''}">${i}</a>
 	       </c:forEach>
 	       <c:if test="${pageGroupEnd < lastPageNum}">
           		<a href="/K-market/cs/notice/noticeList.do?cate=${cate}&pg=${pageGroupEnd + 1}" class="next">다음</a>

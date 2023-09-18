@@ -1,39 +1,44 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="../_header.jsp" %>
+<%@ include file="../_header.jsp"%>
+<!--
+  	날짜 : 2023/09/18
+   	이름 : 이현정
+  	내용 : 문의하기-보기 (QnA/View) 기능 구현
+  
+-->
 <section id="cs">
-  <div class="qna">
-    <nav>
-      <div>
-        <p>홈<span>></span>문의하기</p>
-      </div>
-    </nav>
-    <section class="view">
-      <jsp:include page="../_asideQna.jsp"/>
-      <article>
-        <nav>
-          <h2 class="title">[가입] 가입 문의내용</h2>                
-          <p>
-            <span>chh***</span>
-            <span>2022-11-21</span>
-          </p>
-        </nav>
+	<div class="qna">
+		<nav>
+			<div>
+				<p>
+					홈<span>></span>문의하기
+				</p>
+			</div>
+		</nav>
+		<section class="view">
+			<jsp:include page="../_asideQna.jsp" />
+			<article>
+				<nav>
+					<h2 class="title">[가입]${dto.title }</h2>
+					<p>
+						<span>${dto.writer}</span> 
+						<span>${dto.formatDate()}</span>
+					</p>
+				</nav>
 
-        <div class="content">
-          <p>
-            개인회원에서 법인회원(사업자 회원)으로 전환은 불가하므로 법인회원(사업자 회원) 전환은 신규 가입으로 진행을 해야 합니다.
-          </p>
-          <p>
-            ※ 피싱 관련 피해신고<br /><br />
-            ▶ 경찰청 사이버수사국 (국번없이)182 :
-            http://cyberbureau.police.go.kr<br />
-            ▶ KISA 인터넷침해대응센터 (국번없이)118 :
-            http://www.krcert.or.kr<br />
-            감사합니다.<br />
-          </p>
-        </div>
-        <a href="/K-market/cs/qna/qnaList.do" class="btnList">목록보기</a>
-      </article>
-    </section>
-  </div>
+				<div class="content">
+					<p>${dto.content}</p><br>
+					<p>개인회원에서 법인회원(사업자 회원)으로 전환은 불가하므로 법인회원(사업자 회원) 전환은 신규 가입으로 진행을
+						해야 합니다.</p><br>
+					<p>
+						※ 피싱 관련 피해신고<br> ▶ 경찰청 사이버수사국 (국번없이)182 :
+						http://cyberbureau.police.go.kr <br> ▶ KISA 인터넷침해대응센터
+						(국번없이)118 : http://www.krcert.or.kr <br> 감사합니다. <br>
+					</p>
+				</div>
+				<a href="/K-market/cs/qna/qnaList.do?cate1=${dto.cate1}" class="btnList">목록보기</a>
+			</article>
+		</section>
+	</div>
 </section>
-<%@ include file="../../_footer.jsp" %>
+<%@ include file="../../_footer.jsp"%>

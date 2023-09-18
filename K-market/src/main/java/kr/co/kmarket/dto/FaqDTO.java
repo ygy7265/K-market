@@ -1,5 +1,8 @@
 package kr.co.kmarket.dto;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class FaqDTO {
 	
 	private int faqNo;
@@ -59,6 +62,18 @@ public class FaqDTO {
 	public void setRdate(String rdate) {
 		this.rdate = rdate;
 	}
+	
+    public String formatDate() {
+        try {
+            SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");
+            SimpleDateFormat outputFormat = new SimpleDateFormat("yy-MM-dd");
+            Date date = inputFormat.parse(rdate);
+            return outputFormat.format(date);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return rdate;
+        }
+    }
 
 	@Override
 	public String toString() {

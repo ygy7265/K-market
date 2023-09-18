@@ -63,7 +63,7 @@ public enum pageService {
 	        pageGroupEnd = lastPageNum;
 	    }
 
-        return new int[]{pageGroupCurrent, pageGroupStart, pageGroupEnd};
+        return new int[]{pageGroupCurrent, pageGroupEnd};
     }
     
     // Limit 시작값 계산
