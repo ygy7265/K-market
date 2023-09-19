@@ -34,8 +34,11 @@ $(function(){
     function updateTotal() {
         let count = num;
         let total = discountPrice * count;
+        let nodiscount = price * count;
         $('.total2').text(total.toLocaleString());
+        $('.nodiscount').text(total.toLocaleString());
         $('.total2').val(total);
+        $('.nodiscount').val(nodiscount);
     }
 
     $('.btnOrder').click(function(e){
@@ -110,7 +113,7 @@ $(function(){
                     <em>총 상품금액</em>
                 </div>
 				<form action="/K-market/product/productcart.do" method="POST">
-				    <input type="hidden" name="uid" value="a101" />
+				    <input type="hidden" name="uid" value="${memberdto.uid }" />
 				    <input type="hidden" name="prodNo" value="${proddto.prodNo}" />
 				    <input type="hidden" name="prodName" value="${proddto.prodName}" />
 				    <input type="hidden" name="descript" value="${proddto.descript}" />
@@ -120,6 +123,7 @@ $(function(){
 				    <input type="hidden" name="discount" value="${proddto.discount}" />
 				    <input type="hidden" name="delivery" value="${proddto.delivery}" />
 				    <input type="hidden" class="total2" name="total2"/>
+				    <input type="hidden" class="nodiscount" name="nodiscount"/>
     				<div class="button">
        					<input type="submit" class="cart"  value="장바구니"/>
         				<input type="submit" class="order" value="구매하기"/>

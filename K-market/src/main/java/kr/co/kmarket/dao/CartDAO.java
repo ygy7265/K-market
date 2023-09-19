@@ -54,14 +54,16 @@ public class CartDAO extends DBHelper{
 		return null;
 	}
 	
-	public List<CartDTO> selectCarts() {
+	public List<CartDTO> selectCarts(String uid) {
 		conn = getConnection();
 		CartDTO dto = null;
-		List<CartDTO> list = new ArrayList<>();
+		List<CartDTO> list = null;
 		try {
 		
 			psmt = conn.prepareStatement(SQL.SELECT_CARTS);
+			psmt.setString(1, uid);
 			rs = psmt.executeQuery();
+			list = new ArrayList<>();
 			while(rs.next()) {
 				dto = new CartDTO();
 				dto.setCartNo(rs.getInt(1));

@@ -13,11 +13,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import kr.co.kmarket.dto.CartDTO;
+import kr.co.kmarket.dto.MemberDTO;
 import kr.co.kmarket.service.CartService;
 import kr.co.kmarket.service.ProductService;
 @WebServlet("/product/productcart.do")
@@ -30,8 +32,16 @@ public class ProductCartController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		List<CartDTO> list = service.selectCarts();
+		HttpSession session = req.getSession();
+		MemberDTO uid = (MemberDTO) session.getAttribute("user");
+		String username = null;
+		if (uid != null) {
+		    username = uid.getUid();
+		}
+		List<CartDTO> list = service.selectCarts(username);
 		req.setAttribute("list", list);
+		logger.debug("List"+list);
+		logger.debug("uid"+uid);
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/product/productCart.jsp");
 		dispatcher.forward(req, resp);	
 	}
@@ -49,6 +59,7 @@ public class ProductCartController extends HttpServlet{
 		String discount = req.getParameter("discount");
 		String delivery = req.getParameter("delivery");
 		String total2 = req.getParameter("total2");
+		String nodiscount = req.getParameter("nodiscount");
 		String count = req.getParameter("num");
 		logger.debug("uid" + uid);
 		logger.debug("prodName" + prodName);
@@ -61,8 +72,9 @@ public class ProductCartController extends HttpServlet{
 		dto.setDiscount(discount);
 		dto.setPoint(point);
 		dto.setDelivery(delivery);
-		dto.setTotal(total2);
+		dto.setTotal(nodiscount);
 		service.insertCart(dto);
+	
 		resp.sendRedirect("/K-market/product/productcart.do");
 		
 	

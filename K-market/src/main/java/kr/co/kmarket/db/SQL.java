@@ -147,7 +147,7 @@ public class SQL {
 											+ "LIMIT ?,10";
 	
 	public static final String SELECT_COUNT_TOTAL_QNA = "SELECT COUNT(*) FROM `km_cs_qna` WHERE `cate1`=?";
-	
+	public static final String SELECT_QNA_CATE = "SELECT DISTINCT `cate2` FROM `km_cs_qna` WHERE `cate1` = ? ORDER BY `cate2`";
 	
 	//cart
 	public static final String INSERT_PRODUCT_CART= "INSERT INTO `km_product_cart` SET "
@@ -161,7 +161,7 @@ public class SQL {
 			+ "`total`=?, "
 			+ "`rdate`=NOW() ";
 
-	public static final String SELECT_CARTS = "SELECT a.*,b.prodName,b.descript FROM `km_product_cart` AS a JOIN `km_product` AS b ON a.prodNo = b.prodNo;";
+	public static final String SELECT_CARTS = "SELECT a.*,b.prodName,b.descript FROM `km_product_cart` AS a JOIN `km_product` AS b ON a.prodNo = b.prodNo WHERE `uid` = ?";
 	public static final String SELECT_COUNT_CART = "SELECT COUNT(*) FROM `km_product_cart`";	
 	// admin_register 
 	public static final String SELECT_CATE1S = "SELECT * FROM `km_product_cate1` ORDER BY `cate1` ASC";

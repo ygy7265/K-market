@@ -8,10 +8,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import kr.co.kmarket.dto.MemberDTO;
 import kr.co.kmarket.dto.ProductDTO;
 import kr.co.kmarket.service.ProductService;
 
@@ -24,7 +26,13 @@ public class ProductViewController extends HttpServlet{
 		@Override
 		protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 			
+			HttpSession session = req.getSession();
+			MemberDTO memberdto = (MemberDTO) session.getAttribute("user");
+			
+			
 			String prodNo = req.getParameter("prodNo");
+			req.setAttribute("memberdto", memberdto);
+			
 			int parseNo = Integer.parseInt(prodNo);
 			ProductDTO dto = service.selectProduct(parseNo);
 			req.setAttribute("proddto", dto);
