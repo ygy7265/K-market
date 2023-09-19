@@ -5,8 +5,15 @@ $(document).ready(function () {
     });
   });
 
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
   $(function () {
     var best = $("aside > .best");
+    const btnTop = $(".btnTop");
 
     $(window).scroll(function () {
       var t = $(this).scrollTop();
@@ -19,6 +26,27 @@ $(document).ready(function () {
       } else {
         best.css({ position: "static" });
       }
+      
+      // 버튼 Top
+      if(t > 650) {
+		  btnTop.css({
+			  position: "fixed",
+			  display: "block",
+		  });
+		  
+	  } else {
+		  btnTop.css({
+			  position: "absolute",
+			  display: "none",
+		});
+	  }
+		
     });
+    
+    // 맨위로 가기
+	$("#gotoTop").click(function(){
+		scrollToTop();
+	});
+
 });
 
