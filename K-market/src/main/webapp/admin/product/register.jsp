@@ -1,17 +1,73 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../_header.jsp" %>
 <script>
-// 문서가 로드될 때 실행
-document.addEventListener('DOMContentLoaded', function() {
-    // 1차 분류 선택이 변경되었을 때 이벤트 핸들러 추가
-    document.getElementById('category1').addEventListener('change', function() {
-        // 선택된 1차 분류 옵션의 value를 가져오기
-        var selectedValue = this.value;
 
-        // 콘솔에 출력
-        console.log('1차 분류 선택 값:', selectedValue);
-    });
+$(function(){
+	/* const jsondata1 = {
+			jsondatavalue: [] // cate2 값을 저장할 배열
+			};
+
+			// jsondata 객체를 출력하여 확인
+			console.log(jsondata1);
+			console.log(typeof JSON.stringify(jsondata1));
+			const array =  [];
+			<c:forEach var="cate" items="${cates}">
+			  array.push("${cate.cate2}");
+			</c:forEach>;
+			console.log(typeof array);
+			console.log(typeof JSON.stringify(array)); */
+/* 	$.ajax({
+		url:'/K-market/cs/faq/faqList.do',
+		type:'POST',
+		traditional : true,
+		data: {array:array},
+		contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+		dataType:'json',
+		success:function(data){
+			for (var i = 0; i < array.length; i++) {
+				$(".catename").eq(i).text(data.result[i]);
+				console.log("data = "+ data.result[i]);
+			}
+		}
+	});
+			 */
+	$('#category1').change(function(){
+		 var selectedValue = $(this).val();
+		 console.log('1차 분류 선택 값:', selectedValue);
+		  $('#category2').empty();
+		 const jsonData = {
+				 "jsondata" : selectedValue
+		 }
+		 $.ajax({
+				url:'/K-market/admin/product/register.do',
+				type:'GET',
+				traditional : true,
+				data: jsonData,
+				contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+				dataType:'json',
+				success:function(data){
+					console.log(data.jsonArray);
+					var selectElement = $("#category2"); // jQuery를 사용하여 <select> 요소를 선택
+
+				    for (var i = 0; i < data.jsonArray.length; i++) {
+				        var optionData = data.jsonArray[i];
+				        var optionValue = optionData.cate2; // 옵션의 값
+				        var optionText = optionData.c2Name; // 옵션의 텍스트
+
+				        // <option> 요소를 생성하고 속성을 설정하여 추가
+				        $("<option>")
+				            .text(optionData.propertyName1) // 옵션의 텍스트 설정
+				            .appendTo(selectElement); // <select> 요소에 옵션 추가
+				        console.log(data.jsonArray[0].propertyName1);
+				    }
+				}
+		});
+	})
+	
+	
+	 
 });
+
 </script>
 <%@ include file="../_aside.jsp" %>
     <section id="admin-product-register">
@@ -48,9 +104,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             <td>2차 분류</td>
                             <td>
 				                <select name="cate2" id="category2">
-				                    <c:forEach var="cate2s" items="${cate2s}">
 				                        <option value="${cate2s.cate2}">${cate2s.c2Name}</option>
-				                    </c:forEach>
 				                </select>
                             </td>
                         </tr>
