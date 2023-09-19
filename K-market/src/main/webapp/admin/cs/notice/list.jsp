@@ -37,7 +37,7 @@
                     <td><input type="checkbox" name="상품코드"/></td>
                     <td>${notice.noticeNo}</td>
                     <td>${notice.cate}</td>
-                    <td>${notice.title}</td>
+                    <td><a href="${ctxPath}/admin/cs/notice/view.do?noticeNo=${notice.noticeNo}">${notice.title}</a></td>
                     <td>${notice.content}</td>
                     <td>${notice.writer}</td>
                     <td>${notice.hit}</td>
@@ -71,7 +71,7 @@
                 </span>
 			</div>
 
-        </section>                
+        </section>
 
 		<a href="${ctxPath}/admin/cs/notice/write.do" class="btnWrite">공지작성</a>		
         
