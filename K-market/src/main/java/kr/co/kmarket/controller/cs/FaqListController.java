@@ -46,9 +46,11 @@ public class FaqListController extends HttpServlet{
 		String cate1 = req.getParameter("cate1");
 		String endParam = req.getParameter("end");
 		
+		//[memo 추가 필요] end 3인 경우와 더보기를 클릭하였을 때, end10 으로 되게끔하기 (09/19/23)
+		
 		int end = 10;
 		
-		// end 파라미터 값이 전달된 경우 파싱하여 설정
+		/*// end 파라미터 값이 전달된 경우 파싱하여 설정
 	    if (endParam != null && !endParam.isEmpty()) {
 	        try {
 	            end = Integer.parseInt(endParam);
@@ -57,7 +59,7 @@ public class FaqListController extends HttpServlet{
 	        }
 	    } else {
 	        end = 10; 
-	    }
+	    }*/
 		
 		
 		logger.debug("FaqListController cate1 ... " +cate1);

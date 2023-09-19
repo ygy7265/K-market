@@ -1,12 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../_header.jsp" %>
 	<!-- 
-			날짜 : 2023/09/16
-			이름 : 이현정
-			내용 : CS_QNA 기능구현
-		 -->
+		날짜 : 2023/09/16
+		이름 : 이현정
+		내용 : CS_QNA 기능구현
+	-->
 <script>
-	window.onload = function(){
+	/*window.onload = function(){
 		let cate1 = document.getElementById("cate1");
 		let cate2 = document.getElementById("cate2");
 	
@@ -31,7 +31,49 @@
 			 })
 			cate2.innerHTML = newOptionsString;
 		 })
-	}
+	}*/
+	var list = document.querySelector(".write");
+	$(function(){
+		
+		let cate1 = document.getElementById("cate1");
+		let cate2 = document.getElementById("cate2");
+		
+		const jsondata1 = {
+				jsondatavalue: [] // cate2 값을 저장할 배열
+				};
+
+				// cate2 값을 배열에 추가
+				
+
+				// jsondata 객체를 출력하여 확인
+				console.log(jsondata1);
+				console.log(typeof JSON.stringify(jsondata1));
+				const array =  [];
+				<c:forEach var="cate" items="${cates}">
+				  array.push("${cate.cate2}");
+				</c:forEach>;
+				console.log(array);
+				console.log(JSON.stringify(array));
+
+			$.ajax({
+			url:'/K-market/cs/qna/qnaWrite.do',
+			type:'GET',
+			traditional : true,
+			data: {array:array},
+			contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+			dataType:'json',
+			success:function(data){
+				for (var i = 0; i < array.length; i++) {
+					$(".catename").eq(i).text(data.result[i]);
+					console.log("data = "+ data.result[i]);
+				}
+				
+				
+			}
+		});
+
+	});
+	
 	
 	
 </script>
@@ -53,20 +95,20 @@
               <td>
                 <select id="cate1" name="cate1">
                   <option value="0">선택</option>
-                  <option>회원</option>
-                  <option>쿠폰/이벤트</option>
-                  <option>주문/결제</option>
-                  <option>배송</option>
-                  <option>취소/반품/교환</option>
-                  <option>여행/숙박/항공</option>
-                  <option>안전거래</option>
+                  <option value="10">회원</option>
+                  <option value="20">쿠폰/이벤트</option>
+                  <option value="30">주문/결제</option>
+                  <option value="40">배송</option>
+                  <option value="50">취소/반품/교환</option>
+                  <option value="60">여행/숙박/항공</option>
+                  <option value="70">안전거래</option>
                 </select>
                  <select id="cate2"name="cate2">
                  <option value="0">선택</option>
-                  <option selected>가입</option>
-                  <option>탈퇴</option>
-                  <option>회원정보</option>
-                  <option>로그인</option>
+                 <c:forEach var="cate" items="${cates}">
+	                  <option class="catename"></option>
+	                  <option class="catename"></option>
+                  </c:forEach>
                 </select>
               </td>
             </tr>

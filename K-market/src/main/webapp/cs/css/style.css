@@ -637,6 +637,10 @@ footer{
   margin-top: 16px;
   font-size: 16px;
 }
+#cs > div > nav > div > p > a {
+  margin-top: 16px;
+  font-size: 16px;
+}
 
 #cs > .qna > nav p > span {
   font-size: 12px;
