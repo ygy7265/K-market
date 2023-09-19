@@ -16,10 +16,22 @@
             <div class="top">
                 <div>
                     <p>
+                    	<c:if test="${empty user}">
                         <a href="/K-market/member/login.do">로그인</a>
                         <a href="/K-market/member/join.do">회원가입</a>
+                        </c:if>
+                        <c:if test="${not empty user}">
+                        	<!-- 판매자, 관리자 링크 -->
+			            	<c:if test="${user.type eq 5}">
+				            <a href="/K-market/admin/index.do">판매자</a>
+			            	</c:if>
+			            	<c:if test="${user.type eq 100}">
+			            	<a href="/K-market/admin/index.do">관리자</a>
+			            	</c:if>
+                        <a href="/K-market/member/logout.do">로그아웃</a>
                         <a href="#">마이페이지</a>
                         <a href="/K-market/product/productcart.do">장바구니</a>
+                        </c:if>
                     </p>
                 </div>
             </div>
