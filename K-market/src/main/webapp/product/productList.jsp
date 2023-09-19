@@ -66,21 +66,22 @@
 	  
       <!-- 상품목록 페이지번호 -->
       <div class="paging">
+      	<c:if test="${pageGroupStart > 1}">
         <span class="prev">
-          <a href="/K-market/product/productlist.do"><&nbsp;이전</a>
+          <a href="/K-market/product/productlist.do?cate1=${cate1}&cate2=${cate2}&pg=${pageGroupStart - 1}"><&nbsp;이전</a>
         </span>
+        </c:if>
         <span class="num">
-          <a href="/K-market/product/productlist.do" class="on">1</a>
-          <a href="/K-market/product/productlist.do">2</a>
-          <a href="/K-market/product/productlist.do">3</a>
-          <a href="/K-market/product/productlist.do">4</a>
-          <a href="/K-market/product/productlist.do">5</a>
-          <a href="/K-market/product/productlist.do">6</a>
-          <a href="/K-market/product/productlist.do">7</a>
+        <c:forEach var="i" begin="${pageGroupStart}" end="${pageGroupEnd}">
+          <a href="/K-market/product/productlist.do?cate1=${cate1}&cate2=${cate2}&pg=${i}" 
+          class="${currentPage == i ? 'on':'' }">${i}</a>
+        </c:forEach>
         </span>
+        <c:if test="${pageGroupEnd < lastPageNum}">
         <span class="next">
-          <a href="/K-market/product/productlist.do">다음&nbsp;></a>
+          <a href="/K-market/product/productlist.do?cate1=${cate1}&cate2=${cate2}&pg=${pageGroupEnd + 1}">다음&nbsp;></a>
         </span>
+        </c:if>
       </div>
     </section>
 </main>

@@ -77,7 +77,9 @@
           </div>
           <div class="dis_price">
             <ins>${hitList.price}</ins>
+            <c:if test="${hitList.delivery gt 0}">
             <span class="free">${hitList.delivery}</span>
+            </c:if>
           </div>
         </a>
       </article>
@@ -101,7 +103,9 @@
           </div>
           <div class="dis_price">
             <ins class="product-row">${scoreList.price}</ins>
+            <c:if test="${scoreList.delivery eq 0}">
             <span class="free">${scoreList.delivery}</span>
+            </c:if>
           </div>
         </a>
       </article>
@@ -124,7 +128,9 @@
           </div>
           <div class="dis_price">
             <ins class="product-row">${newList.price}</ins>
+            <c:if test="${newList.delivery eq 0}">
             <span class="free">${newList.delivery}</span>
+            </c:if>
           </div>
         </a>
       </article>
@@ -148,7 +154,7 @@
           <div class="dis_price">
             <ins class="product-row">${discountList.price}</ins>
             <c:choose>
-  			  <c:when test="0 < ${discountList.delivery}">
+  			  <c:when test="${discountList.delivery gt 0}">
         		 <span class="nofree">${discountList.delivery}</span>
    			  </c:when>
    			 <c:otherwise>
