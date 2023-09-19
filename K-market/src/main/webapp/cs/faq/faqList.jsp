@@ -93,11 +93,11 @@
 		    <ul>
 		        <c:forEach var="faq" items="${faqs}">
 		                <li>
-		                	<a href="/K-market/cs/faq/faqView.do?cate1=${faq.cate1}&cate2=${faq.cate2}&faqNo=${faq.faqNo}&end=3">
+		                	<a href="/K-market/cs/faq/faqView.do?cate1=${faq.cate1}&cate2=${faq.cate2}&faqNo=${faq.faqNo}">
 		                    <span>Q.</span>${faq.title}</a>
 		               	</li>
 		        </c:forEach>
-		        <li class="more"><a href="/K-market/cs/faq/faqView.do?cate1=${faq.cate1}&end=10">더보기</a></li>
+		        <li class="more"><a href="/K-market/cs/faq/faqView.do?cate1=${faq.cate1}">더보기</a></li>
 		    </ul>
 		</c:forEach>
         </div>

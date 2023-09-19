@@ -46,7 +46,8 @@ public class SQL {
 	public static final String SELECT_PRODUCT	= "SELECT * FROM `km_product` WHERE `prodNo` = ?";
 	public static final String SELECT_PRODUCTS	= "SELECT * FROM `km_product` WHERE `cate1` = ? and `cate2` = ?";
 	public static final String SELECT_CATE2	= "SELECT * FROM `km_product_cate2` WHERE `cate2` = ?";
-	
+	public static final String SELECT_PRODUCTS	= "SELECT * FROM `km_product` WHERE `cate1` = ? and `cate2` = ? ORDER BY `prodNo` DESC LIMIT ?, 10";
+	public static final String SELECT_PRODUCTS_TOTAL_CATE = "SELECT COUNT(*) FROM `km_product` WHERE `cate1`=? AND `cate2`=?";
 	// DELETE_PRODUCT시 Review ALL Delete
 	public static final String DELETE_PRODUCT	 = "DELETE FROM `km_product` WHERE `prodNo`=?";
 	public static final String DELETE_REVIEW_ALL = "DELETE FROM `km_member_review` WHERE `prodNo`=?";
@@ -148,7 +149,7 @@ public class SQL {
 											+ "LIMIT ?,10";
 	
 	public static final String SELECT_COUNT_TOTAL_QNA = "SELECT COUNT(*) FROM `km_cs_qna` WHERE `cate1`=?";
-	
+	public static final String SELECT_QNA_CATE = "SELECT DISTINCT `cate2` FROM `km_cs_qna` WHERE `cate1` = ? ORDER BY `cate2`";
 	
 	//cart
 	public static final String INSERT_PRODUCT_CART= "INSERT INTO `km_product_cart` SET "

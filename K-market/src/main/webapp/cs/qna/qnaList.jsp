@@ -20,7 +20,9 @@
     <nav>
       <div>
         <p>
-	       	홈<span>></span>문의하기<span>></span>
+	       	홈<span>></span>
+	       		<a href="/K-market/cs/qna/qnaList.do?cate1=10" class="qnaList">문의하기</a>
+	       	<span>></span>
 	       	<c:choose>
 	       		<c:when test="${param.cate1 == '10'}">
 		    		회원
@@ -91,18 +93,18 @@
 
  		<div class="page">
        		<c:if test="${pageGroupStart > 1}">
-          		<a href="/K-market/cs/qna/qnaList.do?cate1=${cate1}&pg=${pageGroupStart - 1}" class="prev">이전</a>
+          		<a href="/K-market/cs/qna/qnaList.do?cate1=${param.cate1}&pg=${pageGroupStart - 1}" class="prev">이전</a>
 	        </c:if>
 	        <c:forEach var="i" begin="${pageGroupStart}" end="${pageGroupEnd}" step="1">
 	        	<c:set var="isOn" value="${currentPage == i}"/>
-         		<a href="/K-market/cs/qna/qnaList.do?cate1=${cate1}&pg=${i}" 
-         		class="num ${isOn ? 'on' : ''}">${i}</a>
+         		<a href="/K-market/cs/qna/qnaList.do?cate1=${param.cate1}&pg=${i}" 
+   					class="num ${isOn ? 'on' : ''}">${i}</a>
 	       </c:forEach>
 	       <c:if test="${pageGroupEnd < lastPageNum}">
-          		<a href="/K-market/cs/qna/qnaList.do?cate1=${cate1}&pg=${pageGroupEnd + 1}" class="next">다음</a>
+          		<a href="/K-market/cs/qna/qnaList.do?cate1=${param.cate1}&pg=${pageGroupEnd + 1}" class="next">다음</a>
           </c:if>
         </div>
-        <a href="/K-market/cs/qna/qnaWrite.do?cate1=${cate1}" class="btnWrite">문의하기</a>
+        <a href="/K-market/cs/qna/qnaWrite.do?cate1=${param.cate1}" class="btnWrite">문의하기</a>
       </article>
     </section>
   </div>
