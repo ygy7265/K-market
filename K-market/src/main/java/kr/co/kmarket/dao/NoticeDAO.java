@@ -45,7 +45,7 @@ public class NoticeDAO extends DBHelper{
 		}
 	} // insertNotice END
 	
-	public NoticeDTO selectNotice(String noticeNo) { // 편의를 위해서 int noticeNo 가 아닌 String 으로 설정해둠 
+	public NoticeDTO selectNotice(String noticeNo) { // 편의를 위해서 int noticeNo 가 아닌 String 으로 설정해둠
 		
 		NoticeDTO dto = new NoticeDTO();
 		
