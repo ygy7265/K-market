@@ -5,6 +5,7 @@
 	날짜 : 2023/09/14
  -->
 <%@ include file="./_header.jsp" %>
+<%@ include file="./_discount.jsp" %>
 <main id="product">
 <%@ include file="../_aside.jsp" %>  
     </aside>
@@ -19,7 +20,7 @@
         </p>
       </nav>
                     
-      <form action="#">
+      <form action="/K-market/product/productorder.do">
         <!-- 장바구니 목록 -->
         <table>
           <thead>
@@ -35,10 +36,14 @@
             </tr>
           </thead>
           <tbody>
+          <c:if test="${empty list}">
             <tr class="empty">
               <td colspan="7">장바구니에 상품이 없습니다.</td>
             </tr>
+          </c:if>
+          <c:if test="${not empty list}">
             <c:forEach var="list" items="${list}">
+            <input type="hidden" class="discountlist" value="${list.discount}"></input>
             <tr>
               <td><input type="checkbox" name=""></td>
               <td>
@@ -50,14 +55,21 @@
                   </div>
                 </article>
               </td>
-              <td>${list.count}</td>
-              <td>${list.price}</td>
-              <td>${list.discount}%</td>
-              <td>${list.point}</td>
-              <td>${list.delivery}</td>
-              <td>${list.total}</td>
+               
+              <td><fmt:formatNumber value="${list.count}" pattern="#,###"/></td>
+              <td><fmt:formatNumber value="${list.price}" pattern="#,###"/></td>
+              <td><fmt:formatNumber value="${list.discount}" pattern="#,###"/>%</td>
+              <td><fmt:formatNumber value="${list.point}" pattern="#,###"/></td>
+              <td><fmt:formatNumber value="${list.delivery}" pattern="#,###"/></td>
+              <td><fmt:formatNumber value="${list.total}" pattern="#,###"/></td>
             </tr>
+             <input type="hidden" class="listpoint" value="${list.point}"/>
+             <input type="hidden" class="listcount" value="${list.count}"/>
+             <input type="hidden" class="listprice" value="${list.price}"/>
+             <input type="hidden" class="listdelivery" value="${list.delivery}"/>
+             <input type="hidden" class="listtotal" value="${list.total}"/>
           	</c:forEach>
+          	</c:if>
           </tbody>
         </table>
         <input type="button" name="del" value="선택삭제">
@@ -68,29 +80,31 @@
           <table border="0">
             <tr>
               <td>상품수</td>
-              <td>1</td>
+              <td class="ordercount">0</td>
             </tr>
             <tr>
               <td>상품금액</td>
-              <td>27,000</td>
+              <td class="ordernodiscount">0</td>
             </tr>
             <tr>
               <td>할인금액</td>
-              <td>-1,000</td>
+              <td class="orderdiscount">0</td>
             </tr>
             <tr>
               <td>배송비</td>
-              <td>0</td>
+              <td class="orderdelivery">0</td>
             </tr>              
             <tr>
               <td>포인트</td>
-              <td>260</td>
+              <td class="orderpoint">0</td>
             </tr>
             <tr>
               <td>전체주문금액</td>
-              <td>26,000</td>
+              <td class="ordertotal">0</td>
             </tr>
+            	
           </table>
+          <input type="hidden" class="ordertotal2"/>
           <input type="submit" name="" value="주문하기">    
         </div>
       </form>

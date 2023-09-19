@@ -160,7 +160,7 @@ public class SQL {
 			+ "`total`=?, "
 			+ "`rdate`=NOW() ";
 
-	public static final String SELECT_CARTS = "SELECT a.*,b.prodName,b.descript FROM `km_product_cart` AS a JOIN `km_product` AS b ON a.prodNo = b.prodNo;";
+	public static final String SELECT_CARTS = "SELECT a.*,b.prodName,b.descript FROM `km_product_cart` AS a JOIN `km_product` AS b ON a.prodNo = b.prodNo WHERE `uid` = ?";
 	public static final String SELECT_COUNT_CART = "SELECT COUNT(*) FROM `km_product_cart`";	
 	// admin_register 
 	public static final String SELECT_CATE1S = "SELECT * FROM `km_product_cate1` ORDER BY `cate1` ASC";
