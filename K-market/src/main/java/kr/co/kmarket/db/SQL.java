@@ -59,6 +59,13 @@ public class SQL {
 												+ "`writer`=?, "
 												+ "`rdate`=NOW()";
 	
+	public static final String ADMIN_SELECT_FAQS = "SELECT * "
+													+ "FROM `km_cs_faq` "
+													+ "WHERE `cate1`=? "
+													+ "ORDER BY `faqNo` DESC "
+													+ "LIMIT ?,10";
+	
+	public static final String UPDATE_NOTICE = "UPDATE `km_cs_notice` SET `cate`=?, `title`=?, `content`=? WHERE `noticeNo`=?";
 	//Member
 	//member_Login
 	public static final String SELECT_MEMBER = "SELECT * FROM `km_member` WHERE `uid` = ? and `pass` = SHA2(?,256)";

@@ -19,6 +19,9 @@ public class NoticeDTO {
 	public void setNoticeNo(int noticeNo) {
 		this.noticeNo = noticeNo;
 	}
+	public void setNoticeNo(String noticeNo) {
+		this.noticeNo = Integer.parseInt(noticeNo);
+	}
 	public String getCate() {
 		return cate;
 	}

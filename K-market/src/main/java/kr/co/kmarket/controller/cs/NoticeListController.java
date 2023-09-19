@@ -105,8 +105,5 @@ public class NoticeListController extends HttpServlet{
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/cs/notice/noticeList.jsp");
 		dispatcher.forward(req, resp);	
 	
-	
-		
-	
 	}
 }
