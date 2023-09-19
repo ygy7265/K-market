@@ -10,14 +10,26 @@
     </nav>
     <section class="write">
       <article>
-        <form action="${ctxPath}/admin/cs/notice/modify.do" method="POST">
-        <input type="text" name="${notice.writer}" value="${notice.writer}">
+        <form action="${ctxPath}/admin/cs/notice/modify.do" method="get">
+        <input type="hidden" name="writer" value="${notice.writer}">
+        <input type="hidden" name="noticeNo" value="${notice.noticeNo}">
           <table>
             <tr>
               <td>공지유형</td>
               <td>
                 <select name="cate">
-                  <option value="${notice.cate}">${notice.cate}</option>
+                  <option value="${notice.cate}">
+	                  <c:set var="cate" value="${notice.cate}"/>
+                        <c:choose>
+                            <c:when test="${cate == 10}">회원</c:when>
+                            <c:when test="${cate == 20}">쿠폰/혜택/이벤트</c:when>
+                            <c:when test="${cate == 30}">주문/결제</c:when>
+                            <c:when test="${cate == 40}">배송</c:when>
+                            <c:when test="${cate == 50}">취소/반품/교환</c:when>
+                            <c:when test="${cate == 60}">여행/숙박/항공</c:when>
+                            <c:when test="${cate == 70}">안전거래</c:when>
+                        </c:choose>               
+                  </option>
                 </select>
               </td>
             </tr>

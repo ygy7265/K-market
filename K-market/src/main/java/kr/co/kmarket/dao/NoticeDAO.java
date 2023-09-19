@@ -115,12 +115,26 @@ public class NoticeDAO extends DBHelper{
 		return notices;
 	}
 	
-	
-	
-	
+	// 0919 admin_UpdateNotice
 	public void updateNotice(NoticeDTO dto) {
 		
-	}
+		try {
+			
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.UPDATE_NOTICE);
+			psmt.setString(1, dto.getCate());
+			psmt.setString(2, dto.getTitle());
+			psmt.setString(3, dto.getContent());
+			psmt.executeUpdate();
+			
+			close();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			logger.error("NoticeDAO updateNotice error : "+e.getMessage());
+		}
+		
+	} // updateNotice END
 	
 	public void deleteNotice(String noticeNo) {
 		
@@ -151,10 +165,5 @@ public class NoticeDAO extends DBHelper{
 		
 		return total;
 	}
-
-	
-	
-	
-	
 	
 }
