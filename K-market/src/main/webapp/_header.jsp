@@ -100,8 +100,8 @@
             </ul>
             <ul>
               <li><a href="/K-market/cs/notice/noticeList.do">공지사항</a></li>
-              <li><a href="/K-market/cs/faq/faqList.do">자주묻는질문</a></li>
-              <li><a href="/K-market/cs/qna/qnaList.do">문의하기</a></li>
+              <li><a href="/K-market/cs/faq/faqList.do?cate1=10">자주묻는질문</a></li>
+              <li><a href="/K-market/cs/qna/qnaList.do?cate1=10">문의하기</a></li>
               <li><a href="/K-market/cs/index.do">고객센터</a></li>
             </ul>
           </div>

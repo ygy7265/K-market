@@ -60,6 +60,9 @@
        	
       </ul>
     </section>
+    <div class="btnTop">
+		<span id="gotoTop"><img src="/K-market/images/btnTop.png" alt="btnTop"></span>
+	</div>
     <!-- 히트상품 영역 -->
     <section class="hit">
       <h3><span>히트상품</span></h3>

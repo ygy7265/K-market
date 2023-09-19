@@ -369,6 +369,26 @@ main > section > section {
   height: auto;
   overflow: hidden;
 }
+main > section > .btnTop {
+	display: none;
+	position: absolute;
+	bottom: 40px;
+	right: 40px;
+	width: 75px;
+	height: 75px;
+	box-shadow: 5px 5px 5px gray;
+	border-radius: 90px;
+}
+main > section > .btnTop > #gotoTop {
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+	
+}
+main > section > .btnTop > #gotoTop > img {
+	width: 75px;
+	height: 75px;
+}
 main > section > section > article {
   float: left;
   width: 25%;
