@@ -111,13 +111,14 @@ public class ProductDAO extends DBHelper {
 		return dto;
 	}
 	
-	public List<ProductDTO> selectProducts(String cate1,String cate2) {
+	public List<ProductDTO> selectProducts(String cate1,String cate2, int start) {
 		List<ProductDTO> list = new ArrayList<>();
 		conn = getConnection();
 		try {
 			psmt = conn.prepareStatement(SQL.SELECT_PRODUCTS);
 			psmt.setString(1, cate1);
 			psmt.setString(2, cate2);
+			psmt.setInt(3, start);
 			rs = psmt.executeQuery();
 			
 			while(rs.next()) {
@@ -553,6 +554,29 @@ public class ProductDAO extends DBHelper {
 			logger.error("ProductDAO() Product List Error = "+e.getMessage());
 		}
 		return list;
+	}
+	
+	public int selectProductCateTotal(String cate1, String cate2) {
+		
+		int total = 0;
+		
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.SELECT_PRODUCTS_TOTAL_CATE);
+			psmt.setString(1, cate1);
+			psmt.setString(2, cate2);
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				total = rs.getInt(1);
+			}
+			
+			close();
+		} catch (Exception e) {
+			logger.error("selectProductCateTotal error : "+e.getMessage());
+		}
+		
+		return total;
 	}
 	
 }

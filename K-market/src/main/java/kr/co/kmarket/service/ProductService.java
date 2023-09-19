@@ -35,8 +35,8 @@ public enum ProductService {
 	public ProductDTO selectProduct(int prodNo) {
 		return dao.selectProduct(prodNo);
 	}
-	public List<ProductDTO> selectProducts(String cate1,String cate2) {
-		return dao.selectProducts(cate1,cate2);
+	public List<ProductDTO> selectProducts(String cate1,String cate2, int start) {
+		return dao.selectProducts(cate1,cate2,start);
 	}
 	public void updateProduct(ProductDTO dto) {
 		dao.updateProduct(dto);
@@ -72,6 +72,9 @@ public enum ProductService {
 	}
 	public List<ProductDTO> selectProductsTotal(int start) {
 		return dao.selectProductsTotal(start);
+	}
+	public int selectProductCateTotal(String cate1, String cate2) {
+		return dao.selectProductCateTotal(cate1, cate2);
 	}
 	
 	// admin_product_file 2023/09/15
@@ -114,4 +117,10 @@ public enum ProductService {
 		}
 		return mr;
 	} // uploadFile END
+	
+	// 페이지 시작번호
+	public int getPageStartNum(int total, int currentPage) {
+		int start = (currentPage - 1) * 10;
+		return total - start;
+	}
 }
