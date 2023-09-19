@@ -34,30 +34,24 @@ public class QnaWriteController extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String cate1 = req.getParameter("cate1");
 		String cate2 = req.getParameter("cate2");
-		String array = req.getParameter("array");
-		logger.debug("array : "+array);
+		String catelist = req.getParameter("catelist");
+		logger.debug("catelist qna: "+catelist);
 		
-		do{
-			
-			List<QnaDTO> cates = service.selectQnasCate(cate1);
-			req.setAttribute("cates", cates);
-			
-
+		if(catelist == null) {
+		
 			RequestDispatcher dispatcher = req.getRequestDispatcher("/cs/qna/qnaWrite.jsp");
 			dispatcher.forward(req, resp);	
-			
-		}while (array != null && !array.isEmpty());
-			String[] jsondatavalue = array.split(",");
-			
+		}
+		else {
+			//String[] jsondatavalue = array.split(",");
+			List<QnaDTO> cates = service.selectQnasCate(catelist);
+			logger.debug("cates qna: "+catelist);
 		    MapUtil map = new MapUtil();
-		    int size = jsondatavalue.length;
-		    for(int i=0; i<size; i++) {
-		        System.out.println("JSP에서 받은 MSG : "+map.getCateName(jsondatavalue[i]));
-		    }
 
 		    JsonArray jsonArray = new JsonArray();
-		    for (String value : jsondatavalue) {
-		        String cateName = map.getCateName(value);
+		    for (QnaDTO value : cates) {
+		        String cateName = map.getCateName(value.getCate2());
+		        logger.debug("cateName qna: "+cateName);
 		        if (cateName != null) {
 		            jsonArray.add(new JsonPrimitive(cateName));
 		        };
@@ -65,14 +59,13 @@ public class QnaWriteController extends HttpServlet{
 
 		    resp.setContentType("application/json;charset=UTF-8");
 		    JsonObject json = new JsonObject();
+		    
 		    json.add("result", jsonArray);
-
-		    // JSON 응답을 클라이언트에게 출력
+		    logger.debug("json qna: "+json);
 		    resp.getWriter().print(json);
-
 		    // 반복문을 언제 종료할 것인지 결정하는 로직 추가 필요
 		};
-		
+	};
 		
 	
 	

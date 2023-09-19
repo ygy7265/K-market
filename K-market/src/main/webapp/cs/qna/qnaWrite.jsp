@@ -2,7 +2,7 @@
 <%@ include file="../_header.jsp" %>
 	<!-- 
 		날짜 : 2023/09/16
-		이름 : 이현정
+		이름 : 윤경엽, 이현정
 		내용 : CS_QNA 기능구현
 	-->
 <script>
@@ -34,45 +34,60 @@
 	}*/
 	var list = document.querySelector(".write");
 	$(function(){
-		
-		let cate1 = document.getElementById("cate1");
-		let cate2 = document.getElementById("cate2");
-		
-		const jsondata1 = {
+			
+			let cate1 = document.getElementById("cate1");
+			let cate2 = document.getElementById("cate2");
+			
+			const jsondata1 = {
 				jsondatavalue: [] // cate2 값을 저장할 배열
-				};
-
-				// cate2 값을 배열에 추가
+			};
+	
+					
+	
+			// jsondata 객체를 출력하여 확인
+			console.log(jsondata1);
+			console.log(typeof JSON.stringify(jsondata1));
+			const array =  [];
+			<c:forEach var="cate" items="${cates}">
+			  array.push("${cate.cate2}");
+			</c:forEach>;
+			console.log(array);
+			console.log(JSON.stringify(array));
+			
+			$('#cate1').change(function(){
 				
-
-				// jsondata 객체를 출력하여 확인
-				console.log(jsondata1);
-				console.log(typeof JSON.stringify(jsondata1));
-				const array =  [];
-				<c:forEach var="cate" items="${cates}">
-				  array.push("${cate.cate2}");
-				</c:forEach>;
-				console.log(array);
-				console.log(JSON.stringify(array));
-
-			$.ajax({
-			url:'/K-market/cs/qna/qnaWrite.do',
-			type:'GET',
-			traditional : true,
-			data: {array:array},
-			contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-			dataType:'json',
-			success:function(data){
-				for (var i = 0; i < array.length; i++) {
-					$(".catename").eq(i).text(data.result[i]);
-					console.log("data = "+ data.result[i]);
+				var selectcate = $(this).val();
+				$('#cate2').empty();
+				console.log("cate1 = " + selectcate);
+				
+				$.ajax({
+					url:'/K-market/cs/qna/qnaWrite.do',
+					type:'GET',
+					traditional : true,
+					data: {"catelist":selectcate},
+					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+					dataType:'json',
+					success:function(data){
+					console.log(data.result);
+					
+						var selectElement = $("#cate2"); // jQuery를 사용하여 <select> 요소를 선택
+		
+		                for (var i = 0; i < data.result.length; i++) {
+		                    var optionData = data.result[i];
+		                    var optionValue = optionData; // 옵션의 값
+		                    var optionText = optionData; // 옵션의 텍스트
+		
+		                    // <option> 요소를 생성하고 속성을 설정하여 추가
+		                    $("<option>")
+		                        .text(optionData) // 옵션의 텍스트 설정
+		                        .appendTo(selectElement); // <select> 요소에 옵션 추가
+		                    	console.log(data.result[0]);
+		                }
+					
 				}
-				
-				
-			}
-		});
-
-	});
+			});// ajax end
+		});// #cate1.change end
+	});// function() end
 	
 	
 	
@@ -105,10 +120,6 @@
                 </select>
                  <select id="cate2"name="cate2">
                  <option value="0">선택</option>
-                 <c:forEach var="cate" items="${cates}">
-	                  <option class="catename"></option>
-	                  <option class="catename"></option>
-                  </c:forEach>
                 </select>
               </td>
             </tr>

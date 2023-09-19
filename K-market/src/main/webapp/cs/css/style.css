@@ -81,6 +81,9 @@ header > .logo > div > a img {
     padding-top: 10px;
     box-sizing: border-box;
 }
+#cs > div > section > article > a {
+    margin-top: 386px; 
+}
 #cs > .main > section > h1 {
     font-size: 22px;
     font-weight: bold;
