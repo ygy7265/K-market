@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 
 import kr.co.kmarket.db.DBHelper;
 import kr.co.kmarket.db.SQL;
+import kr.co.kmarket.dto.FaqDTO;
 import kr.co.kmarket.dto.NoticeDTO;
 import kr.co.kmarket.dto.QnaDTO;
 
@@ -165,6 +166,34 @@ public class QnaDAO extends DBHelper{
 		return total;
 	
 	}
+	
+	
+	public List<QnaDTO> selectQnasCate(String cate) {
+		
+		List<QnaDTO> cates = new ArrayList<>();
+		
+			try {
+				conn = getConnection();
+				psmt = conn.prepareStatement(SQL.SELECT_QNA_CATE);
+				psmt.setString(1, cate);
+				rs = psmt.executeQuery();
+				
+				while(rs.next()) {
+					
+					QnaDTO dto = new QnaDTO();
+					dto.setCate2(rs.getString(1));
+					cates.add(dto);
+				}
+				
+				logger.debug("List<QnaDTO> selectQnasCate cates : "+cates);
+				close();
+				 
+			}catch(Exception e) {
+				logger.error("List<QnaDTO> selectQnasCate error : "+e.getMessage());
+			}
+			return cates;
+	}
+	
 	
 
 }

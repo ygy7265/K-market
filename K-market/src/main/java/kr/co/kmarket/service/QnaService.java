@@ -43,5 +43,8 @@ public enum QnaService {
 		return dao.selectCountTotal(cate);
 	}
 	
+	public List<QnaDTO> selectQnasCate(String cate) {
+		return dao.selectQnasCate(cate);
+	}
 
 }
