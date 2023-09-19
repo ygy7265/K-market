@@ -48,8 +48,8 @@ public enum ProductService {
 	public List<Cate1DTO> selectCate1s() {
 		return dao.selectCate1s();
 	}
-	public List<Cate2DTO> selectCate2s() {
-		return dao.selectCate2s();
+	public List<Cate2DTO> selectCate2s(String cate1) {
+		return dao.selectCate2s(cate1);
 	}
 	public int selectProductCountTotal() {
 		return dao.selectProductCountTotal();

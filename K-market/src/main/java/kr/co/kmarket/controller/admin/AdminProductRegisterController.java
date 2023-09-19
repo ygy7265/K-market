@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import com.oreilly.servlet.MultipartRequest;
 
 import kr.co.kmarket.dto.Cate1DTO;
@@ -30,18 +32,40 @@ public class AdminProductRegisterController extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	
+		
+		String jsondata  = req.getParameter("jsondata");
+		
+		
+		
+		if(jsondata == null) {
 		List<Cate1DTO> cate1s = pService.selectCate1s();
-		List<Cate2DTO> cate2s = pService.selectCate2s();
+		
 		
 		logger.debug("cate_list() : " + cate1s);
-		logger.debug("cate_list() : " + cate2s);
 		
 		req.setAttribute("cate1s", cate1s);
-		req.setAttribute("cate2s", cate2s);
-		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/admin/product/register.jsp");
-		dispatcher.forward(req, resp);	
+		dispatcher.forward(req, resp);
+		
+		}
+		else {
+			List<Cate2DTO> cate2s = pService.selectCate2s(jsondata);
+			logger.info("json = " + cate2s);
+		    System.out.println("json2"+cate2s);
+		    JsonArray jsonArray = new JsonArray();
+		    for (Cate2DTO cate2 : cate2s) {
+		        JsonObject cate2Json = new JsonObject();
+		        cate2Json.addProperty("propertyName1", cate2.getC2Name()); // 예: cate2 객체의 속성 이름1
+		        jsonArray.add(cate2Json);
+		    }
+		    resp.setContentType("text/html;charset=UTF-8"); 
+		    JsonObject json = new JsonObject();
+		    json.add("jsonArray", jsonArray);
+		    // JSON 응답을 클라이언트에게 출력
+		    resp.getWriter().print(json);
+		}
+		
+	
 	}
 	
 	@Override

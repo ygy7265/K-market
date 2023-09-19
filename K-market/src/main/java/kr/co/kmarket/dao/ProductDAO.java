@@ -286,14 +286,15 @@ public class ProductDAO extends DBHelper {
 		return cate1s;
 	} // selectCate1s() END
 	
-	public List<Cate2DTO> selectCate2s() {
+	public List<Cate2DTO> selectCate2s(String cate1) {
 		List<Cate2DTO> cate2s = new ArrayList<>();
 
 		try {
 		
 			conn = getConnection();
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery(SQL.SELECT_CATE2S);
+			psmt = conn.prepareStatement(SQL.SELECT_CATE2S);
+			psmt.setString(1, cate1);
+			rs = psmt.executeQuery();
 			
 			while(rs.next()) {
 				Cate2DTO dto = new Cate2DTO();
@@ -555,6 +556,7 @@ public class ProductDAO extends DBHelper {
 		}
 		return list;
 	}
+
 	
 	public int selectProductCateTotal(String cate1, String cate2) {
 		
