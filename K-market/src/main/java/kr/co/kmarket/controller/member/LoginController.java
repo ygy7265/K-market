@@ -23,6 +23,7 @@ public class LoginController extends HttpServlet{
 	private static final long serialVersionUID = 8754969193095230764L;
 	MemberService service = MemberService.INSTANCE;
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
+		@SuppressWarnings("unused")
 		@Override
 		protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 			String success = req.getParameter("success");
@@ -41,6 +42,7 @@ public class LoginController extends HttpServlet{
 			}
 			// 로그인 여부
 			String sessid = (String) session.getAttribute("sessid");
+			
 			
 			if(sessid != null) {
 				resp.sendRedirect("/K-market/");

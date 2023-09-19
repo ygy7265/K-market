@@ -19,8 +19,8 @@ public enum CartService {
 		return dao.selectCart(cartNo);
 	}
 	
-	public List<CartDTO> selectCarts() {
-		return dao.selectCarts();
+	public List<CartDTO> selectCarts(String uid) {
+		return dao.selectCarts(uid);
 	}
 	
 	public void updateCart(CartDTO dto) {

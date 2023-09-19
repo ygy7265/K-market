@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <!--
 	이름 : 윤경엽
 	내용 : 상품별리스트 출력
@@ -76,7 +76,7 @@
             <span>${hitList.discount}%</span>
           </div>
           <div class="dis_price">
-            <ins>${hitList.price}</ins>
+            <ins class="product-row">${hitList.price}</ins>
             <span class="free">${hitList.delivery}</span>
           </div>
         </a>

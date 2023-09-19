@@ -1,5 +1,34 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./_header.jsp" %>
+<%@ include file="./_discount.jsp" %>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="/K-market/js/zipcode.js"></script>
+<script>
+$(function(){
+	const total2 = $('.ordertotal2').val();
+	console.log('total2 = '+ total2);
+	const nowpoint = ${user.point};
+	$('.nowpoint').text(nowpoint.toLocaleString());
+	
+	
+	$('#pointbtn').click(function(e){
+		e.preventDefault();
+		console.log(${user.point});
+		const point = $('input[name=point]').val();
+		if(point >= 5000 || point == 0){
+			const pointDiscount = total2 - point;
+			console.log(total2);
+			console.log(pointDiscount);
+			const pointnus = nowpoint - point;
+			console.log(pointnus);
+			$('.ordertotal').text(pointDiscount.toLocaleString());
+			$('.nowpoint').text(pointnus.toLocaleString());
+		}else{
+			alert("5000포인트부터 사용가능합니다");
+		}
+	})
+})
+</script>
 <main id="product">
     <aside>
         <ul class="category">
@@ -66,87 +95,68 @@
             </tr>
           </thead>
           <tbody>
+          
             <tr class="empty">
               <td colspan="7">장바구니에 상품이 없습니다.</td>
             </tr>
+            <c:forEach var="list" items="${list}">
+            <input type="hidden" class="discountlist" value="${list.discount}"></input>
             <tr>
               <td>
                 <article>
                   <a href="/K-market/product/"><img src="https://via.placeholder.com/80x80" alt=""></a>
                   <div>
-                    <h2><a href="/K-market/product/">상품명</a></h2>
-                    <p>상품설명</p>
+                    <h2><a href="/K-market/product/">${list.pName}</a></h2>
+                    <p>${list.descript}</p>
                   </div>
                 </article>
               </td>
-              <td>1</td>
-              <td>27,000</td>
-              <td>무료배송</td>
-              <td>27,000</td>
+              <td><fmt:formatNumber value="${list.count}" pattern="#,###"/></td>
+              <td><fmt:formatNumber value="${list.price}" pattern="#,###"/></td>
+              <td><fmt:formatNumber value="${list.delivery}" pattern="#,###"/></td>
+              <td><fmt:formatNumber value="${list.total}" pattern="#,###"/></td>
             </tr>
-            <tr>
-              <td>
-                <article>
-                  <a href="/K-market/product/"><img src="https://via.placeholder.com/80x80" alt=""></a>
-                  <div>
-                    <h2><a href="/K-market/product/">상품명</a></h2>
-                    <p>상품설명</p>
-                  </div>
-                </article>
-              </td>
-              <td>1</td>
-              <td>27,000</td>
-              <td>무료배송</td>
-              <td>27,000</td>
-            </tr>
-            <tr>
-              <td>
-                <article>
-                  <a href="/K-market/product/"><img src="https://via.placeholder.com/80x80" alt=""></a>
-                  <div>
-                    <h2><a href="/K-market/product/">상품명</a></h2>
-                    <p>상품설명</p>
-                  </div>
-                </article>
-              </td>
-              <td>1</td>
-              <td>27,000</td>
-              <td>무료배송</td>
-              <td>27,000</td>
-            </tr>                    
+             <input type="hidden" class="listpoint" value="${list.point}"/>
+             <input type="hidden" class="listcount" value="${list.count}"/>
+             <input type="hidden" class="listprice" value="${list.price}"/>
+             <input type="hidden" class="listdelivery" value="${list.delivery}"/>
+             <input type="hidden" class="listtotal" value="${list.total}"/>
+             
+            </c:forEach>
           </tbody>
         </table>                 
         
         <!-- 최종 결제 정보 -->
-        <div class="final">
-          <h2>최종결제 정보</h2>
+         <div class="final">
+          <h2>전체합계</h2>
           <table border="0">
             <tr>
-              <td>총</td>
-              <td>2 건</td>
+              <td>상품수</td>
+              <td class="ordercount">0</td>
             </tr>
             <tr>
               <td>상품금액</td>
-              <td>27,000</td>
+              <td class="ordernodiscount">0</td>
             </tr>
             <tr>
               <td>할인금액</td>
-              <td>-1,000</td>
+              <td class="orderdiscount">0</td>
             </tr>
             <tr>
               <td>배송비</td>
-              <td>0</td>
-            </tr>
+              <td class="orderdelivery">0</td>
+            </tr>              
             <tr>
-              <td>포인트 할인</td>
-              <td>-1000</td>
+              <td>포인트</td>
+              <td class="orderpoint">0</td>
             </tr>
             <tr>
               <td>전체주문금액</td>
-              <td>25,000</td>
-            </tr>                            
+              <td class="ordertotal">0</td>
+            </tr>                           
           </table>
-          <input type="button" name="" value="결제하기">              
+          <input type="button" name="" value="결제하기">             
+          <input type="hidden" class="ordertotal2" value="order">             
         </div>
           
         <!-- 배송정보 -->
@@ -155,32 +165,32 @@
           <table>
             <tr>
               <td>주문자</td>
-              <td><input type="text" name="orderer" /></td>
+              <td><input type="text" name="orderer" value="${user.name}"/></td>
             </tr>
             <tr>
               <td>휴대폰</td>
               <td>
-                <input type="text" name="hp" />
+                <input type="text" name="hp" value="${user.hp}"/>
                 <span>- 포함 입력</span>
               </td>
             </tr>
             <tr>
               <td>우편번호</td>
               <td>
-                <input type="text" name="zip"/>
-                <input type="button" value="검색"/>
+                <input type="text" name="km_zip" value="${user.zip}" />
+                <input type="button" value="검색" onclick="zipcode()"/>
               </td>
             </tr>
             <tr>
               <td>기본주소</td>
               <td>
-                <input type="text" name="addr1"/>
+                <input type="text" name="km_addr1" value="${user.addr2}"/>
               </td>
             </tr>
             <tr>
               <td>상세주소</td>
               <td>
-                <input type="text" name="addr2"/>
+                <input type="text" name="km_addr2" value="${user.addr1}"/>
               </td>
             </tr>
           </table>
@@ -191,10 +201,10 @@
           <h1>할인정보</h1>
 
           <div>
-            <p>현재 포인트 : <span>7200</span>점</p>
+            <p>현재 포인트 : <span class="nowpoint">/</span>점</p>
             <label>
-                <input type="text" name="point" />점
-                <input type="button" value="적용"/>
+                <input type="text" name="point">점
+                <input type="button" id="pointbtn" value="적용"/>
             </label>
             <span>포인트 5,000점 이상이면 현금처럼 사용 가능합니다.</span>
           </div>

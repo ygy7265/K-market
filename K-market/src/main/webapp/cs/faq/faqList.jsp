@@ -2,59 +2,10 @@
 <%@ include file="../_header.jsp" %>
 <script>
 
-	var list = document.querySelector(".list");
-	/* var cate2Name = list.querySelectorAll("h3");
-	
-	for (var i = 0; i < cate2Name.length; i++) {
-	    var cate2 = cate2Name[i].textContent; // h3 요소의 텍스트 값을 가져옴
-	
-	    // cate2 값을 원하는 방식으로 변경
-	    switch (cate2) {
-	        case "1010":
-	        	cate2Name[i].textContent = "회원가입";
-	            break;
-	        case "1011":
-	        	cate2Name[i].textContent = "탈퇴";
-	            break;
-	        case "1012":
-	        	cate2Name[i].textContent = "회원정보";
-	            break;
-	        case "1013":
-	        	cate2Name[i].textContent = "로그인";
-	            break;
-	        // 다른 cate2 값에 대한 변경 로직 추가
-	    }
-	} */
-	
-	
-		
-		// 서버 결과 가져오기
-		
-
-		// 콘솔에 출력
-		
-		
-		// 서버에서 데이터를 가져오는 함수
-		
 		$(function(){
-		/* 	$.ajax({
-			    url: '/K-market/cs/faq/faqList.do',
-			    type: 'GET',
-			    data: { 'cate': '1010' },
-			    dataType: 'json',
-			    success: function (data) {
-			        // 서버에서 받은 JSON 응답을 파싱하여 원하는 데이터 추출
-			        var result = data.result;
-			        
-			    },
-			 
-			}); */
 			const jsondata1 = {
 					jsondatavalue: [] // cate2 값을 저장할 배열
 					};
-
-					// cate2 값을 배열에 추가
-					
 
 					// jsondata 객체를 출력하여 확인
 					console.log(jsondata1);
@@ -65,7 +16,6 @@
 					</c:forEach>;
 					console.log(typeof array);
 					console.log(typeof JSON.stringify(array));
-
 			$.ajax({
 				url:'/K-market/cs/faq/faqList.do',
 				type:'POST',
@@ -78,8 +28,6 @@
 						$(".catename").eq(i).text(data.result[i]);
 						console.log("data = "+ data.result[i]);
 					}
-					
-					
 				}
 			});
 		});
