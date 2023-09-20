@@ -53,18 +53,17 @@ $(function(){
 				        var optionData = data.jsonArray[i];
 				        var optionValue = optionData.cate2; // 옵션의 값
 				        var optionText = optionData.c2Name; // 옵션의 텍스트
-
+						console.log(optionData.propertycate1);
 				        // <option> 요소를 생성하고 속성을 설정하여 추가
 				        $("<option>")
 				            .text(optionData.propertyName1) // 옵션의 텍스트 설정
+				            .val(optionData.propertycate1)
 				            .appendTo(selectElement); // <select> 요소에 옵션 추가
 				        console.log(data.jsonArray[0].propertyName1);
 				    }
 				}
 		});
 	})
-	
-	
 	 
 });
 
@@ -104,7 +103,7 @@ $(function(){
                             <td>2차 분류</td>
                             <td>
 				                <select name="cate2" id="category2">
-				                        <option value="${cate2s.cate2}">${cate2s.c2Name}</option>
+				                        <option value="현정이 바보">${cate2s.c2Name}</option>
 				                </select>
                             </td>
                         </tr>
