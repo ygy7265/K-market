@@ -102,7 +102,8 @@ public class QnaWriteController extends HttpServlet{
 		
 		if(result > 0) {
 			//[memo 업데이트 필요] 목록에서 본인이 작성한 글 view 로 변경하기 (09/17/23)
-			resp.sendRedirect("/K-market/cs/qna/qnaView.do?cate1="+Base64.getEncoder().encodeToString(cate1.getBytes())+"&cate2="+Base64.getEncoder().encodeToString(cate2.getBytes())+"&success=200");
+			//resp.sendRedirect("/K-market/cs/qna/qnaView.do?cate1="+Base64.getEncoder().encodeToString(cate1.getBytes())+"&cate2="+Base64.getEncoder().encodeToString(cate2.getBytes())+"&success=200");
+			resp.sendRedirect("/K-market/cs/qna/qnaList.do?cate1="+cate1+"&success=200");
 		}else {
 			//[memo 업데이트 필요] redirect 1) 로그인 O && 어떠한 오류 발생으로 글 작성 실패시 보고 있던 글 목록 페이지로 이동 (09/19/23)
 			resp.sendRedirect("/K-market/member/login.do?success=102");

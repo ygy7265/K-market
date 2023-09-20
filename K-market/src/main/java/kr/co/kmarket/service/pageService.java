@@ -28,18 +28,18 @@ public enum pageService {
     private int pageGroupEnd = 0;
     private int pageStartNum = 0;
 
-    // 페이지 시작번호 계산
-    public int getPageStart(int total) {
-        pageStartNum = total - start;
-        return pageStartNum;
-    }
-
-    // 현재 페이지 계산
+    // 현재 페이지 계산_pg를 int로 변경하는 작업
     public int setCurrentPage(String pg) {
         if (pg != null) {
             currentPage = Integer.parseInt(pg);
         }
         return currentPage;
+    }
+    
+    // Limit 시작값 계산
+    public int setStart(int currentPage) {
+        start = (currentPage - 1) * 10;
+        return start;
     }
 
 
@@ -63,13 +63,13 @@ public enum pageService {
 	        pageGroupEnd = lastPageNum;
 	    }
 
-        return new int[]{pageGroupCurrent, pageGroupEnd};
+        return new int[]{pageGroupStart, pageGroupEnd};
     }
     
-    // Limit 시작값 계산
-    public int setStart(int currentPage) {
-        start = (currentPage - 1) * 10;
-        return start;
+    // 페이지 시작번호 계산
+    public int getPageStart(int total) {
+        pageStartNum = total - start;
+        return pageStartNum;
     }
 
 	

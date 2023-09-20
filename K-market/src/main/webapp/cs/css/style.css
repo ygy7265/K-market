@@ -166,6 +166,26 @@ header > .logo > div > a img {
     margin-top: 10px;
     color: #0078ff;
 }
+/*문의답변*/
+#cs > div > section > article > section > h3 {
+	font-size: 15px;
+	font-weight:bold;
+	margin : 12px 0; 
+}
+#cs > div > section > article > section > article{
+	position: absolute;
+}
+#cs > div > section > article > section > article > textarea {
+	float: left;
+	width: 930px;
+	resize: none; 
+	border: none;
+	outline: none;
+	padding-top: 13px;
+	border-bottom: 1px solid #e9e9e9;
+	border-top: 1px solid #e9e9e9;
+}
+
 #cs > .main > .tel {overflow: hidden;}
 #cs > .main > .tel > article {
     float: left;
@@ -790,7 +810,7 @@ footer{
 #cs > .qna > .view > article > .content {
   width: 100%;
   height: 100%;        
-  border-bottom: 1px solid #e9e9e9;
+  border-bottom: 3px solid #e9e9e9;
   padding: 26px;
   box-sizing: border-box;
 }
