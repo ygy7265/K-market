@@ -114,7 +114,7 @@ public class SQL {
 	// member_Admin
 	public static final String SELECT_MEMBERS_TOTAL = "SELECT * FROM `km_member`ORDER BY `rdate` DESC LIMIT 0,10";
 	
-	
+	/**********CS************/
 	// cs_notice
 	public static final String SELECT_NOTICE = "SELECT * FROM `km_cs_notice` WHERE `noticeNo`=?";
 	public static final String SELECT_NOTICES = "SELECT * "
@@ -124,6 +124,10 @@ public class SQL {
 												+ "LIMIT ?,10";
 	public static final String SELECT_NOTICES_FOR_CATE = "SELECT * FROM `km_cs_notice` WHERE `cate`=?";
 	public static final String SELECT_COUNT_TOTAL_NOTICE = "SELECT COUNT(*) FROM `km_cs_notice` WHERE ISNULL(cate = ?) OR cate=?";
+	public static final String SELECT_NOTICES_LATESTS = "SELECT `cate2`, `title`, `rdate` "
+														+ "FROM `km_cs_notice` "
+														+ "ORDER BY `noticeNo` DESC ";
+			
 	
 	// cs_faq
 	public static final String SELECT_FAQ = "SELECT * FROM `km_cs_faq` WHERE `faqNo`=?";
@@ -156,6 +160,9 @@ public class SQL {
 	
 	public static final String SELECT_COUNT_TOTAL_QNA = "SELECT COUNT(*) FROM `km_cs_qna` WHERE `cate1`=? AND `qnaNo`>=566";
 	public static final String SELECT_QNA_CATE = "SELECT DISTINCT `cate2` FROM `km_cs_qna` WHERE `cate1` = ? ORDER BY `cate2`";
+	
+	/**************************/
+	
 	
 	//cart
 	public static final String INSERT_PRODUCT_CART= "INSERT INTO `km_product_cart` SET "

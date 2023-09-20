@@ -21,7 +21,7 @@
 				<nav>
 					<h2 class="title">[${dto.cate2}]${dto.title}</h2>
 					<p>
-						<span>${dto.writer}</span> 
+						<span><c:out value="${fn:substring(dto.writer, 0, fn:length(dto.writer) - 3)}"/>***</span>
 						<span>${dto.rdate}</span>
 					</p>
 				</nav>

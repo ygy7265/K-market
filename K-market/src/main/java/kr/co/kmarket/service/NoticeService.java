@@ -1,11 +1,13 @@
 package kr.co.kmarket.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import kr.co.kmarket.dao.NoticeDAO;
+import kr.co.kmarket.db.SQL;
 import kr.co.kmarket.dto.NoticeDTO;
 
 public enum NoticeService {
@@ -44,7 +46,9 @@ public enum NoticeService {
 		return dao.selectCountTotal(cate);
 	}
 	
-
+	public List<NoticeDTO> selectLatests(int size) {
+		return dao.selectLatests(size);
+	}
 	
 	
 	
