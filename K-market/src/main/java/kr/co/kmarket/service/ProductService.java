@@ -113,7 +113,7 @@ public enum ProductService {
 		try {
 			mr = new MultipartRequest(req, path, maxsize, "UTF-8", new DefaultFileRenamePolicy());
 		} catch (IOException e) {
-			logger.error("uploadFile erro : " + e.getMessage());
+			logger.error("uploadFile error : " + e.getMessage());
 		}
 		return mr;
 	} // uploadFile END

@@ -34,6 +34,17 @@ public class ProductDTO {
 	private String etc4;
 	private String etc5;
 	
+	// 추가 
+	private String path;
+	
+	public String getPath() {
+		return path;
+	}
+	public void setPath(String path) {
+		this.path = path;
+	}
+	
+	
 	public int getProdNo() {
 		return prodNo;
 	}
