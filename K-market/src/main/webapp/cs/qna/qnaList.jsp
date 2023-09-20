@@ -13,7 +13,6 @@
 	}else if(success == 200){
 		alert('성공적으로 글이 등록 되었습니다.');
 	}
-
 </script>
 <section id="cs">
   <div class="qna">
@@ -85,8 +84,9 @@
         <c:forEach var="qna" items="${qnas}">
           <tr>
             <td><a href="/K-market/cs/qna/qnaView.do?cate1=${qna.cate1}&cate2=${qna.cate2}&qnaNo=${qna.qnaNo}">[${qna.cate2}] ${qna.title}</a></td>
-            <td>${qna.writer}</td>
-            <td>${qna.formatDate()}</td>
+         	<td>답변완료</td>
+         	<td><c:out value="${fn:substring(qna.writer, 0, fn:length(qna.writer) - 3)}"/>***</td>
+			<td>${qna.formatDate()}</td>
           </tr>
 		</c:forEach>
         </table>

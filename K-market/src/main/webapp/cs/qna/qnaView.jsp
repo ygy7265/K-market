@@ -19,7 +19,7 @@
 			<jsp:include page="../_asideQna.jsp" />
 			<article>
 				<nav>
-					<h2 class="title">[가입]${dto.title }</h2>
+					<h2 class="title">[${dto.cate2}]${dto.title}</h2>
 					<p>
 						<span>${dto.writer}</span> 
 						<span>${dto.rdate}</span>
@@ -37,8 +37,19 @@
 					</p>
 				</div>
 				<a href="/K-market/cs/qna/qnaList.do?cate1=${dto.cate1}" class="btnList">목록보기</a>
+				<!-- 댓글리스트 -->
+			    <section class="commentList">
+			        <h3>답변목록</h3>
+			        <article class="comment">
+							<textarea class="content" name="content" readonly>답변입니다</textarea>
+			        </article>
+			        <c:if test="${comments.isEmpty()}">
+			        <p class="empty">등록된 댓글이 없습니다.</p>
+			        </c:if>
+			    </section>
 			</article>
-		</section>
+	
+	</section>
 	</div>
 </section>
 <%@ include file="../../_footer.jsp"%>

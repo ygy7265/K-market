@@ -147,27 +147,27 @@ public class SQL {
 											+ "`rdate`=NOW(), "
 											+ "`ip`=? ";
 	
-	public static final String SELECT_QNA = "SELECT * FROM `km_cs_qna` WHERE `qnaNo`=?";
+	public static final String SELECT_QNA = "SELECT * FROM `km_cs_qna` WHERE `qnaNo`=? AND `qnaNo`>=566";
 	public static final String SELECT_QNAS = "SELECT * "
 											+ "FROM `km_cs_qna` "
-											+ "WHERE `cate1`=? "
+											+ "WHERE `cate1`=? AND `qnaNo`>=566 "
 											+ "ORDER BY `qnaNo` DESC "
 											+ "LIMIT ?,10";
 	
-	public static final String SELECT_COUNT_TOTAL_QNA = "SELECT COUNT(*) FROM `km_cs_qna` WHERE `cate1`=?";
+	public static final String SELECT_COUNT_TOTAL_QNA = "SELECT COUNT(*) FROM `km_cs_qna` WHERE `cate1`=? AND `qnaNo`>=566";
 	public static final String SELECT_QNA_CATE = "SELECT DISTINCT `cate2` FROM `km_cs_qna` WHERE `cate1` = ? ORDER BY `cate2`";
 	
 	//cart
 	public static final String INSERT_PRODUCT_CART= "INSERT INTO `km_product_cart` SET "
-			+ "`uid`=?, "
-			+ "`prodNo`=?, "
-			+ "`count`=?, "
-			+ "`price`=?, "
-			+ "`discount`=?, "
-			+ "`point`=?, "
-			+ "`delivery`=?, "
-			+ "`total`=?, "
-			+ "`rdate`=NOW() ";
+													+ "`uid`=?, "
+													+ "`prodNo`=?, "
+													+ "`count`=?, "
+													+ "`price`=?, "
+													+ "`discount`=?, "
+													+ "`point`=?, "
+													+ "`delivery`=?, "
+													+ "`total`=?, "
+													+ "`rdate`=NOW() ";
 
 	public static final String SELECT_CARTS = "SELECT a.*,b.prodName,b.descript FROM `km_product_cart` AS a JOIN `km_product` AS b ON a.prodNo = b.prodNo WHERE `uid` = ?";
 	public static final String SELECT_COUNT_CART = "SELECT COUNT(*) FROM `km_product_cart`";	

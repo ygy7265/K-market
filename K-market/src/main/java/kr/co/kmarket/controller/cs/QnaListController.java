@@ -80,6 +80,7 @@ public class QnaListController extends HttpServlet{
 		req.setAttribute("currentPage", currentPage);
 		req.setAttribute("total", total);
 		req.setAttribute("lastPageNum", lastPageNum);
+		req.setAttribute("pageGroupCurrent", pageGroupCurrent);
 		req.setAttribute("pageGroupStart", pageGroupCurrent[0]);
 		req.setAttribute("pageGroupEnd", pageGroupCurrent[1]);
 		req.setAttribute("pageStartNum", pageStartNum);
