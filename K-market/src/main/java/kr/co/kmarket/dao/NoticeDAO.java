@@ -140,6 +140,7 @@ public class NoticeDAO extends DBHelper{
 		
 	}
 	
+	// 추가 
 	public int selectCountTotal(String cate) {
 		
 		int total = 0;
@@ -165,5 +166,39 @@ public class NoticeDAO extends DBHelper{
 		
 		return total;
 	}
+	
+	public List<NoticeDTO> selectLatests(int size) {
+		
+		List<NoticeDTO> latests = new ArrayList<>();
+		
+		try {
+			
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.SELECT_NOTICES_LATESTS);
+			psmt.setInt(1, size);
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				NoticeDTO dto = new NoticeDTO();
+				dto.setNoticeNo(rs.getInt(1));
+				dto.setTitle(rs.getString(2));
+				dto.setRdate(rs.getString(3));
+				
+				latests.add(dto);
+			}
+			logger.debug("NoticeDAO selectLatests latests... : "+latests);
+			close();
+			
+		}catch(Exception e) {
+			logger.error("NoticeDAO selectCountTotal error : "+ e.getMessage());
+		}
+		
+		return latests;
+	}
+	
+	
+	
+	
 	
 }

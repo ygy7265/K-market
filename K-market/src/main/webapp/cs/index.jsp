@@ -12,22 +12,6 @@
                     <a href="/K-market/cs/notice/noticeView.do?cate=${cate}" class="title">[안내] 해외결제 사칭 문자 주의</a>
                     <span class="date">22.10.31</span>
                 </li>
-                <li>
-                    <a href="/K-market/cs/notice/noticeView.do?cate=${cate}" class="title">[안내] 해외결제 사칭 문자 주의</a>
-                    <span class="date">22.10.31</span>
-                </li>
-                <li>
-                    <a href="/K-market/cs/notice/noticeView.do?cate=${cate}" class="title">[안내] 해외결제 사칭 문자 주의</a>
-                    <span class="date">22.10.31</span>
-                </li>
-                <li>
-                    <a href="/K-market/cs/notice/noticeView.do?cate=${cate}" class="title">[안내] 해외결제 사칭 문자 주의</a>
-                    <span class="date">22.10.31</span>
-                </li>
-                <li>
-                    <a href="/K-market/cs/notice/noticeView.do?cate=${cate}" class="title">[안내] 해외결제 사칭 문자 주의</a>
-                    <span class="date">22.10.31</span>
-                </li>
             </ul>
         </section>
         <section class="faq">
