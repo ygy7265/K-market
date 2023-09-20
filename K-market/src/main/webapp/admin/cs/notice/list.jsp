@@ -2,18 +2,29 @@
 <%@ include file="../../_header.jsp" %>
 <%@ include file="../../_aside.jsp" %>
 <script>
-	
-const selectAllCheckbox = document.getElementById('all');
-const checkBoxItems = document.querySelectorAll('.Item');
 
-selectAllCheckbox.addEventListener('click', function () {
-	console.log('전체 선택 클릭됨');
-    const isChecked = selectAllCheckbox.checked;
-    checkBoxItems.forEach(function (checkBoxItem) {
-        checkBoxItem.checked = isChecked;
+$(document).ready(function() {
+    // 전체 선택 체크박스가 클릭되었을 때
+    $('#all').click(function() {
+        // 전체 선택 체크박스의 상태를 가져옴
+        var isChecked = $(this).prop('checked');
+
+        // 개별 체크박스들의 상태를 전체 선택 체크박스와 동일하게 설정
+        $('.Item').prop('checked', isChecked);
+    });
+
+    // 개별 체크박스 중 하나라도 선택 해제되었을 때
+    $('.Item').click(function() {
+        // 개별 체크박스들 중에서 하나라도 선택 해제된 것이 있는지 확인
+        if ($('.Item:checked').length < $('.Item').length) {
+            // 하나라도 선택 해제된 경우, 전체 선택 체크박스도 선택 해제
+            $('#all').prop('checked', false);
+        } else {
+            // 모두 선택된 경우, 전체 선택 체크박스도 선택
+            $('#all').prop('checked', true);
+        }
     });
 });
-    
 </script>
     <section id="admin-product-list">
         <nav>
@@ -39,7 +50,7 @@ selectAllCheckbox.addEventListener('click', function () {
             </div>
             <table>
                 <tr>
-                    <th><input type="checkbox" name="all" id="all"/></th>
+                    <th><input type="checkbox" id="all" /></th>
                     <th>글번호</th>
                     <th>카테고리</th>
                     <th>제목</th>

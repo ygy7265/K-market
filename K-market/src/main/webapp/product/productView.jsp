@@ -37,7 +37,6 @@ $(function(){
         let nodiscount = price * count;
         $('.total2').text(total.toLocaleString());
         $('.nodiscount').text(total.toLocaleString());
-        $('.total2').val(total);
         $('.nodiscount').val(nodiscount);
     }
 
@@ -46,7 +45,7 @@ $(function(){
         $('#formOrder').submit();
     });
     
-    $('.discount_price').text(discountPrice);
+    $('.discount_price').text(discountPrice.toLocaleString());
     
 });
 </script>
@@ -80,16 +79,16 @@ $(function(){
                 </nav>
                 <nav>
                     <div class="org_price">
-                        <del>${proddto.price}</del>
-                        <span>${proddto.discount}%</span>
+                        <del><fmt:formatNumber value="${proddto.price}" pattern="#,###"/></del>
+                        <span><fmt:formatNumber value="${proddto.discount}" pattern="#,###"/>%</span>
                     </div>
                     <div class="dis_price">
-                        <ins class="discount_price">${proddto.price}</ins>
+                        <ins class="discount_price"><fmt:formatNumber value="${proddto.price}" pattern="#,###"/></ins>
                     </div>
                    
                 </nav>
                 <nav>
-                    <span class="delivery" >${proddto.delivery}</span>
+                    <span class="delivery" ><fmt:formatNumber value="${proddto.delivery}" pattern="#,###"/></span>
                     <span class="arrival">모레(금) 7/8 도착예정</span>
                     <span class="desc">본 상품은 국내배송만 가능합니다.</span>
                 </nav>

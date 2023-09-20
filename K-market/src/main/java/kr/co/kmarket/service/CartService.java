@@ -15,19 +15,23 @@ public enum CartService {
 		dao.insertCart(dto);
 	}
 	
-	public CartDTO selectCart(String cartNo) { // 편의를 위해서 int ordNo 가 아닌 String 으로 설정해둠 
+	public CartDTO selectCart(String cartNo) {  
 		return dao.selectCart(cartNo);
+	}
+	
+	public int selectDuplicationCart(String prodNo,String count,String uid) {  
+		return dao.selectDublicationCart(prodNo,count,uid);
 	}
 	
 	public List<CartDTO> selectCarts(String uid) {
 		return dao.selectCarts(uid);
 	}
 	
-	public void updateCart(CartDTO dto) {
-		dao.updateCart(dto);
+	public void updateCart(String prodNo,String count,String uid) {
+		dao.updateCart(prodNo,count,uid);
 	}
 	
-	public void deleteCart(String cartNo) {
-		dao.deleteCart(cartNo);
+	public int deleteCart(String cartNo) {
+		return dao.deleteCart(cartNo);
 	}
 }

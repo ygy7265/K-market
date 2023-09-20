@@ -23,6 +23,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -68,6 +69,7 @@ public class FaqListController extends HttpServlet{
 		List<FaqDTO> cates = service.selectFaqsCate(cate1);
 		List<FaqDTO> faqs = service.selectFaqs(cate1, end);
 		req.setAttribute("cates", cates);
+		logger.debug("cates333...." +cates.toString());
 		req.setAttribute("faqs", faqs);
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/cs/faq/faqList.jsp");
@@ -79,28 +81,54 @@ public class FaqListController extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		String[] jsondatavalue = req.getParameterValues("array");
+		int end = 10;
+		String cate1 = req.getParameter("cata1");
+		String cate2 = req.getParameter("categoryid");
 		MapUtil map = new MapUtil();
-		int size = jsondatavalue.length;
-//		    for(int i=0; i<size; i++) {
-//		        System.out.println("JSP에서 받은 MSG : "+map.getCateName(jsondatavalue[i]));
-//		    }
-//		    
+		logger.debug("cate1 ="  + cate1);
+		logger.debug("categoryid ="  + cate2);
+		
+		
+		if(cate2 != null) {
+			List<FaqDTO> faqs = service.selectFaqsubs(cate1,cate2,end);
+			logger.debug("FaqListController cate1 ... " +faqs.toString());
+		    JsonArray jsonArray2 = new JsonArray();
+			JsonObject json = new JsonObject();
+			for (FaqDTO faq : faqs) {
+			        JsonObject faqJson = new JsonObject();
+			        faqJson.addProperty("faqField1", faq.getFaqNo()); // 필드1에 대한 예시
+			        faqJson.addProperty("faqField2", faq.getTitle()); // 필드2에 대한 예시
+			        // 필요한 모든 필드 추가
+			        jsonArray2.add(faqJson);
+			System.out.println(json.toString());
+		
+			}
+			json.add("result", jsonArray2);
+		    resp.setContentType("text/html;charset=UTF-8"); 
+			resp.getWriter().print(json);
+		}
+		
+		if(jsondatavalue != null) {
 		    JsonArray jsonArray = new JsonArray();
+		    List<String> stringList = Arrays.asList(jsondatavalue);
+		    JsonArray jsonArray1 = new Gson().toJsonTree(stringList).getAsJsonArray();
 		    for (String value : jsondatavalue) {
 		    	  String cateName = map.getCateName(value);
 		    	    if (cateName != null) {
 		    	        jsonArray.add(new JsonPrimitive(cateName));
+		    	  
 		    	    };
-		    	    //System.out.println("json array"+jsonArray);
 		    }
 		    resp.setContentType("text/html;charset=UTF-8"); 
 		    // JSON 객체 생성 및 JSON 배열을 속성 값으로 설정
 		    System.out.println("json array 2"+jsonArray);
 		    JsonObject json = new JsonObject();
 		    json.add("result", jsonArray);
+		    json.add("result2", jsonArray1);
+		    System.out.println(json.toString());
 		    // JSON 응답을 클라이언트에게 출력
 		    resp.getWriter().print(json);
-		    
+		}
 		
 	}
 }

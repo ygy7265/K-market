@@ -1,5 +1,6 @@
 package kr.co.kmarket.dao;
 
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -50,8 +51,31 @@ public class CartDAO extends DBHelper{
 		
 	}
 	
-	public CartDTO selectCart(String cartNo) { // 편의를 위해서 int ordNo 가 아닌 String 으로 설정해둠 
+	public CartDTO selectCart(String cartNo) { 
 		return null;
+	}
+	public int selectDublicationCart(String prodNo,String count,String uid) {
+		conn = getConnection();
+		CartDTO dto = null;
+		int result = 0;
+		try {
+			psmt = conn.prepareStatement(SQL.SELECT_DUPLICATION_CART);
+			psmt.setString(1, prodNo);
+			psmt.setString(2, uid);
+			rs = psmt.executeQuery();
+			logger.debug("select du = " + rs);
+			if(rs.next()) {
+				result = 1;
+				updateCart(count, prodNo, rs.getString(2));
+			}
+			
+			close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return result;
 	}
 	
 	public List<CartDTO> selectCarts(String uid) {
@@ -89,12 +113,39 @@ public class CartDAO extends DBHelper{
 		return list;
 	}
 	
-	public void updateCart(CartDTO dto) {
+	public void updateCart(String count,String prodNo,String uid) {
+		conn = getConnection();
+		
+		try {
+			psmt = conn.prepareStatement(SQL.UPDATE_CART);
+			psmt.setString(1, count);
+			psmt.setString(2, prodNo);
+			psmt.setString(3, uid);
+			
+			logger.debug("updatecart = " + psmt.executeUpdate());
+			close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 	
-	public void deleteCart(String cartNo) {
+	public int deleteCart(String cartNo) {
+		int result = 0;
+		conn = getConnection();
+		try {
+			 psmt = conn.prepareStatement(SQL.DELETE_CART);
+			 psmt.setString(1, cartNo);
+			 result = psmt.executeUpdate();
+			 close();
+			 
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
+		return result;
 	}
 	
 }

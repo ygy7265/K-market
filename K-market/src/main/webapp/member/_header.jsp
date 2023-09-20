@@ -6,7 +6,7 @@
 	const success = ${success};
 	switch (success) {
 	case 101:
-		alert('로그인 성공.');
+		alert(user+'로그인 성공.');
 		break;
 	case 102:
 		alert('로그인 실패');

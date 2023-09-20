@@ -101,6 +101,45 @@ public class FaqDAO extends DBHelper{
 			
 	}
 	
+	public List<FaqDTO> selectFaqsubs(String cate1,String cate2,int end) {
+		
+		List<FaqDTO> faqs = new ArrayList<>();
+		
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.SELECT_FAQS_SUB);
+			psmt.setString(1, cate1);
+			psmt.setString(2, cate2);
+			psmt.setInt(3, end);
+			rs = psmt.executeQuery();
+			
+			logger.debug("List<FaqDTO> selectFaqsubs cate1 : "+cate1);
+			logger.debug("List<FaqDTO> selectFaqsubs cate2 : "+cate2);
+			logger.debug("List<FaqDTO> selectFaqsubs end : "+end);
+			while(rs.next()) {
+				
+				FaqDTO dto = new FaqDTO();
+				dto.setFaqNo(rs.getInt(1));
+				dto.setCate1(rs.getString(2));
+				dto.setCate2(rs.getString(3));
+				dto.setTitle(rs.getString(4));
+				dto.setContent(rs.getString(5));
+				dto.setHit(rs.getInt(6));
+				dto.setWriter(rs.getString(7));
+				dto.setRdate(rs.getString(8));
+				
+				faqs.add(dto);
+			}
+			logger.debug("List<FaqDTO> selectFaqsubs faqs : "+faqs);
+			close();
+			
+		}catch(Exception e) {
+			logger.error("List<FaqDTO> selectFaqsubs error : "+e.getMessage());
+		}
+		return faqs;
+		
+	}
+	 
 	public List<FaqDTO> selectFaqsCate(String cate) {
 		
 		List<FaqDTO> cates = new ArrayList<>();

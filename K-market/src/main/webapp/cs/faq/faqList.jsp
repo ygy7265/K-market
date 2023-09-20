@@ -6,37 +6,104 @@
 	내용 : FaqList 구현
  -->
 <script>
+$(function(){
+	   var cate1 = '${param.cate1}';
+    const jsondata1 = {
+        jsondatavalue: [] // cate2 값을 저장할 배열
+    };
 
-		$(function(){
-			const jsondata1 = {
-					jsondatavalue: [] // cate2 값을 저장할 배열
-					};
+    // jsondata 객체를 출력하여 확인
+    console.log(jsondata1);
+    console.log(typeof JSON.stringify(jsondata1));
+    const array =  [];
+    <c:forEach var="cate" items="${cates}">
+      array.push("${cate.cate2}");
+    </c:forEach>;
+    const categoryid =  [];
+    $.ajax({
+        url:'/K-market/cs/faq/faqList.do',
+        type:'POST',
+        traditional : true,
+        data: {array:array},
+        contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+        dataType:'json',
+        success:function(data){
+            for (var i = 0; i < array.length; i++) {
+                $(".catename").eq(i).text(data.result[i]);
+                $(".catename").eq(i).attr("id",data.result2[i]);
+                console.log("data = "+ data.result[i]);
+                console.log("data = "+ data.result2);
+                categoryid.push($(".catename").eq(i).attr("id"));
+                console.log("categoryid = "+ categoryid);
+            }
+            for(let i = 0; i < categoryid.length; i++) {
+            	var category = categoryid[i];
+            	console.log("end");
+                $.ajax({
+                    url:'/K-market/cs/faq/faqList.do',
+                    type:'POST',
+                    traditional : true,
+                    data: {"categoryid":category,
+                            "cata1" : cate1
+                    },
+                    contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                    dataType:'json',
+                    success:function(data){
+                        var jsonData = JSON.stringify(data);
+                            for (var j = 0; j < data.result.length; j++) {
+                                // 새로운 li 요소 생성
+                                var newLi = $("<li class='newli'>");
+                                var newA = $("<a>").attr("href", "/K-market/cs/qna/qnaView.do?faqNo="+faqField1);
+                                var newSpan = $("<span>").text("Q.");
+								
+                                
+                                var item = data.result[j]; // 현재 반복 중인 객체
+                                // 객체의 속성에 접근하여 데이터 추출
+                                var faqField1 = item.faqField1;
+                                var faqField2 = item.faqField2;
+                               
+                               $(".subcontent").eq(i).prepend(newLi.prepend(newA.append(newSpan).append(faqField2)));
+                                console.log("faqField1 = "+ faqField1);
+                                console.log("faqField2 = "+ faqField2);
+                                console.log("jsonData = "+ jsonData);    
+                            }
+                    }
+                });
+             } 
+        }
+    });
+  
+    $(".catelink").each(function(e) {
+        var cateId = $(this).data("mydata"); 
+        $(this).on("click", function() {
+            // 여기에 클릭 이벤트 핸들러 내용 작성
+            var targetSelector = "[data-mydata='" + cateId + "']";
+            $(targetSelector).toggleClass("display-block"); // 클래스를 토글하여 스타일을 변경
+        });
+    });
 
-					// jsondata 객체를 출력하여 확인
-					console.log(jsondata1);
-					console.log(typeof JSON.stringify(jsondata1));
-					const array =  [];
-					<c:forEach var="cate" items="${cates}">
-					  array.push("${cate.cate2}");
-					</c:forEach>;
-					console.log(typeof array);
-					console.log(typeof JSON.stringify(array));
-			$.ajax({
-				url:'/K-market/cs/faq/faqList.do',
-				type:'POST',
-				traditional : true,
-				data: {array:array},
-				contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-				dataType:'json',
-				success:function(data){
-					for (var i = 0; i < array.length; i++) {
-						$(".catename").eq(i).text(data.result[i]);
-						console.log("data = "+ data.result[i]);
-					}
-				}
-			});
-		});
-	</script>
+    // 더보기 링크를 클릭했을 때 이벤트 핸들러를 등록
+   $(".more a").on("click", function(e) {
+        e.preventDefault();
+     	
+     	
+     var cssSelector = "#cs > .faq > .list > article > div > ul > li:nth-child(n+4)";
+
+     // 적용할 스타일
+     var newStyle = "display: block"; // 원하는 스타일로 변경
+
+     // CSS 선택자를 이용하여 요소를 선택하고 스타일을 변경
+     var elements = document.querySelectorAll(cssSelector);
+     for (var i = 0; i < elements.length; i++) {
+         elements[i].style.cssText = newStyle;
+     }
+    }); 
+
+    
+});
+
+
+</script>
 	<c:forEach var="cate" items="${cates}">
 	
 	</c:forEach>
@@ -89,15 +156,9 @@
         </nav>
         <div>
 		<c:forEach var="cate" items="${cates}">
-      	<h3 class="catename"></h3>
-		    <ul>
-		        <c:forEach var="faq" items="${faqs}">
-		                <li>
-		                	<a href="/K-market/cs/faq/faqView.do?cate1=${faq.cate1}&cate2=${faq.cate2}&faqNo=${faq.faqNo}">
-		                    <span>Q.</span>${faq.title}</a>
-		               	</li>
-		        </c:forEach>
-		        <li class="more"><a href="/K-market/cs/faq/faqView.do?cate1=${faq.cate1}">더보기</a></li>
+      	<h3 class="catename" id="${cate.cate2}"></h3>
+		    <ul class="subcontent">
+		        <li class="more"><a href="#" class="catelink" data-mydata="${cate.cate2}">더보기</a></li>
 		    </ul>
 		</c:forEach>
         </div>
