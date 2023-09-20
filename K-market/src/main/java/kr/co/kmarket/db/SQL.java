@@ -7,15 +7,15 @@ public class SQL {
 	
 	// Index
 	/*판매건수 (베스트상품)*/
-	public static final String SELECT_BEST_PRODUCT = "SELECT * FROM `km_product` ORDER BY `sold` DESC LIMIT 0,5";
+	public static final String SELECT_BEST_PRODUCT = "SELECT * FROM `km_product` ORDER BY `sold` DESC LIMIT ?,?";
 	/*조회순 (히트상품)*/
-	public static final String SELECT_HIT_PRODUCT = "SELECT * FROM `km_product` ORDER BY `hit` DESC LIMIT 0,8";
+	public static final String SELECT_HIT_PRODUCT = "SELECT * FROM `km_product` ORDER BY `hit` DESC LIMIT ?,?";
 	/*상품평점 (추천상품)*/
-	public static final String SELECT_SCORE_PRODUCT = "SELECT * FROM `km_product` ORDER BY `score` DESC LIMIT 0,8";
+	public static final String SELECT_SCORE_PRODUCT = "SELECT * FROM `km_product` ORDER BY `score` DESC LIMIT ?,?";
 	/*할인율 (할인상품)*/
-	public static final String SELECT_DISCOUNT_PRODUCT = "SELECT * FROM `km_product` ORDER BY `discount` DESC LIMIT 0,8";
+	public static final String SELECT_DISCOUNT_PRODUCT = "SELECT * FROM `km_product` ORDER BY `discount` DESC LIMIT ?,?";
 	/*최신순 (최신상품)*/
-	public static final String SELECT_NEW_PRODUCT = "SELECT * FROM `km_product` ORDER BY `rdate` DESC LIMIT 0,8";
+	public static final String SELECT_NEW_PRODUCT = "SELECT * FROM `km_product` ORDER BY `rdate` DESC LIMIT ?,?";
 	
 	
 	// Product
@@ -45,8 +45,17 @@ public class SQL {
 	
 	public static final String SELECT_PRODUCT	= "SELECT * FROM `km_product` WHERE `prodNo` = ?";
 	public static final String SELECT_CATE2	= "SELECT * FROM `km_product_cate2` WHERE `cate2` = ?";
-	public static final String SELECT_PRODUCTS	= "SELECT * FROM `km_product` WHERE `cate1` = ? and `cate2` = ? ORDER BY `prodNo` DESC LIMIT ?, 10";
+	public static final String SELECT_PRODUCTS	= "SELECT a.*, b.`level` FROM `km_product` AS a JOIN `km_member` AS b ON a.seller = b.uid WHERE `cate1` = ? and `cate2` = ? ORDER BY `prodNo` DESC LIMIT ?, 10";
 	public static final String SELECT_PRODUCTS_TOTAL_CATE = "SELECT COUNT(*) FROM `km_product` WHERE `cate1`=? AND `cate2`=?";
+	
+	// product OrderBy
+	public static final String SELECT_SOLD_PRODUCT_CATE = "SELECT a.*, b.`level` FROM `km_product` AS a JOIN `km_member` AS b ON a.seller = b.uid WHERE `cate1` = ? and `cate2` = ? ORDER BY `sold` DESC LIMIT ?,10";
+	public static final String SELECT_HIGH_PRICE_PRODUCT_CATE = "SELECT a.*, b.`level` FROM `km_product` AS a JOIN `km_member` AS b ON a.seller = b.uid WHERE `cate1` = ? and `cate2` = ? ORDER BY `price` DESC LIMIT ?,10";
+	public static final String SELECT_LOW_PRICE_PRODUCT_CATE = "SELECT a.*, b.`level` FROM `km_product` AS a JOIN `km_member` AS b ON a.seller = b.uid WHERE `cate1` = ? and `cate2` = ? ORDER BY `price` ASC LIMIT ?,10";
+	public static final String SELECT_HIGH_SCORE_PRODUCT_CATE = "SELECT a.*, b.`level` FROM `km_product` AS a JOIN `km_member` AS b ON a.seller = b.uid WHERE `cate1` = ? and `cate2` = ? ORDER BY `score` DESC LIMIT ?,10";
+	public static final String SELECT_REVIEW_PRODUCT_CATE = "SELECT a.*, b.`level` FROM `km_product` AS a JOIN `km_member` AS b ON a.seller = b.uid WHERE `cate1` = ? and `cate2` = ? ORDER BY `review` DESC LIMIT ?,10";
+	public static final String SELECT_LATEST_PRODUCT_CATE = "SELECT a.*, b.`level` FROM `km_product` AS a JOIN `km_member` AS b ON a.seller = b.uid WHERE `cate1` = ? and `cate2` = ? ORDER BY `rdate` DESC LIMIT ?,10";
+	
 	// DELETE_PRODUCT시 Review ALL Delete
 	public static final String DELETE_PRODUCT	 = "DELETE FROM `km_product` WHERE `prodNo`=?";
 	public static final String DELETE_REVIEW_ALL = "DELETE FROM `km_member_review` WHERE `prodNo`=?";

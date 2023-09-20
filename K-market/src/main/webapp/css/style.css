@@ -798,7 +798,10 @@ footer p > strong {
   background-repeat: no-repeat;
 }
 #product .badge.power {
-  background-image: url(../images/ico_power_dealer.gif);
+  background-image: url(/K-market/images/ico_power_dealer.gif);
+}
+#product .badge.great {
+  background-image: url(/K-market/images/ico_great_seller.gif);
 }
 
 /*product_rating*/

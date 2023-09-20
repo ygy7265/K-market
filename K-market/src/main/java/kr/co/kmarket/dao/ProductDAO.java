@@ -150,6 +150,94 @@ public class ProductDAO extends DBHelper {
 				dto.setOrigin(rs.getString(25));
 				dto.setIp(rs.getString(26));
 				dto.setRdate(rs.getString(27));
+				dto.setLevel(rs.getInt(28));
+				
+				list.add(dto);	
+			}
+			
+			logger.debug(list.toString());
+			close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			logger.error("ProductDAO Product List Error = "+e.getMessage());
+		}
+		return list;
+	}
+	public List<ProductDTO> selectProductsType(String cate1,String cate2, int start, String type2) {
+		List<ProductDTO> list = new ArrayList<>();
+		conn = getConnection();
+		try {
+			switch (type2) {
+				case "sold": {
+					logger.debug("SELECT_SOLD_PRODUCT_CATE");
+					psmt = conn.prepareStatement(SQL.SELECT_SOLD_PRODUCT_CATE);
+					break;
+				}
+				case "highPrice": {
+					logger.debug("SELECT_HIGH_PRICE_PRODUCT_CATE");
+					psmt = conn.prepareStatement(SQL.SELECT_HIGH_PRICE_PRODUCT_CATE);
+					break;
+				}
+				case "lowPrice": {
+					logger.debug("SELECT_LOW_PRICE_PRODUCT_CATE");
+					psmt = conn.prepareStatement(SQL.SELECT_LOW_PRICE_PRODUCT_CATE);
+					break;
+				}
+				case "highScore": {
+					logger.debug("SELECT_HIGH_SCORE_PRODUCT_CATE");
+					psmt = conn.prepareStatement(SQL.SELECT_HIGH_SCORE_PRODUCT_CATE);
+					break;
+				}
+				case "review": {
+					logger.debug("SELECT_REVIEW_PRODUCT_CATE");
+					psmt = conn.prepareStatement(SQL.SELECT_REVIEW_PRODUCT_CATE);
+					break;
+				}
+				case "latest": {
+					logger.debug("SELECT_LATEST_PRODUCT_CATE");
+					psmt = conn.prepareStatement(SQL.SELECT_LATEST_PRODUCT_CATE);
+					break;
+				}
+				
+				default : {
+					psmt = conn.prepareStatement(SQL.SELECT_PRODUCTS);
+				}
+			}
+			psmt.setString(1, cate1);
+			psmt.setString(2, cate2);
+			psmt.setInt(3, start);
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				ProductDTO dto = new ProductDTO();
+				dto.setProdNo(rs.getInt(1));
+				dto.setCate1(rs.getInt(2));
+				dto.setCate2(rs.getInt(3));
+				dto.setProdName(rs.getString(4));
+				dto.setDescript(rs.getString(5));
+				dto.setCompany(rs.getString(6));
+				dto.setSeller(rs.getString(7));
+				dto.setPrice(rs.getInt(8));
+				dto.setDiscount(rs.getInt(9));
+				dto.setPoint(rs.getInt(10));
+				dto.setStock(rs.getInt(11));
+				dto.setSold(rs.getInt(12));
+				dto.setDelivery(rs.getInt(13));
+				dto.setHit(rs.getInt(14));
+				dto.setScore(rs.getInt(15));
+				dto.setReview(rs.getInt(16));
+				dto.setThumb1(rs.getString(17));
+				dto.setThumb2(rs.getString(18));
+				dto.setThumb3(rs.getString(19));
+				dto.setDetail(rs.getString(20));
+				dto.setStatus(rs.getString(21));
+				dto.setDuty(rs.getString(22));
+				dto.setReceipt(rs.getString(23));
+				dto.setBizType(rs.getString(24));
+				dto.setOrigin(rs.getString(25));
+				dto.setIp(rs.getString(26));
+				dto.setRdate(rs.getString(27));
+				dto.setLevel(rs.getInt(28));
 				
 				list.add(dto);	
 			}
@@ -310,14 +398,16 @@ public class ProductDAO extends DBHelper {
 		return cate2s;
 	} // selectCate2s() END
 	
-	//INDEX SELECT
+	//INDEX,PRODUCT SELECT
 		//BEST
-	public List<ProductDTO> selectBestProducts() {
+	public List<ProductDTO> selectBestProducts(int start,int end) {
 		List<ProductDTO> list = new ArrayList<>();
 		conn = getConnection();
 		try {
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery(SQL.SELECT_BEST_PRODUCT);
+			psmt = conn.prepareStatement(SQL.SELECT_BEST_PRODUCT);
+			psmt.setInt(1, start);
+			psmt.setInt(2, end);
+			rs = psmt.executeQuery();
 			
 			while(rs.next()) {
 				ProductDTO dto = new ProductDTO();
@@ -348,6 +438,7 @@ public class ProductDAO extends DBHelper {
 				dto.setOrigin(rs.getString(25));
 				dto.setIp(rs.getString(26));
 				dto.setRdate(rs.getString(27));
+				dto.setLevel(rs.getInt(28));
 				
 				list.add(dto);	
 			}
@@ -361,12 +452,14 @@ public class ProductDAO extends DBHelper {
 		return list;
 	}
 	//Discount
-	public List<ProductDTO> selectDiscountProducts() {
+	public List<ProductDTO> selectDiscountProducts(int start,int end) {
 		List<ProductDTO> list = new ArrayList<>();
 		conn = getConnection();
 		try {
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery(SQL.SELECT_DISCOUNT_PRODUCT);
+			psmt = conn.prepareStatement(SQL.SELECT_DISCOUNT_PRODUCT);
+			psmt.setInt(1, start);
+			psmt.setInt(2, end);
+			rs = psmt.executeQuery();
 			
 			while(rs.next()) {
 				ProductDTO dto = new ProductDTO();
@@ -397,6 +490,7 @@ public class ProductDAO extends DBHelper {
 				dto.setOrigin(rs.getString(25));
 				dto.setIp(rs.getString(26));
 				dto.setRdate(rs.getString(27));
+				dto.setLevel(rs.getInt(28));
 				
 				list.add(dto);	
 			}
@@ -410,12 +504,14 @@ public class ProductDAO extends DBHelper {
 		return list;
 	}
 	//Hit
-	public List<ProductDTO> selectHitProducts() {
+	public List<ProductDTO> selectHitProducts(int start,int end) {
 		List<ProductDTO> list = new ArrayList<>();
 		conn = getConnection();
 		try {
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery(SQL.SELECT_HIT_PRODUCT);
+			psmt = conn.prepareStatement(SQL.SELECT_HIT_PRODUCT);
+			psmt.setInt(1, start);
+			psmt.setInt(2, end);
+			rs = psmt.executeQuery();
 			
 			while(rs.next()) {
 				ProductDTO dto = new ProductDTO();
@@ -446,6 +542,7 @@ public class ProductDAO extends DBHelper {
 				dto.setOrigin(rs.getString(25));
 				dto.setIp(rs.getString(26));
 				dto.setRdate(rs.getString(27));
+				dto.setLevel(rs.getInt(28));
 				
 				list.add(dto);	
 			}
@@ -459,12 +556,14 @@ public class ProductDAO extends DBHelper {
 		return list;
 	}
 	//socore
-	public List<ProductDTO> selectScoreProducts() {
+	public List<ProductDTO> selectScoreProducts(int start,int end) {
 		List<ProductDTO> list = new ArrayList<>();
 		conn = getConnection();
 		try {
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery(SQL.SELECT_SCORE_PRODUCT);
+			psmt = conn.prepareStatement(SQL.SELECT_SCORE_PRODUCT);
+			psmt.setInt(1, start);
+			psmt.setInt(2, end);
+			rs = psmt.executeQuery();
 			
 			while(rs.next()) {
 				ProductDTO dto = new ProductDTO();
@@ -495,6 +594,7 @@ public class ProductDAO extends DBHelper {
 				dto.setOrigin(rs.getString(25));
 				dto.setIp(rs.getString(26));
 				dto.setRdate(rs.getString(27));
+				dto.setLevel(rs.getInt(28));
 				
 				list.add(dto);	
 			}
@@ -508,12 +608,14 @@ public class ProductDAO extends DBHelper {
 		return list;
 	}
 	//New
-	public List<ProductDTO> selectNewProducts() {
+	public List<ProductDTO> selectNewProducts(int start,int end) {
 		List<ProductDTO> list = new ArrayList<>();
 		conn = getConnection();
 		try {
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery(SQL.SELECT_NEW_PRODUCT);
+			psmt = conn.prepareStatement(SQL.SELECT_NEW_PRODUCT);
+			psmt.setInt(1, start);
+			psmt.setInt(2, end);
+			rs = psmt.executeQuery();
 			
 			while(rs.next()) {
 				ProductDTO dto = new ProductDTO();
@@ -544,6 +646,7 @@ public class ProductDAO extends DBHelper {
 				dto.setOrigin(rs.getString(25));
 				dto.setIp(rs.getString(26));
 				dto.setRdate(rs.getString(27));
+				dto.setLevel(rs.getInt(28));
 				
 				list.add(dto);	
 			}
