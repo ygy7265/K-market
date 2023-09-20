@@ -6,6 +6,59 @@
  -->
 <%@ include file="./_header.jsp" %>
 <%@ include file="./_discount.jsp" %>
+<script>
+$(document).ready(function() {
+	 let cartNo = null;
+    // 전체 선택 체크박스가 클릭되었을 때
+    $('#all').click(function() {
+        // 전체 선택 체크박스의 상태를 가져옴
+        var isChecked = $(this).prop('checked');
+
+        // 개별 체크박스들의 상태를 전체 선택 체크박스와 동일하게 설정
+        $('.Item').prop('checked', isChecked);
+    });
+
+    // 개별 체크박스 중 하나라도 선택 해제되었을 때
+    $('.Item').click(function() {
+        // 개별 체크박스들 중에서 하나라도 선택 해제된 것이 있는지 확인
+      	cartNo =  $(this).val();
+        console.log("cartNo = " + cartNo);
+        if ($('.Item:checked').length < $('.Item').length) {
+            // 하나라도 선택 해제된 경우, 전체 선택 체크박스도 선택 해제
+            $('#all').prop('checked', false);
+        } else {
+            // 모두 선택된 경우, 전체 선택 체크박스도 선택
+            $('#all').prop('checked', true);
+        }
+    });
+    $('#deleteSelected').click(function() {
+    	  var selectedItems = $('.Item:checked'); // 선택된 체크박스 아이템들을 가져옵니다.
+          var cartNos = selectedItems.map(function() {
+              return $(this).val(); // 선택된 아이템의 data-cartno 속성 값을 가져옵니다.
+          }).get();
+    	  
+    	  console.log("cartNos"+cartNos);
+        $('.Item:checked').closest('tr').remove();
+        $.each(cartNos, function(index, cartNos) {
+        	$.ajax({
+				url:'/K-market/product/productcart.do',
+				type:'POST',
+				traditional : true,
+				data: {"cartNo": cartNos},
+				contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+				dataType:'json',
+				success:function(data){
+					console.log(data);
+					console.log(data.result);
+					if(data.result > 0){}
+						
+					}
+			
+			});
+        });	
+      });
+});
+</script>
 <main id="product">
 <%@ include file="../_aside.jsp" %>  
     </aside>
@@ -25,7 +78,7 @@
         <table>
           <thead>
             <tr>
-              <th><input type="checkbox" name="all"></th>
+              <th><input type="checkbox" id="all"></th>
               <th>상품명</th>
               <th>총수량</th>
               <th>판매가</th>
@@ -45,7 +98,7 @@
             <c:forEach var="list" items="${list}">
             <input type="hidden" class="discountlist" value="${list.discount}"></input>
             <tr>
-              <td><input type="checkbox" name=""></td>
+              <td><input type="checkbox" class="Item" value="${list.cartNo}"></td>
               <td>
                 <article>
                   <a href="/K-market/product/"><img src="/K-market/images/product/301.jpeg" alt=""></a>
@@ -72,7 +125,7 @@
           	</c:if>
           </tbody>
         </table>
-        <input type="button" name="del" value="선택삭제">
+        <input type="button" id="deleteSelected" name="del" value="선택삭제">
 
         <!-- 장바구니 전체합계 -->
         <div class="total">

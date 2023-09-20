@@ -18,6 +18,7 @@ public class SQL {
 	public static final String SELECT_NEW_PRODUCT = "SELECT * FROM `km_product` ORDER BY `rdate` DESC LIMIT ?,?";
 	
 	
+	
 	// Product
 	public static final String INSERT_PRODUCT = "INSERT INTO `km_product` SET "
 												+ "cate1=?, "
@@ -145,6 +146,11 @@ public class SQL {
 											+ "WHERE `cate1`=? "
 											+ "ORDER BY `faqNo` DESC "
 											+ "LIMIT ?";
+	public static final String SELECT_FAQS_SUB = "SELECT * "
+			+ "FROM `km_cs_faq` "
+			+ "WHERE `cate1`= ? AND `cate2` = ?"
+			+ "ORDER BY `faqNo` DESC "
+			+ "LIMIT ?";
 	public static final String SELECT_FAQ_CATE = "SELECT DISTINCT `cate2` FROM `km_cs_faq` WHERE `cate1` = ? ORDER BY `cate2`";
 	
 	// cs_Qna
@@ -187,6 +193,9 @@ public class SQL {
 
 	public static final String SELECT_CARTS = "SELECT a.*,b.prodName,b.descript FROM `km_product_cart` AS a JOIN `km_product` AS b ON a.prodNo = b.prodNo WHERE `uid` = ?";
 	public static final String SELECT_COUNT_CART = "SELECT COUNT(*) FROM `km_product_cart`";	
+	public static final String SELECT_DUPLICATION_CART = "SELECT * FROM `km_product_cart` WHERE `prodNo`= ? AND `uid` = ?";	
+	public static final String DELETE_CART = "DELETE FROM `km_product_cart` WHERE `cartNo` = ?";	
+	public static final String UPDATE_CART = "UPDATE `km_product_cart` SET `count` = `count` + ? WHERE `prodNo` = ? AND `uid` = ?";	
 	// admin_register 
 	public static final String SELECT_CATE1S = "SELECT * FROM `km_product_cate1` ORDER BY `cate1` ASC";
 	public static final String SELECT_CATE2S = "SELECT * FROM `km_product_cate2` WHERE `cate1` = ? ORDER BY `cate1` ASC";

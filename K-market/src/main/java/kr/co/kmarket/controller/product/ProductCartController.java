@@ -18,6 +18,8 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.google.gson.JsonObject;
+
 import kr.co.kmarket.dto.CartDTO;
 import kr.co.kmarket.dto.MemberDTO;
 import kr.co.kmarket.service.CartService;
@@ -27,6 +29,7 @@ public class ProductCartController extends HttpServlet{
 	
 	private static final long serialVersionUID = 266171712424303672L;
 	CartService service = CartService.INSTANCE;
+	CartService service2 = CartService.INSTANCE;
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	CartDTO dto = null;
 	@Override
@@ -48,9 +51,10 @@ public class ProductCartController extends HttpServlet{
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		dto = new CartDTO();
+		int result = 0;
 		
 		String uid = req.getParameter("uid");
+		String cartNo = req.getParameter("cartNo");
 		String prodNo = req.getParameter("prodNo");
 		String prodName = req.getParameter("prodName");
 		String descript = req.getParameter("descript");
@@ -62,20 +66,38 @@ public class ProductCartController extends HttpServlet{
 		String nodiscount = req.getParameter("nodiscount");
 		String count = req.getParameter("num");
 		logger.debug("uid" + uid);
-		logger.debug("prodName" + prodName);
-		logger.debug("total2" + total2);
+		logger.debug("count" + count);
+		logger.debug("prodNo" + prodNo);
 		
-		dto.setUid(uid);
-		dto.setProdNo(prodNo);
-		dto.setCount(count);
-		dto.setPrice(price);
-		dto.setDiscount(discount);
-		dto.setPoint(point);
-		dto.setDelivery(delivery);
-		dto.setTotal(nodiscount);
-		service.insertCart(dto);
-	
-		resp.sendRedirect("/K-market/product/productcart.do");
+		int result1 = service2.selectDuplicationCart(prodNo,count,uid);
+		
+		logger.debug("result1" + result1);
+		
+		if(cartNo != null) {
+			result = service.deleteCart(cartNo);
+			resp.setContentType("text/html;charset=UTF-8"); 
+		    // JSON 객체 생성 및 JSON 배열을 속성 값으로 설정
+		    JsonObject json = new JsonObject();
+		    json.addProperty("result", result);
+		    // JSON 응답을 클라이언트에게 출력
+		    resp.getWriter().print(json);
+		}else {
+			if(result1 > 0) {
+				 service2.selectDuplicationCart(cartNo,count,uid);
+			}else {
+			dto = new CartDTO();
+			dto.setUid(uid);
+			dto.setProdNo(prodNo);
+			dto.setCount(count);
+			dto.setPrice(price);
+			dto.setDiscount(discount);
+			dto.setPoint(point);
+			dto.setDelivery(delivery);
+			dto.setTotal(nodiscount);
+			service.insertCart(dto);
+			}
+			resp.sendRedirect("/K-market/product/productcart.do");
+		}
 		
 	
 		
