@@ -134,9 +134,9 @@ public class SQL {
 												+ "LIMIT ?,10";
 	public static final String SELECT_NOTICES_FOR_CATE = "SELECT * FROM `km_cs_notice` WHERE `cate`=?";
 	public static final String SELECT_COUNT_TOTAL_NOTICE = "SELECT COUNT(*) FROM `km_cs_notice` WHERE ISNULL(cate = ?) OR cate=?";
-	public static final String SELECT_NOTICES_LATESTS = "SELECT `cate2`, `title`, `rdate` "
+	public static final String SELECT_NOTICES_LATESTS = "SELECT `noticeNo`, `cate`, `title`, `rdate` "
 														+ "FROM `km_cs_notice` "
-														+ "ORDER BY `noticeNo` DESC ";
+														+ "ORDER BY `noticeNo` DESC LIMIT ?";
 			
 	
 	// cs_faq
@@ -147,10 +147,10 @@ public class SQL {
 											+ "ORDER BY `faqNo` DESC "
 											+ "LIMIT ?";
 	public static final String SELECT_FAQS_SUB = "SELECT * "
-			+ "FROM `km_cs_faq` "
-			+ "WHERE `cate1`= ? AND `cate2` = ?"
-			+ "ORDER BY `faqNo` DESC "
-			+ "LIMIT ?";
+												+ "FROM `km_cs_faq` "
+												+ "WHERE `cate1`= ? AND `cate2` = ?"
+												+ "ORDER BY `faqNo` DESC "
+												+ "LIMIT ?";
 	public static final String SELECT_FAQ_CATE = "SELECT DISTINCT `cate2` FROM `km_cs_faq` WHERE `cate1` = ? ORDER BY `cate2`";
 	
 	// cs_Qna
@@ -175,7 +175,10 @@ public class SQL {
 	
 	public static final String SELECT_COUNT_TOTAL_QNA = "SELECT COUNT(*) FROM `km_cs_qna` WHERE `cate1`=? AND `qnaNo`>=566";
 	public static final String SELECT_QNA_CATE = "SELECT DISTINCT `cate2` FROM `km_cs_qna` WHERE `cate1` = ? ORDER BY `cate2`";
-	
+	public static final String SELECT_QNAS_LATESTS = "SELECT `qnaNo`, `cate1`,`cate2`, `title`, `writer`, `rdate` "
+													+ "FROM `km_cs_qna` "
+													+ "ORDER BY `qnaNo` DESC LIMIT ?";
+
 	/**************************/
 	
 	

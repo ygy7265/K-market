@@ -8,47 +8,49 @@
         <section class="notice">
             <h1>공지사항<a href="/K-market/cs/notice/noticeList.do">전체보기</a></h1>
             <ul>
-                <li>
-                    <a href="/K-market/cs/notice/noticeView.do?cate=${cate}" class="title">[안내] 해외결제 사칭 문자 주의</a>
-                    <span class="date">22.10.31</span>
-                </li>
+           		<c:forEach var="latest1" items="${latests1}">
+	                <li>
+	                    <a href="/K-market/cs/notice/noticeView.do?cate=${latest1.cate}&noticeNo=${latest1.noticeNo}" class="title">[${latest1.cate}] ${latest1.title}</a>
+	                    <span class="date">${latest1.formatDate()}</span>
+	                </li>
+                </c:forEach>
             </ul>
         </section>
         <section class="faq">
             <h1>자주 묻는 질문<a href="/K-market/cs/faq/faqList.do?cate1=10">전체보기</a></h1>
             <ol>
                 <li>
-                    <a href="/K-market/cs/faq/faqList.do">
+                    <a href="/K-market/cs/faq/faqList.do?cate1=10">
                         <span>회원</span>
                     </a>
                 </li>
                 <li>
-                    <a href="/K-market/cs/faq/faqList.do">
+                    <a href="/K-market/cs/faq/faqList.do?cate1=20">
                         <span>쿠폰/이벤트</span>
                     </a>
                 </li>
                 <li>
-                    <a href="/K-market/cs/faq/faqList.do">
+                    <a href="/K-market/cs/faq/faqList.do?cate1=30">
                         <span>주문/결제</span>
                     </a>
                 </li>
                 <li>
-                    <a href="/K-market/cs/faq/faqList.do">
+                    <a href="/K-market/cs/faq/faqList.do?cate1=40">
                         <span>배송</span>
                     </a>
                 </li>
                 <li>
-                    <a href="/K-market/cs/faq/faqList.do">
+                    <a href="/K-market/cs/faq/faqList.do?cate1=50">
                         <span>취소/반품/교환</span>
                     </a>
                 </li>
                 <li>
-                    <a href="/K-market/cs/faq/faqList.do">
+                    <a href="/K-market/cs/faq/faqList.do?cate1=60">
                         <span>여행/숙박/항공</span>
                     </a>
                 </li>
                 <li>
-                    <a href="/K-market/cs/faq/faqList.do">
+                    <a href="/K-market/cs/faq/faqList.do?cate1=70">
                         <span>안전거래</span>
                     </a>
                 </li>
@@ -57,41 +59,15 @@
         <section class="qna">
             <h1>문의하기<a href="/K-market/cs/qna/qnaList.do?cate1=10">전체 보기</a></h1>
             <ul>
-                <li>
-                    <a href="/K-market/cs/qna/qnaView.do?cate=${cate}" class="title">[회원] 개인회원과 법인회원에 차이가 있나요?</a>
-                    <p>
-                        <span class="uid">chh**</span>
-                        <span class="date">22.10.31</span>
-                    </p>
-                </li>
-                <li>
-                    <a href="/K-market/cs/qna/qnaView.do?cate=${cate}" class="title">[회원] 개인회원과 법인회원에 차이가 있나요?</a>
-                    <p>
-                        <span class="uid">chh**</span>
-                        <span class="date">22.10.31</span>
-                    </p>
-                </li>
-                <li>
-                    <a href="/K-market/cs/qna/qnaView.do?cate=${cate}" class="title">[회원] 개인회원과 법인회원에 차이가 있나요?</a>
-                    <p>
-                        <span class="uid">chh**</span>
-                        <span class="date">22.10.31</span>
-                    </p>
-                </li>
-                <li>
-                    <a href="/K-market/cs/qna/qnaView.do?cate=${cate}" class="title">[회원] 개인회원과 법인회원에 차이가 있나요?</a>
-                    <p>
-                        <span class="uid">chh**</span>
-                        <span class="date">22.10.31</span>
-                    </p>
-                </li>
-                <li>
-                    <a href="/K-market/cs/qna/qnaView.do?cate=${cate}" class="title">[회원] 개인회원과 법인회원에 차이가 있나요?</a>
-                    <p>
-                        <span class="uid">chh**</span>
-                        <span class="date">22.10.31</span>
-                    </p>
-                </li>
+            	<c:forEach var="latest2" items="${latests2}">
+	                <li>
+	                    <a href="/K-market/cs/qna/qnaView.do?cate1=${latest2.cate1}&cate2=${latest2.cate2}&qnaNo=${latest2.qnaNo}" class="title">[${latest2.cate1}] ${latest2.title}</a>
+	                    <p>
+	                        <span><c:out value="${fn:substring(latest2.writer, 0, fn:length(latest2.writer) - 3)}"/>***</span>
+	                        <span class="date">${latest2.formatDate()}</span>
+	                    </p>
+	                </li>
+                </c:forEach>
             </ul>
             <a href="/K-market/cs/qna/qnaWrite.do" class="ask">문의글 작성 ></a>
         </section>

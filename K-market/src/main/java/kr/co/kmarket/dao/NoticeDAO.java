@@ -182,8 +182,9 @@ public class NoticeDAO extends DBHelper{
 				
 				NoticeDTO dto = new NoticeDTO();
 				dto.setNoticeNo(rs.getInt(1));
-				dto.setTitle(rs.getString(2));
-				dto.setRdate(rs.getString(3));
+				dto.setCate(rs.getString(2));
+				dto.setTitle(rs.getString(3));
+				dto.setRdate(rs.getString(4));
 				
 				latests.add(dto);
 			}
@@ -191,7 +192,7 @@ public class NoticeDAO extends DBHelper{
 			close();
 			
 		}catch(Exception e) {
-			logger.error("NoticeDAO selectCountTotal error : "+ e.getMessage());
+			logger.error("NoticeDAO selectLatests error : "+ e.getMessage());
 		}
 		
 		return latests;

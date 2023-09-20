@@ -13,6 +13,10 @@
 	}else if(success == 200){
 		alert('성공적으로 글이 등록 되었습니다.');
 	}
+	
+	function()
+	
+	
 </script>
 <section id="cs">
   <div class="qna">
@@ -83,11 +87,18 @@
         <table>
         <c:forEach var="qna" items="${qnas}">
           <tr>
-            <td><a href="/K-market/cs/qna/qnaView.do?cate1=${qna.cate1}&cate2=${qna.cate2}&qnaNo=${qna.qnaNo}">[${qna.cate2}] ${qna.title}</a></td>
-         	<td>답변완료</td>
-         	<td><c:out value="${fn:substring(qna.writer, 0, fn:length(qna.writer) - 3)}"/>***</td>
-			<td>${qna.formatDate()}</td>
-          </tr>
+			  <td><a href="/K-market/cs/qna/qnaView.do?cate1=${qna.cate1}&cate2=${qna.cate2}&qnaNo=${qna.qnaNo}">[${qna.cate2}] ${qna.title}</a></td>
+			  <c:choose>
+			    <c:when test="${qna.status eq '답변완료'}">
+			      <td class="reply" style="color: blue; font-weight: bold; text-align: center;">${qna.status}</td>
+			    </c:when>
+			    <c:otherwise>
+			      <td class="pending" style="color: grey; font-weight: bold; text-align: center;">${qna.status}</td>
+			    </c:otherwise>
+			  </c:choose>
+			  <td style="text-align: center;"><c:out value="${fn:substring(qna.writer, 0, fn:length(qna.writer) - 3)}"/>***</td>
+			  <td>${qna.formatDate()}</td>
+			</tr>
 		</c:forEach>
         </table>
 

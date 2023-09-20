@@ -156,11 +156,11 @@ public class QnaDAO extends DBHelper{
 				total = rs.getInt(1);
 			}
 			
-			logger.debug("NoticeDAO selectCountTotal total : "+total);
+			logger.debug("QnaDAO selectCountTotal total : "+total);
 			close();
 			
 		}catch(Exception e) {
-			logger.error("NoticeDAO selectCountTotal error : "+ e.getMessage());
+			logger.error("QnaDAO selectCountTotal error : "+ e.getMessage());
 		}
 		
 		return total;
@@ -185,15 +185,47 @@ public class QnaDAO extends DBHelper{
 					cates.add(dto);
 				}
 				
-				logger.debug("List<QnaDTO> selectQnasCate cates : "+cates);
+				logger.debug("QnaDAO selectQnasCate cates : "+cates);
 				close();
 				 
 			}catch(Exception e) {
-				logger.error("List<QnaDTO> selectQnasCate error : "+e.getMessage());
+				logger.error("QnaDAO selectQnasCate error : "+e.getMessage());
 			}
 			return cates;
 	}
 	
+	public List<QnaDTO> selectLatests(int size) {
+		
+		List<QnaDTO> latests = new ArrayList<>();
+		
+		try {
+			
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.SELECT_QNAS_LATESTS);
+			psmt.setInt(1, size);
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				QnaDTO dto = new QnaDTO();
+				dto.setQnaNo(rs.getInt(1));
+				dto.setCate1(rs.getString(2));
+				dto.setCate2(rs.getString(3));
+				dto.setTitle(rs.getString(4));
+				dto.setWriter(rs.getString(5));
+				dto.setRdate(rs.getString(6));
+				
+				latests.add(dto);
+			}
+			logger.debug("QnaDAO selectLatests latests... : "+latests);
+			close();
+			
+		}catch(Exception e) {
+			logger.error("QnaDAO selectLatests error : "+ e.getMessage());
+		}
+		
+		return latests;
+	}
 	
 
 }

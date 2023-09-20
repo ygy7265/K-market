@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import kr.co.kmarket.dao.QnaDAO;
+import kr.co.kmarket.dto.NoticeDTO;
 import kr.co.kmarket.dto.QnaDTO;
 
 public enum QnaService {
@@ -46,5 +47,11 @@ public enum QnaService {
 	public List<QnaDTO> selectQnasCate(String cate) {
 		return dao.selectQnasCate(cate);
 	}
+	
+	// 인덱스 페이지에서 조회 
+	public List<QnaDTO> selectLatests(int size) {
+		return dao.selectLatests(size);
+	}
+	
 
 }
