@@ -33,6 +33,15 @@ public class ProductDTO {
 	private String etc3;
 	private String etc4;
 	private String etc5;
+
+	private int level;
+	
+	public int getLevel() {
+		return level;
+	}
+	public void setLevel(int level) {
+		this.level = level;
+	}
 	
 	// 추가 
 	private String path;
@@ -261,7 +270,7 @@ public class ProductDTO {
 	public void setEtc5(String etc5) {
 		this.etc5 = etc5;
 	}
-	
+
 	// toString
 	@Override
 	public String toString() {
@@ -277,7 +286,7 @@ public class ProductDTO {
 				.append(duty).append(", receipt=").append(receipt).append(", bizType=").append(bizType)
 				.append(", origin=").append(origin).append(", ip=").append(ip).append(", rdate=").append(rdate)
 				.append(", etc1=").append(etc1).append(", etc2=").append(etc2).append(", etc3=").append(etc3)
-				.append(", etc4=").append(etc4).append(", etc5=").append(etc5).append("]");
+				.append(", etc4=").append(etc4).append(", etc5=").append(etc5).append(", level=").append(level).append("]");
 		return builder.toString();
 	}
 }

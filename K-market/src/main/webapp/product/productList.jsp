@@ -26,12 +26,18 @@
 
       <!-- 정렬 메뉴 -->
       <ul class="sort">
-          <li><a href="/K-market/product/productlist.do" class="on">판매많은순</a></li>
-          <li><a href="/K-market/product/productlist.do">낮은가격순</a></li>
-          <li><a href="/K-market/product/productlist.do">높은가격순</a></li>
-          <li><a href="/K-market/product/productlist.do">평점높은순</a></li>
-          <li><a href="/K-market/product/productlist.do">후기많은순</a></li>
-          <li><a href="/K-market/product/productlist.do">최근등록순</a></li>
+          <li><a href="/K-market/product/productlist.do?cate1=${cate1}&cate2=${cate2}&type2=sold" 
+          	class="${type2 == 'sold'? 'on':''}">판매많은순</a></li>
+          <li><a href="/K-market/product/productlist.do?cate1=${cate1}&cate2=${cate2}&type2=lowPrice" 
+          	class="${type2 == 'lowPrice'? 'on':''}">낮은가격순</a></li>
+          <li><a href="/K-market/product/productlist.do?cate1=${cate1}&cate2=${cate2}&type2=highPrice" 
+          	class="${type2 == 'highPrice'? 'on':''}">높은가격순</a></li>
+          <li><a href="/K-market/product/productlist.do?cate1=${cate1}&cate2=${cate2}&type2=highScore" 
+          	class="${type2 == 'highScore'? 'on':''}">평점높은순</a></li>
+          <li><a href="/K-market/product/productlist.do?cate1=${cate1}&cate2=${cate2}&type2=review" 
+          	class="${type2 == 'review'? 'on':''}">후기많은순</a></li>
+          <li><a href="/K-market/product/productlist.do?cate1=${cate1}&cate2=${cate2}&type2=latest" 
+          	class="${type2 == 'latest'? 'on':''}">최근등록순</a></li>
       </ul>
 
 	  
@@ -57,8 +63,8 @@
           </td>
           <td>
             <h4 class="seller"><i class="fas fa-home"></i>&nbsp;${product.seller}</h4>
-            <h5 class="badge power">${product.seller}</h5>
-            <h6 class="rating star1">상품평</h6>
+            <h5 class="badge ${product.level ge '6'? 'great':''}">${product.seller}</h5>
+            <h6 class="rating star${product.score}">상품평</h6>
           </td>
         </tr>
         </c:forEach>

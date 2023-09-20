@@ -28,11 +28,11 @@ public class IndexController extends HttpServlet{
 
 		// 배열을 JSTL에 전달
 		req.setAttribute("listArray", listArray);
-		List<ProductDTO> bestList= service.selectBestProducts();
-		List<ProductDTO> hitList= service.selectHitProducts();
-		List<ProductDTO> discountList= service.selectDiscountProducts();
-		List<ProductDTO> scoreList= service.selectScoreProducts();
-		List<ProductDTO> newList= service.selectNewProducts();
+		List<ProductDTO> bestList= service.selectBestProducts(0,5);
+		List<ProductDTO> hitList= service.selectHitProducts(0,8);
+		List<ProductDTO> discountList= service.selectDiscountProducts(0,8);
+		List<ProductDTO> scoreList= service.selectScoreProducts(0,8);
+		List<ProductDTO> newList= service.selectNewProducts(0,8);
 		String success = req.getParameter("success");
 		req.setAttribute("success", success);
 		
