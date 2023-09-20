@@ -104,6 +104,7 @@
       <article>
         <form action="/K-market/cs/qna/qnaWrite.do" method="post">
         <input type="hidden" name="writer" value="${user.uid}"/>
+        <input type="hidden" name="status" value="검토중"/>
           <table>
             <tr>
               <td>문의유형</td>

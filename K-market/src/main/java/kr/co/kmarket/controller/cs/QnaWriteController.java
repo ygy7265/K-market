@@ -77,6 +77,7 @@ public class QnaWriteController extends HttpServlet{
 		String cate2 = req.getParameter("cate2");
 		String content = req.getParameter("content");
 		String writer = req.getParameter("writer");
+		String status = req.getParameter("status");
 		String ip = req.getRemoteAddr();
 		
 		logger.debug("QnaWrite title : "+title);
@@ -84,6 +85,7 @@ public class QnaWriteController extends HttpServlet{
 		logger.debug("QnaWrite cate2 : "+cate2);
 		logger.debug("QnaWrite content : "+content);
 		logger.debug("QnaWrite writer : "+writer);
+		logger.debug("QnaWrite status : "+status);
 		logger.debug("QnaWrite ip : "+ip);
 		
 		QnaDTO dto = new QnaDTO();
@@ -93,6 +95,7 @@ public class QnaWriteController extends HttpServlet{
 		dto.setTitle(title);
 		dto.setIp(ip);
 		dto.setWriter(writer);
+		dto.setStatus(status);
 		
 		logger.debug("QnaWrite dto : "+dto.toString());
 		

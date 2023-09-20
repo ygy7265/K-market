@@ -46,6 +46,7 @@ public enum NoticeService {
 		return dao.selectCountTotal(cate);
 	}
 	
+	// 인덱스 페이지에서 조회
 	public List<NoticeDTO> selectLatests(int size) {
 		return dao.selectLatests(size);
 	}

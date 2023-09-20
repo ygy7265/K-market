@@ -40,9 +40,9 @@
 				<!-- 댓글리스트 -->
 			    <section class="commentList">
 			        <h3>답변목록</h3>
-			        <article class="comment">
-							<textarea class="content" name="content" readonly>답변입니다</textarea>
-			        </article>
+				        <article class="comment">
+								<textarea class="content" name="content" readonly>${dto.reply}</textarea>
+				        </article>
 			        <c:if test="${comments.isEmpty()}">
 			        <p class="empty">등록된 댓글이 없습니다.</p>
 			        </c:if>
