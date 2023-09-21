@@ -47,4 +47,22 @@ public enum MemberService {
 	public int selectCountHp(String hp) {
 		return dao.selectCountHp(hp);
 	}
+	
+	// admin_indexPage 운영 현황
+	public int selectCountMember() {
+		return dao.selectCountMember();
+	}
+	
+	public int selectMemberTotalDay() {
+		return dao.selectMemberTotalDay();
+	}
+	
+	public int selectMemberTotalWeek() {
+		return dao.selectMemberTotalWeek();
+	}
+	
+	public int selectMemberTotalMonth() {
+		return dao.selectMemberTotalMonth();
+	}
+	
 }

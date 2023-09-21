@@ -232,5 +232,74 @@ public class MemberDAO extends DBHelper{
 		}
 		return result;
 	}
+	
+	public int selectCountMember() {
+		int cmember = 0;
+		try {
+			
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.SELECT_COUNT_MEMBER);
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				cmember = rs.getInt(1);
+				logger.debug("총 가입인원 : " + cmember);
+			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			logger.error("MemberDAO - selectCountMember() error : "+e.getMessage());
+		}
+		return cmember;
+	}
+	// admin_indexPage 1일, 7일 30일 (신규가입자)
+	public int selectMemberTotalDay() {
+		int dayMember = 0;
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.SELECT_MEMBERS_TOTAL_DAY);
+			rs = psmt.executeQuery();
+			if(rs.next()) {
+				dayMember = rs.getInt(1);
+				logger.debug("24이내 등록된 신규 제품 : "+dayMember);
+			}
+			close();
+		} catch (Exception e) {
+			logger.error("ProductDAO() - selectProductTotalDay error : "+e.getMessage());
+		}
+		return dayMember;
+	}
+	public int selectMemberTotalWeek() {
+		int weekMember = 0;
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.SELECT_MEMBERS_TOTAL_WEEK);
+			rs = psmt.executeQuery();
+			if(rs.next()) {
+				weekMember = rs.getInt(1);
+				//logger.debug("7일이내 등록된 신규 제품 : "+weekProd);
+			}
+			close();
+		} catch (Exception e) {
+			logger.error("ProductDAO() - selectProductTotalWeek error : "+e.getMessage());
+		}
+		return weekMember;
+	}
+	public int selectMemberTotalMonth() {
+		int monthMember = 0;
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.SELECT_MEMBERS_TOTAL_MONTH);
+			rs = psmt.executeQuery();
+			if(rs.next()) {
+				monthMember = rs.getInt(1);
+			logger.debug("30일이내 등록된 신규 제품 : "+monthMember);
+			}
+			close();
+		} catch (Exception e) {
+			logger.error("ProductDAO() - selectProductTotalMonth error : "+e.getMessage());
+		}
+		return monthMember;
+	}
 }
 

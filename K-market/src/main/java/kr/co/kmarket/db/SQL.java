@@ -44,6 +44,27 @@ public class SQL {
 												+ "ip=?, "
 												+ "rdate=NOW()";
 	
+	public static final String UPDATE_PRODUCT = "UPDATE `km_product` SET "
+												+ "`cate1`=?, "
+												+ "`cate2`=?, "
+												+ "`prodName`=?, "
+												+ "`descript`=?, "
+												+ "`company`=?, "
+												+ "`price`=?, "
+												+ "`discount`=?, "
+												+ "`point`=?, "
+												+ "`stock`=?, "
+												+ "`delivery`=?, "
+												+ "`thumb1`=?, "
+												+ "`thumb2`=?, "
+												+ "`thumb3`=?, "
+												+ "`detail`=?, "
+												+ "`status`=?, "
+												+ "`duty`=?, "
+												+ "`receipt`=?, "
+												+ "`bizType`=?, "
+												+ "`origin`=? ";
+	
 	public static final String SELECT_PRODUCT	= "SELECT * FROM `km_product` WHERE `prodNo` = ?";
 	public static final String SELECT_CATE2	= "SELECT * FROM `km_product_cate2` WHERE `cate2` = ?";
 	public static final String SELECT_PRODUCTS	= "SELECT a.*, b.`level` FROM `km_product` AS a JOIN `km_member` AS b ON a.seller = b.uid WHERE `cate1` = ? and `cate2` = ? ORDER BY `prodNo` DESC LIMIT ?, 10";
@@ -60,6 +81,53 @@ public class SQL {
 	// DELETE_PRODUCT시 Review ALL Delete
 	public static final String DELETE_PRODUCT	 = "DELETE FROM `km_product` WHERE `prodNo`=?";
 	public static final String DELETE_REVIEW_ALL = "DELETE FROM `km_member_review` WHERE `prodNo`=?";
+	
+	/* admin_index */
+	public static final String SELECT_ORDERS_COUNT_TOTAL = "SELECT COUNT(*) FROM `km_product_order`";
+	public static final String SELECT_ORDERS_SUM_TOTAL = "SELECT SUM(`ordTotPrice`) FROM `km_product_order`";
+	public static final String SELECT_COUNT_MEMBER = "SELECT COUNT(*) FROM `km_member`";
+	// admin_index 신규제품
+	public static final String SELECT_PRODUCTS_TOTAL_DAY = "SELECT COUNT(*) AS day_count "
+															+ "FROM `km_product` "
+															+ "WHERE `rdate` BETWEEN DATE_SUB(NOW(), INTERVAL 1 DAY) "
+															+ "AND NOW()";
+	public static final String SELECT_PRODUCTS_TOTAL_WEEK = "SELECT COUNT(*) AS week_count "
+															+ "FROM `km_product` "
+															+ "WHERE `rdate` BETWEEN DATE_SUB(NOW(), INTERVAL 1 WEEK) "
+															+ "AND NOW()";
+	public static final String SELECT_PRODUCTS_TOTAL_MONTH = "SELECT COUNT(*) AS month_count "
+															+ "FROM `km_product` "
+															+ "WHERE `rdate` BETWEEN DATE_SUB(NOW(), INTERVAL 1 MONTH) "
+															+ "AND NOW()";
+	
+	// admin_index 신규가입자
+	public static final String SELECT_MEMBERS_TOTAL_DAY = "SELECT COUNT(*) AS day_count "
+														+ "FROM `km_member` "
+														+ "WHERE `rdate` BETWEEN DATE_SUB(NOW(), INTERVAL 1 DAY) "
+														+ "AND NOW()";
+	public static final String SELECT_MEMBERS_TOTAL_WEEK = "SELECT COUNT(*) AS week_count "
+														+ "FROM `km_member` "
+														+ "WHERE `rdate` BETWEEN DATE_SUB(NOW(), INTERVAL 1 WEEK) "
+														+ "AND NOW()";
+	public static final String SELECT_MEMBERS_TOTAL_MONTH = "SELECT COUNT(*) AS month_count "
+														+ "FROM `km_member` "
+														+ "WHERE `rdate` BETWEEN DATE_SUB(NOW(), INTERVAL 1 MONTH) "
+														+ "AND NOW()";
+	
+	// admin_index 신규주문
+	public static final String SELECT_ORDERS_TOTAL_DAY = "SELECT COUNT(*) AS day_count "
+														+ "FROM `km_product_order` "
+														+ "WHERE `ordDate` BETWEEN DATE_SUB(NOW(), INTERVAL 1 DAY) "
+														+ "AND NOW()";
+	public static final String SELECT_ORDERS_TOTAL_WEEK = "SELECT COUNT(*) AS week_count "
+														+ "FROM `km_product_order` "
+														+ "WHERE `ordDate` BETWEEN DATE_SUB(NOW(), INTERVAL 1 WEEK) "
+														+ "AND NOW()";
+	public static final String SELECT_ORDERS_TOTAL_MONTH = "SELECT COUNT(*) AS month_count "
+														+ "FROM `km_product_order` "
+														+ "WHERE `ordDate` BETWEEN DATE_SUB(NOW(), INTERVAL 1 MONTH) "
+														+ "AND NOW()";
+	
 	/* admin_product_list */
 	public static final String SELECT_PRODUCTS_TOTAL = "SELECT * FROM `km_product` ORDER BY `rdate` DESC LIMIT ?,10";
 	public static final String SELECT_PRODUCTS_COUNT_TOTAL = "SELECT COUNT(*) FROM `km_product`";

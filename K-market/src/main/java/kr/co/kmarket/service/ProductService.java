@@ -32,7 +32,7 @@ public enum ProductService {
 	public void insertProduct(ProductDTO dto) {
 		dao.insertProduct(dto);
 	}
-	public ProductDTO selectProduct(int prodNo) {
+	public ProductDTO selectProduct(String prodNo) {
 		return dao.selectProduct(prodNo);
 	}
 	public List<ProductDTO> selectProducts(String cate1,String cate2, int start) {
@@ -78,6 +78,17 @@ public enum ProductService {
 	}
 	public int selectProductCateTotal(String cate1, String cate2) {
 		return dao.selectProductCateTotal(cate1, cate2);
+	}
+	
+	// admin_indexPage 운영 현황
+	public int selectProductTotalDay() {
+		return dao.selectProductTotalDay();
+	}
+	public int selectProductTotalWeek() {
+		return dao.selectProductTotalWeek();
+	}
+	public int selectProductTotalMonth() {
+		return dao.selectProductTotalMonth();
 	}
 	
 	// admin_product_file 2023/09/15

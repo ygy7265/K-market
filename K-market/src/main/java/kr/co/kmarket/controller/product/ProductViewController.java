@@ -34,7 +34,7 @@ public class ProductViewController extends HttpServlet{
 			req.setAttribute("memberdto", memberdto);
 			
 			int parseNo = Integer.parseInt(prodNo);
-			ProductDTO dto = service.selectProduct(parseNo);
+			ProductDTO dto = service.selectProduct(prodNo);
 			req.setAttribute("proddto", dto);
 			logger.debug("Product View = " + dto);
 			RequestDispatcher dispatcher = req.getRequestDispatcher("/product/productView.jsp");
