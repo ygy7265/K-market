@@ -60,13 +60,16 @@
             <h1>문의하기<a href="/K-market/cs/qna/qnaList.do?cate1=10">전체 보기</a></h1>
             <ul>
             	<c:forEach var="latest2" items="${latests2}">
+         
 	                <li>
 	                    <a href="/K-market/cs/qna/qnaView.do?cate1=${latest2.cate1}&cate2=${latest2.cate2}&qnaNo=${latest2.qnaNo}" class="title">[${latest2.cate1}] ${latest2.title}</a>
 	                    <p>
 	                        <span><c:out value="${fn:substring(latest2.writer, 0, fn:length(latest2.writer) - 3)}"/>***</span>
 	                        <span class="date">${latest2.formatDate()}</span>
+	                        
 	                    </p>
 	                </li>
+	                
                 </c:forEach>
             </ul>
             <a href="/K-market/cs/qna/qnaWrite.do" class="ask">문의글 작성 ></a>

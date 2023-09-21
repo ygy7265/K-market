@@ -6,7 +6,7 @@
   -->
 <script>
 	$(function(){
-		 <c:forEach var="product" items="${bestList}" varStatus="loopStatus">
+	/* 	 <c:forEach var="product" items="${bestList}" varStatus="loopStatus">
 	      // 함수를 사용하여 새로운 스코프를 생성합니다.
 	      (function() {
 	        let price = ${product.price};
@@ -67,12 +67,9 @@
 	        }
 	        $('.recommend .dis_price:eq(${loopStatus.index}) .product-row').text(discountPrice);
 	      })();
-	    </c:forEach>
+	    </c:forEach> */
 	    
 	    //최종결제정보
-		
-			
-
 			 let count = 0; // 값들을 더하기 위한 변수를 초기화합니다.
 			 let total = 0;
 			 let point = 0;
@@ -124,7 +121,7 @@
 			        	delivery += value;
 			        }
 			    });
-			 	
+
 				$('.ordercount').text(count.toLocaleString());
 				$('.ordernodiscount').text(total.toLocaleString());
 				$('.orderpoint').text(point.toLocaleString());

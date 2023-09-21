@@ -5,42 +5,132 @@
 	날짜 : 2023/09/14
  -->
 <%@ include file="./_header.jsp" %>
-<%@ include file="./_discount.jsp" %>
+<%-- <%@ include file="./_discount.jsp" %> --%>
 <script>
 $(document).ready(function() {
 	 let cartNo = null;
-    // 전체 선택 체크박스가 클릭되었을 때
-    $('#all').click(function() {
-        // 전체 선택 체크박스의 상태를 가져옴
-        var isChecked = $(this).prop('checked');
+	    let count = 0; // 상품 수 초기화
+	    let point = 0; // 포인트 초기화
+	    let total = 0; // total 변수를 초기화합니다.
+	    let delivery = 0; // 배송비 초기화
+	    let discountPrice = 0; // 전체비용 초기화
+	    initialize();
+	    
+	    function initialize() {
+	        $('.ordernodiscount').text("0");
+	        $('.orderdiscount').text("0");
+	        $('.ordercount').text("0");
+	        $('.orderpoint').text("0");
+	        $('.orderdelivery').text("0");
+	        $('.ordertotal').text("0");
+	        $('.ordertotal2').val("0");
+	    }
+	    
+	    
+	    // 전체 선택 체크박스가 클릭되었을 때
+	    $('#all').click(function() {
+	        // 전체 선택 체크박스의 상태를 가져옴
+	        var isChecked = $(this).prop('checked');
+   			
+	  	 	 $('.Item').prop('checked', isChecked);
+	
+	   		
+	        // 개별 체크박스들의 상태를 전체 선택 체크박스와 동일하게 설정
+	  	   
+		        if($('.Item:checked').length === 0){
+		        	 initialize();
+		        }
+		        else{
+		        	calculateSelectedItems(); // 업데이트된 선택 항목 계산	
+		        }
+	    });
 
-        // 개별 체크박스들의 상태를 전체 선택 체크박스와 동일하게 설정
-        $('.Item').prop('checked', isChecked);
-    });
+	    // 개별 체크박스 중 하나라도 선택 해제되었을 때
+	    $('.Item').click(function() {
+	        // 개별 체크박스들 중에서 하나라도 선택 해제된 것이 있는지 확인
+	        cartNo = $(this).val();
+	        console.log("cartNo = " + cartNo);
+	        if ($('.Item:checked').length < $('.Item').length) {
+	            // 하나라도 선택 해제된 경우, 전체 선택 체크박스도 선택 해제
+	            $('#all').prop('checked', false);
+	        } else {
+	            // 모두 선택된 경우, 전체 선택 체크박스도 선택
+	            $('#all').prop('checked', true);
+	        }
+	        
+	        if($('.Item:checked').length === 0){
+	        	 initialize();
+	        }
+	        else{
+	        	calculateSelectedItems(); // 업데이트된 선택 항목 계산	
+	        }
+	        
+	    });
+	    //할인금액계산
+	    function calculateSelectedItems() {
+	        var selectedItems = $('.Item:checked'); // 선택된 체크박스 아이템들을 가져옵니다.
+	        count = selectedItems.length; // 선택된 상품 수 업데이트
+	        total = 0; // 총 상품금액 초기화
+	        var discount = 0; // 할인 총액 초기화
+	        var selectedCheckbox = $(this); // 선택된 체크박스
+	        var listCountValue = null;
+	      
+	        var listdeliveryValue = null;
+	        var listpriceValue = null;
+	        var listLastPriceValue = null;
+	        var listNoDiscountPriceValue = null;
+	        var listdiscountedPrice = null;
+	        var listpointValue = null;
+	        var listdiscountper = null;
+	        
+	        selectedItems.each(function() {
+	            var row = $(this).closest('tr'); // 선택된 체크박스가 속한 행을 가져옵니다.
+	            var listCount = parseFloat(row.find('.listcount').val());  // 선택된 체크박스의 .listcount 값을 더합니다.
+	            listdeliveryValue += parseFloat(row.find('.listdelivery').val());  // 선택된 체크박스의 .listcount 값을 더합니다.
+	            
+	            var listpriceValue = parseFloat(row.find('.listprice').val());  // 선택된 체크박스의 .listcount 값을 더합니다.
+	            listpointValue += parseFloat(row.find('.listpoint').val());  // 선택된 체크박스의 .listcount 값을 더합니다.
+	            
+	            var listdiscountValue = parseFloat(row.find('.listdiscount').val());  // 선택된 체크박스의 .listcount 값을 더합니다.
+	        	listCountValue += parseFloat(row.find('.listcount').val());  // 선택된 체크박스의 .listcount 값을 더합니다.
+	        	
+	        	listLastPriceValue = listCount * listpriceValue;
+	        	listNoDiscountPriceValue += listLastPriceValue;
 
-    // 개별 체크박스 중 하나라도 선택 해제되었을 때
-    $('.Item').click(function() {
-        // 개별 체크박스들 중에서 하나라도 선택 해제된 것이 있는지 확인
-      	cartNo =  $(this).val();
-        console.log("cartNo = " + cartNo);
-        if ($('.Item:checked').length < $('.Item').length) {
-            // 하나라도 선택 해제된 경우, 전체 선택 체크박스도 선택 해제
-            $('#all').prop('checked', false);
-        } else {
-            // 모두 선택된 경우, 전체 선택 체크박스도 선택
-            $('#all').prop('checked', true);
-        }
-    });
+	            
+	            // 할인 적용된 가격 계산
+	            var discountedPrice = listLastPriceValue - (listLastPriceValue * (listdiscountValue / 100));
+	            var discountper = (listLastPriceValue * (listdiscountValue / 100));
+	            //할인후 적용 금액
+	            listdiscountedPrice += discountedPrice;
+	            //할인금액
+	            listdiscountper += discountper;
+	            console.log('discountedPrice value: ' + discountedPrice);
+	            console.log('discountedPrice value: ' + listdiscountedPrice);
+	        });
+	        
+	        // 업데이트된 값들을 화면에 표시
+	        $('.ordernodiscount').text(listNoDiscountPriceValue);
+	        $('.orderdiscount').text('- ' + listdiscountper);
+	        // 업데이트된 상품 수량을 화면에 표시
+	        $('.ordercount').text(listCountValue);
+	        $('.orderpoint').text(listpointValue);
+	        $('.orderdelivery').text(listdeliveryValue);
+	        $('.ordertotal').text(listdiscountedPrice);
+	        $('.ordertotal2').val(listdiscountedPrice);
+	    }
+	    
+	 //선택삭제
     $('#deleteSelected').click(function() {
-    	  var selectedItems = $('.Item:checked'); // 선택된 체크박스 아이템들을 가져옵니다.
-          var cartNos = selectedItems.map(function() {
-              return $(this).val(); // 선택된 아이템의 data-cartno 속성 값을 가져옵니다.
-          }).get();
-    	  
-    	  console.log("cartNos"+cartNos);
-        $('.Item:checked').closest('tr').remove();
-        $.each(cartNos, function(index, cartNos) {
-        	$.ajax({
+  	  var selectedItems = $('.Item:checked'); // 선택된 체크박스 아이템들을 가져옵니다.
+        var cartNos = selectedItems.map(function() {
+            return $(this).val(); // 선택된 아이템의 data-cartno 속성 값을 가져옵니다.
+        }).get();
+  	  
+  	  console.log("cartNos"+cartNos);
+      $('.Item:checked').closest('tr').remove();
+      $.each(cartNos, function(index, cartNos) {
+      	$.ajax({
 				url:'/K-market/product/productcart.do',
 				type:'POST',
 				traditional : true,
@@ -55,8 +145,8 @@ $(document).ready(function() {
 					}
 			
 			});
-        });	
-      });
+      });	
+    });
 });
 </script>
 <main id="product">
@@ -115,12 +205,14 @@ $(document).ready(function() {
               <td><fmt:formatNumber value="${list.point}" pattern="#,###"/></td>
               <td><fmt:formatNumber value="${list.delivery}" pattern="#,###"/></td>
               <td><fmt:formatNumber value="${list.total}" pattern="#,###"/></td>
+			  <td><input type="hidden" class="listpoint" value="${list.point}"/> </td>
+             <td><input type="hidden" class="listcount" value="${list.count}"/> </td>
+             <td><input type="hidden" class="listprice" value="${list.price}"/> </td>
+             <td><input type="hidden" class="listdelivery" value="${list.delivery}"/> </td>
+             <td><input type="hidden" class="listtotal" value="${list.total}"/> </td>
+             <td><input type="hidden" class="listdiscount" value="${list.discount}"/> </td>
             </tr>
-             <input type="hidden" class="listpoint" value="${list.point}"/>
-             <input type="hidden" class="listcount" value="${list.count}"/>
-             <input type="hidden" class="listprice" value="${list.price}"/>
-             <input type="hidden" class="listdelivery" value="${list.delivery}"/>
-             <input type="hidden" class="listtotal" value="${list.total}"/>
+        
           	</c:forEach>
           	</c:if>
           </tbody>
