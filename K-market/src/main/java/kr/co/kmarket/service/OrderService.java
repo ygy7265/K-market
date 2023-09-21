@@ -30,4 +30,25 @@ public enum OrderService {
 	public void deleteOrder(String ordNo) {
 		dao.deleteOrder(ordNo);
 	}
+
+	// admin_indexPage 운영 현황
+	public int selectOrdersCount() {
+		return dao.selectOrdersCount();
+	}
+	public int selectOrdersCountSum() {
+		return dao.selectOrdersCountSum();
+	}
+	
+	public int selectOrderTotalDay() {
+		return dao.selectOrderTotalDay();
+	}
+	
+	public int selectOrderTotalWeek() {
+		return dao.selectOrderTotalWeek();
+	}
+	
+	public int selectOrderTotalMonth() {
+		return dao.selectOrderTotalMonth();
+	}
+
 }

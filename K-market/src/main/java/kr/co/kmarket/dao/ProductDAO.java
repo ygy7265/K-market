@@ -63,12 +63,12 @@ public class ProductDAO extends DBHelper {
 		}
 		
 	} //insertProduct END
-	public ProductDTO selectProduct(int prodNo) {
+	public ProductDTO selectProduct(String prodNo) {
 		ProductDTO dto = null;
 		conn = getConnection();
 		try {
 			psmt = conn.prepareStatement(SQL.SELECT_PRODUCT);
-			psmt.setInt(1, prodNo);
+			psmt.setString(1, prodNo);
 			rs = psmt.executeQuery();
 			
 			while(rs.next()) {
@@ -101,7 +101,6 @@ public class ProductDAO extends DBHelper {
 				dto.setIp(rs.getString(26));
 				dto.setRdate(rs.getString(27));
 			}
-			
 			logger.debug(dto.toString());
 			close();
 		} catch (SQLException e) {
@@ -250,7 +249,11 @@ public class ProductDAO extends DBHelper {
 		}
 		return list;
 	}
-	public void updateProduct(ProductDTO dto) {}
+	public void updateProduct(ProductDTO dto) {
+		
+		
+		
+	}
 	// 0918
 	public void deleteProduct(String prodNo) {
 		
@@ -682,6 +685,56 @@ public class ProductDAO extends DBHelper {
 		}
 		
 		return total;
+	}
+	
+	// admin_indexPage 1일, 7일 30일 안에 등록된 제품 (신규제품)
+	public int selectProductTotalDay() {
+		int dayProd = 0;
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.SELECT_PRODUCTS_TOTAL_DAY);
+			rs = psmt.executeQuery();
+			if(rs.next()) {
+				dayProd = rs.getInt(1);
+				logger.debug("24이내 등록된 신규 제품 : "+dayProd);
+			}
+			close();
+		} catch (Exception e) {
+			logger.error("ProductDAO() - selectProductTotalDay error : "+e.getMessage());
+		}
+		return dayProd;
+	}
+	public int selectProductTotalWeek() {
+		int weekProd = 0;
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.SELECT_PRODUCTS_TOTAL_WEEK);
+			rs = psmt.executeQuery();
+			if(rs.next()) {
+				weekProd = rs.getInt(1);
+				//logger.debug("7일이내 등록된 신규 제품 : "+weekProd);
+			}
+			close();
+		} catch (Exception e) {
+			logger.error("ProductDAO() - selectProductTotalWeek error : "+e.getMessage());
+		}
+		return weekProd;
+	}
+	public int selectProductTotalMonth() {
+		int monthProd = 0;
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.SELECT_PRODUCTS_TOTAL_MONTH);
+			rs = psmt.executeQuery();
+			if(rs.next()) {
+				monthProd = rs.getInt(1);
+			logger.debug("30일이내 등록된 신규 제품 : "+monthProd);
+			}
+			close();
+		} catch (Exception e) {
+			logger.error("ProductDAO() - selectProductTotalMonth error : "+e.getMessage());
+		}
+		return monthProd;
 	}
 	
 }

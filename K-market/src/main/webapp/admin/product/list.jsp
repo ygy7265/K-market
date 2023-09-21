@@ -65,8 +65,8 @@
                     <td>${product.seller}</td>
                     <td>${product.hit}</td>
                     <td>
+                        <a href="${ctxPath}/admin/product/modify.do?prodNo=${product.prodNo}">[수정]</a>
                         <a href="${ctxPath}/admin/product/delete.do?prodNo=${product.prodNo}">[삭제]</a>
-                        <a href="${ctxPath}/admin/product/modify.do?no=${product.prodNo}">[수정]</a>
                     </td>
                 </tr>
                 </c:forEach>

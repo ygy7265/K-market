@@ -39,7 +39,7 @@ $(function(){
 				 "jsondata" : selectedValue
 		 }
 		 $.ajax({
-				url:'/K-market/admin/product/register.do',
+				url:'/K-market/admin/product/modify.do',   
 				type:'GET',
 				traditional : true,
 				data: jsonData,
@@ -73,12 +73,13 @@ $(function(){
         <nav>
             <h3>상품등록</h3>
             <p>
-                HOME > 상품관리 > <strong>상품등록</strong>
+                HOME > 상품관리 > <strong>상품수정</strong>
             </p>
         </nav>
         <!-- 상품등록 컨텐츠 시작 -->
+        <!-- file 수정 해야함 0921 현재 수정페이지는 등록된 상품 select 해서 data불러오기만 된 상태 -->
         <article>
-            <form action="${ctxPath}/admin/product/register.do" method="POST" enctype="multipart/form-data">
+            <form action="${ctxPath}/admin/product/modify.do" method="POST" enctype="multipart/form-data">
             <!-- seller 로그인정보 받아올 수 있게 수정 필요_insert완료/09_15 -->
 			<input type="hidden" value="seller1" name="seller1"/>
                 <!-- 상품분류 -->
@@ -119,66 +120,66 @@ $(function(){
                     <table>
                         <tr>
                             <td>상품명</td>
-                            <td><input type="text" name="prodName"/></td>
+                            <td><input type="text" name="prodName" value="${pDTO.prodName}"/></td>
                         </tr>
                         <tr>
                             <td>기본설명</td>
                             <td>
                                 <span>상품명 하단에 상품에 대한 추가적인 설명이 필요한 경우에 입력</span>
-                                <input type="text" name="descript"/>
+                                <input type="text" name="descript" value="${pDTO.descript}"/>
                             </td>
                         </tr>
                         <tr>
                             <td>제조사</td>
-                            <td><input type="text" name="company"/></td>
+                            <td><input type="text" name="company" value="${pDTO.company}"/></td>
                         </tr>
                         <tr>
                             <td>판매가격</td>
-                            <td><input type="text" name="price"/>원</td>
+                            <td><input type="text" name="price" value="${pDTO.price}"/>원</td>
                         </tr>                                    
                         <tr>
                             <td>할인율</td>
                             <td>
                                 <span>0을 입력하면 할인율 없음</span>
-                                <input type="text" name="discount"/>%
+                                <input type="text" name="discount" value="${pDTO.discount}"/>%
                             </td>
                         </tr>
                         <tr>
                             <td>포인트</td>
                             <td>
                                 <span>0을 입력하면 포인트 없음</span>
-                                <input type="text" name="point"/>점
+                                <input type="text" name="point" value="${pDTO.point}"/>점
                             </td>
                         </tr>
                         <tr>
                             <td>재고수량</td>
-                            <td><input type="text" name="stock"/>개</td>
+                            <td><input type="text" name="stock" value="${pDTO.stock}"/>개</td>
                         </tr>
                         <tr>
                             <td>배송비</td>
                             <td>
                                 <span>0을 입력하면 배송비 무료</span>
-                                <input type="text" name="delivery"/>원
+                                <input type="text" name="delivery" value="${pDTO.delivery}"/>원
                             </td>
                         </tr>
                         <tr>
                             <td>상품 썸네일</td>
                             <td>
                                 <span>크기 190 x 190, 상품 목록에 출력될 이미지 입니다. </span>
-                                <input type="file" name="thumb1"/>
+                                <input type="file" name="thumb1" value="${pDTO.thumb1}"/>
 
                                 <span>크기 230 x 230, 상품 메인에 출력될 이미지 입니다. </span>
-                                <input type="file" name="thumb2"/>
+                                <input type="file" name="thumb2" value="${pDTO.thumb2}"/>
 
                                 <span>크기 456 x 456, 상품 상세에 출력될 이미지 입니다. </span>
-                                <input type="file" name="thumb3"/>
+                                <input type="file" name="thumb3" value="${pDTO.thumb3}"/>
                             </td>
                         </tr>
                         <tr>
                             <td>상세 상품정보</td>
                             <td>
                                 <span>크기 가로 940px 높이 제약없음, 크기 최대 1MB, 상세페이지 상품정보에 출력될 이미지 입니다.</span>
-                                <input type="file" name="detail"/>
+                                <input type="file" name="detail" value="${pDTO.detail}"/>
                             </td>
                         </tr>
                     </table>                                
@@ -193,28 +194,28 @@ $(function(){
                     <table>
                         <tr>
                             <td>상품상태</td>
-                            <td><input type="text" name="status" value="새상품"/></td>
+                            <td><input type="text" name="status" value="${pDTO.status}"/></td>
                         </tr>
                         <tr>
                             <td>부가세 면세여부</td>
-                            <td><input type="text" name="duty" value="과세상품"/></td>
+                            <td><input type="text" name="duty" value="${pDTO.duty}"/></td>
                         </tr>
                         <tr>
                             <td>영수증발행</td>
-                            <td><input type="text" name="receipt" value="발행가능 - 신용카드 전표, 온라인 현금영수증"/></td>
+                            <td><input type="text" name="receipt" value="${pDTO.receipt}"/></td>
                         </tr>
                         <tr>
                             <td>사업자구분</td>
-                            <td><input type="text" name="bizType" value="사업자 판매자"/></td>
+                            <td><input type="text" name="bizType" value="${pDTO.bizType}"/></td>
                         </tr>                                
                         <tr>
                             <td>원산지</td>
-                            <td><input type="text" name="origin" value="국내산"/></td>
+                            <td><input type="text" name="origin" value="${pDTO.origin}"/></td>
                         </tr>                                
                     </table>                                
                 </section>
                 
-                <input type="submit" value="등록하기"/>
+                <input type="submit" value="수정하기"/>
             </form>
         </article>
 
