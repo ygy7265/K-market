@@ -126,4 +126,7 @@ public enum ProductService {
 		int start = (currentPage - 1) * 10;
 		return total - start;
 	}
+	public Cate2DTO selectCate(String cate1, String cate2) {
+		return dao.selectCate(cate1, cate2);
+	}
 }

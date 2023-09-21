@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import kr.co.kmarket.dto.Cate2DTO;
 import kr.co.kmarket.dto.ProductDTO;
 import kr.co.kmarket.service.ProductService;
 import kr.co.kmarket.service.pageService;
@@ -39,6 +40,9 @@ public class ProductListController extends HttpServlet{
 		if(pg == null) {
 			pg = "1";
 		}
+		
+		// 카테고리 표시
+		Cate2DTO CateName = service.selectCate(cate1, cate2);
 		
 		// 현재 페이지 번호
 		int currentPage = pgService.setCurrentPage(pg);
@@ -87,6 +91,7 @@ public class ProductListController extends HttpServlet{
 		req.setAttribute("cate1", cate1);
 		req.setAttribute("cate2", cate2);
 		req.setAttribute("type2", type2);
+		req.setAttribute("CateName", CateName);
 		req.setAttribute("currentPage", currentPage);
 		req.setAttribute("lastPageNum", lastPageNum);
 		req.setAttribute("pageGroupStart", result[0]);
