@@ -15,16 +15,16 @@
         		<c:when test="${cate == null}">
         			전체
 		    	</c:when>
-			    <c:when test="${cate eq '10'}">
+			    <c:when test="${cate eq '01'}">
 			        고객서비스
 			    </c:when>
-			    <c:when test="${cate eq '70'}">
+			    <c:when test="${cate eq '02'}">
 			        안전거래
 			    </c:when>
-			    <c:when test="${cate eq '50'}">
+			    <c:when test="${cate eq '03'}">
 			        위해상품
 			    </c:when>
-			    <c:when test="${cate eq '20'}">
+			    <c:when test="${cate eq '04'}">
 			        이벤트당첨
 			    </c:when>
 			</c:choose>
@@ -39,16 +39,16 @@
          	 	<c:when test="${cate == null}">
 			        <h1>공지사항</h1>
 			    </c:when>
-			    <c:when test="${cate eq '10'}">
+			    <c:when test="${cate eq '01'}">
 			        <h1>고객서비스</h1>
 			    </c:when>
-			    <c:when test="${cate eq '70'}">
+			    <c:when test="${cate eq '02'}">
 			       <h1>안전거래</h1>
 			    </c:when>
-			    <c:when test="${cate eq '50'}">
+			    <c:when test="${cate eq '03'}">
 			        <h1>위해상품</h1>
 			    </c:when>
-			    <c:when test="${cate eq '20'}">
+			    <c:when test="${cate eq '04'}">
 			        <h1>이벤트당첨</h1>
 			    </c:when>
 			</c:choose>
@@ -57,16 +57,16 @@
          	 	<c:when test="${cate == null}">
 			        공지사항
 			    </c:when>
-			    <c:when test="${cate eq '10'}">
+			    <c:when test="${cate eq '01'}">
 			        고객서비스
 			    </c:when>
-			    <c:when test="${cate eq '70'}">
+			    <c:when test="${cate eq '02'}">
 			        안전거래
 			    </c:when>
-			    <c:when test="${cate eq '50'}">
+			    <c:when test="${cate eq '03'}">
 			        위해상품
 			    </c:when>
-			    <c:when test="${cate eq '20'}">
+			    <c:when test="${cate eq '04'}">
 			        이벤트당첨
 			    </c:when>
 			</c:choose>

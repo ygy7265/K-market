@@ -12,6 +12,11 @@ public class MapUtil {
 	public static final Map<String, String> map = new HashMap<String, String>();
 		
       static {
+	    	   // Notice_Cate
+	      	   map.put("01","고객서비스");
+	      	   map.put("02","안전거래");
+	      	   map.put("03","위해상품");
+	      	   map.put("04","이벤트당첨");
     	   	
     		  // FAQ_Cate1
 	       	   map.put("10","가입");

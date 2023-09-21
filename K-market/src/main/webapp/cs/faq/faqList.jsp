@@ -7,7 +7,7 @@
  -->
 <script>
 $(function(){
-	   var cate1 = '${param.cate1}';
+	var cate1 = '${param.cate1}';
     const jsondata1 = {
         jsondatavalue: [] // cate2 값을 저장할 배열
     };
@@ -53,7 +53,7 @@ $(function(){
                             for (var j = 0; j < data.result.length; j++) {
                                 // 새로운 li 요소 생성
                                 var newLi = $("<li class='newli'>");
-                                var newA = $("<a>").attr("href", "/K-market/cs/qna/qnaView.do?faqNo="+faqField1);
+                                var newA = $("<a>").attr("href", "/K-market/cs/faq/faqView.do?faqNo="+faqField1);
                                 var newSpan = $("<span>").text("Q.");
 								
                                 
@@ -72,6 +72,8 @@ $(function(){
              } 
         }
     });
+ 
+
   
     $(".catelink").each(function(e) {
         var cateId = $(this).data("mydata"); 
@@ -81,6 +83,14 @@ $(function(){
             $(targetSelector).toggleClass("display-block"); // 클래스를 토글하여 스타일을 변경
         });
     });
+   /* $(".catelink").each(function(e) {
+    	event.preventDefault();
+    	var cate2 = $(this).data("mydata");
+    	var cate1 = "${cate.cate1}";
+    	var url = "/K-market/cs/qna/qnaView.do?cate1=" + cate1 + "&cate2=" + cate2;
+    	window.location.href = url;
+    	
+    });*/
 
     // 더보기 링크를 클릭했을 때 이벤트 핸들러를 등록
    $(".more a").on("click", function(e) {

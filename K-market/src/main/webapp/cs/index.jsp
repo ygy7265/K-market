@@ -10,7 +10,7 @@
             <ul>
            		<c:forEach var="latest1" items="${latests1}">
 	                <li>
-	                    <a href="/K-market/cs/notice/noticeView.do?cate=${latest1.cate}&noticeNo=${latest1.noticeNo}" class="title">[${latest1.cate}] ${latest1.title}</a>
+	                    <a href="/K-market/cs/notice/noticeView.do?cate=${latest1.cate}&noticeNo=${latest1.noticeNo}" class="title">[${latest1.catename}] ${latest1.title}</a>
 	                    <span class="date">${latest1.formatDate()}</span>
 	                </li>
                 </c:forEach>
@@ -61,7 +61,7 @@
             <ul>
             	<c:forEach var="latest2" items="${latests2}">
 	                <li>
-	                    <a href="/K-market/cs/qna/qnaView.do?cate1=${latest2.cate1}&cate2=${latest2.cate2}&qnaNo=${latest2.qnaNo}" class="title">[${latest2.cate1}] ${latest2.title}</a>
+	                    <a href="/K-market/cs/qna/qnaView.do?cate1=${latest2.cate1}&cate2=${latest2.cate2}&qnaNo=${latest2.qnaNo}" class="title">[${latest2.cate2}] ${latest2.title}</a>
 	                    <p>
 	                        <span><c:out value="${fn:substring(latest2.writer, 0, fn:length(latest2.writer) - 3)}"/>***</span>
 	                        <span class="date">${latest2.formatDate()}</span>

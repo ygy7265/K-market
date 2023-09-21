@@ -36,19 +36,25 @@
 				    감사합니다.<br/>
 					</p>
 				</div>
-				<a href="/K-market/cs/qna/qnaList.do?cate1=${dto.cate1}" class="btnList">목록보기</a>
+			
 				<!-- 댓글리스트 -->
-			    <section class="commentList">
-			        <h3>답변목록</h3>
-				        <article class="comment">
-								<textarea class="content" name="content" readonly>${dto.reply}</textarea>
-				        </article>
-			        <c:if test="${comments.isEmpty()}">
-			        <p class="empty">등록된 댓글이 없습니다.</p>
-			        </c:if>
-			    </section>
+			<section class="commentList">
+			    <article class="comment">
+			        <c:choose>
+			            <c:when test="${not empty dto.reply}">
+			            	<h4>👉[답변]${dto.title}</h4>
+			                <textarea class="content" name="content" readonly>${dto.reply}</textarea>
+			            </c:when>
+			            <c:otherwise>
+			                <p class="empty">등록된 댓글이 없습니다.</p>
+			            </c:otherwise>
+			        </c:choose>
+			    </article>
+			</section>
+			    <div>
+					<a href="/K-market/cs/qna/qnaList.do?cate1=${dto.cate1}" class="btnList">목록보기</a>
+				</div>
 			</article>
-	
 	</section>
 	</div>
 </section>
