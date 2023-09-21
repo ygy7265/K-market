@@ -14,6 +14,7 @@ public class QnaDTO {
 	private String reply;
 	private String rdate;
 	private String ip;
+	private String catename;
 	
 	public int getQnaNo() {
 		return qnaNo;
@@ -70,6 +71,7 @@ public class QnaDTO {
 		this.rdate = rdate;
 	}
 	
+	// 추가 
     public String formatDate() {
         try {
             SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -87,6 +89,15 @@ public class QnaDTO {
 	}
 	public void setIp(String ip) {
 		this.ip = ip;
+	}
+	
+	
+	
+	public String getCatename() {
+		return catename;
+	}
+	public void setCatename(String catename) {
+		this.catename = catename;
 	}
 	@Override
 	public String toString() {

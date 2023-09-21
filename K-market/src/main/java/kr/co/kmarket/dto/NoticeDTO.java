@@ -12,6 +12,7 @@ public class NoticeDTO {
 	private String writer;
 	private int hit;
 	private String rdate;
+	private String catename;
 	
 	public int getNoticeNo() {
 		return noticeNo;
@@ -53,8 +54,6 @@ public class NoticeDTO {
 		this.hit = hit;
 	}
 
-	
-	
 	public String getRdate() {
 		return rdate;
 	}
@@ -62,6 +61,8 @@ public class NoticeDTO {
 		this.rdate = rdate;
 	}
 	
+	
+	// 추가 
     public String formatDate() {
         try {
             SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -74,6 +75,14 @@ public class NoticeDTO {
         }
     }
 
+ 
+    
+	public String getCatename() {
+		return catename;
+	}
+	public void setCatename(String catename) {
+		this.catename = catename;
+	}
 	@Override
 	public String toString() {
 		return "NoticeDAO [noticeNo=" + noticeNo + ", cate=" + cate + ", title=" + title + ", content=" + content

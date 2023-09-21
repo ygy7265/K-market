@@ -8,6 +8,7 @@
 <script>
 $(function(){
    var cate1 = ${param.cate1};
+
     const jsondata1 = {
         jsondatavalue: [] // cate2 값을 저장할 배열
     };
@@ -47,7 +48,7 @@ $(function(){
                             for (var j = 0; j < data.result.length; j++) {
                                 // 새로운 li 요소 생성
                                 var newLi = $("<li class='newli'>");
-                                var newA = $("<a>").attr("href", "/K-market/cs/qna/qnaView.do?faqNo="+faqField1);
+                                var newA = $("<a>").attr("href", "/K-market/cs/faq/faqView.do?faqNo="+faqField1);
                                 var newSpan = $("<span>").text("Q.");
                                 var item = data.result[j]; // 현재 반복 중인 객체
                                 // 객체의 속성에 접근하여 데이터 추출
@@ -60,9 +61,14 @@ $(function(){
              } 
         }
     });
-    
-    
-    // 더보기 링크를 클릭했을 때 이벤트 핸들러를 등록
+    $(".catelink").each(function(e) {
+        var cateId = $(this).data("mydata"); 
+        $(this).on("click", function() {
+            // 여기에 클릭 이벤트 핸들러 내용 작성
+            var targetSelector = "[data-mydata='" + cateId + "']";
+            $(targetSelector).toggleClass("display-block"); // 클래스를 토글하여 스타일을 변경
+        });
+    });
     $(".more a").on("click", function(e) {
         e.preventDefault();
         var cateId = $(this).data("mydata"); 
