@@ -2,6 +2,7 @@ package kr.co.kmarket.controller.cs;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -31,7 +32,7 @@ public class IndexController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		 List<NoticeDTO> latests1 = nService.selectLatests(5);
+		    List<NoticeDTO> latests1 = nService.selectLatests(5);
 		    List<QnaDTO> latests2 = qService.selectLatests(5);
 
 		    List<String> latestsList = new ArrayList<>();
@@ -62,5 +63,4 @@ public class IndexController extends HttpServlet{
 
 		    RequestDispatcher dispatcher = req.getRequestDispatcher("/cs/index.jsp");
 		    dispatcher.forward(req, resp);
-		}
 }

@@ -78,8 +78,8 @@ $(document).ready(function() {
                     <td>${notice.hit}</td>
                     <td>${notice.rdate}</td>
                     <td>
-                        <a href="#">[삭제]</a>
                         <a href="#">[수정]</a>
+                        <a href="#">[삭제]</a>
                     </td>
                 </tr>
                 </c:forEach>

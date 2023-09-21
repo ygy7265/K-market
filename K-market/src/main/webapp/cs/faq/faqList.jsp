@@ -7,14 +7,11 @@
  -->
 <script>
 $(function(){
-	var cate1 = '${param.cate1}';
+   var cate1 = ${param.cate1};
+
     const jsondata1 = {
         jsondatavalue: [] // cate2 값을 저장할 배열
     };
-
-    // jsondata 객체를 출력하여 확인
-    console.log(jsondata1);
-    console.log(typeof JSON.stringify(jsondata1));
     const array =  [];
     <c:forEach var="cate" items="${cates}">
       array.push("${cate.cate2}");
@@ -31,10 +28,8 @@ $(function(){
             for (var i = 0; i < array.length; i++) {
                 $(".catename").eq(i).text(data.result[i]);
                 $(".catename").eq(i).attr("id",data.result2[i]);
-                console.log("data = "+ data.result[i]);
-                console.log("data = "+ data.result2);
+                $(".subcontent").eq(i).addClass("a"+data.result2[i]);
                 categoryid.push($(".catename").eq(i).attr("id"));
-                console.log("categoryid = "+ categoryid);
             }
             for(let i = 0; i < categoryid.length; i++) {
             	var category = categoryid[i];
@@ -55,26 +50,17 @@ $(function(){
                                 var newLi = $("<li class='newli'>");
                                 var newA = $("<a>").attr("href", "/K-market/cs/faq/faqView.do?faqNo="+faqField1);
                                 var newSpan = $("<span>").text("Q.");
-								
-                                
                                 var item = data.result[j]; // 현재 반복 중인 객체
                                 // 객체의 속성에 접근하여 데이터 추출
                                 var faqField1 = item.faqField1;
                                 var faqField2 = item.faqField2;
-                               
                                $(".subcontent").eq(i).prepend(newLi.prepend(newA.append(newSpan).append(faqField2)));
-                                console.log("faqField1 = "+ faqField1);
-                                console.log("faqField2 = "+ faqField2);
-                                console.log("jsonData = "+ jsonData);    
                             }
                     }
                 });
              } 
         }
     });
- 
-
-  
     $(".catelink").each(function(e) {
         var cateId = $(this).data("mydata"); 
         $(this).on("click", function() {
@@ -83,40 +69,37 @@ $(function(){
             $(targetSelector).toggleClass("display-block"); // 클래스를 토글하여 스타일을 변경
         });
     });
-   /* $(".catelink").each(function(e) {
-    	event.preventDefault();
-    	var cate2 = $(this).data("mydata");
-    	var cate1 = "${cate.cate1}";
-    	var url = "/K-market/cs/qna/qnaView.do?cate1=" + cate1 + "&cate2=" + cate2;
-    	window.location.href = url;
-    	
-    });*/
-
-    // 더보기 링크를 클릭했을 때 이벤트 핸들러를 등록
-   $(".more a").on("click", function(e) {
+    $(".more a").on("click", function(e) {
         e.preventDefault();
-     	
-     	
-     var cssSelector = "#cs > .faq > .list > article > div > ul > li:nth-child(n+4)";
+        var cateId = $(this).data("mydata"); 
+        var cssSelector = "#cs > .faq > .list > article > div > ul.a" + cateId + " > li";
+        // CSS 선택자를 이용하여 요소를 선택하고 스타일을 변경
+        var elements = document.querySelectorAll(cssSelector);
 
-     // 적용할 스타일
-     var newStyle = "display: block"; // 원하는 스타일로 변경
+        for (var i = 0; i < elements.length; i++) {
+            var element = elements[i];
+            	if(element.style.display == "block"){
+            		 if (i > 2) {
+            			 element.style.display = "none";
+            		 }	 
+            	}
+            	else {
+            	element.style.display = "block";
+            }
+        }
+        var isVisible = elements[2].style.display === "block";
+        if (isVisible) {
+            $(this).text("간단히보기");
+        } else {
+            $(this).text("더보기");
+        }
+    });
 
-     // CSS 선택자를 이용하여 요소를 선택하고 스타일을 변경
-     var elements = document.querySelectorAll(cssSelector);
-     for (var i = 0; i < elements.length; i++) {
-         elements[i].style.cssText = newStyle;
-     }
-    }); 
 
-    
 });
 
 
 </script>
-	<c:forEach var="cate" items="${cates}">
-	
-	</c:forEach>
 <section id="cs">
   <div class="faq">
     <nav>
@@ -167,8 +150,8 @@ $(function(){
         <div>
 		<c:forEach var="cate" items="${cates}">
       	<h3 class="catename" id="${cate.cate2}"></h3>
-		    <ul class="subcontent">
-		        <li class="more"><a href="#" class="catelink" data-mydata="${cate.cate2}">더보기</a></li>
+		    <ul class="subcontent " >
+		        <li class="more" ><a href="#" class="catelink" data-mydata="${cate.cate2}">더보기</a></li>
 		    </ul>
 		</c:forEach>
         </div>

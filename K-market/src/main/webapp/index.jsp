@@ -12,6 +12,7 @@
     <!-- 베스트상품 배너 -->
     <article class="best">
       <h1><i class="fas fa-crown"></i>베스트상품</h1>
+      <h3>방문자 수 : <c:out value="${applicationScope.visitorCount}" /> 명</h3>
       <ol>
       	<c:forEach var="bestList" items="${bestList}" varStatus="loopStatus">
     
