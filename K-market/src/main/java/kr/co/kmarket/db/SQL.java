@@ -127,6 +127,22 @@ public class SQL {
 														+ "FROM `km_product_order` "
 														+ "WHERE `ordDate` BETWEEN DATE_SUB(NOW(), INTERVAL 1 MONTH) "
 														+ "AND NOW()";
+	// admin_index 일 총 주문금액 합산
+	public static final String SELECT_ORDERS_TOTAL_DAY_TO_PRICE = "SELECT SUM(ordTotPrice) AS total_order_price "
+																+ "FROM km_product_order "
+																+ "WHERE ordDate BETWEEN CURRENT_DATE AND DATE_ADD(CURRENT_DATE, INTERVAL 1 DAY)";
+	// admin_index 주간 총 주문금액 합산
+	public static final String SELECT_ORDERS_TOTAL_WEEK_TO_PRICE = "SELECT SUM(ordTotPrice) AS total_order_price "
+																+ "FROM km_product_order "
+																+ "WHERE ordDate BETWEEN CURRENT_DATE AND DATE_ADD(CURRENT_DATE, INTERVAL 1 WEEK)";
+	// admin_index 월간 총 주문금액 합산
+	public static final String SELECT_ORDERS_TOTAL_MONTH_TO_PRICE = "SELECT SUM(ordTotPrice) AS total_order_price "
+																+ "FROM km_product_order "
+																+ "WHERE ordDate BETWEEN CURRENT_DATE AND DATE_ADD(CURRENT_DATE, INTERVAL 1 MONTH)";
+	// admin_index 공지사항
+	public static final String SELECT_ADMIN_INDEX_NOTICE ="SELECT * FROM `km_cs_notice` ORDER BY `noticeNo` DESC LIMIT 5";
+	// admin_index 문의사항
+	public static final String SELECT_ADMIN_INDEX_QNA ="SELECT * FROM `km_cs_qna` ORDER BY `qnaNo` DESC LIMIT 5";
 	
 	/* admin_product_list */
 	public static final String SELECT_PRODUCTS_TOTAL = "SELECT * FROM `km_product` ORDER BY `rdate` DESC LIMIT ?,10";

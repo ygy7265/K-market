@@ -91,75 +91,75 @@
                     <td>
                         <p>
                             <span>어제</span>
-                            <span>${dayOrder}</span>
+                            <span>${dayOrder} 건</span>
                         </p>
                         <p>
                             <span>주간</span>
-                            <span>${weekOrder}</span>
+                            <span>${weekOrder} 건</span>
                         </p>
                         <p>
                             <span>월간</span>
-                            <span>${monthOrder}</span>
+                            <span>${monthOrder} 건</span>
                         </p>
                     </td>
                     <!-- 주문금액 -->
                     <td>
                         <p>
                             <span>어제</span>
-                            <span>4</span>
+                            <span>${dayOrderToPrice} 원</span>
                         </p>
                         <p>
                             <span>주간</span>
-                            <span>10</span>
+                            <span>${weekOrderToPrice} 원</span>
                         </p>
                         <p>
                             <span>월간</span>
-                            <span>30</span>
+                            <span>${monthOrderToPrice} 원</span>
                         </p>
                     </td>
                     <!-- 회원가입 -->
                     <td>
                         <p>
                             <span>어제</span>
-                            <span>${dayMember}</span>
+                            <span>${dayMember} 명</span>
                         </p>
                         <p>
                             <span>주간</span>
-                            <span>${weekMember}</span>
+                            <span>${weekMember} 명</span>
                         </p>
                         <p>
                             <span>월간</span>
-                            <span>${monthMember}</span>
+                            <span>${monthMember} 명</span>
                         </p>
                     </td>
                     <!-- 방문자 -->
                     <td>
                         <p>
                             <span>어제</span>
-                            <span>4</span>
+                            <span>4 명</span>
                         </p>
                         <p>
                             <span>주간</span>
-                            <span>10</span>
+                            <span>10 명</span>
                         </p>
                         <p>
                             <span>월간</span>
-                            <span>30</span>
+                            <span>30 명</span>
                         </p>
                     </td>
                     <!-- 새로 등록된 상품 -->
                     <td>
                         <p>
                             <span>어제</span>
-                            <span>${dayProd}</span>
+                            <span>${dayProd} 건</span>
                         </p>
                         <p>
                             <span>주간</span>
-                            <span>${weekProd}</span>
+                            <span>${weekProd} 건</span>
                         </p>
                         <p>
                             <span>월간</span>
-                            <span>${monthProd}</span>
+                            <span>${monthProd} 건</span>
                         </p>
                     </td>		
                 </tr>
@@ -193,57 +193,27 @@
                 </tr>
             </table>                    
         </article>
-
         <div>
             <div>
                 <h4>공지사항</h4>
                 <article>
+					<c:forEach var="noti" items="${notiAdmin}">
                     <p>
-                        <span>[공지] 케이마켓 판매자님들은 주기적인 비밀번호 변경을 하세요.케이마켓 판매자님들은 주기적인 비밀번호 변경을 하세요.</span>
-                        <span>20-07-08 12:23</span>
+                        <span><a href="${ctxPath}/admin/cs/notice/view.do?noticeNo=${noti.noticeNo}">${noti.title}</a></span>
+                        <span>${noti.formatDate()}</span>
                     </p>
-                    <p>
-                        <span>[공지] 1주년 기념 신규가입 사은품 안내</span>
-                        <span>20-07-08 12:23</span>
-                    </p>
-                    <p>
-                        <span>[공지] 1주년 기념 신규가입 사은품 안내</span>
-                        <span>20-07-08 12:23</span>
-                    </p>
-                    <p>
-                        <span>[공지] 1주년 기념 신규가입 사은품 안내</span>
-                        <span>20-07-08 12:23</span>
-                    </p>
-                    <p>
-                        <span>[공지] 1주년 기념 신규가입 사은품 안내</span>
-                        <span>20-07-08 12:23</span>
-                    </p>
+                    </c:forEach>
                 </article>
             </div>
-
             <div>
                 <h4>고객문의</h4>
                 <article>
+					<c:forEach var="qna" items="${qnaAdmin}">
                     <p>
-                        <span>[문의] 상품이 잘못 왔습니다.</span>
-                        <span>20-07-08 12:23</span>
+                        <span>${qna.title}</span>
+                        <span>${qna.formatDate()}</span>
                     </p>
-                    <p>
-                        <span>[문의] 안녕하세요. 주문자 입니다. 구매한 상품에 문제가 있어서 이렇게 문의글을 남깁니다.</span>
-                        <span>20-07-08 12:23</span>
-                    </p>
-                    <p>
-                        <span>[문의] 상품이 1개 잘못 왔습니다.</span>
-                        <span>20-07-08 12:23</span>
-                    </p>
-                    <p>
-                        <span>[문의] 상품이 1개 잘못 왔습니다.</span>
-                        <span>20-07-08 12:23</span>
-                    </p>
-                    <p>
-                        <span>[문의] 상품이 1개 잘못 왔습니다.</span>
-                        <span>20-07-08 12:23</span>
-                    </p>                                                                
+                    </c:forEach>
                 </article>
             </div>
         </div>

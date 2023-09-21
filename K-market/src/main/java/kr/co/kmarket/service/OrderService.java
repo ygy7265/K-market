@@ -50,5 +50,14 @@ public enum OrderService {
 	public int selectOrderTotalMonth() {
 		return dao.selectOrderTotalMonth();
 	}
+	public int selectOrderTotalDayToPrice() {
+		return dao.selectOrderTotalDayToPrice();
+	}
+	public int selectOrderTotalWeekToPrice() {
+		return dao.selectOrderTotalWeekToPrice();
+	}
+	public int selectOrderTotalMonthToPrice() {
+		return dao.selectOrderTotalMonthToPrice();
+	}
 
 }

@@ -53,5 +53,9 @@ public enum QnaService {
 		return dao.selectLatests(size);
 	}
 	
+	// admin_index_qna Limit 5
+	public List<QnaDTO> selectAdminIndexQna() {
+		return dao.selectAdminIndexQna();
+	}
 
 }

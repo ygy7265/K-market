@@ -111,6 +111,7 @@ public class OrderDAO extends DBHelper{
 		}
 		return dayOrder;
 	}
+	
 	public int selectOrderTotalWeek() {
 		int weekOrder = 0;
 		try {
@@ -127,6 +128,7 @@ public class OrderDAO extends DBHelper{
 		}
 		return weekOrder;
 	}
+	
 	public int selectOrderTotalMonth() {
 		int monthOrder = 0;
 		try {
@@ -143,5 +145,59 @@ public class OrderDAO extends DBHelper{
 		}
 		return monthOrder;
 	}
+
+	// 일간 총 주문 금액
+	public int selectOrderTotalDayToPrice() {
+		int dayOrderToPrice = 0;
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.SELECT_ORDERS_TOTAL_DAY_TO_PRICE);
+			rs = psmt.executeQuery();
+			if(rs.next()) {
+				dayOrderToPrice = rs.getInt(1);
+				logger.debug("30일이내 등록된 신규 제품 : "+dayOrderToPrice);
+			}
+			close();
+		} catch (Exception e) {
+			logger.error("ProductDAO() - selectProductTotalMonth error : "+e.getMessage());
+		}
+		return dayOrderToPrice;
+	} // END
+	
+	// 주간 총 주문 금액
+	public int selectOrderTotalWeekToPrice() {
+		int weekOrderToPrice = 0;
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.SELECT_ORDERS_TOTAL_WEEK_TO_PRICE);
+			rs = psmt.executeQuery();
+			if(rs.next()) {
+				weekOrderToPrice = rs.getInt(1);
+				logger.debug("30일이내 등록된 신규 제품 : "+weekOrderToPrice);
+			}
+			close();
+		} catch (Exception e) {
+			logger.error("ProductDAO() - selectProductTotalMonth error : "+e.getMessage());
+		}
+		return weekOrderToPrice;
+	} // END
+	
+	// 월간 총 주문 금액
+	public int selectOrderTotalMonthToPrice() {
+		int monthOrderToPrice = 0;
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.SELECT_ORDERS_TOTAL_MONTH_TO_PRICE);
+			rs = psmt.executeQuery();
+			if(rs.next()) {
+				monthOrderToPrice = rs.getInt(1);
+				logger.debug("30일이내 등록된 신규 제품 : "+monthOrderToPrice);
+			}
+			close();
+		} catch (Exception e) {
+			logger.error("ProductDAO() - selectProductTotalMonth error : "+e.getMessage());
+		}
+		return monthOrderToPrice;
+	} // END
 	
 }
