@@ -138,7 +138,7 @@
             </tr>
           </table>
           <div>
-            <a href="/K-market/cs/qna/qnaList.do?cate1=${cate1}" class="btnList">취소하기</a>
+            <a href="/K-market/cs/qna/qnaList.do?cate1=10" class="btnList">취소하기</a>
             <input type="submit" class="btnSubmit" value="등록하기"/>
           </div>
         </form>
