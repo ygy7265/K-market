@@ -909,8 +909,10 @@ footer{
     height: 11vh; 
 }
 .btnList {
+   	display: inline-block;
     width: 200px;
     height: 60px;
+    margin: 40px auto 0;
     border: 1px solid #ccc;
     border-radius: 34px;
     font-size: 16px;
@@ -939,4 +941,15 @@ footer{
 }
 .btnSubmit:hover {
   background-color: #0954f6;
+}
+#cs > div > section > article > div:nth-child(4) > a {
+	width: 200px;
+    height: 60px;
+    border: 1px solid #ccc;
+    border-radius: 34px;
+    font-size: 16px;
+    color: #000;
+    line-height: 58px;
+    text-align: center;
+    box-sizing: border-box;
 }

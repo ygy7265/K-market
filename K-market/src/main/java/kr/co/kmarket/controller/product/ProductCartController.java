@@ -43,7 +43,9 @@ public class ProductCartController extends HttpServlet{
 		}
 		List<CartDTO> list = service.selectCarts(username);
 		req.setAttribute("list", list);
+		req.setAttribute("username", username);
 		logger.debug("List"+list);
+		logger.debug("username"+username);
 		logger.debug("uid"+uid);
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/product/productCart.jsp");
 		dispatcher.forward(req, resp);	

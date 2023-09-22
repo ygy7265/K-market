@@ -3,6 +3,7 @@ package kr.co.kmarket.service;
 import java.util.List;
 
 import kr.co.kmarket.dao.OrderDAO;
+import kr.co.kmarket.dto.CartDTO;
 import kr.co.kmarket.dto.OrderDTO;
 
 public enum OrderService {
@@ -11,24 +12,30 @@ public enum OrderService {
 	private OrderDAO dao = OrderDAO.getInstance();
 	
 	
-	public void insertOrder(OrderDTO dto) {
+	public void insertOrder(CartDTO dto) {
 		dao.insertOrder(dto);
+	}
+	public void insertOrderComplite(OrderDTO dto) {
+		dao.insertOrderComplite(dto);
 	}
 	
 	public OrderDTO selectOrder(String ordNo) { // 편의를 위해서 int ordNo 가 아닌 String 으로 설정해둠 
 		return dao.selectOrder(ordNo);
 	}
 	
-	public List<OrderDTO> selectOrders() {
-		return dao.selectOrders();
+	public List<CartDTO> selectOrdersItem(String uid) {
+		return dao.selectOrdersItem(uid);
+	}
+	public OrderDTO selectOrderComplite(String uid) {
+		return dao.selectOrdersComplete(uid);
 	}
 	
 	public void updateOrder(OrderDTO dto) {
 		dao.updateOrder(dto);
 	}
 	
-	public void deleteOrder(String ordNo) {
-		dao.deleteOrder(ordNo);
+	public void deleteOrder(String uid) {
+		dao.deleteOrder(uid);
 	}
 
 	// admin_indexPage 운영 현황
@@ -49,6 +56,15 @@ public enum OrderService {
 	
 	public int selectOrderTotalMonth() {
 		return dao.selectOrderTotalMonth();
+	}
+	public int selectOrderTotalDayToPrice() {
+		return dao.selectOrderTotalDayToPrice();
+	}
+	public int selectOrderTotalWeekToPrice() {
+		return dao.selectOrderTotalWeekToPrice();
+	}
+	public int selectOrderTotalMonthToPrice() {
+		return dao.selectOrderTotalMonthToPrice();
 	}
 
 }

@@ -64,6 +64,7 @@ public class QnaDTO {
 	public void setReply(String reply) {
 		this.reply = reply;
 	}
+	
 	public String getRdate() {
 		return rdate;
 	}

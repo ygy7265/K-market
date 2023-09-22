@@ -69,6 +69,7 @@ public class SQL {
 	public static final String SELECT_CATE2	= "SELECT * FROM `km_product_cate2` WHERE `cate2` = ?";
 	public static final String SELECT_PRODUCTS	= "SELECT a.*, b.`level` FROM `km_product` AS a JOIN `km_member` AS b ON a.seller = b.uid WHERE `cate1` = ? and `cate2` = ? ORDER BY `prodNo` DESC LIMIT ?, 10";
 	public static final String SELECT_PRODUCTS_TOTAL_CATE = "SELECT COUNT(*) FROM `km_product` WHERE `cate1`=? AND `cate2`=?";
+	public static final String SELECT_CATE = "SELECT * FROM `km_product_cate1` AS a JOIN `km_product_cate2` AS b ON a.cate1 = b.cate1 WHERE a.`cate1`=? AND `cate2`=?";
 	
 	// product OrderBy
 	public static final String SELECT_SOLD_PRODUCT_CATE = "SELECT a.*, b.`level` FROM `km_product` AS a JOIN `km_member` AS b ON a.seller = b.uid WHERE `cate1` = ? and `cate2` = ? ORDER BY `sold` DESC LIMIT ?,10";
@@ -127,6 +128,22 @@ public class SQL {
 														+ "FROM `km_product_order` "
 														+ "WHERE `ordDate` BETWEEN DATE_SUB(NOW(), INTERVAL 1 MONTH) "
 														+ "AND NOW()";
+	// admin_index 일 총 주문금액 합산
+	public static final String SELECT_ORDERS_TOTAL_DAY_TO_PRICE = "SELECT SUM(ordTotPrice) AS total_order_price "
+																+ "FROM km_product_order "
+																+ "WHERE ordDate BETWEEN CURRENT_DATE AND DATE_ADD(CURRENT_DATE, INTERVAL 1 DAY)";
+	// admin_index 주간 총 주문금액 합산
+	public static final String SELECT_ORDERS_TOTAL_WEEK_TO_PRICE = "SELECT SUM(ordTotPrice) AS total_order_price "
+																+ "FROM km_product_order "
+																+ "WHERE ordDate BETWEEN CURRENT_DATE AND DATE_ADD(CURRENT_DATE, INTERVAL 1 WEEK)";
+	// admin_index 월간 총 주문금액 합산
+	public static final String SELECT_ORDERS_TOTAL_MONTH_TO_PRICE = "SELECT SUM(ordTotPrice) AS total_order_price "
+																+ "FROM km_product_order "
+																+ "WHERE ordDate BETWEEN CURRENT_DATE AND DATE_ADD(CURRENT_DATE, INTERVAL 1 MONTH)";
+	// admin_index 공지사항
+	public static final String SELECT_ADMIN_INDEX_NOTICE ="SELECT * FROM `km_cs_notice` ORDER BY `noticeNo` DESC LIMIT 5";
+	// admin_index 문의사항
+	public static final String SELECT_ADMIN_INDEX_QNA ="SELECT * FROM `km_cs_qna` ORDER BY `qnaNo` DESC LIMIT 5";
 	
 	/* admin_product_list */
 	public static final String SELECT_PRODUCTS_TOTAL = "SELECT * FROM `km_product` ORDER BY `rdate` DESC LIMIT ?,10";
@@ -261,11 +278,41 @@ public class SQL {
 													+ "`delivery`=?, "
 													+ "`total`=?, "
 													+ "`rdate`=NOW() ";
+	public static final String INSERT_PRODUCT_ORDER= "INSERT INTO `km_product_order_item` SET "
+													+ "`prodNo` = ?, "
+													+ "`uid`=?, "
+													+ "`count` = ?,"
+													+ "`price` = ?, "
+													+ "`discount` = ?, "
+													+ "`point`= ?, "
+													+ "`delivery` = ?, "
+													+ "`total` = ?";
+	public static final String INSERT_PRODUCT_ORDER_COMPLITE = "INSERT INTO `km_product_order` SET "
+													+ "`uid` = ?,"
+													+ "`ordCount` = ?,"
+													+ "`ordPrice` = ?,"
+													+ "`ordDiscount` = ?,"
+													+ "`ordDelivery` = ?,"
+													+ "`savePoint` = ?,"
+													+ "`usedPoint` = ?,"
+													+ "`ordTotPrice` = ?,"
+													+ "`recipName`=?,"
+													+ "`recipHp`=?,"
+													+ "`recipZip`=?,"
+													+ "`recipAddr1`=?,"
+													+ "`recipAddr2`=?,"
+													+ "`ordPayment` = ?,"
+													+ "`ordComplete`= ?,"
+													+ "`ordDate` = NOW()";
+											
 
 	public static final String SELECT_CARTS = "SELECT a.*,b.prodName,b.descript FROM `km_product_cart` AS a JOIN `km_product` AS b ON a.prodNo = b.prodNo WHERE `uid` = ?";
+	public static final String SELECT_CARTS_ITEM = "SELECT a.*,b.prodName,b.descript FROM `km_product_order_item` AS a JOIN `km_product` AS b ON a.prodNo = b.prodNo WHERE `uid` = ?";
+	public static final String SELECT_CARTS_ORDER_COMPLITE = "SELECT * FROM `km_product_order` WHERE `uid` = ? ORDER BY `ordNo` DESC LIMIT 1;";
 	public static final String SELECT_COUNT_CART = "SELECT COUNT(*) FROM `km_product_cart`";	
 	public static final String SELECT_DUPLICATION_CART = "SELECT * FROM `km_product_cart` WHERE `prodNo`= ? AND `uid` = ?";	
 	public static final String DELETE_CART = "DELETE FROM `km_product_cart` WHERE `cartNo` = ?";	
+	public static final String DELETE_ORDER = "DELETE FROM `km_product_order_item` WHERE `uid` = ?";
 	public static final String UPDATE_CART = "UPDATE `km_product_cart` SET `count` = `count` + ? WHERE `prodNo` = ? AND `uid` = ?";	
 	// admin_register 
 	public static final String SELECT_CATE1S = "SELECT * FROM `km_product_cate1` ORDER BY `cate1` ASC";

@@ -21,7 +21,7 @@
     <!-- 제목, 페이지 네비게이션 -->
     <nav>
         <h1>상품목록</h1>
-        <p>HOME > <span>패션·의류·뷰티</span> > <strong>남성의류</strong></p>
+        <p>HOME > <span>${CateName.c1Name}</span> > <strong>${CateName.c2Name}</strong></p>
       </nav>
 
       <!-- 정렬 메뉴 -->
@@ -58,12 +58,16 @@
                 <del class="org-price">${product.price}</del>
                 <span class="discount">${product.discount}%</span>
               </li>
-              <li><span class="free-delivery">무료배송</span></li>
+              <li>
+              	<c:if test="${product.delivery eq 0}">
+	            <span class="free-delivery">무료배송</span>
+	            </c:if>
+              </li>
             </ul>
           </td>
           <td>
             <h4 class="seller"><i class="fas fa-home"></i>&nbsp;${product.seller}</h4>
-            <h5 class="badge ${product.level ge '6'? 'great':''}">${product.seller}</h5>
+            <h5 class="badge ${product.level eq '6'? 'great':''}">${product.seller}</h5>
             <h6 class="rating star${product.score}">상품평</h6>
           </td>
         </tr>

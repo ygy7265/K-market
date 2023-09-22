@@ -198,7 +198,41 @@ public class NoticeDAO extends DBHelper{
 		return latests;
 	}
 	
-	
+	//admin_index_notice
+	public List<NoticeDTO> selectAdminIndexNotice() {
+		List<NoticeDTO> notices = new ArrayList<>();
+		
+		try {
+			
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.SELECT_ADMIN_INDEX_NOTICE);
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				NoticeDTO dto = new NoticeDTO();
+				dto.setNoticeNo(rs.getInt(1));
+				dto.setCate(rs.getString(2));
+				dto.setTitle(rs.getString(3));
+				dto.setContent(rs.getString(4));
+				dto.setWriter(rs.getString(5));
+				dto.setHit(rs.getInt(6));
+				dto.setRdate(rs.getString(7));
+				
+				notices.add(dto);
+			}			
+			
+			logger.debug("NoticeDAO dto ... : "+notices.toString());
+			close();
+			
+			
+			
+		}catch(Exception e) {
+			logger.error("NoticeDAO selectNotice error : "+e.getMessage());
+			e.printStackTrace();
+		}
+		
+		return notices;
+	}
 	
 	
 	
