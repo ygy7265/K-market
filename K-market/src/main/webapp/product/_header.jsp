@@ -62,11 +62,11 @@
             <div class="menu">
                 <div>
                     <ul>
-                        <li><a href="/K-market/product/productlistSpecial.do?type1=hit">히트상품</a></li>
-                        <li><a href="/K-market/product/productlistSpecial.do?type1=score">추천상품</a></li>
-                        <li><a href="/K-market/product/productlistSpecial.do?type1=new">최신상품</a></li>
-                        <li><a href="/K-market/product/productlistSpecial.do?type1=best">인기상품</a></li>
-                        <li><a href="/K-market/product/productlistSpecial.do?type1=discount">할인상품</a></li>
+                        <li class=""><a href="/K-market/product/productlistSpecial.do?type1=hit">히트상품</a></li>
+                        <li class=""><a href="/K-market/product/productlistSpecial.do?type1=score">추천상품</a></li>
+                        <li class=""><a href="/K-market/product/productlistSpecial.do?type1=new">최신상품</a></li>
+                        <li class=""><a href="/K-market/product/productlistSpecial.do?type1=best">인기상품</a></li>
+                        <li class=""><a href="/K-market/product/productlistSpecial.do?type1=discount">할인상품</a></li>
                     </ul>
                     <ul>
                         <li><a href="#">쿠폰존</a></li>
