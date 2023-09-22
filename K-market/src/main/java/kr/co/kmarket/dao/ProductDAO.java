@@ -686,6 +686,26 @@ public class ProductDAO extends DBHelper {
 		
 		return total;
 	}
+	public Cate2DTO selectCate(String cate1, String cate2) {
+		Cate2DTO dto = null;
+		try {
+			psmt = getConnection().prepareStatement(SQL.SELECT_CATE);
+			psmt.setString(1, cate1);
+			psmt.setString(2, cate2);
+			rs = psmt.executeQuery();
+			if (rs.next()) {
+				dto = new Cate2DTO();
+				dto.setCate1(rs.getInt("cate1"));
+				dto.setCate2(rs.getInt("cate2"));
+				dto.setC1Name(rs.getString("c1Name"));
+				dto.setC2Name(rs.getString("c2Name"));
+			}
+			close();
+		} catch (Exception e) {
+			logger.error("selectCate error : " + e.getMessage());
+		}
+		return dto;
+	}
 	
 	// admin_indexPage 1일, 7일 30일 안에 등록된 제품 (신규제품)
 	public int selectProductTotalDay() {
