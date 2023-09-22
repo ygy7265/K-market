@@ -125,6 +125,7 @@ public class NoticeDAO extends DBHelper{
 			psmt.setString(1, dto.getCate());
 			psmt.setString(2, dto.getTitle());
 			psmt.setString(3, dto.getContent());
+			psmt.setInt(4, dto.getNoticeNo());
 			psmt.executeUpdate();
 			
 			close();

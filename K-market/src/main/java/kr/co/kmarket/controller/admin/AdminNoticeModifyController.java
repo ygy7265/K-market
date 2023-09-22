@@ -30,7 +30,11 @@ public class AdminNoticeModifyController extends HttpServlet{
 		String title	= req.getParameter("title");
 		String content	= req.getParameter("content");
 		
-		logger.debug(noticeNo);
+//		logger.debug("writer : "+writer);
+//		logger.debug("noticeNo : "+noticeNo);
+//		logger.debug("cate : "+cate);
+//		logger.debug("title : "+title);
+//		logger.debug("content : "+content);
 		
 		req.setAttribute("writer", writer);
 		req.setAttribute("noticeNo", noticeNo);

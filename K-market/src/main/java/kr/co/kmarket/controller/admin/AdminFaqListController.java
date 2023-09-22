@@ -14,12 +14,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import kr.co.kmarket.dto.NoticeDTO;
+import kr.co.kmarket.service.FaqService;
 import kr.co.kmarket.service.NoticeService;
 @WebServlet("/admin/cs/faq/list.do")
 public class AdminFaqListController extends HttpServlet{
 	private static final long serialVersionUID = 661371223453L;
 	private Logger logger = LoggerFactory.getLogger(getClass());
-	private NoticeService nService = NoticeService.INSTANCE;
+	private FaqService fService = FaqService.INSTANCE;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -29,9 +30,7 @@ public class AdminFaqListController extends HttpServlet{
 		
 		logger.debug(cate);
 		
-		List<NoticeDTO> notices = nService.selectNotices(cate, start);
-		logger.debug("관리자/공지사항 error : " + notices);
-		req.setAttribute("notices", notices);
+		logger.debug("관리자/공지사항 error : ");
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/admin/cs/faq/list.jsp");
 		dispatcher.forward(req, resp);
