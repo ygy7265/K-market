@@ -27,7 +27,6 @@ let reBiz = /^[0-9]{3}-[0-9]{2}-[0-9]{5}$/;
 // 유효성 검사(Validation)
 $(function(){
 	
-	
 	// 아이디 검사
 	$('input[name=km_uid]').keydown(function(){ // 유효한 아이디를 검사한 후 다시 아이디 값을 조작할 시
 		$('.msgId1').text('');
@@ -182,31 +181,33 @@ $(function(){
 			return false; // 폼 전송 취소	
 		}
 		
-		if(!isFaxOk){
-			alert('팩스 번호를 확인 하십시요.');
-			return false; // 폼 전송 취소	
+		// 판매회원 전용
+		if ($('input[name=kms_fax]').length > 0){
+			if(!isFaxOk){
+				alert('팩스 번호를 확인 하십시요.');
+				return false; // 폼 전송 취소	
+			}
+			
+			if(!isCompanyOk){
+				alert('회사명을 확인 하십시요.');
+				return false; // 폼 전송 취소	
+			}
+			
+			if(!isBizOk){
+				alert('사업자등록번호를 확인 하십시요.');
+				return false; // 폼 전송 취소	
+			}
+			
+			if(!isManagerOk){
+				alert('담당자 이름을 확인 하십시요.');
+				return false; // 폼 전송 취소	
+			}
+			
+			if(!isManagerHpOk){
+				alert('담당자 번호를 확인 하십시요.');
+				return false; // 폼 전송 취소	
+			}
 		}
-		
-		if(!isCompanyOk){
-			alert('회사명을 확인 하십시요.');
-			return false; // 폼 전송 취소	
-		}
-		
-		if(!isBizOk){
-			alert('사업자등록번호를 확인 하십시요.');
-			return false; // 폼 전송 취소	
-		}
-		
-		if(!isManagerOk){
-			alert('담당자 이름을 확인 하십시요.');
-			return false; // 폼 전송 취소	
-		}
-		
-		if(!isManagerHpOk){
-			alert('담당자 번호를 확인 하십시요.');
-			return false; // 폼 전송 취소	
-		}
-		
 						
 		return true; // 폼 전송 시작
 	});
