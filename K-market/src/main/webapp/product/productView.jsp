@@ -9,6 +9,26 @@
 <%@ include file="../_aside.jsp" %>
 <script>
 $(function(){
+	$('.cart').click(function(e){
+		e.preventDefault();
+		var result = confirm("장바구니에 담으시겠습니까?");
+		if (result === true) {
+		    // 확인 버튼이 클릭된 경우
+			 $('.buy').submit();
+		} else {
+		    // 취소 버튼이 클릭된 경우
+		}	
+	})
+	$('.order').click(function(e){
+		e.preventDefault();
+		var result = confirm("구매하시겠습니까?");
+		if (result === true) {
+		    // 확인 버튼이 클릭된 경우
+		} else {
+		    // 취소 버튼이 클릭된 경우
+		}	
+	})
+	
     let num = 1;
     let price = ${proddto.price};
     let delivery = ${proddto.delivery};
@@ -111,7 +131,7 @@ $(function(){
                     <span class="total2">${proddto.price}</span>
                     <em>총 상품금액</em>
                 </div>
-				<form action="/K-market/product/productcart.do" method="POST">
+				<form action="/K-market/product/productcart.do" method="POST" class="buy">
 				    <input type="hidden" name="uid" value="${memberdto.uid }" />
 				    <input type="hidden" name="prodNo" value="${proddto.prodNo}" />
 				    <input type="hidden" name="prodName" value="${proddto.prodName}" />

@@ -71,51 +71,31 @@
                 <th>수량</th>
                 <th>주문금액</th>
             </tr>
+            <c:forEach var="list" items="${list}">
+            <input type="hidden" class="discountlist" value="${list.discount}"></input>
             <tr>
-                <td>
+              <td>
                 <article>
-                    <img src="https://via.placeholder.com/80x80" alt="">
-                    <div>
-                    <h2><a href="/K-market/product/productview.do">상품명</a></h2>
-                    <p>상품설명</p>
-                    </div>
+                  <a href="/K-market/product/"><img src="https://via.placeholder.com/80x80" alt=""></a>
+                  <div>
+                    <h2><a href="/K-market/product/">${list.pName}</a></h2>
+                    <p>${list.descript}</p>
+                  </div>
                 </article>
-                </td>
-                <td>17,000원</td>
-                <td>1,000원</td>
-                <td>1</td>
-                <td>16,000원</td>
+              </td>
+              <td><fmt:formatNumber value="${list.price}" pattern="#,###"/></td>
+              <td><fmt:formatNumber value="${list.price * list.discount / 100}" pattern="#,###"/></td>
+              <td><fmt:formatNumber value="${list.count}" pattern="#,###"/></td>
+              <td><fmt:formatNumber value="${list.total}" pattern="#,###"/></td>
             </tr>
-            <tr>
-                <td>
-                <article>
-                    <img src="https://via.placeholder.com/80x80" alt="">
-                    <div>
-                    <h2><a href="/K-market/product/productview.do">상품명</a></h2>
-                    <p>상품설명</p>
-                    </div>
-                </article>
-                </td>
-                <td>17,000원</td>
-                <td>1,000원</td>
-                <td>1</td>
-                <td>16,000원</td>
-            </tr>
-            <tr>
-                <td>
-                <article>
-                    <img src="https://via.placeholder.com/80x80" alt="">
-                    <div>
-                    <h2><a href="/K-market/product/productview.do">상품명</a></h2>
-                    <p>상품설명</p>
-                    </div>
-                </article>
-                </td>
-                <td>17,000원</td>
-                <td>1,000원</td>
-                <td>1</td>
-                <td>16,000원</td>
-            </tr>
+             <input type="hidden" class="listpoint" value="${list.point}"/>
+             <input type="hidden" class="listcount" value="${list.count}"/>
+             <input type="hidden" class="listprice" value="${list.price}"/>
+             <input type="hidden" class="listdelivery" value="${list.delivery}"/>
+             <input type="hidden" class="listtotal" value="${list.total}"/>
+             
+            </c:forEach>
+         
             
             <tr class="total">
                 <td colspan="4"></td>
@@ -123,19 +103,19 @@
                 <table border="0">
                     <tr>
                     <td>총 상품금액</td>
-                    <td><span>34,000</span>원</td>
+                    <td><span>${ordto.ordPrice}</span>원</td>
                     </tr>
                     <tr>
                     <td>총 할인금액</td>
-                    <td><span>-2,000</span>원</td>
+                    <td><span>${ordto.ordDelivery}</span>원</td>
                     </tr>
                     <tr>
                     <td>배송비</td>
-                    <td><span>3,000</span>원</td>
+                    <td><span>${ordto.ordDiscount}</span>원</td>
                     </tr>
                     <tr>
                     <td>총 결제금액</td>
-                    <td><span>35,000</span>원</td>
+                    <td><span>${ordto.ordTotPrice}</span>원</td>
                     </tr>
                 </table>                      
                 </td>
@@ -151,15 +131,15 @@
                 <td>주문번호</td>
                 <td>2008101324568</td>
                 <td rowspan="3">총 결제금액</td>
-                <td rowspan="3"><span>35,000</span>원</td>
+                <td rowspan="3"><span>${ordto.ordTotPrice}</span>원</td>
             </tr>
             <tr>
                 <td>결제방법</td>
-                <td>신용카드</td>
+                <td>${ordto.ordPayment}</td>
             </tr>
             <tr>
                 <td>주문자/연락처</td>
-                <td>홍길동/010-1234-1234</td>
+                <td>${ordto.recipName}/${ordto.recipHp}</td>
             </tr>
             </table>
         </article>
@@ -170,20 +150,20 @@
             <table border="0">
             <tr>
                 <td>수취인</td>
-                <td>홍길동</td>                    
+                <td>${ordto.recipName}</td>                    
                 <td>주문자 정보</td>
             </tr>
             <tr>
                 <td>연락처</td>
-                <td>010-1234-1234</td>
+                <td>${ordto.recipHp}</td>
                 <td rowspan="2">
-                홍길동<br/>
-                010-1234-1234
+                ${ordto.recipName}<br/>
+                ${ordto.recipHp}
                 </td>
             </tr>
             <tr>
                 <td>배송지 주소</td>
-                <td>부산광역시 강남구 대연동 123 10층</td>
+                <td>${ordto.recipAddr2}</td>
             </tr>
             </table>
         </article>
