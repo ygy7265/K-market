@@ -51,6 +51,11 @@ public enum NoticeService {
 		return dao.selectLatests(size);
 	}
 	
+	// admin_index_notice Limit 5
+	public List<NoticeDTO> selectAdminIndexNotice() {
+		return dao.selectAdminIndexNotice();
+	}
+	
 	
 	
 }

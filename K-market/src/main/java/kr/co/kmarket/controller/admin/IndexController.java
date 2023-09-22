@@ -1,6 +1,7 @@
 package kr.co.kmarket.controller.admin;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,10 +13,14 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import kr.co.kmarket.dto.NoticeDTO;
+import kr.co.kmarket.dto.QnaDTO;
 import kr.co.kmarket.etc.Utils;
 import kr.co.kmarket.service.MemberService;
+import kr.co.kmarket.service.NoticeService;
 import kr.co.kmarket.service.OrderService;
 import kr.co.kmarket.service.ProductService;
+import kr.co.kmarket.service.QnaService;
 @WebServlet("/admin/index.do")
 public class IndexController extends HttpServlet{
 	private static final long serialVersionUID = 137124123L;
@@ -23,6 +28,8 @@ public class IndexController extends HttpServlet{
 	private OrderService oService = OrderService.INSTANCE;
 	private MemberService mService = MemberService.INSTANCE;
 	private ProductService pService = ProductService.INSTANCE;
+	private NoticeService nService = NoticeService.INSTANCE;
+	private QnaService qService = QnaService.INSTANCE;
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -42,8 +49,13 @@ public class IndexController extends HttpServlet{
 		int dayOrder = oService.selectOrderTotalDay(); //24시간 이내 등록된 신규 product
 		int weekOrder = oService.selectOrderTotalWeek(); //일주일 이내 등록된 신규 product
 		int monthOrder = oService.selectOrderTotalMonth(); //한달 이내 등록된 신규 product
-		
-		
+		// 기간 별 총 주문금액
+		int dayOrderToPrice = oService.selectOrderTotalDayToPrice();
+		int weekOrderToPrice = oService.selectOrderTotalWeekToPrice();
+		int monthOrderToPrice = oService.selectOrderTotalMonthToPrice();
+		// 공지,문의 최신글
+		List<NoticeDTO> notiAdmin = nService.selectAdminIndexNotice();
+		List<QnaDTO> qnaAdmin = qService.selectAdminIndexQna();
 		
 		req.setAttribute("total", total);
 		req.setAttribute("sumtotal", sumtotal);
@@ -60,6 +72,14 @@ public class IndexController extends HttpServlet{
 		req.setAttribute("dayOrder", dayOrder);
 		req.setAttribute("weekOrder", weekOrder);
 		req.setAttribute("monthOrder", monthOrder);
+		// 기간별 총 주문금액
+		req.setAttribute("dayOrderToPrice", dayOrderToPrice);
+		req.setAttribute("weekOrderToPrice", weekOrderToPrice);
+		req.setAttribute("monthOrderToPrice", monthOrderToPrice);
+		// 공지, 문의 최신글
+		req.setAttribute("notiAdmin", notiAdmin);
+		req.setAttribute("qnaAdmin", qnaAdmin);
+		
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/admin/index.jsp");
 		dispatcher.forward(req, resp);

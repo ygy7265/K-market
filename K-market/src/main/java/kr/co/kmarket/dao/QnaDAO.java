@@ -227,5 +227,35 @@ public class QnaDAO extends DBHelper{
 		return latests;
 	}
 	
+	//admin_index_notice
+	public List<QnaDTO> selectAdminIndexQna() {
+		List<QnaDTO> qnas = new ArrayList<>();
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.SELECT_ADMIN_INDEX_QNA);
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				QnaDTO dto = new QnaDTO();
+				dto.setQnaNo(rs.getInt(1));
+				dto.setCate1(rs.getString(2));
+				dto.setCate2(rs.getString(3));
+				dto.setTitle(rs.getString(4));
+				dto.setContent(rs.getString(5));
+				dto.setWriter(rs.getString(6));
+				dto.setStatus(rs.getString(7));
+				dto.setReply(rs.getString(8));
+				dto.setRdate(rs.getString(9));
+				dto.setIp(rs.getString(10));
+				qnas.add(dto);
+			}			
+			logger.debug("NoticeDAO dto ... : "+qnas.toString());
+			close();
+		}catch(Exception e) {
+			logger.error("NoticeDAO selectNotice error : "+e.getMessage());
+			e.printStackTrace();
+		}
+		return qnas;
+	}
 
 }
