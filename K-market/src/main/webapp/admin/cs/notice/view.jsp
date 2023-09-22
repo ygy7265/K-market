@@ -21,14 +21,11 @@
                   <option value="${notice.cate}">
 	                  <c:set var="cate" value="${notice.cate}"/>
                         <c:choose>
-                            <c:when test="${cate == 10}">회원</c:when>
-                            <c:when test="${cate == 20}">쿠폰/혜택/이벤트</c:when>
-                            <c:when test="${cate == 30}">주문/결제</c:when>
-                            <c:when test="${cate == 40}">배송</c:when>
-                            <c:when test="${cate == 50}">취소/반품/교환</c:when>
-                            <c:when test="${cate == 60}">여행/숙박/항공</c:when>
-                            <c:when test="${cate == 70}">안전거래</c:when>
-                        </c:choose>               
+                            <c:when test="${cate eq '01'}">고객서비스</c:when>
+                            <c:when test="${cate eq '02'}">안전거래</c:when>
+                            <c:when test="${cate eq '03'}">위해상품</c:when>
+                            <c:when test="${cate eq '04'}">이벤트당첨</c:when>
+                        </c:choose>
                   </option>
                 </select>
               </td>

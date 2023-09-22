@@ -162,7 +162,8 @@ public class SQL {
 													+ "ORDER BY `faqNo` DESC "
 													+ "LIMIT ?,10";
 	
-	public static final String UPDATE_NOTICE = "UPDATE `km_cs_notice` SET `cate`=?, `title`=?, `content`=? WHERE `noticeNo`=?";
+	public static final String UPDATE_NOTICE = "UPDATE `km_cs_notice` SET `cate`=?, `title`=?, `content`=?, `rdate`=CURRENT_DATE "
+											+ "WHERE `noticeNo`=?";
 	//Member
 	//member_Login
 	public static final String SELECT_MEMBER = "SELECT * FROM `km_member` WHERE `uid` = ? and `pass` = SHA2(?,256)";

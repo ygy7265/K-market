@@ -18,14 +18,15 @@
               <td>공지유형</td>
               <td>
                 <select name="cate">
-                  <option>선택</option>
-                  <option value="10">회원</option>
-                  <option value="20">쿠폰/혜택/이벤트</option>
-                  <option value="30">주문/결제</option>
-                  <option value="40">배송</option>
-                  <option value="50">취소/반품/교환</option>
-                  <option value="60">여행/숙박/항공</option>
-                  <option value="70">안전거래</option>
+                  <option value="${cate}">
+	                  <c:set var="cate" value="${cate}"/>
+                        <c:choose>
+                            <c:when test="${cate eq '01'}">고객서비스</c:when>
+                            <c:when test="${cate eq '02'}">안전거래</c:when>
+                            <c:when test="${cate eq '03'}">위해상품</c:when>
+                            <c:when test="${cate eq '04'}">이벤트당첨</c:when>
+                        </c:choose>
+                  </option>
                 </select>
               </td>
             </tr>
