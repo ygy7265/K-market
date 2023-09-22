@@ -149,12 +149,12 @@ public class ProductDAO extends DBHelper {
 				dto.setOrigin(rs.getString(25));
 				dto.setIp(rs.getString(26));
 				dto.setRdate(rs.getString(27));
-				dto.setLevel(rs.getInt(28));
+				dto.setLevel(rs.getInt("level"));
 				
 				list.add(dto);	
 			}
 			
-			logger.debug(list.toString());
+			logger.debug("test"+list.get(0).getLevel());
 			close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

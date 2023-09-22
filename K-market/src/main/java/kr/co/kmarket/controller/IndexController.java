@@ -50,14 +50,14 @@ public class IndexController extends HttpServlet{
 		// 세션에서 로그인 사용자 정보를 가져옵니다.
 		HttpSession session = req.getSession();
 		MemberDTO loginUser = (MemberDTO) session.getAttribute("user");
-		   
+		Integer visitorCount = 0;
 		if (loginUser != null) {
 		    // 로그인한 사용자인 경우 방문자 수를 증가합니다.
-		    Integer visitorCount = (Integer) context.getAttribute("visitorCount");
+		     visitorCount = (Integer) context.getAttribute("visitorCount");
 
 		    // 최초의 방문자일 경우 방문자 수를 1로 초기화합니다.
 		    if (visitorCount == null) {
-		        visitorCount = 1;
+		        visitorCount = 30;
 		    } else {
 		        // 기존 방문자 수에 1을 추가합니다.
 		        visitorCount++;

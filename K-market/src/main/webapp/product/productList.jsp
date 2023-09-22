@@ -67,7 +67,7 @@
           </td>
           <td>
             <h4 class="seller"><i class="fas fa-home"></i>&nbsp;${product.seller}</h4>
-            <h5 class="badge ${product.level ge '6'? 'great':''}">${product.seller}</h5>
+            <h5 class="badge ${product.level eq '6'? 'great':''}">${product.seller}</h5>
             <h6 class="rating star${product.score}">상품평</h6>
           </td>
         </tr>

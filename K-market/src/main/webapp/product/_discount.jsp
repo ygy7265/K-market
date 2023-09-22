@@ -6,7 +6,7 @@
   -->
 <script>
 	$(function(){
-	/* 	 <c:forEach var="product" items="${bestList}" varStatus="loopStatus">
+		 <c:forEach var="product" items="${bestList}" varStatus="loopStatus">
 	      // 함수를 사용하여 새로운 스코프를 생성합니다.
 	      (function() {
 	        let price = ${product.price};
@@ -67,10 +67,11 @@
 	        }
 	        $('.recommend .dis_price:eq(${loopStatus.index}) .product-row').text(discountPrice);
 	      })();
-	    </c:forEach> */
+	    </c:forEach> 
 	    
 	    //최종결제정보
 			 let count = 0; // 값들을 더하기 위한 변수를 초기화합니다.
+			 let smcount = 0;
 			 let total = 0;
 			 let point = 0;
 			 let delivery = 0;
@@ -85,6 +86,7 @@
 			        if (!isNaN(value)) {
 			            if ($(this).hasClass('listcount')) {
 			                count += value; // .listcount 클래스 요소일 경우 count 변수에 더함
+			                smcount = count
 			            }else if($(this).hasClass('discountlist')){
 			            	discount = parseFloat($(this).val());
 			            }
@@ -100,7 +102,8 @@
 			                console.log("할인 적용된 가격 = " + discountPrice);
 			                
 			                if(discountp > 0){
-			                	$('.orderdiscount').text("- "+discountp.toLocaleString());
+			                	$('td.orderdiscount').text("- "+discountp.toLocaleString());
+			                	$('input.orderdiscount').val(discountp);
 			                }
 			                
 			            }
@@ -122,12 +125,25 @@
 			        }
 			    });
 
-				$('.ordercount').text(count.toLocaleString());
-				$('.ordernodiscount').text(total.toLocaleString());
-				$('.orderpoint').text(point.toLocaleString());
-				$('.orderdelivery').text(delivery.toLocaleString());
-				$('.ordertotal').text(discountPrice.toLocaleString());
+				$('td.ordercount').text(count.toLocaleString());
+				$('td.ordernodiscount').text(total.toLocaleString());
+				$('td.orderpoint').text(point.toLocaleString());
+				$('td.orderdelivery').text(delivery.toLocaleString());
+				$('td.ordertotal').text(discountPrice.toLocaleString());
 				$('.ordertotal2').val(discountPrice);
+				
+				$('input.ordercount').val(count);
+				$('input.ordernodiscount').val(total);
+				
+				$('input.orderpoint').val(point);
+				$('input.orderdelivery').val(delivery);
+				$('input.ordertotal').val(discountPrice);
+				
+				
+				
+				
+				
+				
 		})
 	
 </script>

@@ -17,16 +17,28 @@ $(function(){
 		const point = $('input[name=point]').val();
 		if(point >= 5000 || point == 0){
 			const pointDiscount = total2 - point;
+			$('.orderpointdiscount').val(point);
 			console.log(total2);
 			console.log(pointDiscount);
 			const pointnus = nowpoint - point;
 			console.log(pointnus);
 			$('.ordertotal').text(pointDiscount.toLocaleString());
+			$('.orderpointdiscount').text("- "+point.toLocaleString());
 			$('.nowpoint').text(pointnus.toLocaleString());
 		}else{
 			alert("5000포인트부터 사용가능합니다");
 		}
-	})
+	});
+	
+	$('.buybtn').click(function(e){
+		e.preventDefault();
+		 // 사용자에게 구매 여부를 묻는 확인 대화상자를 띄웁니다.
+	    var confirmation = confirm("구매하시겠습니까?");
+	    
+	    if (confirmation) { 
+	        $('#buyform').submit();
+	    }
+	});
 })
 </script>
 <main id="product">
@@ -82,7 +94,7 @@ $(function(){
         </p>
       </nav>
 
-      <form action="#">
+      <form action="/K-market/product/productcomplete.do" id="buyform" method="POST">
         <!-- 주문 상품 목록 -->                  
         <table>
           <thead>
@@ -143,20 +155,32 @@ $(function(){
               <td class="orderdiscount">0</td>
             </tr>
             <tr>
+              <td>포인트 할인</td>
+              <td class="orderpointdiscount">0</td>
+            </tr>
+            <tr>
               <td>배송비</td>
               <td class="orderdelivery">0</td>
             </tr>              
             <tr>
-              <td>포인트</td>
+              <td>적립포인트</td>
               <td class="orderpoint">0</td>
             </tr>
+          
             <tr>
               <td>전체주문금액</td>
               <td class="ordertotal">0</td>
             </tr>                           
           </table>
-          <input type="button" name="" value="결제하기">             
-          <input type="hidden" class="ordertotal2" value="order">             
+          <input type="button" name="" class="buybtn" value="결제하기">             
+          <input type="hidden" class="ordercount" name="ordercount">            
+          <input type="hidden" class="ordernodiscount" name="ordernodiscount">    
+          <input type="hidden" class="orderdiscount" name="orderdiscount">    
+          <input type="hidden" class="orderpointdiscount" name="orderpointdiscount" >    
+          <input type="hidden" class="orderdelivery" name="orderdelivery">    
+          <input type="hidden" class="orderpoint" name="orderpoint" >    
+          <input type="hidden" class="ordertotal" name="ordertotal">    
+          <input type="hidden" class="ordertotal2" name="ordertotal">    
         </div>
           
         <!-- 배송정보 -->
@@ -203,7 +227,7 @@ $(function(){
           <div>
             <p>현재 포인트 : <span class="nowpoint">/</span>점</p>
             <label>
-                <input type="text" name="point">점
+                <input type="text" name="point" >점
                 <input type="button" id="pointbtn" value="적용"/>
             </label>
             <span>포인트 5,000점 이상이면 현금처럼 사용 가능합니다.</span>
@@ -216,23 +240,23 @@ $(function(){
             <div>
                 <span>신용카드</span>
                 <p>
-                    <label><input type="radio" name="payment" value="type1"/>신용카드 결제</label>
-                    <label><input type="radio" name="payment" value="type2"/>체크카드 결제</label>                                
+                    <label><input type="radio" name="payment" value="1"/>신용카드 결제</label>
+                    <label><input type="radio" name="payment" value="2"/>체크카드 결제</label>                                
                 </p>
             </div>
             <div>
                 <span>계좌이체</span>
                 <p>
-                    <label><input type="radio" name="payment" value="type3"/>실시간 계좌이체</label>
-                    <label><input type="radio" name="payment" value="type4"/>무통장 입금</label>                                
+                    <label><input type="radio" name="payment" value="3"/>실시간 계좌이체</label>
+                    <label><input type="radio" name="payment" value="4"/>무통장 입금</label>                                
                 </p>
             </div>
             <div>
                 <span>기타</span>
                 <p>
-                    <label><input type="radio" name="payment" value="type3"/>휴대폰결제</label>
+                    <label><input type="radio" name="payment" value="5"/>휴대폰결제</label>
                     <label>
-                        <input type="radio" name="payment" value="type4"/>카카오페이
+                        <input type="radio" name="payment" value="6"/>카카오페이
                         <img src="/K-market/images/ico_kakaopay.gif" alt="카카오페이"/>
                     </label>                                
                 </p>
