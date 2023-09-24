@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> 
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -72,8 +73,8 @@
                         <li><a href="#">쿠폰존</a></li>
                         <li><a href="#">사용후기</a></li>
                         <li><a href="#">개인결제</a></li>
-                        <li><a href="/K-market/cs/qna/qnaList.do">고객센터</a></li>
-                        <li><a href="/K-market/cs/faq/faqList.do">FAQ</a></li>
+                    	<li><a href="/K-market/cs/index.do">고객센터</a></li>
+                        <li><a href="/K-market/cs/faq/faqList.do?cate1=10">FAQ</a></li>
                     </ul>
                    
                 </div>

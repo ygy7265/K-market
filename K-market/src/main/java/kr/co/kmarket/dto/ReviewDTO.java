@@ -1,5 +1,8 @@
 package kr.co.kmarket.dto;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class ReviewDTO {
 	
 	private int revNo;
@@ -9,6 +12,9 @@ public class ReviewDTO {
 	private int rating;
 	private String regip;
 	private String rdate;
+	
+	// 추가 필드 
+	private String name;
 	
 	public int getRevNo() {
 		return revNo;
@@ -58,7 +64,25 @@ public class ReviewDTO {
 	public void setRdate(String rdate) {
 		this.rdate = rdate;
 	}
-	
+	// 추가 
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	// 추가 
+    public String formatDate() {
+        try {
+            SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy-MM-dd");
+            Date date = inputFormat.parse(rdate);
+            return outputFormat.format(date);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return rdate;
+        }
+    }
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();

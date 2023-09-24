@@ -31,12 +31,17 @@ public enum ReviewService {
 		dao.insertReview(dto);
 	}
 	
-	public List<ReviewDTO> selectReviews() {
-		return dao.selectReviews();
+	public List<ReviewDTO> selectReviews(String prodNo, int start) {
+		return dao.selectReviews(prodNo,start);
 	}
 	
 	public void deleteReview(int revNo) {
 		dao.deleteReview(revNo);
+	}
+	// 추가 
+	public int selectReviewCountTotal(String prodNo){
+		
+		return dao.selectReviewCountTotal(prodNo);
 	}
 	
 }

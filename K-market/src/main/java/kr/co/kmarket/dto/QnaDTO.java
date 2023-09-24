@@ -22,6 +22,9 @@ public class QnaDTO {
 	public void setQnaNo(int qnaNo) {
 		this.qnaNo = qnaNo;
 	}
+	public void setQnaNo(String qnaNo) {
+		this.qnaNo = Integer.parseInt(qnaNo);
+	}
 	public String getCate1() {
 		return cate1;
 	}

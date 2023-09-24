@@ -132,7 +132,18 @@ public class QnaDAO extends DBHelper{
 	}
 	
 	public void updateQna(QnaDTO dto) {
-		
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.UPDATE_QNA);
+			psmt.setString(1, dto.getContent());
+			psmt.setInt(2, dto.getQnaNo());
+			psmt.executeUpdate();
+			
+			close();
+			
+		}catch(Exception e) {
+			logger.error("QnaDAO updateQna error... :"+e.getMessage());
+		}
 	}
 	
 	public void deleteQna(String qnaNo) {

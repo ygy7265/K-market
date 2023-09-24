@@ -1,9 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../_header.jsp"%>
 <!--
-  	날짜 : 2023/09/18
+  	날짜 : 2023/09/25
    	이름 : 이현정
-  	내용 : 문의하기-보기 (QnA/View) 기능 구현
+  	내용 : 문의하기-수정 (QnA/View) 기능 구현
   
 -->
 <section id="cs">
@@ -15,9 +15,10 @@
 				</p>
 			</div>
 		</nav>
-		<section class="view">
+		<section class="modify">
 			<jsp:include page="../_asideQna.jsp" />
 			<article>
+			<form action="/K-market/cs/qna/qnaModify.do?cate1=${dto.cate1}&cate2=${dto.cate2}&qnaNo=${dto.qnaNo}" method="post">
 				<nav>
 					<h2 class="title">[${dto.cate2}]${dto.title}</h2>
 					<p>
@@ -27,7 +28,7 @@
 				</nav>
 
 				<div class="content">
-					<p>${dto.content}</p><br>
+					<textarea name="content">${dto.content}</textarea>
 					<p>개인회원에서 법인회원(사업자 회원)으로 전환은 불가하므로 법인회원(사업자 회원) 전환은 신규 가입으로 진행을 해야 합니다.</p><br>
 					<p>
 				    ※ 피싱 관련 피해신고<br/>
@@ -36,25 +37,11 @@
 				    감사합니다.<br/>
 					</p>
 				</div>
-			
-				<!-- 댓글리스트 -->
-			<section class="commentList">
-			    <article class="comment">
-			        <c:choose>
-			            <c:when test="${not empty dto.reply}">
-			            	<h4>👉[답변]${dto.title}</h4>
-			                <textarea class="content" name="content" readonly>${dto.reply}</textarea>
-			            </c:when>
-			            <c:otherwise>
-			                <p class="empty">등록된 댓글이 없습니다.</p>
-			            </c:otherwise>
-			        </c:choose>
-			    </article>
-			</section>
 			    <div>
-					<a href="/K-market/cs/qna/qnaList.do?cate1=${dto.cate1}" class="btnList">목록보기</a>
-					<a href="/K-market/cs/qna/qnaModify.do?cate1=${dto.cate1}&cate2=${dto.cate2}&qnaNo=${dto.qnaNo}" class="btnModify">수정하기</a>
+					<a href="/K-market/cs/qna/qnaView.do?cate1=${dto.cate1}&cate2=${dto.cate2}&qnaNo=${dto.qnaNo}" class="can">취소</a>
+					<input type="submit"  class="modi" value="수정완료">
 				</div>
+				</form>
 			</article>
 	</section>
 	</div>
