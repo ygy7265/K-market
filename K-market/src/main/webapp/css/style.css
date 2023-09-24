@@ -775,6 +775,12 @@ footer p > strong {
 #product > .list > table .discount::after {
   content: "↓";
 }
+#product > .list > table .delivery {
+	display: inline-block;
+	font-size: 10px;
+	vertical-align: text-bottom;
+	margin-top: 4px;
+}
 #product > .list > table .free-delivery {
   display: inline-block;
   font-size:0;
@@ -802,6 +808,9 @@ footer p > strong {
 }
 #product .badge.great {
   background-image: url(/K-market/images/ico_great_seller.gif);
+}
+#product .badge.normal {
+  background-image: url(/K-market/images/ico_normal_seller.gif);
 }
 
 /*product_rating*/

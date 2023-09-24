@@ -95,7 +95,7 @@ $(function(){
                 <nav>
                     <h3>${proddto.prodName}</h3>
                     <p>${proddto.descript}</p>
-                    <h5 class="rating star4"><a href="#">상품평보기</a></h5>
+                    <h5 class="rating star${proddto.score}"><a href="#">상품평보기</a></h5>
                 </nav>
                 <nav>
                     <div class="org_price">

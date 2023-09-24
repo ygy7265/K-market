@@ -8,7 +8,7 @@
 	        let price = ${product.price};
 	        let delivery = ${product.delivery};
 	        let discountPrice = price - (price * ${product.discount}/100);
-	        $('.product-row:eq(${loopStatus.index}) .dis-price').text(discountPrice);
+	        $('.product-row:eq(${loopStatus.index}) .dis-price').text(discountPrice.toLocaleString());
 	        // ...
 	      })();
 	    </c:forEach>
@@ -44,30 +44,13 @@
 	        	}
 	        	$('nav > p').text('');
 	        	$('.sort').css('display','none');
+	        	$('.paging').css('display','none');
 	        }
 	        
 	    });
 	    
 	 	
 	})
-	
-// 주어진 문자열에서 빈 문자열 또는 공백을 제거하는 함수
-function removeEmptyParams(urlString) {
-    const paramsArray = urlString.split('&');
-    const cleanedParams = paramsArray.filter(param => {
-        const [paramName, paramValue] = param.split('=');
-        return paramName.trim() !== '' && (paramValue !== undefined ? paramValue.trim() !== '' : true);
-    });
-    return cleanedParams.join('&');
-}
-
-// URL에서 파라미터 값을 가져오는 함수
-function getUrlParameter(name) {
-    name = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
-    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-    var results = regex.exec(location.search);
-    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-}
 </script>
 <main id="product">
 <%@ include file="../_aside.jsp" %>   
@@ -110,19 +93,24 @@ function getUrlParameter(name) {
             <ul>
               <li class="product-row"><ins class="dis-price"></ins></li>
               <li>
-                <del class="org-price">${product.price}</del>
+                <del class="org-price"> <fmt:formatNumber value="${product.price}" pattern="#,###"/></del>
                 <span class="discount">${product.discount}%</span>
               </li>
               <li>
-              	<c:if test="${product.delivery eq 0}">
-	            <span class="free-delivery">무료배송</span>
-	            </c:if>
+	          <c:choose>
+	              <c:when test="${product.delivery gt 0}">
+	              <span class="delivery">배송비 <fmt:formatNumber value="${product.delivery}" pattern="#,###"/>원</span>
+	              </c:when>
+	              <c:otherwise>
+	              <span class="free-delivery">무료배송</span>
+	              </c:otherwise>
+	          </c:choose>
               </li>
             </ul>
           </td>
           <td>
             <h4 class="seller"><i class="fas fa-home"></i>&nbsp;${product.seller}</h4>
-            <h5 class="badge ${product.level eq '6'? 'great':''}">${product.seller}</h5>
+            <h5 class="badge ${product.level eq '6'? 'great':'normal'}">${product.seller}</h5>
             <h6 class="rating star${product.score}">상품평</h6>
           </td>
         </tr>
