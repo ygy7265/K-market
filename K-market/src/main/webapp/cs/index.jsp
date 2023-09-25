@@ -1,5 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./_header.jsp" %>
+<script>
+	
+	function showAlert() {
+	    alert("해당 글 작성자만 접근 가능합니다.");
+	}	
+	
+</script>
 <section id="cs">
     <div class="main">
         <h1 class="title">
@@ -56,24 +63,39 @@
                 </li>
             </ol>
         </section>
-        <section class="qna">
-            <h1>문의하기<a href="/K-market/cs/qna/qnaList.do?cate1=10">전체 보기</a></h1>
-            <ul>
-            	<c:forEach var="latest2" items="${latests2}">
-         
-	                <li>
-	                    <a href="/K-market/cs/qna/qnaView.do?cate1=${latest2.cate1}&cate2=${latest2.cate2}&qnaNo=${latest2.qnaNo}" class="title">[${latest2.cate2}] ${latest2.title}</a>
-	                    <p>
-	                        <span><c:out value="${fn:substring(latest2.writer, 0, fn:length(latest2.writer) - 3)}"/>***</span>
-	                        <span class="date">${latest2.formatDate()}</span>
-	                        
-	                    </p>
-	                </li>
-	                
-                </c:forEach>
-            </ul>
-            <a href="/K-market/cs/qna/qnaWrite.do" class="ask">문의글 작성 ></a>
-        </section>
+        <c:set var="loggedInUser" value="${sessionScope.user.uid}" />
+		<c:set var="userType" value="${sessionScope.user.type}" />
+		  <section class="qna">
+		    <h1>문의하기<a href="/K-market/cs/qna/qnaList.do?cate1=10">전체 보기</a></h1>
+		    <ul>
+		        <c:forEach var="latest2" items="${latests2}">
+		            <li>
+		                <c:choose>
+		                  <c:when test="${userType eq 100}">
+		                        <a href="/K-market/cs/qna/qnaView.do?cate1=${latest2.cate1}&cate2=${latest2.cate2}&qnaNo=${latest2.qnaNo}" class="title view">
+		                            [${latest2.cate2}] ${latest2.title}
+		                        </a>
+		                    </c:when>
+		                    <c:when test="${loggedInUser eq latest2.writer}">
+		                        <a href="/K-market/cs/qna/qnaView.do?cate1=${latest2.cate1}&cate2=${latest2.cate2}&qnaNo=${latest2.qnaNo}" class="title view">
+		                            [${latest2.cate2}] ${latest2.title}
+		                        </a>
+		                    </c:when>
+		                    <c:otherwise>
+		                        <a href="#" onclick="showAlert(); return false;" class="title view">
+		                            [${latest2.cate2}] ${latest2.title}
+		                        </a>
+		                    </c:otherwise>
+		                </c:choose>
+		                <p>
+		                    <span><c:out value="${fn:substring(latest2.writer, 0, fn:length(latest2.writer) - 3)}"/>***</span>
+		                    <span class="date">${latest2.formatDate()}</span>
+		                </p>
+		            </li>
+		        </c:forEach>
+		    </ul>
+		    <a href="/K-market/cs/qna/qnaWrite.do" class="ask">문의글 작성 ></a>
+		</section>
         <section class="tel">
             <h1>1:1 상담이 필요하신가요? </h1>
             <article>

@@ -55,6 +55,11 @@ header > .logo > div > a img {
     vertical-align: bottom;
     margin-right: 10px;
 }
+#container > header > div.top > div > p > a.loginUser{
+	font-weight: bold;
+	color: #45ad4a;
+}
+
 /* cs main */
 #cs {
     width: 100%;
@@ -62,6 +67,12 @@ header > .logo > div > a img {
 }
 #cs > .main {}
 #cs > .main > .title {
+    font-size: 56px;
+    text-align: center;
+    margin: 60px 0;
+    color: #222;
+}
+#cs > .main > .title.view {
     font-size: 56px;
     text-align: center;
     margin: 60px 0;
@@ -142,6 +153,7 @@ header > .logo > div > a img {
     background-repeat: no-repeat;
     background-size: 750px auto;
 }
+
 #cs > .main > .faq > ol > li:nth-child(1) > a {background-position: 0 0;}
 #cs > .main > .faq > ol > li:nth-child(2) > a {background-position: -184px 0;}
 #cs > .main > .faq > ol > li:nth-child(3) > a {background-position: -92px 0;}
@@ -149,6 +161,16 @@ header > .logo > div > a img {
 #cs > .main > .faq > ol > li:nth-child(5) > a {background-position: -368px 0;}
 #cs > .main > .faq > ol > li:nth-child(6) > a {background-position: -92px -485px;}
 #cs > .main > .faq > ol > li:nth-child(7) > a {background-position: -644px 0;}
+#cs > .main > .faq > ol > li:nth-child(1) > a:hover {color: #45ad4a; font-weight: 900;}
+#cs > .main > .faq > ol > li:nth-child(2) > a:hover {color: #45ad4a; font-weight: 900;}
+#cs > .main > .faq > ol > li:nth-child(3) > a:hover {color: #45ad4a; font-weight: 900;}
+#cs > .main > .faq > ol > li:nth-child(4) > a:hover {color: #45ad4a; font-weight: 900;}
+#cs > .main > .faq > ol > li:nth-child(5) > a:hover {color: #45ad4a; font-weight: 900;}
+#cs > .main > .faq > ol > li:nth-child(6) > a:hover {color: #45ad4a; font-weight: 900;}
+#cs > .main > .faq > ol > li:nth-child(7) > a:hover {color: #45ad4a; font-weight: 900;}
+
+
+
 #cs > .main > .faq > ol > li > a > span {
     position: relative;
     top: 100px;
@@ -888,6 +910,52 @@ footer{
   padding: 10px;
   box-sizing: border-box;
 }
+/* qna - modify */
+#cs > .qna > .modify {}
+#cs > .qna > .modify > article > form{
+}
+#cs > .qna > .modify > article > form > nav {
+  width: 100%;
+  height: auto;
+  padding: 26px;
+  border-top: 2px solid #111;
+  border-bottom: 1px solid #e9e9e9;
+  box-sizing: border-box;
+}
+#cs > .qna > .modify > article > form > nav > .title {
+  margin-bottom: 6px;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+#cs > .qna > .modify > article > form > nav > .date {        
+  font-size: 14px;
+  color: #777;        
+}
+
+#cs > .qna > .modify > article > form > .content {
+  width: 100%;
+  height: 100%;        
+  border-bottom: 3px solid #e9e9e9;
+  padding: 26px;
+  box-sizing: border-box;
+}
+
+#cs > .qna > .modify > article > form > .content * {
+  font-size: 16px;
+  line-height: 32px;
+}
+#cs > div > section > article > form > div.content > textarea {
+	width: 100%;
+  height: 360px;
+  resize: none;
+  font-size: 16px;
+  padding: 10px;
+  box-sizing: border-box;
+  outline: none;
+  border: 2px solid #e9e9e9;
+}
+
 
 /* buttons */
 .btnWrite {
@@ -902,12 +970,7 @@ footer{
   color: #fff;
   box-sizing: border-box;
 }
-#cs > div > section > article > div:nth-child(4){
-	display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    height: 11vh; 
-}
+
 .btnList {
    	display: inline-block;
     width: 200px;
@@ -922,6 +985,22 @@ footer{
     box-sizing: border-box;
 }
 .btnList:hover {
+  background-color: #f7f7f7;
+}
+.btnModify {
+   	display: inline-block;
+    width: 200px;
+    height: 60px;
+    margin: 40px auto 0;
+    border: 1px solid #ccc;
+    border-radius: 34px;
+    font-size: 16px;
+    color: #000;
+    line-height: 58px;
+    text-align: center;
+    box-sizing: border-box;
+}
+.btnModify:hover {
   background-color: #f7f7f7;
 }
 
@@ -942,14 +1021,58 @@ footer{
 .btnSubmit:hover {
   background-color: #0954f6;
 }
+/*QnA View Button*/
+#cs > div > section > article > div:nth-child(4){
+    height: 11vh; 
+    float: right;
+}
 #cs > div > section > article > div:nth-child(4) > a {
-	width: 200px;
+	width: 120px;
     height: 60px;
     border: 1px solid #ccc;
-    border-radius: 34px;
     font-size: 16px;
+    border-radius: 0;
     color: #000;
-    line-height: 58px;
+    line-height: 55px;
     text-align: center;
     box-sizing: border-box;
+}
+/*QnA Modify Button*/
+#cs > div > section > article >form > div:nth-child(3){
+	position: relative;
+}
+#cs > div > section > article > form > div:nth-child(3) > .can{
+	float: left;
+	display: block;
+	margin-top: 20px;
+	width: 120px;
+    height: 60px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    border-radius: 0;
+    color: #000;
+    line-height: 55px;
+    text-align: center;
+    box-sizing: border-box;
+}
+#cs > div > section > article > form > div:nth-child(3) > .modi{
+	float: right;
+	display: block;
+	margin-top: 20px;
+	margin-left: 10px;
+	width: 120px;
+    height: 60px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    border-radius: 0;
+    color: #000;
+    line-height: 55px;
+    text-align: center;
+    box-sizing: border-box;
+}
+.can:hover {
+  background-color: #f7f7f7;
+}
+.modi:hover {
+  background-color: #f7f7f7;
 }

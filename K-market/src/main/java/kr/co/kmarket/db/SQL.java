@@ -79,9 +79,24 @@ public class SQL {
 	public static final String SELECT_REVIEW_PRODUCT_CATE = "SELECT a.*, b.`level` FROM `km_product` AS a JOIN `km_member` AS b ON a.seller = b.uid WHERE `cate1` = ? and `cate2` = ? ORDER BY `review` DESC LIMIT ?,10";
 	public static final String SELECT_LATEST_PRODUCT_CATE = "SELECT a.*, b.`level` FROM `km_product` AS a JOIN `km_member` AS b ON a.seller = b.uid WHERE `cate1` = ? and `cate2` = ? ORDER BY `rdate` DESC LIMIT ?,10";
 	
+	/* REVIEW */
 	// DELETE_PRODUCT시 Review ALL Delete
+	public static final String SELECT_REVIEWS = "SELECT "
+												+ "a.*, b.`name` "
+												+ "FROM `km_member_review` AS a "
+												+ "JOIN `km_member` AS b "
+												+ "ON a.uid = b.uid "
+												+ "JOIN `km_product` AS c "
+												+ "ON a.prodNo = c.prodNo "
+												+ "WHERE a.prodNo=? "
+												+ "ORDER BY `revNo` DESC LIMIT ?, 5";
 	public static final String DELETE_PRODUCT	 = "DELETE FROM `km_product` WHERE `prodNo`=?";
 	public static final String DELETE_REVIEW_ALL = "DELETE FROM `km_member_review` WHERE `prodNo`=?";
+	public static final String SELECT_REVIEWS_COUNT_TOTAL = "SELECT COUNT(*) FROM `km_member_review` WHERE `prodNo`=?";
+	
+	
+	
+	
 	
 	/* admin_index */
 	public static final String SELECT_ORDERS_COUNT_TOTAL = "SELECT COUNT(*) FROM `km_product_order`";
@@ -265,6 +280,8 @@ public class SQL {
 													+ "FROM `km_cs_qna` "
 													+ "ORDER BY `qnaNo` DESC LIMIT ?";
 
+	public static final String UPDATE_QNA ="UPDATE `km_cs_qna` SET `content`=? WHERE `qnaNo`=?";
+	
 	/**************************/
 	
 	

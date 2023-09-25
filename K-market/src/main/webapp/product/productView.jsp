@@ -258,84 +258,34 @@ $(function(){
                 <h1>상품리뷰</h1>
             </nav>
             <ul>
-                <li>
-                    <div>
-                        <h5 class="rating star4">상품평</h5>
-                        <span>seo******	2018-07-10</span>
-                    </div>
-                    <h3>상품명1/BLUE/L</h3>
-                    <p>
-                        가격대비 정말 괜찮은 옷이라 생각되네요 핏은 음...제가 입기엔 어깨선이 맞고 루즈핏이라 하기도 좀 힘드네요.
-                        아주 약간 루즈한정도...?그래도 이만한 옷은 없다고 봅니다 깨끗하고 포장도 괜찮고 다음에도 여기서 판매하는
-                        제품들을 구매하고 싶네요 정말 만족하고 후기 남깁니다 많이 파시길 바래요 ~ ~ ~
-                    </p>
+              <c:forEach var ="review" items="${reviews}">
+                 <li>
+                   <div>
+                       <h5 class="rating star${review.rating}"></h5>
+                       <span>
+                       	<c:out value="${fn:substring(review.uid, 0, fn:length(review.uid) - 3)}"/>***&nbsp;${review.formatDate()}
+                       </span>
+                   </div>
+                   <h3>상품명1/BLUE/L</h3>
+                   <p>
+                       ${review.content}
+                   </p>
                 </li>
-                <li>
-                    <div>
-                        <h5 class="rating star4">상품평</h5>
-                        <span>seo******	2018-07-10</span>
-                    </div>
-                    <h3>상품명1/BLUE/L</h3>
-                    <p>
-                        가격대비 정말 괜찮은 옷이라 생각되네요 핏은 음...제가 입기엔 어깨선이 맞고 루즈핏이라 하기도 좀 힘드네요.
-                        아주 약간 루즈한정도...?그래도 이만한 옷은 없다고 봅니다 깨끗하고 포장도 괜찮고 다음에도 여기서 판매하는
-                        제품들을 구매하고 싶네요 정말 만족하고 후기 남깁니다 많이 파시길 바래요 ~ ~ ~
-                    </p>
-                </li>
-                <li>
-                    <div>
-                        <h5 class="rating star4">상품평</h5>
-                        <span>seo******	2018-07-10</span>
-                    </div>
-                    <h3>상품명1/BLUE/L</h3>
-                    <p>
-                        가격대비 정말 괜찮은 옷이라 생각되네요 핏은 음...제가 입기엔 어깨선이 맞고 루즈핏이라 하기도 좀 힘드네요.
-                        아주 약간 루즈한정도...?그래도 이만한 옷은 없다고 봅니다 깨끗하고 포장도 괜찮고 다음에도 여기서 판매하는
-                        제품들을 구매하고 싶네요 정말 만족하고 후기 남깁니다 많이 파시길 바래요 ~ ~ ~
-                    </p>
-                </li>
-                <li>
-                    <div>
-                        <h5 class="rating star4">상품평</h5>
-                        <span>seo******	2018-07-10</span>
-                    </div>
-                    <h3>상품명1/BLUE/L</h3>
-                    <p>
-                        가격대비 정말 괜찮은 옷이라 생각되네요 핏은 음...제가 입기엔 어깨선이 맞고 루즈핏이라 하기도 좀 힘드네요.
-                        아주 약간 루즈한정도...?그래도 이만한 옷은 없다고 봅니다 깨끗하고 포장도 괜찮고 다음에도 여기서 판매하는
-                        제품들을 구매하고 싶네요 정말 만족하고 후기 남깁니다 많이 파시길 바래요 ~ ~ ~
-                    </p>
-                </li>
-                <li>
-                    <div>
-                        <h5 class="rating star4">상품평</h5>
-                        <span>seo******	2018-07-10</span>
-                    </div>
-                    <h3>상품명1/BLUE/L</h3>
-                    <p>
-                        가격대비 정말 괜찮은 옷이라 생각되네요 핏은 음...제가 입기엔 어깨선이 맞고 루즈핏이라 하기도 좀 힘드네요.
-                        아주 약간 루즈한정도...?그래도 이만한 옷은 없다고 봅니다 깨끗하고 포장도 괜찮고 다음에도 여기서 판매하는
-                        제품들을 구매하고 싶네요 정말 만족하고 후기 남깁니다 많이 파시길 바래요 ~ ~ ~
-                    </p>
-                </li>
+			</c:forEach>
             </ul>
             <div class="paging">
-                <span class="prev">
-                    <a href="#"><&nbsp;이전</a>
-                </span>
-                <span class="num">
-                    <a href="/K-market/product/productview.do" class="on">1</a>
-                    <a href="/K-market/product/productview.do">2</a>
-                    <a href="/K-market/product/productview.do">3</a>
-                    <a href="/K-market/product/productview.do">4</a>
-                    <a href="/K-market/product/productview.do">5</a>
-                    <a href="/K-market/product/productview.do">6</a>
-                    <a href="/K-market/product/productview.do">7</a>
-                </span>
-                <span class="next">
-                    <a href="/K-market/product/productview.do">다음&nbsp;></a>
-                </span>
-            </div>
+            	<c:if test="${pageGroupStart > 1}">
+          		<span class="prev"><a href="/K-market/product/productview.do?prodNo=${prodNo}&pg=${pageGroupStart - 1}"><&nbsp;이전</a></span>
+	        </c:if>
+	        <c:forEach var="i" begin="${pageGroupStart}" end="${pageGroupEnd}" step="1">
+	        	<c:set var="isOn" value="${currentPage == i}"/>
+         		<span class="num ${isOn ? 'on' : ''}"><a href="/K-market/product/productview.do?prodNo=${prodNo}&pg=${i}" 
+         		 >${i}</a></span>
+	       </c:forEach>
+	       <c:if test="${pageGroupEnd < lastPageNum}">
+          		<span  class="next"><a href="/K-market/product/productview.do?prodNo=${prodNo}&pg=${pageGroupEnd + 1}">다음&nbsp;></a></span>
+          </c:if>
+        </div>
         </article>
     </section>
     <!-- 상품 상세페이지 끝 -->
