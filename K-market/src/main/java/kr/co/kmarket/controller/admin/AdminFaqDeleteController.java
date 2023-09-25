@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.google.gson.JsonObject;
+
 import kr.co.kmarket.dto.NoticeDTO;
 import kr.co.kmarket.service.FaqService;
 import kr.co.kmarket.service.NoticeService;
@@ -33,6 +35,24 @@ public class AdminFaqDeleteController extends HttpServlet{
 		fService.admin_cs_faq_delete(faqNo);
 		
 		resp.sendRedirect("/K-market/admin/cs/faq/list.do");
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		int result = 0;
+		String faqNo = req.getParameter("faqNo");
+		
+		if(faqNo != null) {
+			result = fService.admin_cs_faq_delete(faqNo);
+			resp.setContentType("text/html;charset=UTF-8"); 
+		    // JSON 객체 생성 및 JSON 배열을 속성 값으로 설정
+		    JsonObject json = new JsonObject();
+		    json.addProperty("result", result);
+		    // JSON 응답을 클라이언트에게 출력
+		    resp.getWriter().print(json);
+		};
+	
 	}
 	
 }

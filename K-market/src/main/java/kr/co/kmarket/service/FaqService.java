@@ -43,8 +43,8 @@ public enum FaqService {
 		dao.admin_cs_faq_update(dto);
 	}
 	
-	public void admin_cs_faq_delete(String faqNo) {
-		dao.admin_cs_faq_delete(faqNo);
+	public int admin_cs_faq_delete(String faqNo) {
+		return dao.admin_cs_faq_delete(faqNo);
 	}
 	//0923 admin_cs_faq_list 게시물 조회
 //	public List<FaqDTO> adminselectFaqs(String cate1, int start) {

@@ -33,8 +33,8 @@ public enum QnaService {
 		dao.updateQna(dto);
 	}
 	
-	public void deleteQna(String qnaNo) {
-		dao.deleteQna(qnaNo);
+	public int deleteQna(String qnaNo) {
+		return dao.deleteQna(qnaNo);
 	}
 	
 	// 추가

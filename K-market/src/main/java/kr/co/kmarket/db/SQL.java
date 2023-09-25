@@ -201,6 +201,9 @@ public class SQL {
 											+ "WHERE ISNULL(cate1 = ?) OR `cate1`=? AND `qnaNo`>=566 "
 											+ "ORDER BY `qnaNo` DESC "
 											+ "LIMIT ?,10";
+	
+	public static final String ADMIN_QNA_DELETE = "DELETE FROM `km_cs_qna` WHERE `qnaNo`=?";
+	
 	//Member
 	//member_Login
 	public static final String SELECT_MEMBER = "SELECT * FROM `km_member` WHERE `uid` = ? and `pass` = SHA2(?,256)";

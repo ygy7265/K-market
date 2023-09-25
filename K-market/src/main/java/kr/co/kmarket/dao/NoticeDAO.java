@@ -137,19 +137,22 @@ public class NoticeDAO extends DBHelper{
 		
 	} // updateNotice END
 	
-	public void deleteNotice(String noticeNo) {
+	public int deleteNotice(String noticeNo) {
+		
+		int result = 0;
 		
 		try {
 			conn = getConnection();
 			psmt = conn.prepareStatement(SQL.DELETE_NOTICE);
 			psmt.setString(1, noticeNo);
-			psmt.executeUpdate();
+			result = psmt.executeUpdate();
 			
 			close();
 			
 		} catch (Exception e) {
 			logger.error("NoticeDAO deleteNotice error : "+e.getMessage());
 		}
+		return result;
 	} // 0923 noticeDelete END
 	
 	// 추가 

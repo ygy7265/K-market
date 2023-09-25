@@ -24,7 +24,35 @@ $(document).ready(function() {
             $('#all').prop('checked', true);
         }
     });
+    
+	 //선택삭제
+    $('#deleteSelected').click(function() {
+  	  var selectedItems = $('.Item:checked'); // 선택된 체크박스 아이템들을 가져옵니다.
+        var noticeNo = selectedItems.map(function() {
+            return $(this).val(); // 선택된 아이템의 data-noticeNo 속성 값을 가져옵니다.
+        }).get();
+  	  
+  	  console.log("noticeNo"+noticeNo);
+      $('.Item:checked').closest('tr').remove();
+      $.each(noticeNo, function(index, noticeNo) {
+      	$.ajax({
+				url:'/K-market/admin/cs/notice/delete.do',
+				type:'POST',
+				traditional : true,
+				data: {"noticeNo": noticeNo},
+				contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+				dataType:'json',
+				success:function(data){
+					console.log(data);
+					console.log(data.result);
+					if(data.result > 0){}
+					}
+			});
+      });
+    });
+    
 });
+
 </script>
     <section id="admin-product-list">
         <nav>
@@ -57,7 +85,7 @@ $(document).ready(function() {
                 </tr>
 				<c:forEach var="notice" items="${notices}">
                 <tr>
-                    <td><input type="checkbox" name="Item" class="Item"/></td>
+                    <td><input type="checkbox" name="Item" class="Item" value="${notice.noticeNo}"/></td>
                     <td>${notice.noticeNo}</td>
                     <td>
 	                  <c:set var="cate" value="${notice.cate}"/>
@@ -79,7 +107,7 @@ $(document).ready(function() {
                 </c:forEach>
             </table>
             
-            <input type="button" value="선택삭제" />                          
+            <input type="button" value="선택삭제" id="deleteSelected"/>
 
             <div class="paging">
                 <span class="prev">

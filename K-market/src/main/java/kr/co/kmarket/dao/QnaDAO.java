@@ -138,8 +138,21 @@ public class QnaDAO extends DBHelper{
 		}
 	}
 	
-	public void deleteQna(String qnaNo) {
+	public int deleteQna(String qnaNo) {
+		int result = 0;
 		
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.ADMIN_QNA_DELETE);
+			psmt.setString(1, qnaNo);
+			result = psmt.executeUpdate();
+			close();
+			
+		} catch (Exception e) {
+			logger.error("QnaDAO deleteQna error... :"+e.getMessage());
+		}
+		
+		return result;
 	}
 	
 	// 추가
