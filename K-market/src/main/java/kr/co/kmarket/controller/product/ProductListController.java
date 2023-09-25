@@ -34,8 +34,10 @@ public class ProductListController extends HttpServlet{
 		String cate1 = req.getParameter("cate1");
 		String cate2 = req.getParameter("cate2");
 		String type2 = req.getParameter("type2");
+		String search = req.getParameter("search");
 		
 		logger.debug("type2 : "+type2);
+		logger.debug("search : "+search);
 		
 		if(pg == null) {
 			pg = "1";
@@ -50,7 +52,7 @@ public class ProductListController extends HttpServlet{
 		// 전체 게시물 갯수
 		int total = 0;
 		
-		total = service.selectProductCateTotal(cate1, cate2);
+		total = service.selectProductCateTotal(cate1, cate2, search);
 		
 		// 마지막 페이지 번호
 		int lastPageNum = pgService.setLastPageNum(total);
@@ -75,7 +77,7 @@ public class ProductListController extends HttpServlet{
 		} else {
 			logger.info("selectProducts...2");
 			// cate1, cate2
-			list = service.selectProducts(cate1,cate2,start);
+			list = service.selectProducts(cate1,cate2,start,search);
 			
 		}
 		
@@ -92,6 +94,7 @@ public class ProductListController extends HttpServlet{
 		req.setAttribute("cate2", cate2);
 		req.setAttribute("type2", type2);
 		req.setAttribute("CateName", CateName);
+		req.setAttribute("search", search);
 		req.setAttribute("currentPage", currentPage);
 		req.setAttribute("lastPageNum", lastPageNum);
 		req.setAttribute("pageGroupStart", result[0]);

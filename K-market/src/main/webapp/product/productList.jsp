@@ -47,6 +47,12 @@
 	        	$('.paging').css('display','none');
 	        }
 	        
+	        // 검색 기능
+	        if(paramName == 'search'){
+	        	$('nav > h1').text('\'${search}\'의 검색결과');
+	        	$('nav > p').text('');
+	        }
+	        
 	    });
 	    
 	 	
@@ -116,7 +122,11 @@
         </tr>
         </c:forEach>
       </table>            
-	  
+      <c:if test="${empty list}">
+	  <div class="no-product">
+	  	<h1>조회하신 상품이 존재하지 않습니다.</h1>
+	  </div>
+	  </c:if>
       <!-- 상품목록 페이지번호 -->
       <div class="paging">
       	<c:if test="${pageGroupStart > 1}">
