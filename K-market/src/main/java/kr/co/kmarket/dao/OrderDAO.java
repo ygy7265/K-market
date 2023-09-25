@@ -280,7 +280,7 @@ public class OrderDAO extends DBHelper{
 			rs = psmt.executeQuery();
 			if(rs.next()) {
 				dayOrderToPrice = rs.getInt(1);
-				logger.debug("1일이내 등록된 신규 제품 : "+dayOrderToPrice);
+				logger.debug("1일이내 신규 주문 : "+dayOrderToPrice);
 			}
 			close();
 		} catch (Exception e) {
@@ -298,7 +298,7 @@ public class OrderDAO extends DBHelper{
 			rs = psmt.executeQuery();
 			if(rs.next()) {
 				weekOrderToPrice = rs.getInt(1);
-				logger.debug("7일이내 등록된 신규 제품 : "+weekOrderToPrice);
+				logger.debug("7일이내 신규 주문 : "+weekOrderToPrice);
 			}
 			close();
 		} catch (Exception e) {
@@ -316,7 +316,7 @@ public class OrderDAO extends DBHelper{
 			rs = psmt.executeQuery();
 			if(rs.next()) {
 				monthOrderToPrice = rs.getInt(1);
-				logger.debug("30일이내 등록된 신규 제품 : "+monthOrderToPrice);
+				logger.debug("30일이내 신규 주문 : "+monthOrderToPrice);
 			}
 			close();
 		} catch (Exception e) {

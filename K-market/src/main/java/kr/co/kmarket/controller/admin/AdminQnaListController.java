@@ -14,13 +14,16 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import kr.co.kmarket.dto.NoticeDTO;
+import kr.co.kmarket.dto.QnaDTO;
+import kr.co.kmarket.service.FaqService;
 import kr.co.kmarket.service.NoticeService;
+import kr.co.kmarket.service.QnaService;
 import kr.co.kmarket.service.pageService;
-@WebServlet("/admin/cs/notice/list.do")
-public class AdminNoticeListController extends HttpServlet{
+@WebServlet("/admin/cs/qna/list.do")
+public class AdminQnaListController extends HttpServlet{
 	private static final long serialVersionUID = 661371223453L;
 	private Logger logger = LoggerFactory.getLogger(getClass());
-	private NoticeService nService = NoticeService.INSTANCE;
+	private QnaService qService = QnaService.INSTANCE;
 	private pageService pgService= pageService.INSTANCE;
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -29,10 +32,10 @@ public class AdminNoticeListController extends HttpServlet{
     	// 페이지 가져오기 
 		String pg = req.getParameter("pg");
 		
-//        logger.debug("cate : " + cate);
-//        logger.debug("pg : " + pg);
-        
-        if(cate != null) {
+		// 현재 페이지 게시물 Limit 시작
+		int start = 0;
+
+		if(cate != null) {
             if(cate.isEmpty()) {
             	cate = null;
             }
@@ -47,10 +50,10 @@ public class AdminNoticeListController extends HttpServlet{
  		int currentPage = pgService.setCurrentPage(pg);
  		
  		// 현재 페이지 게시물 Limit 시작
- 		int start = pgService.setStart(currentPage);
+ 		start = pgService.setStart(currentPage);
  		
  		// 전체 게시글 갯수 조회
- 		int total = nService.selectCountTotal(cate);
+ 		int total = qService.selectCountTotal(cate);
 // 		logger.debug("NoticeListController.. total : "+total);
  		
  		// 마지막 페이지 번호
@@ -61,15 +64,6 @@ public class AdminNoticeListController extends HttpServlet{
  		
  		// 페이지 시작번호 계산
  		int pageStartNum = pgService.getPageStart(currentPage);
- 		
-// 		logger.debug("NoticesList...pg :"+pg);
-// 		logger.debug("NoticesList...currentPage :"+currentPage);
-// 		logger.debug("NoticesList...start :"+start);
-// 		logger.debug("NoticesList...total :"+total);
-// 		logger.debug("NoticesList...lastPageNum :"+lastPageNum);
-// 		logger.debug("NoticesList...pageGroupStart :"+pageGroupCurrent[0]);
-// 		logger.debug("NoticesList...pageGroupEnd :"+pageGroupCurrent[1]);
-// 		logger.debug("NoticesList...pageStartNum :"+pageStartNum);
 		
 		// JSP페이지에서 사용할 데이터를 request 객체에 설정
  		req.setAttribute("pg", pg);
@@ -84,11 +78,15 @@ public class AdminNoticeListController extends HttpServlet{
 		
 		logger.debug(cate);
 		
-		List<NoticeDTO> notices = nService.selectNotices(cate, start);
-		logger.debug("관리자/공지사항 error : " + notices);
-		req.setAttribute("notices", notices);
+		List<QnaDTO> qnas = qService.selectQnas(cate, pageStartNum);
+//		logger.debug("관리자/공지사항 error : " + qnas);
+//		req.setAttribute("notices", qnas);
 		
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/admin/cs/notice/list.jsp");
+//		List<QnaDTO> qnas = qService.selectAdminListQna();
+		logger.debug("qna_List : " + qnas);
+		req.setAttribute("qnas", qnas);
+		
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/admin/cs/qna/list.jsp");
 		dispatcher.forward(req, resp);
 	}
 }

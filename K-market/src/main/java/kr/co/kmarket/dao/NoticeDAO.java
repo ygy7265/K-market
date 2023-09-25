@@ -139,7 +139,18 @@ public class NoticeDAO extends DBHelper{
 	
 	public void deleteNotice(String noticeNo) {
 		
-	}
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.DELETE_NOTICE);
+			psmt.setString(1, noticeNo);
+			psmt.executeUpdate();
+			
+			close();
+			
+		} catch (Exception e) {
+			logger.error("NoticeDAO deleteNotice error : "+e.getMessage());
+		}
+	} // 0923 noticeDelete END
 	
 	// 추가 
 	public int selectCountTotal(String cate) {
