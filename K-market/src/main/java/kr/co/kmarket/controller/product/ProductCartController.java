@@ -38,9 +38,11 @@ public class ProductCartController extends HttpServlet{
 		HttpSession session = req.getSession();
 		MemberDTO uid = (MemberDTO) session.getAttribute("user");
 		String username = null;
-		if (uid != null) {
-		    username = uid.getUid();
+		if (uid == null) {
+		    resp.sendRedirect("/K-market/member/login.do?success=103");
 		}
+		else {
+			username = uid.getUid();
 		List<CartDTO> list = service.selectCarts(username);
 		req.setAttribute("list", list);
 		req.setAttribute("username", username);
@@ -49,6 +51,8 @@ public class ProductCartController extends HttpServlet{
 		logger.debug("uid"+uid);
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/product/productCart.jsp");
 		dispatcher.forward(req, resp);	
+		}
+	
 	}
 	
 	@Override

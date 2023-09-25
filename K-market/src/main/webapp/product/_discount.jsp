@@ -15,7 +15,7 @@
 	        if(discountPrice < 100){
 	        	discountPrice = 100;
 	        }
-	        $('.dis_price:eq(${loopStatus.index}) .product-row').text(discountPrice);
+	        $('.dis_price:eq(${loopStatus.index}) .product-row').text(discountPrice.toLocaleString());
 	      })();
 	    </c:forEach>
 	    <c:forEach var="product" items="${newList}" varStatus="loopStatus">
@@ -27,7 +27,7 @@
 	        if(discountPrice < 100){
 	        	discountPrice = 100;
 	        }
-	        $('.new .dis_price:eq(${loopStatus.index}) .product-row').text(discountPrice);
+	        $('.new .dis_price:eq(${loopStatus.index}) .product-row').text(discountPrice.toLocaleString());
 
 	      })();
 	    </c:forEach>
@@ -40,7 +40,7 @@
 	        if(discountPrice < 100){
 	        	discountPrice = 100;
 	        }
-	        $('.discount .dis_price:eq(${loopStatus.index}) .product-row').text(discountPrice);
+	        $('.discount .dis_price:eq(${loopStatus.index}) .product-row').text(discountPrice.toLocaleString());
 	        
 	      })();
 	    </c:forEach>
@@ -53,7 +53,7 @@
 	        if(discountPrice < 100){
 	        	discountPrice = 100;
 	        }
-	        $('.hit .dis_price:eq(${loopStatus.index}) .product-row').text(discountPrice);
+	        $('.hit .dis_price:eq(${loopStatus.index}) .product-row').text(discountPrice.toLocaleString());
 	      })();
 	    </c:forEach>
 	    <c:forEach var="product" items="${scoreList}" varStatus="loopStatus">
@@ -65,7 +65,7 @@
 	        if(discountPrice < 100){
 	        	discountPrice = 100;
 	        }
-	        $('.recommend .dis_price:eq(${loopStatus.index}) .product-row').text(discountPrice);
+	        $('.recommend .dis_price:eq(${loopStatus.index}) .product-row').text(discountPrice.toLocaleString());
 	      })();
 	    </c:forEach> 
 	    

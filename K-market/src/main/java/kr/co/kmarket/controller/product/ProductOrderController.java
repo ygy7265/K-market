@@ -38,7 +38,9 @@ public class ProductOrderController extends HttpServlet{
 		HttpSession session = req.getSession();
 		MemberDTO sessiondto = (MemberDTO) session.getAttribute("user");
 		String userid = sessiondto.getUid();
-		
+		if (userid == null) {
+		    resp.sendRedirect("/K-market/member/login.do?success=103");
+		}else {
 
 		List<CartDTO> list = orservice.selectOrdersItem(userid);
 		req.setAttribute("list", list);
@@ -47,6 +49,7 @@ public class ProductOrderController extends HttpServlet{
 		System.out.println("uid"+userid);
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/product/productOrder.jsp");
 		dispatcher.forward(req, resp);	
+		}
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

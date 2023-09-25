@@ -27,6 +27,7 @@ public class IndexController extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
 		String[] listArray = {"best", "newList", "hitList","scoreList","discountList"};
 
 		// 배열을 JSTL에 전달
@@ -50,6 +51,7 @@ public class IndexController extends HttpServlet{
 		// 세션에서 로그인 사용자 정보를 가져옵니다.
 		HttpSession session = req.getSession();
 		MemberDTO loginUser = (MemberDTO) session.getAttribute("user");
+		 session.setAttribute("user",loginUser);
 		Integer visitorCount = 0;
 		if (loginUser != null) {
 		    // 로그인한 사용자인 경우 방문자 수를 증가합니다.

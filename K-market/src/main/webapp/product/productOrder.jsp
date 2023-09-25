@@ -1,20 +1,55 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<!-- 
+	날짜 : 2023/09/24
+	이름 : 윤경엽
+	내용 : 구매하기 기능 구현
+ -->
 <%@ include file="./_header.jsp" %>
 <%@ include file="./_discount.jsp" %>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="/K-market/js/zipcode.js"></script>
 <script>
 $(function(){
+	
+	 // 세션 스토리지에서 "user" 세션 확인
+	  var userSession = sessionStorage.getItem("user");
+
+	  // "user" 세션이 없으면 로그인 페이지로 리디렉션
+	  if (!userSession) {
+		alert("로그인이 필요한 서비스입니다.");
+	    window.location.href = "/K-market/member/login.do"; // 로그인 페이지 URL로 변경
+	  }
 	const total2 = $('.ordertotal2').val();
 	console.log('total2 = '+ total2);
 	const nowpoint = ${user.point};
+	var pointval = 0;
 	$('.nowpoint').text(nowpoint.toLocaleString());
 	
+	$('input[name=point]').change(function(){
+		var pointval = $(this).val();
+		var psnowpoint = parseFloat(nowpoint);
 	
+		
+		if(pointval > psnowpoint){
+			$(this).val(psnowpoint);
+		}
+		
+	
+		
+	});
+	
+	//포인트 적용
 	$('#pointbtn').click(function(e){
 		e.preventDefault();
 		console.log(${user.point});
+		var totalprice = parseFloat($('.ordertotal').text().replace(/,/g, ''));
+
 		const point = $('input[name=point]').val();
+		var pspoint = parseFloat(point);
+		if(pspoint > totalprice){
+			alert("전체 금액 이상 할인할수없습니다. 다시 확인 해주십시요.");
+			return;
+		}
 		if(point >= 5000 || point == 0){
 			const pointDiscount = total2 - point;
 			$('.orderpointdiscount').val(point);
@@ -28,18 +63,32 @@ $(function(){
 		}else{
 			alert("5000포인트부터 사용가능합니다");
 		}
+		
+		
 	});
 	
+	//구매하기버튼
 	$('.buybtn').click(function(e){
 		e.preventDefault();
 		 // 사용자에게 구매 여부를 묻는 확인 대화상자를 띄웁니다.
-	    var confirmation = confirm("구매하시겠습니까?");
 	    
-	    if (confirmation) { 
-	        $('#buyform').submit();
-	    }
-	});
-})
+		//결제방법 체크여부
+        var selectedPayment = $('input[name="payment"]:checked').val();
+
+        // 선택된 항목이 없는 경우 경고 메시지를 표시합니다.
+        if (!selectedPayment) {
+            alert('결제 옵션을 선택해주세요.');
+            return;
+        } 
+        else{
+        	var confirmation = confirm("구매하시겠습니까?");
+        	if (confirmation) { 
+    	        $('#buyform').submit();
+    	    }    	
+        }
+
+	    });
+});
 </script>
 <main id="product">
     <aside>

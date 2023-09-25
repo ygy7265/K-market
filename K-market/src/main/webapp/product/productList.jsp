@@ -8,7 +8,7 @@
 	        let price = ${product.price};
 	        let delivery = ${product.delivery};
 	        let discountPrice = price - (price * ${product.discount}/100);
-	        $('.product-row:eq(${loopStatus.index}) .dis-price').text(discountPrice);
+	        $('.product-row:eq(${loopStatus.index}) .dis-price').text(discountPrice.toLocaleString());
 	        // ...
 	      })();
 	    </c:forEach>
@@ -55,7 +55,7 @@
             <ul>
               <li class="product-row"><ins class="dis-price"></ins></li>
               <li>
-                <del class="org-price">${product.price}</del>
+                <del class="org-price"><fmt:formatNumber value="${product.price}" pattern="#,###"/></del>
                 <span class="discount">${product.discount}%</span>
               </li>
               <li>
