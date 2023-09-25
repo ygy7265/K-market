@@ -38,13 +38,10 @@ $(document).ready(function() {
             <div>
                 <select name="search">
                   <option>선택</option>
-                  <option value="10">회원</option>
-                  <option value="20">쿠폰/혜택/이벤트</option>
-                  <option value="30">주문/결제</option>
-                  <option value="40">배송</option>
-                  <option value="50">취소/반품/교환</option>
-                  <option value="60">여행/숙박/항공</option>
-                  <option value="70">안전거래</option>
+                  <option value="01">고객서비스</option>
+                  <option value="02">안전거래</option>
+                  <option value="03">위해상품</option>
+                  <option value="04">이벤트당첨</option>
                 </select>
                 <input type="text" name="search" placeholder="제목 or 내용 검색">
             </div>
@@ -65,21 +62,18 @@ $(document).ready(function() {
                     <td>
 	                  <c:set var="cate" value="${notice.cate}"/>
                         <c:choose>
-                            <c:when test="${cate == 10}">회원</c:when>
-                            <c:when test="${cate == 20}">쿠폰/혜택/이벤트</c:when>
-                            <c:when test="${cate == 30}">주문/결제</c:when>
-                            <c:when test="${cate == 40}">배송</c:when>
-                            <c:when test="${cate == 50}">취소/반품/교환</c:when>
-                            <c:when test="${cate == 60}">여행/숙박/항공</c:when>
-                            <c:when test="${cate == 70}">안전거래</c:when>
+                            <c:when test="${cate eq '01'}">고객서비스</c:when>
+                            <c:when test="${cate eq '02'}">안전거래</c:when>
+                            <c:when test="${cate eq '03'}">위해상품</c:when>
+                            <c:when test="${cate eq '04'}">이벤트당첨</c:when>
                         </c:choose>
                     </td>
                     <td><a href="${ctxPath}/admin/cs/notice/view.do?noticeNo=${notice.noticeNo}">${notice.title}</a></td>
                     <td>${notice.hit}</td>
                     <td>${notice.rdate}</td>
                     <td>
-                        <a href="#">[수정]</a>
-                        <a href="#">[삭제]</a>
+                        <a href="${ctxPath}/admin/cs/notice/modify.do?noticeNo=${notice.noticeNo}">[수정]</a>
+                        <a href="${ctxPath}/admin/cs/notice/delete.do?noticeNo=${notice.noticeNo}">[삭제]</a>
                     </td>
                 </tr>
                 </c:forEach>

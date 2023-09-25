@@ -1,0 +1,54 @@
+/* 댓글쓰기 섹션 스타일 */
+.commentForm {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+/* 댓글쓰기 섹션 제목 스타일 */
+.commentForm h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+/* 입력 필드와 텍스트 에어리어 스타일 */
+.commentForm input[type="text"],
+.commentForm textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+/* 취소 버튼 스타일 */
+.commentForm .btnCancel {
+  background-color: #ccc;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+/* 작성 완료 버튼 스타일 */
+.commentForm .btnComplete {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* 버튼 레이아웃 조정 */
+.commentForm div {
+  text-align: right;
+  margin-top: 10px;
+}

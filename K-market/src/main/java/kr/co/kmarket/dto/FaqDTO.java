@@ -20,6 +20,9 @@ public class FaqDTO {
 	public void setFaqNo(int faqNo) {
 		this.faqNo = faqNo;
 	}
+	public void setFaqNo(String faqNo) {
+		this.faqNo = Integer.parseInt(faqNo);
+	}
 	public String getCate1() {
 		return cate1;
 	}

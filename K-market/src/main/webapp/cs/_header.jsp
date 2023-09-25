@@ -26,6 +26,7 @@
 			            	<c:if test="${user.type eq 5}">
 				            <a href="/K-market/admin/index.do">판매자</a>
 			            	</c:if>
+			            	<a class="loginUser" href="/K-market/member/myPage.do">${user.uid}</a>
 			            	<c:if test="${user.type eq 100}">
 			            	<a href="/K-market/admin/index.do">관리자</a>
 			            	</c:if>

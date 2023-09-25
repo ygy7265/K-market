@@ -16,8 +16,6 @@ public enum QnaService {
 	private QnaDAO dao = QnaDAO.getInstance();
 	// 로그 설정
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
-	
-	
 
 	public int insertQna(QnaDTO dto) {
 		return dao.insertQna(dto);
@@ -56,6 +54,14 @@ public enum QnaService {
 	// admin_index_qna Limit 5
 	public List<QnaDTO> selectAdminIndexQna() {
 		return dao.selectAdminIndexQna();
+	}
+	// admin_cs_qna_list
+	public List<QnaDTO> selectAdminListQna() {
+		return dao.selectAdminListQna();
+	}
+	// admin_cs_qna 답변달기
+	public void admin_Update_Qna_Comment(QnaDTO dto) {
+		dao.admin_Update_Qna_Comment(dto);
 	}
 
 }

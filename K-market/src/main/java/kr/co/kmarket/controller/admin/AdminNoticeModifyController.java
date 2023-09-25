@@ -24,19 +24,28 @@ public class AdminNoticeModifyController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		String writer	= req.getParameter("writer");
 		String noticeNo	= req.getParameter("noticeNo");
+		String writer	= req.getParameter("writer");
 		String cate		= req.getParameter("cate");
 		String title	= req.getParameter("title");
 		String content	= req.getParameter("content");
 		
-		logger.debug(noticeNo);
+		NoticeDTO notice = nService.selectNotice(noticeNo);
 		
+//		logger.debug("writer : "+writer);
+//		logger.debug("noticeNo : "+noticeNo);
+//		logger.debug("cate : " + cate);
+//		logger.debug("title : "+title);
+//		logger.debug("content : "+content);
+		
+		req.setAttribute("notice", notice);
+		logger.debug("noticeModifyToString"+notice.toString());
 		req.setAttribute("writer", writer);
 		req.setAttribute("noticeNo", noticeNo);
 		req.setAttribute("cate", cate);
 		req.setAttribute("title", title);
 		req.setAttribute("content", content);
+		
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/admin/cs/notice/modify.jsp");
 		dispatcher.forward(req, resp);	
@@ -57,13 +66,11 @@ public class AdminNoticeModifyController extends HttpServlet{
 		dto.setContent(content);
 		dto.setNoticeNo(noticeNo);
 		
-		logger.debug("updateNoticeService : "+dto.toString());
+//		logger.debug("updateNoticeService : "+dto.toString());
 		
 		nService.updateNotice(dto);
 		
 		resp.sendRedirect("/K-market/admin/cs/notice/view.do?noticeNo="+noticeNo);
-		
-		
 		
 	}
 	

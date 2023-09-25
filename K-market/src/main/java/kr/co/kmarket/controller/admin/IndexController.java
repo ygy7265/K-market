@@ -30,10 +30,11 @@ public class IndexController extends HttpServlet{
 	private ProductService pService = ProductService.INSTANCE;
 	private NoticeService nService = NoticeService.INSTANCE;
 	private QnaService qService = QnaService.INSTANCE;
+	private Utils utils = new Utils();
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+		
 		int total = oService.selectOrdersCount(); // 총 주문건수
 		int sumtotal = oService.selectOrdersCountSum(); // 총 주문금액
 		int cmember = mService.selectCountMember(); // 총 가입인원
@@ -42,13 +43,13 @@ public class IndexController extends HttpServlet{
 		int weekProd = pService.selectProductTotalWeek(); //일주일 이내 등록된 신규 product
 		int monthProd = pService.selectProductTotalMonth(); //한달 이내 등록된 신규 product
 		// 1,7,30 일 이내 신규 업데이트
-		int dayMember = mService.selectMemberTotalDay(); //24시간 이내 등록된 신규 product
-		int weekMember = mService.selectMemberTotalWeek(); //일주일 이내 등록된 신규 product
-		int monthMember = mService.selectMemberTotalMonth(); //한달 이내 등록된 신규 product
+		int dayMember = mService.selectMemberTotalDay(); //24시간 이내 등록된 신규 member
+		int weekMember = mService.selectMemberTotalWeek(); //일주일 이내 등록된 신규 member
+		int monthMember = mService.selectMemberTotalMonth(); //한달 이내 등록된 신규 member
 		// 1,7,30 일 이내 신규 업데이트
-		int dayOrder = oService.selectOrderTotalDay(); //24시간 이내 등록된 신규 product
-		int weekOrder = oService.selectOrderTotalWeek(); //일주일 이내 등록된 신규 product
-		int monthOrder = oService.selectOrderTotalMonth(); //한달 이내 등록된 신규 product
+		int dayOrder = oService.selectOrderTotalDay(); //24시간 이내 등록된 신규 order
+		int weekOrder = oService.selectOrderTotalWeek(); //일주일 이내 등록된 신규 order
+		int monthOrder = oService.selectOrderTotalMonth(); //한달 이내 등록된 신규 order
 		// 기간 별 총 주문금액
 		int dayOrderToPrice = oService.selectOrderTotalDayToPrice();
 		int weekOrderToPrice = oService.selectOrderTotalWeekToPrice();

@@ -12,26 +12,29 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import kr.co.kmarket.dto.FaqDTO;
 import kr.co.kmarket.dto.NoticeDTO;
+import kr.co.kmarket.dto.QnaDTO;
+import kr.co.kmarket.service.FaqService;
 import kr.co.kmarket.service.NoticeService;
-@WebServlet("/admin/cs/notice/view.do")
-public class AdminNoticeViewController extends HttpServlet{
+import kr.co.kmarket.service.QnaService;
+@WebServlet("/admin/cs/qna/view.do")
+public class AdminQnaViewController extends HttpServlet{
 	private static final long serialVersionUID = 13111768L;
 	private Logger logger = LoggerFactory.getLogger(getClass());
-	private NoticeService nService = NoticeService.INSTANCE;
+	private QnaService qService = QnaService.INSTANCE;
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		String noticeNo = req.getParameter("noticeNo");
-//		logger.debug("noticeNo() : " + noticeNo);
+		String qnaNo = req.getParameter("qnaNo");
+		logger.debug("faqNo() : " + qnaNo);
+
+		QnaDTO qna = qService.selectQna(qnaNo);
+		logger.debug("QnA View : "+qna.toString());
+		req.setAttribute("qna", qna);
 		
-		NoticeDTO notice = nService.selectNotice(noticeNo);
-		logger.debug("notice : " + notice.toString());
-		
-		req.setAttribute("notice", notice);
-		
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/admin/cs/notice/view.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/admin/cs/qna/view.jsp");
 		dispatcher.forward(req, resp);	
 	}
 }

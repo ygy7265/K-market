@@ -775,6 +775,12 @@ footer p > strong {
 #product > .list > table .discount::after {
   content: "↓";
 }
+#product > .list > table .delivery {
+	display: inline-block;
+	font-size: 10px;
+	vertical-align: text-bottom;
+	margin-top: 4px;
+}
 #product > .list > table .free-delivery {
   display: inline-block;
   font-size:0;
@@ -802,6 +808,9 @@ footer p > strong {
 }
 #product .badge.great {
   background-image: url(/K-market/images/ico_great_seller.gif);
+}
+#product .badge.normal {
+  background-image: url(/K-market/images/ico_normal_seller.gif);
 }
 
 /*product_rating*/
@@ -844,11 +853,11 @@ footer p > strong {
   text-align: center;
   text-decoration: none;
 }
-
-#product > .list > .paging > .num > a.on {
-  color: #fe434c;
+#product > section > article.review > .paging > .num.on > a{
+	color: #fe434c;
   font-weight: bold;
 }
+
 
 #product > .view > .review > .paging {
   width: 100%;
@@ -974,9 +983,23 @@ footer p > strong {
   background-position: 36px 0px;
   text-indent: 86px;
 }
+
+#product h5.rating.star1{
+  background-position: 0 -40px;
+}
+#product h5.rating.star2{
+  background-position: 0 -80px;
+}
+#product h5.rating.star3{
+  background-position: 0 -120px;
+}
 #product h5.rating.star4{
   background-position: 0 -160px;
 }
+#product h5.rating.star5{
+  background-position: 0 -200px;
+}
+
 
 #product > .view > .info > .summary .org_price > del {
   font-size: 18px;
@@ -991,7 +1014,7 @@ footer p > strong {
   content: "↓";
 }
 #product > .view > .info >.summary .org_price > ins {
-  font-size: 26px;
+  font-size: 26px;https://www.youtube.com/watch?v=Jhp5uH59V7M
   font-weight: bold;
   text-decoration: none;
 }

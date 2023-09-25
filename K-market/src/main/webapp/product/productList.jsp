@@ -12,6 +12,44 @@
 	        // ...
 	      })();
 	    </c:forEach>
+	    
+	 	/* 스페셜 페이지 제목 변경하기 */
+	    let currentURL = window.location.href;// 현재 URL을 가져오기
+	    let paramsString = currentURL.split('?')[1]; // URL을 '?'로 분할하여 파라미터 부분을 가져옴
+	    let paramsArray = paramsString.split('&');  // 파라미터를 '&'로 분할하여 배열 생성
+	    
+	    // 파라미터 배열을 순회하면서 변수명과 값을 가져옴
+	    paramsArray.forEach(function(param) {
+	        let paramParts = param.split('=');
+	        let paramName = decodeURIComponent(paramParts[0]); // 변수명 디코딩
+	        let paramValue = decodeURIComponent(paramParts[1]); // 값 디코딩
+	        
+	        console.log('변수명: ' + paramName);
+	        console.log('값: ' + paramValue);
+	        
+	        const h1Name = {
+	        		'hit':'히트상품',
+	        		'score':'추천상품',
+	        		'new':'최신상품',
+	        		'best':'인기상품',
+	        		'discount':'할인상품'
+	        	};
+	        
+	        // type1 파라미터가 존재할시
+	        if(paramName == 'type1'){
+	        	// type1 파라미터 값 구분
+	        	if(h1Name.hasOwnProperty(paramValue)){
+	        		const TypeName = h1Name[paramValue];
+	        		$('nav > h1').text(TypeName);
+	        	}
+	        	$('nav > p').text('');
+	        	$('.sort').css('display','none');
+	        	$('.paging').css('display','none');
+	        }
+	        
+	    });
+	    
+	 	
 	})
 </script>
 <main id="product">
@@ -59,15 +97,20 @@
                 <span class="discount">${product.discount}%</span>
               </li>
               <li>
-              	<c:if test="${product.delivery eq 0}">
-	            <span class="free-delivery">무료배송</span>
-	            </c:if>
+	          <c:choose>
+	              <c:when test="${product.delivery gt 0}">
+	              <span class="delivery">배송비 <fmt:formatNumber value="${product.delivery}" pattern="#,###"/>원</span>
+	              </c:when>
+	              <c:otherwise>
+	              <span class="free-delivery">무료배송</span>
+	              </c:otherwise>
+	          </c:choose>
               </li>
             </ul>
           </td>
           <td>
             <h4 class="seller"><i class="fas fa-home"></i>&nbsp;${product.seller}</h4>
-            <h5 class="badge ${product.level eq '6'? 'great':''}">${product.seller}</h5>
+            <h5 class="badge ${product.level eq '6'? 'great':'normal'}">${product.seller}</h5>
             <h6 class="rating star${product.score}">상품평</h6>
           </td>
         </tr>

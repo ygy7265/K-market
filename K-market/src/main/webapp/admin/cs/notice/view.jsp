@@ -10,7 +10,7 @@
     </nav>
     <section class="write">
       <article>
-        <form action="${ctxPath}/admin/cs/notice/modify.do" method="get">
+        <form action="${ctxPath}/admin/cs/notice/modify.do" method="GET">
         <input type="hidden" name="writer" value="${notice.writer}">
         <input type="hidden" name="noticeNo" value="${notice.noticeNo}">
           <table>
@@ -21,26 +21,23 @@
                   <option value="${notice.cate}">
 	                  <c:set var="cate" value="${notice.cate}"/>
                         <c:choose>
-                            <c:when test="${cate == 10}">회원</c:when>
-                            <c:when test="${cate == 20}">쿠폰/혜택/이벤트</c:when>
-                            <c:when test="${cate == 30}">주문/결제</c:when>
-                            <c:when test="${cate == 40}">배송</c:when>
-                            <c:when test="${cate == 50}">취소/반품/교환</c:when>
-                            <c:when test="${cate == 60}">여행/숙박/항공</c:when>
-                            <c:when test="${cate == 70}">안전거래</c:when>
-                        </c:choose>               
+                            <c:when test="${cate eq '01'}">고객서비스</c:when>
+                            <c:when test="${cate eq '02'}">안전거래</c:when>
+                            <c:when test="${cate eq '03'}">위해상품</c:when>
+                            <c:when test="${cate eq '04'}">이벤트당첨</c:when>
+                        </c:choose>
                   </option>
                 </select>
               </td>
             </tr>
             <tr>
-              <td>공지제목</td>                  
+              <td>제목</td>                  
               <td>
                 <input type="text" name="title" readonly value="${notice.title}"/>
               </td>
             </tr>                
             <tr>
-              <td>공지내용</td>                  
+              <td>내용</td>                  
               <td>
                 <textarea name="content" readonly >${notice.content}</textarea>
               </td>

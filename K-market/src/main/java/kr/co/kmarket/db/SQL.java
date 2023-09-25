@@ -79,15 +79,30 @@ public class SQL {
 	public static final String SELECT_REVIEW_PRODUCT_CATE = "SELECT a.*, b.`level` FROM `km_product` AS a JOIN `km_member` AS b ON a.seller = b.uid WHERE `cate1` = ? and `cate2` = ? ORDER BY `review` DESC LIMIT ?,10";
 	public static final String SELECT_LATEST_PRODUCT_CATE = "SELECT a.*, b.`level` FROM `km_product` AS a JOIN `km_member` AS b ON a.seller = b.uid WHERE `cate1` = ? and `cate2` = ? ORDER BY `rdate` DESC LIMIT ?,10";
 	
+	/* REVIEW */
 	// DELETE_PRODUCT시 Review ALL Delete
+	public static final String SELECT_REVIEWS = "SELECT "
+												+ "a.*, b.`name` "
+												+ "FROM `km_member_review` AS a "
+												+ "JOIN `km_member` AS b "
+												+ "ON a.uid = b.uid "
+												+ "JOIN `km_product` AS c "
+												+ "ON a.prodNo = c.prodNo "
+												+ "WHERE a.prodNo=? "
+												+ "ORDER BY `revNo` DESC LIMIT ?, 5";
 	public static final String DELETE_PRODUCT	 = "DELETE FROM `km_product` WHERE `prodNo`=?";
 	public static final String DELETE_REVIEW_ALL = "DELETE FROM `km_member_review` WHERE `prodNo`=?";
+	public static final String SELECT_REVIEWS_COUNT_TOTAL = "SELECT COUNT(*) FROM `km_member_review` WHERE `prodNo`=?";
+	
+	
+	
+	
 	
 	/* admin_index */
 	public static final String SELECT_ORDERS_COUNT_TOTAL = "SELECT COUNT(*) FROM `km_product_order`";
 	public static final String SELECT_ORDERS_SUM_TOTAL = "SELECT SUM(`ordTotPrice`) FROM `km_product_order`";
 	public static final String SELECT_COUNT_MEMBER = "SELECT COUNT(*) FROM `km_member`";
-	// admin_index 신규제품
+	// admin_index 신규제품 통합 
 	public static final String SELECT_PRODUCTS_TOTAL_DAY = "SELECT COUNT(*) AS day_count "
 															+ "FROM `km_product` "
 															+ "WHERE `rdate` BETWEEN DATE_SUB(NOW(), INTERVAL 1 DAY) "
@@ -99,6 +114,10 @@ public class SQL {
 	public static final String SELECT_PRODUCTS_TOTAL_MONTH = "SELECT COUNT(*) AS month_count "
 															+ "FROM `km_product` "
 															+ "WHERE `rdate` BETWEEN DATE_SUB(NOW(), INTERVAL 1 MONTH) "
+															+ "AND NOW()";
+	public static final String SELECT_PRODUCTS_TOTAL_PERIOD = "SELECT COUNT(*) AS month_count "
+															+ "FROM `km_product` "
+															+ "WHERE `rdate` BETWEEN DATE_SUB(NOW(), INTERVAL 1 ?) "
 															+ "AND NOW()";
 	
 	// admin_index 신규가입자
@@ -131,15 +150,15 @@ public class SQL {
 	// admin_index 일 총 주문금액 합산
 	public static final String SELECT_ORDERS_TOTAL_DAY_TO_PRICE = "SELECT SUM(ordTotPrice) AS total_order_price "
 																+ "FROM km_product_order "
-																+ "WHERE ordDate BETWEEN CURRENT_DATE AND DATE_ADD(CURRENT_DATE, INTERVAL 1 DAY)";
+																+ "WHERE ordDate BETWEEN DATE_SUB(NOW(), INTERVAL 1 DAY) AND NOW()";
 	// admin_index 주간 총 주문금액 합산
 	public static final String SELECT_ORDERS_TOTAL_WEEK_TO_PRICE = "SELECT SUM(ordTotPrice) AS total_order_price "
 																+ "FROM km_product_order "
-																+ "WHERE ordDate BETWEEN CURRENT_DATE AND DATE_ADD(CURRENT_DATE, INTERVAL 1 WEEK)";
+																+ "WHERE ordDate BETWEEN DATE_SUB(NOW(), INTERVAL 1 WEEK) AND NOW()";
 	// admin_index 월간 총 주문금액 합산
 	public static final String SELECT_ORDERS_TOTAL_MONTH_TO_PRICE = "SELECT SUM(ordTotPrice) AS total_order_price "
 																+ "FROM km_product_order "
-																+ "WHERE ordDate BETWEEN CURRENT_DATE AND DATE_ADD(CURRENT_DATE, INTERVAL 1 MONTH)";
+																+ "WHERE ordDate BETWEEN DATE_SUB(NOW(), INTERVAL 1 MONTH) AND NOW()";
 	// admin_index 공지사항
 	public static final String SELECT_ADMIN_INDEX_NOTICE ="SELECT * FROM `km_cs_notice` ORDER BY `noticeNo` DESC LIMIT 5";
 	// admin_index 문의사항
@@ -149,6 +168,7 @@ public class SQL {
 	public static final String SELECT_PRODUCTS_TOTAL = "SELECT * FROM `km_product` ORDER BY `rdate` DESC LIMIT ?,10";
 	public static final String SELECT_PRODUCTS_COUNT_TOTAL = "SELECT COUNT(*) FROM `km_product`";
 	/* admin_cs */
+	public static final String SELECT_FAQ_LIST_ALL = "SELECT * FROM `km_cs_faq` ORDER BY `rdate` DESC LIMIT 0,10";
 	public static final String INSERT_NOTICE = "INSERT INTO `km_cs_notice` SET "
 												+ "`cate`=?, "
 												+ "`title`=?, "
@@ -156,13 +176,31 @@ public class SQL {
 												+ "`writer`=?, "
 												+ "`rdate`=NOW()";
 	
+	public static final String UPDATE_NOTICE = "UPDATE `km_cs_notice` SET `cate`=?, `title`=?, `content`=?, `rdate`=CURRENT_DATE "
+												+ "WHERE `noticeNo`=?";
+	
+	public static final String DELETE_NOTICE = "DELETE FROM `km_cs_notice` WHERE `noticeNo` = ?";
+	
 	public static final String ADMIN_SELECT_FAQS = "SELECT * "
 													+ "FROM `km_cs_faq` "
 													+ "WHERE `cate1`=? "
 													+ "ORDER BY `faqNo` DESC "
 													+ "LIMIT ?,10";
 	
-	public static final String UPDATE_NOTICE = "UPDATE `km_cs_notice` SET `cate`=?, `title`=?, `content`=? WHERE `noticeNo`=?";
+	public static final String UPDATE_FAQ = "UPDATE `km_cs_faq` SET `cate1`=?, `cate2`=?, `title`=?, `content`=?, `rdate`=CURRENT_DATE "
+											+ "WHERE `faqNo`=?";
+	
+	public static final String DELETE_FAQ = "DELETE FROM `km_cs_faq` WHERE `faqNo` = ?";
+	
+	public static final String SELECT_ADMIN_LIST_QNA ="SELECT * FROM `km_cs_qna` ORDER BY `qnaNo` DESC LIMIT 10";
+	
+	public static final String ADMIN_UPDATE_QNA_COMMENT = "UPDATE `km_cs_qna` SET `reply`=?, `status`=? WHERE `qnaNo`=?";
+	
+	public static final String ADMIN_SELECT_QNAS = "SELECT * "
+											+ "FROM `km_cs_qna` "
+											+ "WHERE ISNULL(cate1 = ?) OR `cate1`=? AND `qnaNo`>=566 "
+											+ "ORDER BY `qnaNo` DESC "
+											+ "LIMIT ?,10";
 	//Member
 	//member_Login
 	public static final String SELECT_MEMBER = "SELECT * FROM `km_member` WHERE `uid` = ? and `pass` = SHA2(?,256)";
@@ -222,7 +260,6 @@ public class SQL {
 	public static final String SELECT_NOTICES_LATESTS = "SELECT `noticeNo`, `cate`, `title`, `rdate` "
 														+ "FROM `km_cs_notice` "
 														+ "ORDER BY `noticeNo` DESC LIMIT ?";
-			
 	
 	// cs_faq
 	public static final String SELECT_FAQ = "SELECT * FROM `km_cs_faq` WHERE `faqNo`=?";
@@ -264,6 +301,8 @@ public class SQL {
 													+ "FROM `km_cs_qna` "
 													+ "ORDER BY `qnaNo` DESC LIMIT ?";
 
+	public static final String UPDATE_QNA ="UPDATE `km_cs_qna` SET `content`=? WHERE `qnaNo`=?";
+	
 	/**************************/
 	
 	

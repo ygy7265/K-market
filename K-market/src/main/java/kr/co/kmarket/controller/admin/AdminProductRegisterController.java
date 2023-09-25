@@ -37,11 +37,8 @@ public class AdminProductRegisterController extends HttpServlet{
 		
 		String jsondata  = req.getParameter("jsondata");
 		
-		
-		
 		if(jsondata == null) {
 		List<Cate1DTO> cate1s = pService.selectCate1s();
-		
 		
 		logger.debug("cate_list() : " + cate1s);
 		
@@ -112,7 +109,6 @@ public class AdminProductRegisterController extends HttpServlet{
 		logger.debug("sName2 : " + sName2.toString());
 		logger.debug("sName3 : " + sName3.toString());
 		logger.debug("sName4 : " + sName4.toString());
-		
 		
 		ProductDTO dto = new ProductDTO();
 		dto.setCate1(cate1);
