@@ -93,7 +93,7 @@
             <ul>
               <li class="product-row"><ins class="dis-price"></ins></li>
               <li>
-                <del class="org-price"> <fmt:formatNumber value="${product.price}" pattern="#,###"/></del>
+                <del class="org-price"><fmt:formatNumber value="${product.price}" pattern="#,###"/></del>
                 <span class="discount">${product.discount}%</span>
               </li>
               <li>

@@ -103,19 +103,19 @@
                 <table border="0">
                     <tr>
                     <td>총 상품금액</td>
-                    <td><span>${ordto.ordPrice}</span>원</td>
+                    <td><span><fmt:formatNumber value="${ordto.ordPrice}" pattern="#,###"/></span>원</td>
                     </tr>
                     <tr>
                     <td>총 할인금액</td>
-                    <td><span>${ordto.ordDelivery}</span>원</td>
+                    <td><span><fmt:formatNumber value="${ordto.ordDelivery}" pattern="#,###"/></span>원</td>
                     </tr>
                     <tr>
                     <td>배송비</td>
-                    <td><span>${ordto.ordDiscount}</span>원</td>
+                    <td><span><fmt:formatNumber value="${ordto.ordDiscount}" pattern="#,###"/></span>원</td>
                     </tr>
                     <tr>
                     <td>총 결제금액</td>
-                    <td><span>${ordto.ordTotPrice}</span>원</td>
+                    <td><span><fmt:formatNumber value="${ordto.ordTotPrice}" pattern="#,###"/></span>원</td>
                     </tr>
                 </table>                      
                 </td>
@@ -129,13 +129,37 @@
             <table border="0">
             <tr>
                 <td>주문번호</td>
-                <td>2008101324568</td>
+                <td><fmt:formatNumber value="${ordto.ordNo}" pattern="#,###"/></td>
                 <td rowspan="3">총 결제금액</td>
-                <td rowspan="3"><span>${ordto.ordTotPrice}</span>원</td>
+                <td rowspan="3"><span><fmt:formatNumber value="${ordto.ordTotPrice}" pattern="#,###"/></span>원</td>
             </tr>
             <tr>
                 <td>결제방법</td>
-                <td>${ordto.ordPayment}</td>
+                
+                <c:choose>
+				    <c:when test="${ordto.ordPayment eq 1}">
+				        <td>신용카드</td>
+				    </c:when>
+				    <c:when test="${ordto.ordPayment eq 2}">
+				        <td>체크카드</td>
+				    </c:when>
+				    <c:when test="${ordto.ordPayment eq 3}">
+				        <td>실시간 계좌이체</td>
+				    </c:when>
+				    <c:when test="${ordto.ordPayment eq 4}">
+				        <td>무통장 입금</td>
+				    </c:when>
+				    <c:when test="${ordto.ordPayment eq 5}">
+				        <td>휴대폰 결제</td>
+				    </c:when>
+				    <c:when test="${ordto.ordPayment eq 6}">
+				        <td>카카오 페이</td>
+				    </c:when>
+				    <c:otherwise>
+				        <td>결제 실패</td>
+				    </c:otherwise>
+				</c:choose>
+                
             </tr>
             <tr>
                 <td>주문자/연락처</td>

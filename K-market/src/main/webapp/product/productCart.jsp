@@ -103,12 +103,12 @@ $(document).ready(function() {
 	            var listCount = parseFloat(row.find('.listcount').val());  // 선택된 체크박스의 .listcount 값을 더합니다.
 	            var listpriceValue = parseFloat(row.find('.listprice').val());  // 선택된 체크박스의 .listprice 값을 더합니다.
 	            var listdiscountValue = parseFloat(row.find('.listdiscount').val());  // 선택된 체크박스의 .listcount 값을 더합니다.
-	            var listProdNo = parseFloat(row.find('.listprodNo').val());  // 선택된 체크박스의 .listcount 값을 더합니다.
+	            var listProdNo = parseFloat(row.find('.listprodNo').val());  // 선택된 체크박스의 .listprodNo 값을 더합니다.
 	            var listUid = $('.listuid').val(); // 선택된 체크박스의 .listcount 값을 더합니다.
-	            var listdelivery = parseFloat(row.find('.listdelivery').val());  // 선택된 체크박스의 .listcount 값을 더합니다.
-	            var listpName = parseFloat(row.find('.listpName').val());  // 선택된 체크박스의 .listcount 값을 더합니다.
-	            var listtotal = parseFloat(row.find('.listtotal').val());  // 선택된 체크박스의 .listcount 값을 더합니다.
-	            var listpoint = parseFloat(row.find('.listpoint').val());  // 선택된 체크박스의 .listcount 값을 더합니다.
+	            var listdelivery = parseFloat(row.find('.listdelivery').val());  // 선택된 체크박스의 .listdelivery 값을 더합니다.
+	            var listpName = parseFloat(row.find('.listpName').val());  // 선택된 체크박스의 .listpName 값을 더합니다.
+	            var listtotal = parseFloat(row.find('.listtotal').val());  // 선택된 체크박스의 .listtotal 값을 더합니다.
+	            var listpoint = parseFloat(row.find('.listpoint').val());  // 선택된 체크박스의 .listpoint 값을 더합니다.
 	            var cartNo = $('.cartNo').val();
 	            var cartNo = $('.cartNo').val();
 	            
@@ -162,14 +162,14 @@ $(document).ready(function() {
 	        });
 	        
 	        // 업데이트된 값들을 화면에 표시
-	        $('.ordernodiscount').text(listNoDiscountPriceValue);
-	        $('.orderdiscount').text('- ' + listdiscountper);
+	        $('.ordernodiscount').text(listNoDiscountPriceValue.toLocaleString());
+	        $('.orderdiscount').text('- ' + listdiscountper.toLocaleString());
 	        // 업데이트된 상품 수량을 화면에 표시
-	        $('.ordercount').text(listCountValue);
-	        $('.orderpoint').text(listpointValue);
-	        $('.orderdelivery').text(listdeliveryValue);
-	        $('.ordertotal').text(listdiscountedPrice);
-	        $('.ordertotal2').val(listdiscountedPrice);
+	        $('.ordercount').text(listCountValue.toLocaleString());
+	        $('.orderpoint').text(listpointValue.toLocaleString());
+	        $('.orderdelivery').text(listdeliveryValue.toLocaleString());
+	        $('.ordertotal').text(listdiscountedPrice.toLocaleString());
+	        $('.ordertotal2').val(listdiscountedPrice.toLocaleString());
 	    }
 	    
 	 //선택삭제
@@ -268,6 +268,7 @@ $(document).ready(function() {
              <td><input type="hidden" class="listprodNo" value="${list.prodNo}"/></td>
              <td><input type="hidden" class="listpName" value="${list.pName}"/></td>
              <td><input type="hidden" class="listuid" value="${username}"/></td>
+             <td><input type="hidden" class="cartNo" value="${list.cartNo}"/></td>
             </tr>
           	</c:forEach>
           	</c:if>
@@ -308,8 +309,6 @@ $(document).ready(function() {
             </tr>
             	
           </table>
-          <input type="hidden" class="cartNo" value="${list.get(list.size() - 1).getCartNo()}"/>
-          <input type="hidden" class="listuid" value="${username}"/>
           <input type="hidden" class="jsondata" name="jsonData"/>
           <input type="hidden" class="orderdiscount" name="orderdiscount"/>
           <input type="hidden" class="ordertotal2"/>

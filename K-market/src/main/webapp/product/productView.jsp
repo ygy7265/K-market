@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.util.Date"%>
+<%@ page import="java.text.SimpleDateFormat"%>
 <!-- 
 	이름 : 윤경엽
 	내용 : 상품 주문하기 구현
@@ -11,13 +13,23 @@
 $(function(){
 	$('.cart').click(function(e){
 		e.preventDefault();
-		var result = confirm("장바구니에 담으시겠습니까?");
-		if (result === true) {
-		    // 확인 버튼이 클릭된 경우
-			 $('.buy').submit();
-		} else {
-		    // 취소 버튼이 클릭된 경우
-		}	
+		
+		var userSession = sessionStorage.getItem("memberdto");
+
+		  // "user" 세션이 없으면 로그인 페이지로 리디렉션
+		  /* if (!userSession) {
+			alert("로그인이 필요한 서비스입니다.");
+		    window.location.href = "/K-market/member/login.do"; // 로그인 페이지 URL로 변경
+		  } */
+		 
+			  var result = confirm("장바구니에 담으시겠습니까?");
+			if (result === true) {
+			    // 확인 버튼이 클릭된 경우
+				 $('.buy').submit();
+			} else {
+			    // 취소 버튼이 클릭된 경우
+			}	
+		  
 	})
 	$('.order').click(function(e){
 		e.preventDefault();
@@ -108,8 +120,26 @@ $(function(){
                    
                 </nav>
                 <nav>
-                    <span class="delivery" ><fmt:formatNumber value="${proddto.delivery}" pattern="#,###"/></span>
-                    <span class="arrival">모레(금) 7/8 도착예정</span>
+				<%-- 현재 날짜 가져오기 --%>
+				<c:set var="currentDate" value="${currentDate}"/>
+				
+				<%-- 3일을 더한 날짜 --%>
+				<c:set var="threeDaysLater" value="${threeDaysLater}"/>
+				
+				<%-- 요일을 계산 --%>
+				<fmt:formatDate var="dayOfWeek" value="${threeDaysLater}" pattern="EEE"/>
+				
+				<c:set var="dateFormat" value="dd "/>
+				<c:set var="dateFormatMM" value="MM "/>
+				<c:set var="formattedDate">
+				    <fmt:formatDate value="${currentDate}" pattern="${dateFormat}"/>
+				</c:set>
+				<c:set var="formattedDateMM">
+				    <fmt:formatDate value="${currentDate}" pattern="${dateFormatMM}"/>
+				</c:set>
+				
+				<span class="delivery"><fmt:formatNumber value="${proddto.delivery}" pattern="#,###"/></span>
+				<span class="arrival">모레(<c:out value="${dayOfWeek}" />)  <c:out value="${formattedDateMM}/${formattedDate+3}"/> 도착예정</span>
                     <span class="desc">본 상품은 국내배송만 가능합니다.</span>
                 </nav>
                 <nav>

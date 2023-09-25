@@ -4,9 +4,11 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%> 
 <script>
 	const success = ${success};
+ 	var userUid = "${user.uid}";
+ 	
 	switch (success) {
 	case 101:
-		alert('로그인 성공.');
+		alert(userUid+' 님 환영합니다. ');
 		break;
 	case 102:
 		alert('로그인 실패');

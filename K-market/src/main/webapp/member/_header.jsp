@@ -4,12 +4,16 @@
 <html lang="en">
 <script>
 	const success = ${success};
+	 var userUid = "${user.uid}";
 	switch (success) {
 	case 101:
-		alert(user+'로그인 성공.');
+		alert(user+' 님 환영합니다. ');
 		break;
 	case 102:
 		alert('로그인 실패');
+		break;
+	case 103:
+		alert('로그인이 필요한 서비스입니다.');
 		break;
 	case 200:
 		alert('정상적으로 로그아웃 되었습니다.');

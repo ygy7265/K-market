@@ -31,8 +31,8 @@ public class CartDAO extends DBHelper{
 		try {
 		
 			psmt = conn.prepareStatement(SQL.INSERT_PRODUCT_CART);
-			psmt.setInt(1, dto.getProdNo());
-			psmt.setString(2, dto.getUid());
+			psmt.setString(1, dto.getUid());
+			psmt.setInt(2, dto.getProdNo());
 			psmt.setInt(3, dto.getCount());
 			psmt.setInt(4, dto.getPrice());
 			psmt.setInt(5, dto.getDiscount());

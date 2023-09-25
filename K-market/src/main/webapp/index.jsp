@@ -24,11 +24,11 @@
             </div>
             <h2>${bestList.prodName}</h2>
             <div class="org_price">
-              <del>${bestList.price}</del>
+              <del><fmt:formatNumber value="${bestList.price}" pattern="#,###"/></del>
               <span>${bestList.discount}%</span>
             </div>
             <div class="dis_price">
-              <ins class="product-row">${bestList.price}</ins>
+              <ins class="product-row"><fmt:formatNumber value="${bestList.price}" pattern="#,###"/></ins>
             </div>
           </a>
         </li>
@@ -76,7 +76,7 @@
           <h2>${hitList.prodName}</h2>
           <p>${hitList.descript}</p>
           <div class="org_price">
-            <del>${hitList.price}</del>
+            <del><fmt:formatNumber value="${hitList.price}" pattern="#,###"/></del>
             <span>${hitList.discount}%</span>
           </div>
           <div class="dis_price"> 
@@ -102,7 +102,7 @@
           <h2>${scoreList.prodName}</h2>
           <p>${scoreList.descript}</p>
           <div class="org_price">
-            <del>${scoreList.price}</del>
+            <del><fmt:formatNumber value="${scoreList.price}" pattern="#,###"/></del>
             <span>${scoreList.discount}%</span>
           </div>
           <div class="dis_price">
@@ -127,11 +127,11 @@
           <h2>${newList.prodName}</h2>
           <p>${newList.descript}</p>
           <div class="org_price">
-            <del>${newList.price}</del>
+            <del><fmt:formatNumber value="${newList.price}" pattern="#,###"/></del>
             <span>${newList.discount}%</span>
           </div>
           <div class="dis_price">
-            <ins class="product-row">${newList.price}</ins>
+            <ins class="product-row"><fmt:formatNumber value="${newList.price}" pattern="#,###"/></ins>
             <c:if test="${newList.delivery eq 0}">
             <span class="free">${newList.delivery}</span>
             </c:if>
@@ -152,17 +152,17 @@
           <h2>${discountList.prodName}</h2>
           <p>${discountList.descript}</p>
           <div class="org_price">
-            <del>${discountList.price}</del>
+            <del><fmt:formatNumber value="${discountList.price}" pattern="#,###"/></del>
             <span>${discountList.discount}%</span>
           </div>
           <div class="dis_price">
-            <ins class="product-row">${discountList.price}</ins>
+            <ins class="product-row"><fmt:formatNumber value="${discountList.price}" pattern="#,###"/></ins>
             <c:choose>
   			  <c:when test="${discountList.delivery gt 0}">
-        		 <span class="nofree">${discountList.delivery}</span>
+        		 <span class="nofree"><fmt:formatNumber value="${discountList.delivery}" pattern="#,###"/></span>
    			  </c:when>
    			 <c:otherwise>
-        		 <span class="free">${discountList.delivery}</span>
+        		 <span class="free"><fmt:formatNumber value="${discountList.delivery}" pattern="#,###"/></span>
   			  </c:otherwise>
 			</c:choose>
           </div>

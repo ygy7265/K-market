@@ -1,6 +1,9 @@
 package kr.co.kmarket.controller.product;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -100,6 +103,22 @@ public class ProductViewController extends HttpServlet{
 			ProductDTO dto = service.selectProduct(prodNo);
 			req.setAttribute("proddto", dto);
 			logger.debug("Product View = " + dto);
+			
+			Date currentDate = new Date();
+
+			// 3일을 더한 날짜 계산
+			Calendar calendar = Calendar.getInstance();
+			calendar.setTime(currentDate);
+			calendar.add(Calendar.DAY_OF_MONTH, 3);
+			Date threeDaysLater = calendar.getTime();
+
+			// 요일 계산 (예: 월요일)
+			SimpleDateFormat dayFormat = new SimpleDateFormat("EEE");
+			String dayOfWeek = dayFormat.format(threeDaysLater);
+
+			req.setAttribute("currentDate", currentDate);
+			req.setAttribute("threeDaysLater", threeDaysLater);
+			req.setAttribute("dayOfWeek", dayOfWeek);
 			RequestDispatcher dispatcher = req.getRequestDispatcher("/product/productView.jsp");
 			dispatcher.forward(req, resp);	
 		}

@@ -32,7 +32,9 @@ public class ProductCompleteController extends HttpServlet{
 		HttpSession session = req.getSession();
 		MemberDTO sessiondto = (MemberDTO) session.getAttribute("user");
 		String userid = sessiondto.getUid();
-
+		if (userid == null) {
+		    resp.sendRedirect("/K-market/member/login.do?success=103");
+		}else {
 		List<CartDTO> list = orservice.selectOrdersItem(userid);
 		OrderDTO ordto = orservice.selectOrderComplite(userid);
 		
@@ -43,7 +45,8 @@ public class ProductCompleteController extends HttpServlet{
 			 
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/product/productComplete.jsp");
-		dispatcher.forward(req, resp);	
+		dispatcher.forward(req, resp);
+		}
 	}
 	
 	@Override
@@ -72,6 +75,10 @@ public class ProductCompleteController extends HttpServlet{
 		System.out.println("orderpoint" + orderpoint);
 		System.out.println("ordertotal" + ordertotal);
 		OrderDTO dto = new OrderDTO();
+		
+		if(orderpointdiscount.isEmpty()) {
+			orderpointdiscount = "0";
+		}
 		dto.setUid(userid);
 		dto.setOrdCount(count);
 		dto.setOrdPrice(ordernodiscount);
