@@ -39,12 +39,19 @@ public enum FaqService {
 		return dao.selectFaqsCate(cate);
 	}
 	
-	public void updateFaq(FaqDTO dto) {
-		dao.updateFaq(dto);
+	public void admin_cs_faq_update(FaqDTO dto) {
+		dao.admin_cs_faq_update(dto);
 	}
 	
-	public void deleteFaq(String faqNo) {
-		dao.deleteFaq(faqNo);
+	public void admin_cs_faq_delete(String faqNo) {
+		dao.admin_cs_faq_delete(faqNo);
 	}
-
+	//0923 admin_cs_faq_list 게시물 조회
+//	public List<FaqDTO> adminselectFaqs(String cate1, int start) {
+//		return dao.adminselectFaqs(cate1, start);
+//	}
+	public List<FaqDTO> admin_cs_fqa_list(){
+		return dao.admin_cs_fqa_list();
+	}
+	
 }

@@ -10,7 +10,7 @@
     </nav>
     <section class="write">
       <article>
-        <form action="${ctxPath}/admin/cs/notice/modify.do" method="get">
+        <form action="${ctxPath}/admin/cs/notice/modify.do" method="GET">
         <input type="hidden" name="writer" value="${notice.writer}">
         <input type="hidden" name="noticeNo" value="${notice.noticeNo}">
           <table>
@@ -31,13 +31,13 @@
               </td>
             </tr>
             <tr>
-              <td>공지제목</td>                  
+              <td>제목</td>                  
               <td>
                 <input type="text" name="title" readonly value="${notice.title}"/>
               </td>
             </tr>                
             <tr>
-              <td>공지내용</td>                  
+              <td>내용</td>                  
               <td>
                 <textarea name="content" readonly >${notice.content}</textarea>
               </td>

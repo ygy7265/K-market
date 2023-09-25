@@ -5,14 +5,14 @@
   <div class="notice">
     <nav>
       <div>
-        <p>공지사항</p>
+        <p>수정사항</p>
       </div>
     </nav>
     <section class="write">
       <article>
         <form action="${ctxPath}/admin/cs/notice/modify.do" method="POST">
-        <input type="hidden" name="writer" value="${writer}">
-        <input type="hidden" name="noticeNo" value="${noticeNo}">
+        <input type="hidden" name="writer" value="${motice.writer}">
+        <input type="hidden" name="noticeNo" value="${motice.noticeNo}">
           <table>
             <tr>
               <td>공지유형</td>
@@ -31,13 +31,13 @@
               </td>
             </tr>
             <tr>
-              <td>공지제목</td>                  
+              <td>제목</td>                  
               <td>
                 <input type="text" name="title" value="${title}"/>
               </td>
             </tr>                
             <tr>
-              <td>공지내용</td>                  
+              <td>내용</td>                  
               <td>
                 <textarea name="content">${content}</textarea>
               </td>

@@ -732,7 +732,7 @@ public class ProductDAO extends DBHelper {
 			rs = psmt.executeQuery();
 			if(rs.next()) {
 				weekProd = rs.getInt(1);
-				//logger.debug("7일이내 등록된 신규 제품 : "+weekProd);
+			//	logger.debug("7일이내 등록된 신규 제품 : "+weekProd);
 			}
 			close();
 		} catch (Exception e) {
@@ -745,10 +745,11 @@ public class ProductDAO extends DBHelper {
 		try {
 			conn = getConnection();
 			psmt = conn.prepareStatement(SQL.SELECT_PRODUCTS_TOTAL_MONTH);
+			
 			rs = psmt.executeQuery();
 			if(rs.next()) {
 				monthProd = rs.getInt(1);
-			logger.debug("30일이내 등록된 신규 제품 : "+monthProd);
+			//logger.debug("30일이내 등록된 신규 제품 : "+monthProd);
 			}
 			close();
 		} catch (Exception e) {
