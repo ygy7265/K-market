@@ -69,6 +69,7 @@ public class ReviewDAO extends DBHelper{
 				dto.setRegip(rs.getString(6));
 				dto.setRdate(rs.getString(7));
 				dto.setName(rs.getString(8));
+				dto.setProdName(rs.getString(9));
 				
 				reviews.add(dto);
 			}

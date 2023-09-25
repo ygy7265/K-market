@@ -1,6 +1,7 @@
 package kr.co.kmarket.controller.cs;
 
 import java.io.IOException;
+import java.util.Base64;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -67,8 +68,7 @@ public class QnaModifyController extends HttpServlet{
 		
 		service.updateQna(dto);
 		logger.debug("QnAModify dto..."+dto.toString());
-		
-		resp.sendRedirect("/K-market/cs/qna/qnaView.do?cate1="+cate1+"&cate2="+cate2+"&qnaNo="+qnaNo);
+		resp.sendRedirect("/K-market/cs/qna/qnaView.do?cate1="+cate1+"&cate2="+Base64.getEncoder().encodeToString(cate2.getBytes())+"&qnaNo="+qnaNo);
 		
 		
 	}

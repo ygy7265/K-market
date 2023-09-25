@@ -80,6 +80,9 @@ $(function(){
     $('.discount_price').text(discountPrice.toLocaleString());
     
 });
+
+
+
 </script>
     </aside>
       <!-- 상품 상세페이지 시작 -->
@@ -287,23 +290,32 @@ $(function(){
             <nav>
                 <h1>상품리뷰</h1>
             </nav>
-            <ul>
-              <c:forEach var ="review" items="${reviews}">
-                 <li>
-                   <div>
-                       <h5 class="rating star${review.rating}"></h5>
-                       <span>
-                       	<c:out value="${fn:substring(review.uid, 0, fn:length(review.uid) - 3)}"/>***&nbsp;${review.formatDate()}
-                       </span>
-                   </div>
-                   <h3>상품명1/BLUE/L</h3>
-                   <p>
-                       ${review.content}
-                   </p>
-                </li>
-			</c:forEach>
-            </ul>
-            <div class="paging">
+			<ul>
+			    <c:choose>
+			        <c:when test="${empty reviews}">
+			            <li>
+			                <p>아직 리뷰가 존재하지 않습니다.</p>
+			            </li>
+			        </c:when>
+			        <c:otherwise>
+			            <c:forEach var="review" items="${reviews}">
+			                <li>
+			                    <div>
+			                        <h5 class="rating star${review.rating}"></h5>
+			                        <span>
+			                            <c:out value="${fn:substring(review.uid, 0, fn:length(review.uid) - 3)}"/>***&nbsp;${review.formatDate()}
+			                        </span>
+			                    </div>
+			                    <h3>${review.prodName}</h3>
+			                    <p>
+			                        ${review.content}
+			                    </p>
+			                </li>
+			            </c:forEach>
+			        </c:otherwise>
+			    </c:choose>
+			</ul>
+			<div class="paging">
             	<c:if test="${pageGroupStart > 1}">
           		<span class="prev"><a href="/K-market/product/productview.do?prodNo=${prodNo}&pg=${pageGroupStart - 1}"><&nbsp;이전</a></span>
 	        </c:if>

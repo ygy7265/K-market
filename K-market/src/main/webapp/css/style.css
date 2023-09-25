@@ -974,6 +974,17 @@ footer p > strong {
   line-height: 36px;
   letter-spacing: -1px;
 }
+#product > section > article.info > div.summary > nav:nth-child(2) > h5{
+  width: 150px;
+  height: 20px;
+  font-size: 0px;
+  background-image: url(../images/ico_rating_star.png);
+  background-repeat: no-repeat;
+  background-position: -2px 0px;
+  text-indent: 86px;
+}
+
+
 #product h5.rating {
   width: 150px;
   height: 20px;
@@ -1218,6 +1229,9 @@ footer p > strong {
   word-break: break-all;
   word-wrap: break-word;
   margin-top: 10px;
+}
+#product > section > article.review > ul > li > .noReview{
+	text-align: center;
 }
 
 
