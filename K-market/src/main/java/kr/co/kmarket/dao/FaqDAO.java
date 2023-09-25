@@ -240,19 +240,24 @@ public class FaqDAO extends DBHelper{
 		}
 	}// admin_cs_faq_update END
 	
-	public void admin_cs_faq_delete(String faqNo) {
+	public int admin_cs_faq_delete(String faqNo) {
+		int result = 0;
+		
 		try {
 			
 			conn = getConnection();
 			psmt = conn.prepareStatement(SQL.DELETE_FAQ);
 			psmt.setString(1, faqNo);
-			psmt.executeUpdate();
+			result = psmt.executeUpdate();
 			
 			close();
 		
 		} catch (Exception e) {
 			logger.debug("faqDAO() deleteFaq() : " + e.getMessage());
 		}
+		
+		return result;
+		
 	}// admin_cs_faq_delete END
 
 }

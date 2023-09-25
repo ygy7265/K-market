@@ -36,8 +36,8 @@ public enum NoticeService {
 		dao.updateNotice(dto);
 	}
 	
-	public void deleteNotice(String noticeNo) {
-		dao.deleteNotice(noticeNo);
+	public int deleteNotice(String noticeNo) {
+		return dao.deleteNotice(noticeNo);
 	}
 	
 	

@@ -2,7 +2,6 @@
 <%@ include file="../../_header.jsp" %>
 <%@ include file="../../_aside.jsp" %>
 <script>
-
 $(document).ready(function() {
     // 전체 선택 체크박스가 클릭되었을 때
     $('#all').click(function() {
@@ -24,7 +23,35 @@ $(document).ready(function() {
             $('#all').prop('checked', true);
         }
     });
+    
+	 //선택삭제
+    $('#deleteSelected').click(function() {
+  	  var selectedItems = $('.Item:checked'); // 선택된 체크박스 아이템들을 가져옵니다.
+        var qnaNo = selectedItems.map(function() {
+            return $(this).val(); // 선택된 아이템의 data-noticeNo 속성 값을 가져옵니다.
+        }).get();
+  	  
+  	  console.log("qnaNo"+qnaNo);
+      $('.Item:checked').closest('tr').remove();
+      $.each(qnaNo, function(index, qnaNo) {
+      	$.ajax({
+				url:'/K-market/admin/cs/qna/delete.do',
+				type:'POST',
+				traditional : true,
+				data: {"qnaNo": qnaNo},
+				contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+				dataType:'json',
+				success:function(data){
+					console.log(data);
+					console.log(data.result);
+					if(data.result > 0){}
+					}
+			});
+      });
+    });
+    
 });
+
 
 </script>
     <section id="admin-cs-list">
@@ -65,7 +92,7 @@ $(document).ready(function() {
                 </tr>
 				<c:forEach var="qna" items="${qnas}">
                 <tr>
-                    <td><input type="checkbox" name="Item" class="Item"/></td>
+                    <td><input type="checkbox" name="Item" class="Item" value="${qna.qnaNo}"/></td>
                     <td>${qna.qnaNo}</td>
                     <td>
                     <c:set var="cate1" value="${qna.cate1}"/>
@@ -104,7 +131,7 @@ $(document).ready(function() {
                 </c:forEach>
             </table>
             
-            <input type="button" value="선택삭제" />
+            <input type="button" value="선택삭제" id="deleteSelected"/>
             
             <div class="paging">
                 <span class="prev">

@@ -1,6 +1,60 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../../_header.jsp" %>
 <%@ include file="../../_aside.jsp" %>
+<script>
+
+$(document).ready(function() {
+    // 전체 선택 체크박스가 클릭되었을 때
+    $('#all').click(function() {
+        // 전체 선택 체크박스의 상태를 가져옴
+        var isChecked = $(this).prop('checked');
+
+        // 개별 체크박스들의 상태를 전체 선택 체크박스와 동일하게 설정
+        $('.Item').prop('checked', isChecked);
+    });
+
+    // 개별 체크박스 중 하나라도 선택 해제되었을 때
+    $('.Item').click(function() {
+        // 개별 체크박스들 중에서 하나라도 선택 해제된 것이 있는지 확인
+        if ($('.Item:checked').length < $('.Item').length) {
+            // 하나라도 선택 해제된 경우, 전체 선택 체크박스도 선택 해제
+            $('#all').prop('checked', false);
+        } else {
+            // 모두 선택된 경우, 전체 선택 체크박스도 선택
+            $('#all').prop('checked', true);
+        }
+    });
+    
+	 //선택삭제
+    $('#deleteSelected').click(function() {
+  	  var selectedItems = $('.Item:checked'); // 선택된 체크박스 아이템들을 가져옵니다.
+        var faqNo = selectedItems.map(function() {
+            return $(this).val(); // 선택된 아이템의 data-noticeNo 속성 값을 가져옵니다.
+        }).get();
+  	  
+  	  console.log("faqNo"+faqNo);
+      $('.Item:checked').closest('tr').remove();
+      $.each(faqNo, function(index, faqNo) {
+      	$.ajax({
+				url:'/K-market/admin/cs/faq/delete.do',
+				type:'POST',
+				traditional : true,
+				data: {"faqNo": faqNo},
+				contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+				dataType:'json',
+				success:function(data){
+					console.log(data);
+					console.log(data.result);
+					if(data.result > 0){}
+					}
+			});
+      });
+    });
+    
+});
+
+
+</script>
     <section id="admin-cs-list">
         <nav>
             <h3>자주묻는질문</h3>
@@ -46,7 +100,7 @@
                 </tr>
 				<c:forEach var="faqs" items="${faqs}">
                 <tr>
-                    <td><input type="checkbox" name="Item" class="Item"/></td>
+                    <td><input type="checkbox" name="Item" class="Item" value="${faqs.faqNo}"/></td>
                     <td>${faqs.faqNo}</td>
                     <td>
 	                  <c:set var="cate1" value="${faqs.cate1}"/>
@@ -108,7 +162,7 @@
                 </c:forEach>
             </table>
             
-            <input type="button" value="선택삭제" />                          
+            <input type="button" value="선택삭제" id="deleteSelected"/>
 
             <div class="paging">
                 <span class="prev">
