@@ -52,7 +52,11 @@ public class ProductListController extends HttpServlet{
 		// 전체 게시물 갯수
 		int total = 0;
 		
-		total = service.selectProductCateTotal(cate1, cate2, search);
+		if(search != null) {
+			total = service.selectProductSearchTotal(search);
+		} else {
+			total = service.selectProductCateTotal(cate1, cate2);
+		}
 		
 		// 마지막 페이지 번호
 		int lastPageNum = pgService.setLastPageNum(total);
@@ -76,9 +80,13 @@ public class ProductListController extends HttpServlet{
 			
 		} else {
 			logger.info("selectProducts...2");
-			// cate1, cate2
-			list = service.selectProducts(cate1,cate2,start, search);
 			
+			if(search != null) {
+				list = service.selectProductsSearch(search);
+			} else {
+				// cate1, cate2
+				list = service.selectProducts(cate1,cate2,start);
+			}
 		}
 		
 		logger.debug("currentPage :"+currentPage);
