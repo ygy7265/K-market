@@ -89,7 +89,7 @@
       <!-- 상품목록 -->              
       <table border="0">
       	<c:forEach var="product" items="${list}">
-      
+      	 <h3 class="name">${product.prodName}</h3>
         <tr>
           <td><a href="/K-market/product/productview.do?prodNo=${product.prodNo}" class="thumb"><img src="../admin/thumbAll/${product.thumb1}" alt="상품이미지"/></a></td>
           <td>
