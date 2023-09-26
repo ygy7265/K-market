@@ -68,7 +68,9 @@ public class SQL {
 	public static final String SELECT_PRODUCT	= "SELECT * FROM `km_product` WHERE `prodNo` = ?";
 	public static final String SELECT_CATE2	= "SELECT * FROM `km_product_cate2` WHERE `cate2` = ?";
 	public static final String SELECT_PRODUCTS	= "SELECT a.*, b.`level` FROM `km_product` AS a JOIN `km_member` AS b ON a.seller = b.uid WHERE `cate1` = ? and `cate2` = ? ORDER BY `prodNo` DESC LIMIT ?, 10";
+	public static final String SELECT_PRODUCTS_FOR_SEARCH	= "SELECT a.*, b.`level` FROM `km_product` AS a JOIN `km_member` AS b ON a.seller = b.uid WHERE `prodName` LIKE ? ORDER BY `prodNo` DESC ";
 	public static final String SELECT_PRODUCTS_TOTAL_CATE = "SELECT COUNT(*) FROM `km_product` WHERE `cate1`=? AND `cate2`=?";
+	public static final String SELECT_PRODUCTS_TOTAL_SEARCH = "SELECT COUNT(*) FROM `km_product` WHERE `prodName` LIKE ?";
 	public static final String SELECT_CATE = "SELECT * FROM `km_product_cate1` AS a JOIN `km_product_cate2` AS b ON a.cate1 = b.cate1 WHERE a.`cate1`=? AND `cate2`=?";
 	
 	// product OrderBy

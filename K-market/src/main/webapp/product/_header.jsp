@@ -52,8 +52,8 @@
             <div class="logo">
                 <div>
                     <a href="/K-market/"><img src="/K-market/images/header_logo.png" alt="로고"></a>
-                    <form action="#">
-                        <input type="text" name="keyword">
+                    <form action="/K-market/product/productlist.do" method="get">
+                        <input type="text" name="search">
                         <button>
                             <i class="fa fa-search" aria-hidden="true"></i>
                         </button>

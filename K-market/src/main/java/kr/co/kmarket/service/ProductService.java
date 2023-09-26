@@ -35,8 +35,8 @@ public enum ProductService {
 	public ProductDTO selectProduct(String prodNo) {
 		return dao.selectProduct(prodNo);
 	}
-	public List<ProductDTO> selectProducts(String cate1,String cate2, int start) {
-		return dao.selectProducts(cate1,cate2,start);
+	public List<ProductDTO> selectProducts(String cate1,String cate2, int start,String search) {
+		return dao.selectProducts(cate1,cate2,start, search);
 	}
 	public List<ProductDTO> selectProductsType(String cate1,String cate2, int start, String type2) {
 		return dao.selectProductsType(cate1, cate2, start, type2);
@@ -76,8 +76,8 @@ public enum ProductService {
 	public List<ProductDTO> selectProductsTotal(int start) {
 		return dao.selectProductsTotal(start);
 	}
-	public int selectProductCateTotal(String cate1, String cate2) {
-		return dao.selectProductCateTotal(cate1, cate2);
+	public int selectProductCateTotal(String cate1, String cate2,String search) {
+		return dao.selectProductCateTotal(cate1, cate2, search);
 	}
 	
 	// admin_indexPage 운영 현황

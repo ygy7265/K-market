@@ -110,14 +110,20 @@ public class ProductDAO extends DBHelper {
 		return dto;
 	}
 	
-	public List<ProductDTO> selectProducts(String cate1,String cate2, int start) {
+	public List<ProductDTO> selectProducts(String cate1,String cate2, int start, String search) {
 		List<ProductDTO> list = new ArrayList<>();
 		conn = getConnection();
 		try {
-			psmt = conn.prepareStatement(SQL.SELECT_PRODUCTS);
-			psmt.setString(1, cate1);
-			psmt.setString(2, cate2);
-			psmt.setInt(3, start);
+			if(search != null) {
+				psmt = conn.prepareStatement(SQL.SELECT_PRODUCTS_FOR_SEARCH);
+				psmt.setString(1, "%"+search+"%");
+
+			} else {
+				psmt = conn.prepareStatement(SQL.SELECT_PRODUCTS);
+				psmt.setString(1, cate1);
+				psmt.setString(2, cate2);
+				psmt.setInt(3, start);
+			}
 			rs = psmt.executeQuery();
 			
 			while(rs.next()) {
@@ -154,7 +160,6 @@ public class ProductDAO extends DBHelper {
 				list.add(dto);	
 			}
 			
-			logger.debug("test"+list.get(0).getLevel());
 			close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -664,15 +669,20 @@ public class ProductDAO extends DBHelper {
 	}
 
 	
-	public int selectProductCateTotal(String cate1, String cate2) {
+	public int selectProductCateTotal(String cate1, String cate2,String search) {
 		
 		int total = 0;
 		
 		try {
 			conn = getConnection();
-			psmt = conn.prepareStatement(SQL.SELECT_PRODUCTS_TOTAL_CATE);
-			psmt.setString(1, cate1);
-			psmt.setString(2, cate2);
+			if(search != null) {
+				psmt = conn.prepareStatement(SQL.SELECT_PRODUCTS_TOTAL_CATE);
+				psmt.setString(1, cate1);
+				psmt.setString(2, cate2);
+			} else {
+				psmt = conn.prepareStatement(SQL.SELECT_PRODUCTS_TOTAL_SEARCH);
+				psmt.setString(1, "%"+search+"%");
+			}
 			rs = psmt.executeQuery();
 			
 			if(rs.next()) {
