@@ -114,6 +114,9 @@ public class MemberDAO extends DBHelper{
 				dto.setRegip(rs.getString(20));
 				dto.setRdate(rs.getString(22));
 			}
+			
+			close();
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -170,11 +173,11 @@ public class MemberDAO extends DBHelper{
 	} // selectMembers END
 	
 	public void updateMember(MemberDTO dto) {
-		
+//		close();
 	}
 	
 	public void deleteMember(String uid) {
-		
+//		close();
 	}
 	
 	// 추가
@@ -245,6 +248,8 @@ public class MemberDAO extends DBHelper{
 				cmember = rs.getInt(1);
 				logger.debug("총 가입인원 : " + cmember);
 			}
+			
+			close();
 			
 		} catch (Exception e) {
 			// TODO: handle exception

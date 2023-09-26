@@ -157,9 +157,7 @@ public class NoticeDAO extends DBHelper{
 	
 	// 추가 
 	public int selectCountTotal(String cate) {
-		
 		int total = 0;
-		
 		try {
 			
 			conn = getConnection();
@@ -238,8 +236,6 @@ public class NoticeDAO extends DBHelper{
 			
 			logger.debug("NoticeDAO dto ... : "+notices.toString());
 			close();
-			
-			
 			
 		}catch(Exception e) {
 			logger.error("NoticeDAO selectNotice error : "+e.getMessage());

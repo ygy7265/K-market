@@ -48,6 +48,8 @@ public class QnaDAO extends DBHelper{
 			
 			logger.debug("QnaDAO insertQna dto : "+dto.toString());
 			
+			close();
+			
 		}catch(Exception e) {
 			logger.error("QnaDAO insertQna error : "+e.getMessage());
 		}
@@ -164,6 +166,7 @@ public class QnaDAO extends DBHelper{
 			conn = getConnection();
 			psmt = conn.prepareStatement(SQL.SELECT_COUNT_TOTAL_QNA);
 			psmt.setString(1, cate);
+			psmt.setString(2, cate);
 			rs = psmt.executeQuery();
 			
 			if(rs.next()) {
@@ -176,9 +179,7 @@ public class QnaDAO extends DBHelper{
 		}catch(Exception e) {
 			logger.error("QnaDAO selectCountTotal error : "+ e.getMessage());
 		}
-		
 		return total;
-	
 	}
 	
 	

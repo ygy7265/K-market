@@ -29,9 +29,10 @@ public class AdminQnaListController extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
         String cate = req.getParameter("cate");
+//        logger.debug(cate);
     	// 페이지 가져오기 
 		String pg = req.getParameter("pg");
-		
+//		logger.debug(pg);
 		// 현재 페이지 게시물 Limit 시작
 		int start = 0;
 
@@ -45,13 +46,13 @@ public class AdminQnaListController extends HttpServlet{
         	pg = "1";
 
         };
-        	
+
         // 현제 페이지 번호 
  		int currentPage = pgService.setCurrentPage(pg);
  		
  		// 현재 페이지 게시물 Limit 시작
  		start = pgService.setStart(currentPage);
- 		
+// 		logger.debug("큐앤에이 스타트 : "+start);
  		// 전체 게시글 갯수 조회
  		int total = qService.selectCountTotal(cate);
 // 		logger.debug("NoticeListController.. total : "+total);
@@ -69,22 +70,24 @@ public class AdminQnaListController extends HttpServlet{
  		req.setAttribute("pg", pg);
 		req.setAttribute("cate", cate);
  		req.setAttribute("start", start);
+// 		logger.debug("큐앤에이 스타트2 : "+start);
 		req.setAttribute("currentPage", currentPage);
 		req.setAttribute("total", total);
 		req.setAttribute("lastPageNum", lastPageNum);
 		req.setAttribute("pageGroupStart", pageGroupCurrent[0]);
+// 		logger.debug("큐앤에이 리스트 : "+pageGroupCurrent[0]);
 		req.setAttribute("pageGroupEnd", pageGroupCurrent[1]);
+//		logger.debug("큐앤에이 리스트 : "+pageGroupCurrent[1]);
 		req.setAttribute("pageStartNum", pageStartNum);
 		
 		logger.debug(cate);
 		
-		List<QnaDTO> qnas = qService.selectQnas(cate, pageStartNum);
-//		logger.debug("관리자/공지사항 error : " + qnas);
-//		req.setAttribute("notices", qnas);
-		
-//		List<QnaDTO> qnas = qService.selectAdminListQna();
+		List<QnaDTO> qnas = qService.selectQnas(cate, start);
 		logger.debug("qna_List : " + qnas);
 		req.setAttribute("qnas", qnas);
+//		logger.debug("관리자/공지사항 error : " + qnas);
+//		req.setAttribute("notices", qnas);
+//		List<QnaDTO> qnas = qService.selectAdminListQna();
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/admin/cs/qna/list.jsp");
 		dispatcher.forward(req, resp);

@@ -7,7 +7,7 @@
       <li>
         <a href="#"><i class="fas fa-tshirt"></i>패션·의류·뷰티<i class="fas fa-angle-right"></i></a>
         <ol>
-          <li><a href="/K-market/product/productlist.do?cate1=11&cate2=11">남성의류</a></li>
+		  <li><a href="/K-market/product/productlist.do?cate1=11&cate2=11">남성의류</a></li>
           <li><a href="/K-market/product/productlist.do?cate1=11&cate2=10">여성의류</a></li>
           <li><a href="/K-market/product/productlist.do?cate1=11&cate2=14">잡화</a></li>
           <li><a href="/K-market/product/productlist.do?cate1=11&cate2=16">뷰티</a></li>

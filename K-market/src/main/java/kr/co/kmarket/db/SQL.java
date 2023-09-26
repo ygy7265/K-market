@@ -298,7 +298,10 @@ public class SQL {
 											+ "ORDER BY `qnaNo` DESC "
 											+ "LIMIT ?,10";
 	
-	public static final String SELECT_COUNT_TOTAL_QNA = "SELECT COUNT(*) FROM `km_cs_qna` WHERE `cate1`=? AND `qnaNo`>=566";
+	public static final String SELECT_COUNT_TOTAL_QNA = "SELECT COUNT(*) FROM `km_cs_qna` WHERE ISNULL(cate1 = ?) OR cate1=? ";
+	
+	public static final String SELECT_COUNT_TOTAL_FAQ = "SELECT COUNT(*) FROM `km_cs_faq` WHERE ISNULL(cate1 = ?) OR cate1=? ";
+	
 	public static final String SELECT_QNA_CATE = "SELECT DISTINCT `cate2` FROM `km_cs_qna` WHERE `cate1` = ? ORDER BY `cate2`";
 	public static final String SELECT_QNAS_LATESTS = "SELECT `qnaNo`, `cate1`,`cate2`, `title`, `writer`, `rdate` "
 													+ "FROM `km_cs_qna` "

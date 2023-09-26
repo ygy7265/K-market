@@ -50,8 +50,9 @@
             </tr>
           </table>
           <div>
+            <a href="${ctxPath}/admin/cs/qna/delete.do?qnaNo=${qna.qnaNo}" class="btnList">삭제하기</a>
             <a href="${ctxPath}/admin/cs/qna/list.do" class="btnList">취소하기</a>
-            <input type="submit" class="btnSubmit" value="수정하기"/>
+            <input id="btnmodify" type="submit" class="btnSubmit" value="수정하기"/>
           </div>
         </form>
       </article>
