@@ -65,8 +65,8 @@ $(document).ready(function() {
         <!-- 공지목록 컨텐츠 시작 -->                                
         <section>
             <div>
-                <select name="cate1">
-                  <option>선택</option>
+                <select name="cate1" id="category1">
+                  <option value="0">선택</option>
                   <option value="10">회원</option>
                   <option value="20">쿠폰/혜택/이벤트</option>
                   <option value="30">주문/결제</option>
@@ -75,8 +75,8 @@ $(document).ready(function() {
                   <option value="60">여행/숙박/항공</option>
                   <option value="70">안전거래</option>
                 </select>
-                <select name="cate2">
-                  <option>선택</option>
+                <select name="cate2" id="category2">
+                  <option value="0">선택</option>
                   <option value="10">회원</option>
                   <option value="20">쿠폰/혜택/이벤트</option>
                   <option value="30">주문/결제</option>

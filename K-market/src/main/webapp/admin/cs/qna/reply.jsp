@@ -52,7 +52,7 @@
           </table>
           <div>
             <a href="${ctxPath}/admin/cs/qna/delete.do" class="btnList">삭제</a>
-            <input type="submit" class="btnSubmit" id="btnComment" value="답변하기"/>
+            <input style="padding: 0;" type="submit" class="btnSubmit" id="btnComment" value="답변하기"/>
 			<a href="${ctxPath}/admin/cs/qna/list.do" class="btnList">목록</a>
           </div>
         </form>

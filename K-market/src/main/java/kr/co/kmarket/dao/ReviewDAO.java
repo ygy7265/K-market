@@ -28,18 +28,6 @@ public class ReviewDAO extends DBHelper{
 	
 	// 기본 CRUD
 	public void insertReview(ReviewDTO dto) {
-
-		try {
-			conn = getConnection();
-			
-			psmt.executeUpdate();
-			
-			close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			logger.error("ReviewDAO insertReview error : "+e.getMessage());
-		}
-		
 		
 	}
 	
@@ -82,13 +70,14 @@ public class ReviewDAO extends DBHelper{
 	}
 	
 	public void updateReview(ReviewDTO dto) {
-		
+//		close();
 	}
 	
 	public void deleteReview(int revNo) {
 		try {
 			
 			conn = getConnection();
+			close();
 			
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -97,11 +86,8 @@ public class ReviewDAO extends DBHelper{
 	}
 	// 추가 
 	public int selectReviewCountTotal(String prodNo){
-		
 		int total = 0;
-		
 		try {
-			
 			conn = getConnection();
 			psmt = conn.prepareStatement(SQL.SELECT_REVIEWS_COUNT_TOTAL);
 			psmt.setString(1, prodNo);
@@ -110,14 +96,11 @@ public class ReviewDAO extends DBHelper{
 			if(rs.next()) {
 				total = rs.getInt(1);
 			}
-			
 			logger.debug("ReviewDAO selectReviewCountTotal total : "+total);
 			close();
-			
 		}catch(Exception e) {
 			logger.error("ReviewDAO selectReviewCountTotal error : "+ e.getMessage());
 		}
-		
 		return total;
 	}
 	

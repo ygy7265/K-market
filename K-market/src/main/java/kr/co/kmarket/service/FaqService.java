@@ -54,4 +54,8 @@ public enum FaqService {
 		return dao.admin_cs_fqa_list();
 	}
 	
+	public int adminselectFaqs(String cate) {
+		return dao.adminselectFaqs(cate);
+	}
+	
 }

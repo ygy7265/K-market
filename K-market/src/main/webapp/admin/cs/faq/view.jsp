@@ -81,15 +81,16 @@
               </td>
             </tr>                
             <tr>
-              <td>내용</td>                  
+              <td>내용</td>
               <td>
                 <textarea name="content" readonly >${faq.content}</textarea>
               </td>
             </tr>
           </table>
           <div>
-            <a href="${ctxPath}/admin/cs/notice/list.do" class="btnList">취소하기</a>
-            <input type="submit" class="btnSubmit" value="수정하기"/>
+            <a href="${ctxPath}/admin/cs/faq/delete.do?faqNo=${faq.faqNo}" class="btnList">삭제하기</a>
+            <a href="${ctxPath}/admin/cs/faq/list.do" class="btnList">취소하기</a>
+            <input style="padding: 0;" type="submit" class="btnSubmit" value="수정하기"/>
           </div>
         </form>
       </article>

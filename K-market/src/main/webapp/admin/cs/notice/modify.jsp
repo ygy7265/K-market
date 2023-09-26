@@ -45,7 +45,7 @@
           </table>
           <div>
             <a href="${ctxPath}/admin/cs/notice/list.do" class="btnList">취소하기</a>
-            <input type="submit" class="btnSubmit" value="수정완료"/>
+            <input id="btnmodify" type="submit" class="btnSubmit" value="수정완료"/>
           </div>
         </form>
       </article>

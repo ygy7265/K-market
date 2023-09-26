@@ -259,5 +259,27 @@ public class FaqDAO extends DBHelper{
 		return result;
 		
 	}// admin_cs_faq_delete END
+	
+	public int adminselectFaqs(String cate) {
+		int total = 0;
+		
+		try {
+			
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.SELECT_COUNT_TOTAL_FAQ);
+			psmt.setString(1, cate);
+			psmt.setString(2, cate);
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				total = rs.getInt(1);
+			}
+			logger.debug("FaqDAO adminselectFaqs total : "+total);
+			close();
+		} catch (Exception e) {
+			logger.debug("faqDAO() adminselectFaqs() : " + e.getMessage());
+		}
+		return total;
+	}
 
 }
