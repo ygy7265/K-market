@@ -82,7 +82,7 @@ public class SQL {
 	/* REVIEW */
 	// DELETE_PRODUCT시 Review ALL Delete
 	public static final String SELECT_REVIEWS = "SELECT "
-												+ "a.*, b.`name` "
+												+ "a.*, b.`name`, c.`prodName` "
 												+ "FROM `km_member_review` AS a "
 												+ "JOIN `km_member` AS b "
 												+ "ON a.uid = b.uid "

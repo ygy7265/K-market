@@ -15,6 +15,7 @@ public class ReviewDTO {
 	
 	// 추가 필드 
 	private String name;
+	private String prodName;
 	
 	public int getRevNo() {
 		return revNo;
@@ -71,6 +72,13 @@ public class ReviewDTO {
 	public void setName(String name) {
 		this.name = name;
 	}
+	public String getProdName() {
+		return prodName;
+	}
+	public void setProdName(String prodName) {
+		this.prodName = prodName;
+	}
+	
 	// 추가 
     public String formatDate() {
         try {
@@ -83,6 +91,8 @@ public class ReviewDTO {
             return rdate;
         }
     }
+    
+    
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
