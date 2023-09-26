@@ -39,26 +39,22 @@
   <section>
     <!-- 슬라이더 영역 -->
     <section class="slider">
-      <ul>
-        <li>
-          <a href="#"
-            ><img src="./images/977e463a0eac4249.jpg" alt="item1"
-          /></a>
-        </li>
-         <li>
-          <a href="#"><img src="./images/eaef5e849af44f1b.jpg" alt="item1"/></a>
-        </li>
-         <li>
-          <a href="#"><img src="./images/64f78d70f729468a.jpg" alt="item2"/></a>
-        </li>
-         <li>
-          <a href="#"><img src="./images/3484b119be884292.jpg" alt="item3"/></a>
-        </li>
-         <li>
-          <a href="#"><img src="./images/6476792d613d460a.jpg" alt="item4"/></a>
-        </li>
-        
-       	
+		<ul id="mainbanner">
+	        <li>
+	          <a href="#"><img src="./images/mainbanner555.jpg" alt="item1"/></a>
+	        </li>
+	         <li>
+	          <a href="#"><img src="./images/mainbanner111.jpg" alt="item1"/></a>
+	        </li>
+	         <li>
+	          <a href="#"><img src="./images/mainbanner222.jpg" alt="item2"/></a>
+	        </li>
+	         <li>
+	          <a href="#"><img src="./images/mainbanner333.jpg" alt="item3"/></a>
+	        </li>
+	         <li>
+	          <a href="#"><img src="./images/mainbanner444.jpg" alt="item4"/></a>
+	        </li>
       </ul>
     </section>
     <div class="btnTop">

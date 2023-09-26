@@ -80,9 +80,6 @@ $(function(){
     $('.discount_price').text(discountPrice.toLocaleString());
     
 });
-
-
-
 </script>
     </aside>
       <!-- 상품 상세페이지 시작 -->
