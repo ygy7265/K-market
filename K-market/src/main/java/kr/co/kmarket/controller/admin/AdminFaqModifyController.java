@@ -51,9 +51,11 @@ public class AdminFaqModifyController extends HttpServlet{
 		dto.setContent(content);
 		dto.setFaqNo(faqNo);
 		
+//		logger.debug("faq update : "+dto);
+		
 		fService.admin_cs_faq_update(dto);
 		
-		resp.sendRedirect("/K-market/admin/cs/faq/view.do?=faqNo="+faqNo);
+		resp.sendRedirect("/K-market/admin/cs/faq/view.do?faqNo="+faqNo);
 		
 	}
 	

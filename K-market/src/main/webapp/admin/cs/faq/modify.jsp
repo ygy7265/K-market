@@ -12,12 +12,12 @@
       <article>
         <form action="${ctxPath}/admin/cs/faq/modify.do" method="POST">
         <input type="hidden" name="writer" value="${faq.writer}">
-        <input type="hidden" name="noticeNo" value="${faq.faqNo}">
+        <input type="hidden" name="faqNo" value="${faq.faqNo}">
           <table>
             <tr>
               <td>공지유형</td>
               <td>
-                <select name="cate">
+                <select name="cate1">
                   <option value="${faq.cate1}">
 	                  <c:set var="cate1" value="${faq.cate1}"/>
                         <c:choose>
