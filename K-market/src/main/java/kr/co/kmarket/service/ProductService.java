@@ -146,4 +146,8 @@ public enum ProductService {
 	public Cate2DTO selectCate(String cate1, String cate2) {
 		return dao.selectCate(cate1, cate2);
 	}
+	
+	public void selectUpdateRating(String prodNo) {
+		dao.selectUpdateRating(prodNo);
+	}
 }

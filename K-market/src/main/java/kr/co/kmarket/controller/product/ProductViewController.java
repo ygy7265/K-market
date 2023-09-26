@@ -1,6 +1,7 @@
 package kr.co.kmarket.controller.product;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -16,6 +17,8 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.google.gson.JsonObject;
 
 import kr.co.kmarket.dto.MemberDTO;
 import kr.co.kmarket.dto.ProductDTO;
@@ -78,7 +81,6 @@ public class ProductViewController extends HttpServlet{
 	 		logger.debug("NoticesList...pageGroupEnd :"+pageGroupCurrent[1]);
 	 		logger.debug("NoticesList...pageStartNum :"+pageStartNum);
 	 		
-			
 			// JSP페이지에서 사용할 데이터를 request 객체에 설정
 	 		req.setAttribute("pg", pg);
 			req.setAttribute("prodNo", prodNo);
@@ -104,6 +106,10 @@ public class ProductViewController extends HttpServlet{
 			req.setAttribute("proddto", dto);
 			logger.debug("Product View = " + dto);
 			
+			// 별점 합산 평균
+	 		service.selectUpdateRating(prodNo);
+	 		logger.debug("rating star : "+dto.getScore());
+	 		
 			Date currentDate = new Date();
 
 			// 3일을 더한 날짜 계산

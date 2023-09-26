@@ -840,6 +840,10 @@ footer p > strong {
   background-position: 36px 0px;
   background-size: auto 100%;
 }
+#product h6.rating.star0{
+	background-image: url(../images/no_star.png);
+	width: 120px;
+}
 #product h6.rating.star1{width: 55px;}
 #product h6.rating.star2{width: 70px;}
 #product h6.rating.star3{width: 85px;}
@@ -999,7 +1003,21 @@ footer p > strong {
   background-position: -2px 0px;
   text-indent: 86px;
 }
-
+#product > .view > .info >.summary .star1{
+	background-position: 0 -40px;
+}
+#product > .view > .info >.summary .star2{
+	background-position: 0 -80px;
+}
+#product > .view > .info >.summary .star3{
+	background-position: 0 -120px;
+}
+#product > .view > .info >.summary .star4{
+	background-position: 0 -160px;
+}
+#product > .view > .info >.summary .star5{
+	background-position: 0 -200px;
+}
 
 #product h5.rating {
   width: 150px;
@@ -1964,4 +1982,8 @@ footer p > strong {
 #product > .search > .paging > .num > a.on {
   color: #fe434c;
   font-weight: bold;
+}
+
+#mainbanner > li > a > img{
+	height: 425px;
 }

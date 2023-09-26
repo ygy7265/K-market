@@ -823,4 +823,18 @@ public class ProductDAO extends DBHelper {
 		return monthProd;
 	}
 	
+	public void selectUpdateRating(String prodNo) {
+		conn = getConnection();
+		try {
+			psmt = conn.prepareStatement(SQL.SELECT_UPDATE_RATING);
+			psmt.setString(1, prodNo);
+			psmt.setString(2, prodNo);
+			psmt.executeUpdate();
+			close();
+			
+		} catch(Exception e) {
+			logger.debug("selectUpdateRating error : "+e.getMessage());
+		}
+	}
+	
 }

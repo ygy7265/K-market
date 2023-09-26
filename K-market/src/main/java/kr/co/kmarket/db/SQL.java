@@ -95,9 +95,9 @@ public class SQL {
 	public static final String DELETE_PRODUCT	 = "DELETE FROM `km_product` WHERE `prodNo`=?";
 	public static final String DELETE_REVIEW_ALL = "DELETE FROM `km_member_review` WHERE `prodNo`=?";
 	public static final String SELECT_REVIEWS_COUNT_TOTAL = "SELECT COUNT(*) FROM `km_member_review` WHERE `prodNo`=?";
-	
-	
-	
+	public static final String SELECT_UPDATE_RATING = "UPDATE `km_product` a "
+													+"JOIN (SELECT AVG(`rating`) AS ratingAvg FROM `km_member_review` WHERE `prodNo`=?) b "
+													+"SET a.`score` = b.ratingAvg WHERE a.`prodNo`=? ";
 	
 	
 	/* admin_index */
