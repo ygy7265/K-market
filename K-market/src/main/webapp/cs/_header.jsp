@@ -17,6 +17,7 @@
             <div class="top">
                 <div>
                     <p>
+                    	<a href="/K-market/index.do">HOME</a>
                     	<c:if test="${empty user}">
                         <a href="/K-market/member/login.do">로그인</a>
                         <a href="/K-market/member/join.do">회원가입</a>
