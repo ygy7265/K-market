@@ -13,8 +13,16 @@ public class CartDTO {
 	private String rdate;
 	private String pName;
 	private String descript;
+	private String thumb1;
 	
 	
+	
+	public String getThumb1() {
+		return thumb1;
+	}
+	public void setThumb1(String thumb1) {
+		this.thumb1 = thumb1;
+	}
 	public String getpName() {
 		return pName;
 	}

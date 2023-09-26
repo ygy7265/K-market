@@ -20,7 +20,7 @@
           <a href="/K-market/product/productview.do?prodNo=${bestList.prodNo}">
             <div class="thumb">
               <i>${loopStatus.index + 1}</i>
-              <img src="./images/product/301.jpeg" alt="item1" />
+              <img src="./admin/thumbAll/${bestList.thumb1}" alt="item1" />
             </div>
             <h2>${bestList.prodName}</h2>
             <div class="org_price">
@@ -71,7 +71,7 @@
       <article>
         <a href="/K-market/product/productview.do?prodNo=${hitList.prodNo}">
           <div class="thumb">
-            <img src="./images/product/300 (1).jpeg" alt="t1" />
+            <img src="./admin/thumbAll/${hitList.thumb1}" alt="t1" />
           </div>
           <h2>${hitList.prodName}</h2>
           <p>${hitList.descript}</p>
@@ -97,7 +97,7 @@
       <article>
         <a href="/K-market/product/productview.do?prodNo=${scoreList.prodNo}">
           <div class="thumb">
-            <img src="./images/product/302.jpeg" alt="t1" />
+            <img src="./admin/thumbAll/${scoreList.thumb1}" alt="t1" />
           </div>
           <h2>${scoreList.prodName}</h2>
           <p>${scoreList.descript}</p>
@@ -122,7 +122,7 @@
       <article>
         <a href="/K-market/product/productview.do?prodNo=${newList.prodNo}">
           <div class="thumb">
-            <img src="./images/product/303.jpeg" alt="t1" />
+            <img src="./admin/thumbAll/${newList.thumb1}" alt="t1" />
           </div>
           <h2>${newList.prodName}</h2>
           <p>${newList.descript}</p>
@@ -147,7 +147,7 @@
       <article>
         <a href="/K-market/product/productview.do?prodNo=${discountList.prodNo}">
           <div class="thumb">
-            <img src="./images/product/280.jpeg" alt="t1" />
+            <img src="./admin/thumbAll/${discountList.thumb1}" alt="t1" />
           </div>
           <h2>${discountList.prodName}</h2>
           <p>${discountList.descript}</p>

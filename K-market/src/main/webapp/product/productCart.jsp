@@ -243,7 +243,7 @@ $(document).ready(function() {
               <td><input type="checkbox" class="Item" value="${list.cartNo}"></td>
               <td>
                 <article>
-                  <a href="/K-market/product/"><img src="/K-market/images/product/301.jpeg" alt=""></a>
+                  <a href="/K-market/product/"><img src="../admin/thumbAll/${list.thumb1}" alt=""></a>
                   <div>
                     <h2><a href="/K-market/product/">${list.pName}</a></h2>
                     <p>${list.descript}</p>
@@ -256,7 +256,7 @@ $(document).ready(function() {
               <td><fmt:formatNumber value="${list.discount}" pattern="#,###"/>%</td>
               <td><fmt:formatNumber value="${list.point}" pattern="#,###"/></td>
               <td><fmt:formatNumber value="${list.delivery}" pattern="#,###"/></td>
-              <td class="smallprice"><fmt:formatNumber value="${list.count * list.total}" pattern="#,###"/></td>
+              <td class="smallprice"><fmt:formatNumber value="${list.total}" pattern="#,###"/></td>
 			 <td><input type="hidden" class="listpoint" value="${list.point}"/> </td>
              <td><input type="hidden" class="listcount" value="${list.count}"/> </td>
              <td><input type="hidden" class="listprice" value="${list.price}"/> </td>
