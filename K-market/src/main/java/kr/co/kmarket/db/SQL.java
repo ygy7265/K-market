@@ -206,10 +206,11 @@ public class SQL {
 	
 	public static final String ADMIN_QNA_DELETE = "DELETE FROM `km_cs_qna` WHERE `qnaNo`=?";
 	
+	
 	//Member
 	//member_Login
 	public static final String SELECT_MEMBER = "SELECT * FROM `km_member` WHERE `uid` = ? and `pass` = SHA2(?,256)";
-	
+	public static final String UPDATE_MEMBER_POINT = "UPDATE `km_member` SET `point` = `point`- ? WHERE `uid` = ?";
 	//member_Insert
 	public static final String INSERT_MEMBER_NORMAR = "INSERT INTO `km_member` SET "
 													+ "`uid`=?, "

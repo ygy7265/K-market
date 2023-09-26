@@ -1,5 +1,6 @@
 package kr.co.kmarket.dao;
 
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -48,11 +49,32 @@ public class OrderDAO extends DBHelper{
 			e.printStackTrace();
 		}
 	}
+	public void updateUserPoint(String uid) {
+		
+		
+	}
+	public void updatePoint(int point,String uid) {
+		conn = getConnection();
+		try {
+			psmt = conn.prepareStatement(SQL.UPDATE_MEMBER_POINT);
+			psmt.setInt(1, point);
+			psmt.setString(2,uid);
+			psmt.executeUpdate();
+			
+			close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+	}
 	public void insertOrderComplite(OrderDTO dto) {
 		conn = getConnection();
 		
-		try {
+		try { 
+			
 			psmt = conn.prepareStatement(SQL.INSERT_PRODUCT_ORDER_COMPLITE);
+		
 			psmt.setString(1, dto.getUid());
 			psmt.setInt(2, dto.getOrdCount());
 			psmt.setInt(3, dto.getOrdPrice());
@@ -69,6 +91,7 @@ public class OrderDAO extends DBHelper{
 			psmt.setInt(14, dto.getOrdPayment());
 			psmt.setInt(15, dto.getOrdComplete());
 			psmt.executeUpdate();
+
 			close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
