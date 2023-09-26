@@ -102,6 +102,7 @@ public class CartDAO extends DBHelper{
 				dto.setRdate(rs.getString(10));
 				dto.setpName(rs.getString(11));
 				dto.setDescript(rs.getString(12));
+				dto.setThumb1(rs.getString(13));
 				list.add(dto);
 			}
 			

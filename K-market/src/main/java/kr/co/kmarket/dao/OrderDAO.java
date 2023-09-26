@@ -153,6 +153,7 @@ public class OrderDAO extends DBHelper{
 				dto.setTotal(rs.getInt(9));
 				dto.setpName(rs.getString(10));
 				dto.setDescript(rs.getString(11));
+				dto.setThumb1(rs.getString(12));
 				list.add(dto);
 			}
 			

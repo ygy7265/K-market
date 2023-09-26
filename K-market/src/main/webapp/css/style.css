@@ -333,12 +333,13 @@ main > aside > .best > ol > li:first-child > a > .thumb > i {
 
 main > aside > .best > ol > li > a > .thumb > img {
   width: 100%;
+  
 }
 main > aside > .best > ol > li > a > .thumb > img:nthchild(1) {
   width: 100%;
   
 }
-
+.thumb{}
 main > aside > .best > ol > li > a > article {
   float: left;
   width: 148px;
@@ -1011,7 +1012,6 @@ footer p > strong {
   background-position: 0 -200px;
 }
 
-
 #product > .view > .info > .summary .org_price > del {
   font-size: 18px;
   color: #888;
@@ -1025,7 +1025,7 @@ footer p > strong {
   content: "↓";
 }
 #product > .view > .info >.summary .org_price > ins {
-  font-size: 26px;https://www.youtube.com/watch?v=Jhp5uH59V7M
+  font-size: 26px;
   font-weight: bold;
   text-decoration: none;
 }

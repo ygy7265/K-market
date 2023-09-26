@@ -44,7 +44,7 @@ public class ProductOrderController extends HttpServlet{
 
 		List<CartDTO> list = orservice.selectOrdersItem(userid);
 		req.setAttribute("list", list);
-			 
+		req.setAttribute("userid", userid);
 	
 		System.out.println("uid"+userid);
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/product/productOrder.jsp");

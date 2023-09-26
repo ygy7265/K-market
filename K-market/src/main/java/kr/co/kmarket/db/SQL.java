@@ -351,8 +351,8 @@ public class SQL {
 													+ "`ordDate` = NOW()";
 											
 
-	public static final String SELECT_CARTS = "SELECT a.*,b.prodName,b.descript FROM `km_product_cart` AS a JOIN `km_product` AS b ON a.prodNo = b.prodNo WHERE `uid` = ?";
-	public static final String SELECT_CARTS_ITEM = "SELECT a.*,b.prodName,b.descript FROM `km_product_order_item` AS a JOIN `km_product` AS b ON a.prodNo = b.prodNo WHERE `uid` = ?";
+	public static final String SELECT_CARTS = "SELECT a.*,b.prodName,b.descript,b.thumb1 FROM `km_product_cart` AS a JOIN `km_product` AS b ON a.prodNo = b.prodNo WHERE `uid` = ?";
+	public static final String SELECT_CARTS_ITEM = "SELECT a.*,b.prodName,b.descript,b.thumb1 FROM `km_product_order_item` AS a JOIN `km_product` AS b ON a.prodNo = b.prodNo WHERE `uid` = ?";
 	public static final String SELECT_CARTS_ORDER_COMPLITE = "SELECT * FROM `km_product_order` WHERE `uid` = ? ORDER BY `ordNo` DESC LIMIT 1;";
 	public static final String SELECT_COUNT_CART = "SELECT COUNT(*) FROM `km_product_cart`";	
 	public static final String SELECT_DUPLICATION_CART = "SELECT * FROM `km_product_cart` WHERE `prodNo`= ? AND `uid` = ?";	

@@ -12,7 +12,8 @@
 $(function(){
 	
 	 // 세션 스토리지에서 "user" 세션 확인
-	  var userSession = sessionStorage.getItem("user");
+	  var userSession = "${userid}";
+	  console.log("userid = " + userSession);
 
 	  // "user" 세션이 없으면 로그인 페이지로 리디렉션
 	  if (!userSession) {
@@ -165,7 +166,7 @@ $(function(){
             <tr>
               <td>
                 <article>
-                  <a href="/K-market/product/"><img src="https://via.placeholder.com/80x80" alt=""></a>
+                  <a href="/K-market/product/"><img src="../admin/thumbAll/${list.thumb1}" alt=""></a>
                   <div>
                     <h2><a href="/K-market/product/">${list.pName}</a></h2>
                     <p>${list.descript}</p>
