@@ -55,6 +55,7 @@
 				<c:forEach var="product" items="${products}">
                 <tr>
                     <td><input type="checkbox" name="productNo" value="${product.prodNo}"/></td>
+
                     <td><img src="/K-market/admin/thumbAll/${product.thumb1}" class="thumb"></td>
                     <td>${product.prodNo}</td>
                     <td>${product.prodName}</td>
