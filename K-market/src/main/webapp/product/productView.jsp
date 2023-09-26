@@ -15,14 +15,7 @@ $(function(){
 		e.preventDefault();
 		
 		var userSession = sessionStorage.getItem("memberdto");
-
-		  // "user" 세션이 없으면 로그인 페이지로 리디렉션
-		  /* if (!userSession) {
-			alert("로그인이 필요한 서비스입니다.");
-		    window.location.href = "/K-market/member/login.do"; // 로그인 페이지 URL로 변경
-		  } */
-		 
-			  var result = confirm("장바구니에 담으시겠습니까?");
+	    var result = confirm("장바구니에 담으시겠습니까?");
 			if (result === true) {
 			    // 확인 버튼이 클릭된 경우
 				 $('.buy').submit();
@@ -33,14 +26,17 @@ $(function(){
 	})
 	$('.order').click(function(e){
 		e.preventDefault();
-		var result = confirm("구매하시겠습니까?");
-		if (result === true) {
-		    // 확인 버튼이 클릭된 경우
-		} else {
-		    // 취소 버튼이 클릭된 경우
-		}	
+		
+		var userSession = sessionStorage.getItem("memberdto");
+	    var result = confirm("구매하시겠습니까?");
+			if (result === true) {
+			    // 확인 버튼이 클릭된 경우
+				 $('.buy').submit();
+			} else {
+			    // 취소 버튼이 클릭된 경우
+			}	
+		  
 	})
-	
     let num = 1;
     let price = ${proddto.price};
     let delivery = ${proddto.delivery};
@@ -72,6 +68,11 @@ $(function(){
         $('.nodiscount').val(nodiscount);
     }
 
+    $('.btnOrder').click(function(e){
+        e.preventDefault();
+        $('#formOrder').submit();
+    });
+    
     $('.btnOrder').click(function(e){
         e.preventDefault();
         $('#formOrder').submit();
