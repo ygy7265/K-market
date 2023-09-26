@@ -28,7 +28,9 @@ public class AdminQnaDeleteController extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+		String qnaNo = req.getParameter("qnaNo");
+		qService.deleteQna(qnaNo);
+		resp.sendRedirect("K-market/admin/cs/qna/list.do");
 	}
 	
 	@Override

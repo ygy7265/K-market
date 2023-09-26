@@ -66,7 +66,7 @@ public class AdminNoticeModifyController extends HttpServlet{
 		dto.setContent(content);
 		dto.setNoticeNo(noticeNo);
 		
-//		logger.debug("updateNoticeService : "+dto.toString());
+		logger.debug("updateNoticeService : "+dto.toString());
 		
 		nService.updateNotice(dto);
 		

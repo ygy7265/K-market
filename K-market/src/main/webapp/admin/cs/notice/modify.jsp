@@ -11,13 +11,13 @@
     <section class="write">
       <article>
         <form action="${ctxPath}/admin/cs/notice/modify.do" method="POST">
-        <input type="hidden" name="writer" value="${motice.writer}">
-        <input type="hidden" name="noticeNo" value="${motice.noticeNo}">
+        <input type="hidden" name="writer" value="${notice.writer}">
+        <input type="hidden" name="noticeNo" value="${notice.noticeNo}">
           <table>
             <tr>
               <td>공지유형</td>
               <td>
-                <select name="cate">
+                <select name="cate" style="width: auto;">
                   <option value="${cate}">
 	                  <c:set var="cate" value="${cate}"/>
                         <c:choose>

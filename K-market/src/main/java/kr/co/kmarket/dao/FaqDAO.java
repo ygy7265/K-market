@@ -236,7 +236,7 @@ public class FaqDAO extends DBHelper{
 			close();
 		
 		} catch (Exception e) {
-			logger.debug("faqDAO() updateFaq() : " );
+			logger.debug("faqDAO() updateFaq() : " + e.getMessage());
 		}
 	}// admin_cs_faq_update END
 	
