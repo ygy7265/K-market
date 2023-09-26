@@ -133,7 +133,7 @@ $(document).ready(function() {
 	                listtotal: listtotal,
 	                listpoint: listpoint,
 	                cartNo: cartNo,
-	                orderdiscount:orderdiscount
+	                orderdiscount:Math.round(orderdiscount)
 	               
 	            });
 	          
@@ -157,19 +157,20 @@ $(document).ready(function() {
 	            listdiscountedPrice += discountedPrice;
 	            //할인금액
 	            listdiscountper += discountper;
-	            console.log('discountedPrice value: ' + discountedPrice);
-	            console.log('discountedPrice value: ' + listdiscountedPrice);
+	            console.log('discountedPrice value: ' + Math.round(discountedPrice).toLocaleString());
+	            
+	            console.log('discountedPrice value: ' + Math.round(listdiscountedPrice).toLocaleString());
 	        });
 	        
 	        // 업데이트된 값들을 화면에 표시
 	        $('.ordernodiscount').text(listNoDiscountPriceValue.toLocaleString());
-	        $('.orderdiscount').text('- ' + listdiscountper.toLocaleString());
+	        $('.orderdiscount').text('- ' + Math.round(listdiscountper).toLocaleString());
 	        // 업데이트된 상품 수량을 화면에 표시
 	        $('.ordercount').text(listCountValue.toLocaleString());
 	        $('.orderpoint').text(listpointValue.toLocaleString());
 	        $('.orderdelivery').text(listdeliveryValue.toLocaleString());
-	        $('.ordertotal').text(listdiscountedPrice.toLocaleString());
-	        $('.ordertotal2').val(listdiscountedPrice.toLocaleString());
+	        $('.ordertotal').text(Math.round(listdiscountedPrice).toLocaleString());
+	        $('.ordertotal2').val(Math.round(listdiscountedPrice).toLocaleString());
 	    }
 	    
 	 //선택삭제

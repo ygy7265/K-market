@@ -8,7 +8,7 @@
 	        let price = ${product.price};
 	        let delivery = ${product.delivery};
 	        let discountPrice = price - (price * ${product.discount}/100);
-	        $('.product-row:eq(${loopStatus.index}) .dis-price').text(discountPrice.toLocaleString());
+	        $('.product-row:eq(${loopStatus.index}) .dis-price').text(Math.round(discountPrice).toLocaleString());
 	        // ...
 	      })();
 	    </c:forEach>

@@ -102,8 +102,8 @@
 			                console.log("할인 적용된 가격 = " + discountPrice);
 			                
 			                if(discountp > 0){
-			                	$('td.orderdiscount').text("- "+discountp.toLocaleString());
-			                	$('input.orderdiscount').val(discountp);
+			                	$('td.orderdiscount').text("- "+Math.round(discountp).toLocaleString());
+			                	$('input.orderdiscount').val(Math.round(discountp));
 			                }
 			                
 			            }

@@ -55,6 +55,7 @@ public class ProductCompleteController extends HttpServlet{
 		MemberDTO sessiondto = (MemberDTO) session.getAttribute("user");
 		String userid = sessiondto.getUid();
 		String count = req.getParameter("ordercount");
+		String point = req.getParameter("point");
 		String ordernodiscount = req.getParameter("ordernodiscount");
 		String orderdiscount = req.getParameter("orderdiscount");
 		String orderpointdiscount = req.getParameter("orderpointdiscount");
@@ -67,6 +68,9 @@ public class ProductCompleteController extends HttpServlet{
 		String km_addr1 = req.getParameter("km_addr1");
 		String km_addr2 = req.getParameter("km_addr2");
 		String payment = req.getParameter("payment");
+		
+		int dispoint = 0;
+		
 		System.out.println("count" + count);
 		System.out.println("ordernodiscount" + ordernodiscount);
 		System.out.println("orderdiscount" + orderdiscount);
@@ -79,6 +83,14 @@ public class ProductCompleteController extends HttpServlet{
 		if(orderpointdiscount.isEmpty()) {
 			orderpointdiscount = "0";
 		}
+		if(point.isEmpty()) {
+			orderpointdiscount = "0";
+		}
+		else {
+			dispoint = Integer.parseInt(point);
+		}
+		
+		logger.debug("dispoint" + dispoint);
 		dto.setUid(userid);
 		dto.setOrdCount(count);
 		dto.setOrdPrice(ordernodiscount);
@@ -94,6 +106,7 @@ public class ProductCompleteController extends HttpServlet{
 		dto.setRecipAddr2(km_addr2);
 		dto.setOrdPayment(payment);
 		dto.setOrdComplete(1);
+		orservice.updateuserpoint(dispoint, userid);
 		orservice.insertOrderComplite(dto);
 		
 		

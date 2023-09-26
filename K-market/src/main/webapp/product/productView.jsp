@@ -67,7 +67,7 @@ $(function(){
         let count = num;
         let total = discountPrice * count;
         let nodiscount = price * count;
-        $('.total2').text(total.toLocaleString());
+        $('.total2').text(Math.round(total).toLocaleString());
         $('.nodiscount').text(total.toLocaleString());
         $('.nodiscount').val(nodiscount);
     }
@@ -77,7 +77,7 @@ $(function(){
         $('#formOrder').submit();
     });
     
-    $('.discount_price').text(discountPrice.toLocaleString());
+    $('.discount_price').text(Math.round(discountPrice).toLocaleString());
     
 });
 
@@ -118,7 +118,7 @@ $(function(){
                         <span><fmt:formatNumber value="${proddto.discount}" pattern="#,###"/>%</span>
                     </div>
                     <div class="dis_price">
-                        <ins class="discount_price"><fmt:formatNumber value="${proddto.price}" pattern="#,###"/></ins>
+                        <ins class="discount_price"><fmt:formatNumber value="${proddto.price}" pattern="#,###" /></ins>
                     </div>
                    
                 </nav>

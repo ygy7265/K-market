@@ -76,7 +76,7 @@
             <tr>
               <td>
                 <article>
-                  <a href="/K-market/product/"><img src="https://via.placeholder.com/80x80" alt=""></a>
+                  <a href="/K-market/product/"><img src="../admin/thumbAll/${list.thumb1}" alt=""></a>
                   <div>
                     <h2><a href="/K-market/product/">${list.pName}</a></h2>
                     <p>${list.descript}</p>

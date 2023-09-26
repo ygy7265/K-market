@@ -18,6 +18,9 @@ public enum OrderService {
 	public void insertOrderComplite(OrderDTO dto) {
 		dao.insertOrderComplite(dto);
 	}
+	public void updateuserpoint(int point,String uid) {
+		dao.updatePoint(point,uid);
+	}
 	
 	public OrderDTO selectOrder(String ordNo) { // 편의를 위해서 int ordNo 가 아닌 String 으로 설정해둠 
 		return dao.selectOrder(ordNo);
