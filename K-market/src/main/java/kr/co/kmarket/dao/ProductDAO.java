@@ -109,21 +109,64 @@ public class ProductDAO extends DBHelper {
 		}
 		return dto;
 	}
-	
-	public List<ProductDTO> selectProducts(String cate1,String cate2, int start, String search) {
+	public List<ProductDTO> selectProducts(String cate1,String cate2, int start) {
+		List<ProductDTO> list = new ArrayList<>();
+		conn = getConnection();
+		
+		try {
+			psmt = conn.prepareStatement(SQL.SELECT_PRODUCTS);
+			psmt.setString(1, cate1);
+			psmt.setString(2, cate2);
+			psmt.setInt(3, start);
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				ProductDTO dto = new ProductDTO();
+				dto.setProdNo(rs.getInt(1));
+				dto.setCate1(rs.getInt(2));
+				dto.setCate2(rs.getInt(3));
+				dto.setProdName(rs.getString(4));
+				dto.setDescript(rs.getString(5));
+				dto.setCompany(rs.getString(6));
+				dto.setSeller(rs.getString(7));
+				dto.setPrice(rs.getInt(8));
+				dto.setDiscount(rs.getInt(9));
+				dto.setPoint(rs.getInt(10));
+				dto.setStock(rs.getInt(11));
+				dto.setSold(rs.getInt(12));
+				dto.setDelivery(rs.getInt(13));
+				dto.setHit(rs.getInt(14));
+				dto.setScore(rs.getInt(15));
+				dto.setReview(rs.getInt(16));
+				dto.setThumb1(rs.getString(17));
+				dto.setThumb2(rs.getString(18));
+				dto.setThumb3(rs.getString(19));
+				dto.setDetail(rs.getString(20));
+				dto.setStatus(rs.getString(21));
+				dto.setDuty(rs.getString(22));
+				dto.setReceipt(rs.getString(23));
+				dto.setBizType(rs.getString(24));
+				dto.setOrigin(rs.getString(25));
+				dto.setIp(rs.getString(26));
+				dto.setRdate(rs.getString(27));
+				dto.setLevel(rs.getInt("level"));
+				
+				list.add(dto);	
+			}
+			
+			close();
+			
+		} catch (SQLException e) {
+			logger.error("ProductDAO Product List Error = "+e.getMessage());
+		}
+		return list;
+	}
+	public List<ProductDTO> selectProductsSearch(String search) {
 		List<ProductDTO> list = new ArrayList<>();
 		conn = getConnection();
 		try {
-			if(search != null) {
-				psmt = conn.prepareStatement(SQL.SELECT_PRODUCTS_FOR_SEARCH);
-				psmt.setString(1, "%"+search+"%");
-
-			} else {
-				psmt = conn.prepareStatement(SQL.SELECT_PRODUCTS);
-				psmt.setString(1, cate1);
-				psmt.setString(2, cate2);
-				psmt.setInt(3, start);
-			}
+			psmt = conn.prepareStatement(SQL.SELECT_PRODUCTS_FOR_SEARCH);
+			psmt.setString(1, "%"+search+"%");
 			rs = psmt.executeQuery();
 			
 			while(rs.next()) {
@@ -667,22 +710,34 @@ public class ProductDAO extends DBHelper {
 		}
 		return list;
 	}
-
+	public int selectProductCateTotal(String cate1, String cate2) {
+		int total = 0;
+		conn = getConnection();
+		try {
+			psmt = conn.prepareStatement(SQL.SELECT_PRODUCTS_TOTAL_CATE);
+			psmt.setString(1, cate1);
+			psmt.setString(2, cate2);
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				total = rs.getInt(1);
+			}
+			
+			close();
+		} catch (Exception e) {
+			logger.error("selectProductCateTotal error : "+e.getMessage());
+		}
+		return total;
+	}
 	
-	public int selectProductCateTotal(String cate1, String cate2,String search) {
+	public int selectProductSearchTotal(String search) {
 		
 		int total = 0;
 		
 		try {
 			conn = getConnection();
-			if(search != null) {
-				psmt = conn.prepareStatement(SQL.SELECT_PRODUCTS_TOTAL_CATE);
-				psmt.setString(1, cate1);
-				psmt.setString(2, cate2);
-			} else {
-				psmt = conn.prepareStatement(SQL.SELECT_PRODUCTS_TOTAL_SEARCH);
-				psmt.setString(1, "%"+search+"%");
-			}
+			psmt = conn.prepareStatement(SQL.SELECT_PRODUCTS_TOTAL_SEARCH);
+			psmt.setString(1, "%"+search+"%");
 			rs = psmt.executeQuery();
 			
 			if(rs.next()) {

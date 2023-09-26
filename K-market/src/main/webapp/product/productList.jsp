@@ -51,6 +51,7 @@
 	        if(paramName == 'search'){
 	        	$('nav > h1').text('\'${search}\'의 검색결과');
 	        	$('nav > p').text('');
+	        	$('.paging').css('display','none');
 	        }
 	        
 	    });
