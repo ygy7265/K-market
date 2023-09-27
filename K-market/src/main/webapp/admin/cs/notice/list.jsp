@@ -50,7 +50,14 @@ $(document).ready(function() {
 			});
       });
     });
-    
+
+    let filter = document.querySelector("#noticeCate");
+    filter.addEventListener("change", (e) => {
+        let selectedCategory = e.target.value;
+        // 페이지 리디렉션
+        location.replace('${ctxPath}/admin/cs/notice/list.do?cate='+selectedCategory+"&pg=1");
+    });
+
 });
 
 </script>
@@ -64,8 +71,8 @@ $(document).ready(function() {
         <!-- 공지목록 컨텐츠 시작 -->                                
         <section>
             <div>
-                <select name="search">
-                  <option>선택</option>
+                <select name="cate" id="noticeCate">
+                  <option value="">선택</option>
                   <option value="01">고객서비스</option>
                   <option value="02">안전거래</option>
                   <option value="03">위해상품</option>
@@ -118,7 +125,7 @@ $(document).ready(function() {
 				<c:forEach var="i" begin="${pageGroupStart}" end="${pageGroupEnd}" step="1">
                 <span class="num">
 					<c:set var="on" value="${currentPage == i}"/>
-                    <a href="${ctxPath}/admin/cs/notice/list.do?pg=${i}" class="on">${i}</a>
+                    <a href="${ctxPath}/admin/cs/notice/list.do?cate=${cate}&pg=${i}" class="on">${i}</a>
                 </span>
 				</c:forEach>
                 <span class="next">

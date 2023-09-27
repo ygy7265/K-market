@@ -167,18 +167,18 @@ $(document).ready(function() {
             <div class="paging">
                 <span class="prev">
             	<c:if test="${pageGroupStart > 1}">
-                    <a href="${ctxPath}/admin/cs/notice/list.do"><&nbsp;이전</a>
+                    <a href="${ctxPath}/admin/cs/faq/list.do"><&nbsp;이전</a>
                 </c:if>
                 </span>
 				<c:forEach var="i" begin="${pageGroupStart}" end="${pageGroupEnd}" step="1">
                 <span class="num">
 					<c:set var="on" value="${currentPage == i}"/>
-                    <a href="${ctxPath}/admin/cs/notice/list.do?pg=${i}" class="on">${i}</a>
+                    <a href="${ctxPath}/admin/cs/faq/list.do?pg=${i}" class="on">${i}</a>
                 </span>
 				</c:forEach>
                 <span class="next">
     			<c:if test="${pageGroupEnd < lastPageNum}">
-                    <a href="${ctxPath}/admin/cs/notice/list.do">다음&nbsp;></a>
+                    <a href="${ctxPath}/admin/cs/faq/list.do">다음&nbsp;></a>
 	            </c:if>
                 </span>
 			</div>

@@ -29,18 +29,17 @@ public class AdminNoticeListController extends HttpServlet{
     	// 페이지 가져오기 
 		String pg = req.getParameter("pg");
 		
-//        logger.debug("cate : " + cate);
-//        logger.debug("pg : " + pg);
+        logger.debug("cate : " + cate);
+        logger.debug("pg : " + pg);
         
         if(cate != null) {
             if(cate.isEmpty()) {
             	cate = null;
             }
-
         };
+
         if(pg == null) {
         	pg = "1";
-
         };
         	
         // 현제 페이지 번호 
@@ -81,8 +80,6 @@ public class AdminNoticeListController extends HttpServlet{
 		req.setAttribute("pageGroupStart", pageGroupCurrent[0]);
 		req.setAttribute("pageGroupEnd", pageGroupCurrent[1]);
 		req.setAttribute("pageStartNum", pageStartNum);
-		
-		logger.debug(cate);
 		
 		List<NoticeDTO> notices = nService.selectNotices(cate, start);
 		logger.debug("관리자/공지사항 error : " + notices);

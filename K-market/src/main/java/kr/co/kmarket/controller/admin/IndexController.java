@@ -30,7 +30,6 @@ public class IndexController extends HttpServlet{
 	private ProductService pService = ProductService.INSTANCE;
 	private NoticeService nService = NoticeService.INSTANCE;
 	private QnaService qService = QnaService.INSTANCE;
-	private Utils utils = new Utils();
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -58,8 +57,16 @@ public class IndexController extends HttpServlet{
 		List<NoticeDTO> notiAdmin = nService.selectAdminIndexNotice();
 		List<QnaDTO> qnaAdmin = qService.selectAdminIndexQna();
 		
+		// 콤마
+		String commasumtotal = Utils.comma(sumtotal);
+		String commadayOrderToPrice = Utils.comma(dayOrderToPrice);
+		String commaweekOrderToPrice = Utils.comma(weekOrderToPrice);
+		String commamonthOrderToPrice = Utils.comma(monthOrderToPrice);
+		
+		
+		
 		req.setAttribute("total", total);
-		req.setAttribute("sumtotal", sumtotal);
+		req.setAttribute("sumtotal", commasumtotal);
 		req.setAttribute("cmember", cmember);
 		// 신규 멤버
 		req.setAttribute("dayMember", dayMember);
@@ -74,9 +81,9 @@ public class IndexController extends HttpServlet{
 		req.setAttribute("weekOrder", weekOrder);
 		req.setAttribute("monthOrder", monthOrder);
 		// 기간별 총 주문금액
-		req.setAttribute("dayOrderToPrice", dayOrderToPrice);
-		req.setAttribute("weekOrderToPrice", weekOrderToPrice);
-		req.setAttribute("monthOrderToPrice", monthOrderToPrice);
+		req.setAttribute("dayOrderToPrice", commadayOrderToPrice);
+		req.setAttribute("weekOrderToPrice", commaweekOrderToPrice);
+		req.setAttribute("monthOrderToPrice", commamonthOrderToPrice);
 		// 공지, 문의 최신글
 		req.setAttribute("notiAdmin", notiAdmin);
 		req.setAttribute("qnaAdmin", qnaAdmin);
