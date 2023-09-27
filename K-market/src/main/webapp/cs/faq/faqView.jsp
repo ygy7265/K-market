@@ -25,7 +25,7 @@
 		    감사합니다.<br/>
 			</p>
         </div>
-        <a href="/K-market/cs/faq/faqList.do" class="btnList">목록보기</a>
+        <a href="/K-market/cs/faq/faqList.do?cate1=10" class="btnList">목록보기</a>
       </article>
     </section>
   </div>
