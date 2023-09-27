@@ -27,7 +27,7 @@
 				</nav>
 
 				<div class="content">
-					<p>${dto.content}</p><br>
+					<textarea name="content" readonly>${dto.content}</textarea><br>
 					<p>개인회원에서 법인회원(사업자 회원)으로 전환은 불가하므로 법인회원(사업자 회원) 전환은 신규 가입으로 진행을 해야 합니다.</p><br>
 					<p>
 				    ※ 피싱 관련 피해신고<br/>
