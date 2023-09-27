@@ -361,7 +361,7 @@ public class SQL {
 	public static final String SELECT_DUPLICATION_CART = "SELECT * FROM `km_product_cart` WHERE `prodNo`= ? AND `uid` = ?";	
 	public static final String DELETE_CART = "DELETE FROM `km_product_cart` WHERE `cartNo` = ?";	
 	public static final String DELETE_ORDER = "DELETE FROM `km_product_order_item` WHERE `uid` = ?";
-	public static final String UPDATE_CART = "UPDATE `km_product_cart` SET `count` = `count` + ? WHERE `prodNo` = ? AND `uid` = ?";	
+	public static final String UPDATE_CART = "UPDATE `km_product_cart` SET `count` = `count` + ?,`total` = `total` + ? WHERE `prodNo` = ? AND `uid` = ?";	
 	// admin_register 
 	public static final String SELECT_CATE1S = "SELECT * FROM `km_product_cate1` ORDER BY `cate1` ASC";
 	public static final String SELECT_CATE2S = "SELECT * FROM `km_product_cate2` WHERE `cate1` = ? ORDER BY `cate1` ASC";

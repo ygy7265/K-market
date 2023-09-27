@@ -19,16 +19,16 @@ public enum CartService {
 		return dao.selectCart(cartNo);
 	}
 	
-	public int selectDuplicationCart(String prodNo,String count,String uid) {  
-		return dao.selectDublicationCart(prodNo,count,uid);
+	public int selectDuplicationCart(String prodNo,String count,String uid,String total) {  
+		return dao.selectDublicationCart(prodNo,count,uid,total);
 	}
 	
 	public List<CartDTO> selectCarts(String uid) {
 		return dao.selectCarts(uid);
 	}
 	
-	public void updateCart(String prodNo,String count,String uid) {
-		dao.updateCart(prodNo,count,uid);
+	public void updateCart(String prodNo,String count,String uid,String total) {
+		dao.updateCart(prodNo,count,uid,total);
 	}
 	
 	public int deleteCart(String cartNo) {

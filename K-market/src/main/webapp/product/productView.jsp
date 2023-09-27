@@ -30,7 +30,14 @@ $(function(){
 		var userSession = sessionStorage.getItem("memberdto");
 	    var result = confirm("구매하시겠습니까?");
 			if (result === true) {
+				var input = $("<input>")
+			    .attr("type", "hidden")
+			    .attr("name", "buytype")
+			    .val("buytype");
+				$('.buy').append(input);
+
 			    // 확인 버튼이 클릭된 경우
+				 $('.buy').attr('action', '/K-market/product/productorder.do');
 				 $('.buy').submit();
 			} else {
 			    // 취소 버튼이 클릭된 경우
@@ -64,6 +71,7 @@ $(function(){
         let total = discountPrice * count;
         let nodiscount = price * count;
         $('.total2').text(Math.round(total).toLocaleString());
+        $('.total3').val(Math.round(total));
         $('.nodiscount').text(total.toLocaleString());
         $('.nodiscount').val(nodiscount);
     }
@@ -172,7 +180,7 @@ $(function(){
 				    <input type="hidden" name="num" value="1" readonly/>
 				    <input type="hidden" name="discount" value="${proddto.discount}" />
 				    <input type="hidden" name="delivery" value="${proddto.delivery}" />
-				    <input type="hidden" class="total2" name="total2"/>
+				    <input type="hidden" class="total3" name="total3"/>
 				    <input type="hidden" class="nodiscount" name="nodiscount"/>
     				<div class="button">
        					<input type="submit" class="cart"  value="장바구니"/>
