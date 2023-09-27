@@ -59,6 +59,10 @@ $(function(){
 			const pointnus = nowpoint - point;
 			console.log(pointnus);
 			$('.ordertotal').text(pointDiscount.toLocaleString());
+			$('input[name=ordertotal3]').val(pointDiscount);
+			console.log($("input[name='ordertotal3']").val());
+
+			
 			$('.orderpointdiscount').text("- "+point.toLocaleString());
 			$('.nowpoint').text(pointnus.toLocaleString());
 		}else{
@@ -176,7 +180,7 @@ $(function(){
               <td><fmt:formatNumber value="${list.count}" pattern="#,###"/></td>
               <td><fmt:formatNumber value="${list.price}" pattern="#,###"/></td>
               <td><fmt:formatNumber value="${list.delivery}" pattern="#,###"/></td>
-              <td><fmt:formatNumber value="${list.total}" pattern="#,###"/></td>
+              <td><fmt:formatNumber value="${list.count * list.price  - ((list.count * list.price) * (list.discount / 100))}" pattern="#,###"/></td>
             </tr>
              <input type="hidden" class="listpoint" value="${list.point}"/>
              <input type="hidden" class="listcount" value="${list.count}"/>
@@ -231,6 +235,7 @@ $(function(){
           <input type="hidden" class="orderpoint" name="orderpoint" >    
           <input type="hidden" class="ordertotal" name="ordertotal">    
           <input type="hidden" class="ordertotal2" name="ordertotal">    
+          <input type="hidden" class="ordertotal3" name="ordertotal3">    
         </div>
           
         <!-- 배송정보 -->

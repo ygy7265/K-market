@@ -54,7 +54,7 @@ public class CartDAO extends DBHelper{
 	public CartDTO selectCart(String cartNo) { 
 		return null;
 	}
-	public int selectDublicationCart(String prodNo,String count,String uid) {
+	public int selectDublicationCart(String prodNo,String count,String uid,String total) {
 		conn = getConnection();
 		CartDTO dto = null;
 		int result = 0;
@@ -66,7 +66,7 @@ public class CartDAO extends DBHelper{
 			logger.debug("select du = " + rs);
 			if(rs.next()) {
 				result = 1;
-				updateCart(count, prodNo, rs.getString(2));
+				updateCart(count, prodNo, rs.getString(2),total);
 			}
 			
 			close();
@@ -114,14 +114,15 @@ public class CartDAO extends DBHelper{
 		return list;
 	}
 	
-	public void updateCart(String count,String prodNo,String uid) {
+	public void updateCart(String count,String prodNo,String uid,String total) {
 		conn = getConnection();
 		
 		try {
 			psmt = conn.prepareStatement(SQL.UPDATE_CART);
 			psmt.setString(1, count);
-			psmt.setString(2, prodNo);
-			psmt.setString(3, uid);
+			psmt.setString(2, total);
+			psmt.setString(3, prodNo);
+			psmt.setString(4, uid);
 			
 			logger.debug("updatecart = " + psmt.executeUpdate());
 			close();

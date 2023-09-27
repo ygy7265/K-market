@@ -69,13 +69,14 @@ public class ProductCartController extends HttpServlet{
 		String discount = req.getParameter("discount");
 		String delivery = req.getParameter("delivery");
 		String total2 = req.getParameter("total2");
+		String total3 = req.getParameter("total3");
 		String nodiscount = req.getParameter("nodiscount");
 		String count = req.getParameter("num");
 		logger.debug("uid" + uid);
 		logger.debug("count" + count);
 		logger.debug("prodNo" + prodNo);
 		
-		int result1 = service2.selectDuplicationCart(prodNo,count,uid);
+		int result1 = service2.selectDuplicationCart(prodNo,count,uid,total3);
 		
 		logger.debug("result1" + result1);
 		
@@ -89,8 +90,13 @@ public class ProductCartController extends HttpServlet{
 		    resp.getWriter().print(json);
 		}else {
 			if(result1 > 0) {
-				 service2.selectDuplicationCart(cartNo,count,uid);
+				 service2.selectDuplicationCart(cartNo,count,uid,total3);
 			}else {
+			int pacount = Integer.parseInt(count);
+			int paprice = Integer.parseInt(price);
+			int padiscount = Integer.parseInt(discount);
+			int test = (pacount * paprice  - ((pacount * paprice) * (padiscount / 100)));
+			logger.debug("total3" + total3);
 			dto = new CartDTO();
 			dto.setUid(uid);
 			dto.setProdNo(prodNo);
@@ -99,7 +105,7 @@ public class ProductCartController extends HttpServlet{
 			dto.setDiscount(discount);
 			dto.setPoint(point);
 			dto.setDelivery(delivery);
-			dto.setTotal(nodiscount);
+			dto.setTotal(total3);
 			service.insertCart(dto);
 			}
 			resp.sendRedirect("/K-market/product/productcart.do");

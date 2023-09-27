@@ -86,7 +86,7 @@
               <td><fmt:formatNumber value="${list.price}" pattern="#,###"/></td>
               <td><fmt:formatNumber value="${list.price * list.discount / 100}" pattern="#,###"/></td>
               <td><fmt:formatNumber value="${list.count}" pattern="#,###"/></td>
-              <td><fmt:formatNumber value="${list.total}" pattern="#,###"/></td>
+              <td><fmt:formatNumber value="${list.count * list.price  - ((list.count * list.price) * (list.discount / 100))}" pattern="#,###"/></td>
             </tr>
              <input type="hidden" class="listpoint" value="${list.point}"/>
              <input type="hidden" class="listcount" value="${list.count}"/>
@@ -107,7 +107,7 @@
                     </tr>
                     <tr>
                     <td>총 할인금액</td>
-                    <td><span><fmt:formatNumber value="${ordto.ordDelivery}" pattern="#,###"/></span>원</td>
+                    <td><span><fmt:formatNumber value="${ordto.ordDelivery+ordto.usedPoint}" pattern="#,###"/></span>원</td>
                     </tr>
                     <tr>
                     <td>배송비</td>
@@ -115,7 +115,7 @@
                     </tr>
                     <tr>
                     <td>총 결제금액</td>
-                    <td><span><fmt:formatNumber value="${ordto.ordTotPrice}" pattern="#,###"/></span>원</td>
+                    <td><span><fmt:formatNumber value="${ordto.ordTotPrice+1000}" pattern="#,###"/></span>원</td>
                     </tr>
                 </table>                      
                 </td>

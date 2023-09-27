@@ -124,16 +124,28 @@
 			        	delivery += value;
 			        }
 			    });
+			    
+			    var listpriceElements = $('.listprice');
 
+			    if (listpriceElements.length === 1) {
+			    	var oneprice = $('.listprice').val();
+			    	$('td.ordernodiscount').text(oneprice.toLocaleString());
+			    }
+			    else{
+			    	$('td.ordernodiscount').text(total.toLocaleString());
+			    }
+			    
+		        console.log('test222 value: ' + oneprice);
 				$('td.ordercount').text(count.toLocaleString());
-				$('td.ordernodiscount').text(total.toLocaleString());
+			
+				
 				$('td.orderpoint').text(point.toLocaleString());
 				$('td.orderdelivery').text(delivery.toLocaleString());
-				$('td.ordertotal').text(discountPrice.toLocaleString());
-				$('.ordertotal2').val(discountPrice);
+				$('td.ordertotal').text((discountPrice+delivery).toLocaleString());
+				$('.ordertotal2').val(discountPrice+delivery);
 				
 				$('input.ordercount').val(count);
-				$('input.ordernodiscount').val(total);
+				$('input.ordernodiscount').val(total+delivery);
 				
 				$('input.orderpoint').val(point);
 				$('input.orderdelivery').val(delivery);

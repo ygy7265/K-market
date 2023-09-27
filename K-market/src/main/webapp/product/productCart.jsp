@@ -161,9 +161,10 @@ $(document).ready(function() {
 	            
 	            console.log('discountedPrice value: ' + Math.round(listdiscountedPrice).toLocaleString());
 	        });
-	        
+	     
 	        // 업데이트된 값들을 화면에 표시
 	        $('.ordernodiscount').text(listNoDiscountPriceValue.toLocaleString());
+	        
 	        $('.orderdiscount').text('- ' + Math.round(listdiscountper).toLocaleString());
 	        // 업데이트된 상품 수량을 화면에 표시
 	        $('.ordercount').text(listCountValue.toLocaleString());
@@ -257,12 +258,12 @@ $(document).ready(function() {
               <td><fmt:formatNumber value="${list.discount}" pattern="#,###"/>%</td>
               <td><fmt:formatNumber value="${list.point}" pattern="#,###"/></td>
               <td><fmt:formatNumber value="${list.delivery}" pattern="#,###"/></td>
-              <td class="smallprice"><fmt:formatNumber value="${list.total}" pattern="#,###"/></td>
+              <td class="smallprice"><fmt:formatNumber value="${list.count * list.price  - ((list.count * list.price) * (list.discount / 100))}" pattern="#,###"/></td>
 			 <td><input type="hidden" class="listpoint" value="${list.point}"/> </td>
              <td><input type="hidden" class="listcount" value="${list.count}"/> </td>
              <td><input type="hidden" class="listprice" value="${list.price}"/> </td>
              <td><input type="hidden" class="listdelivery" value="${list.delivery}"/> </td>
-             <td><input type="hidden" class="listtotal" value="${list.total}"/> </td>
+             <td><input type="hidden" class="listtotal" value="${list.count * list.price  - ((list.count * list.price) * (list.discount / 100))}"/> </td>
              <td><input type="hidden" class="listdiscount" value="${list.discount}"/></td>
              <td><input type="hidden" class="listdiscript" value="${list.descript}"/></td>
              <td><input type="hidden" class="listpoint" value="${list.point}"/></td>

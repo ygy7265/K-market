@@ -62,6 +62,7 @@ public class ProductCompleteController extends HttpServlet{
 		String orderdelivery = req.getParameter("orderdelivery");
 		String orderpoint = req.getParameter("orderpoint");
 		String ordertotal = req.getParameter("ordertotal");
+		String ordertotal3 = req.getParameter("ordertotal3");
 		String orderer = req.getParameter("orderer");
 		String hp = req.getParameter("hp");
 		String km_zip = req.getParameter("km_zip");
@@ -98,7 +99,7 @@ public class ProductCompleteController extends HttpServlet{
 		dto.setOrdDelivery(orderdelivery);
 		dto.setSavePoint(orderpoint);
 		dto.setUsedPoint(orderpointdiscount);
-		dto.setOrdTotPrice(ordertotal);
+		dto.setOrdTotPrice(ordertotal3);
 		dto.setRecipName(orderer);
 		dto.setRecipHp(hp);
 		dto.setRecipZip(km_zip);

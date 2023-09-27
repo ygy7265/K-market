@@ -57,7 +57,32 @@ public class ProductOrderController extends HttpServlet{
 		 String jsonData = req.getParameter("jsonData");
 		 MemberDTO sessiondto = (MemberDTO) session.getAttribute("user");
 		 String userid = sessiondto.getUid();
+		 CartDTO dto = null;
 		 orservice.deleteOrder(userid);
+		 String prodNo = req.getParameter("prodNo");
+		 String count = req.getParameter("num");
+		 String price = req.getParameter("price");
+		 String discount = req.getParameter("discount");
+		 String point = req.getParameter("point");
+		 String delivery = req.getParameter("delivery");
+		 String total3 = req.getParameter("total3");
+		 String buytype = req.getParameter("buytype");
+		 logger.debug("buyOrder");
+		 if(buytype != null) {
+			 logger.debug("buyOrder buy");
+		 dto = new CartDTO();
+		 dto.setProdNo(prodNo);
+         dto.setUid(userid);
+         dto.setCount(count);
+         dto.setPrice(price);
+         dto.setDiscount(discount);
+         dto.setPoint(point);
+         dto.setDelivery(delivery);
+         dto.setTotal(total3);
+         
+         orservice.insertOrder(dto);
+		 }
+		 else {
 		    try {
 		        // JSON 문자열을 JsonElement로 파싱합니다.
 		        JsonElement jsonElement = JsonParser.parseString(jsonData);
@@ -69,7 +94,7 @@ public class ProductOrderController extends HttpServlet{
 
 		            // 배열의 각 원소를 처리합니다.
 		            for (JsonElement item : jsonArray) {
-		            	CartDTO dto = new CartDTO();
+		            	dto = new CartDTO();
 		            	
 		                JsonObject itemObject = item.getAsJsonObject();
 		                int listCount = itemObject.get("listCount").getAsInt();
@@ -93,7 +118,7 @@ public class ProductOrderController extends HttpServlet{
 
 		            }
 		            	
-		           resp.sendRedirect("/K-market/product/productorder.do");
+		         
 		            
 		        } else {
 		            resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid JSON data format: Expected JSON array.");
@@ -102,7 +127,9 @@ public class ProductOrderController extends HttpServlet{
 		        e.printStackTrace();
 		        resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid JSON data.");
 		    }
-	
+		 }
+		 
+		  resp.sendRedirect("/K-market/product/productorder.do");
 	
 	}
 }
