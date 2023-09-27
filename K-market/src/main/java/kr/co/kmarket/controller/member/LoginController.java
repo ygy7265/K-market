@@ -68,6 +68,8 @@ public class LoginController extends HttpServlet{
 			
 			if(dto != null) { // 로그인 여부
 				HttpSession session = req.getSession();
+				
+				session.setMaxInactiveInterval(30 * 60); // 회원 로그인 30분 유지
 				// 자동 로그인 체크를 했을 시
 				if(auto != null) { 
 					sessUid = req.getSession().getId(); 
@@ -78,6 +80,7 @@ public class LoginController extends HttpServlet{
 					cookie.setMaxAge(60 * 60 * 24 * 30); // 30일 유지
 					cookie.setPath(req.getContextPath());
 					resp.addCookie(cookie);
+					session.setMaxInactiveInterval(30 * 24 * 60 * 60); // 회원 자동로그인 30일 유지
 				}
 				session.setAttribute("user", dto);
 				logger.debug("login user : "+dto.toString());
