@@ -69,7 +69,7 @@ $(function(){
             $(targetSelector).toggleClass("display-block"); // 클래스를 토글하여 스타일을 변경
         });
     });
-    $(".more a").on("click", function(e) {
+/*     $(".more a").on("click", function(e) {
         e.preventDefault();
         var cateId = $(this).data("mydata"); 
         var cssSelector = "#cs > .faq > .list > article > div > ul.a" + cateId + " > li";
@@ -89,15 +89,44 @@ $(function(){
         }
         var isVisible = elements[2].style.display === "block";
         if (isVisible) {
+            $(this).text("더보기");
+        } else {
+            $(this).text("간단히보기");
+        }
+    });
+ */
+
+    $(".more a").on("click", function(e) {
+        e.preventDefault();
+        var cateId = $(this).data("mydata");
+        var cssSelector = "#cs > .faq > .list > article > div > ul.a" + cateId + " > li";
+        // CSS 선택자를 이용하여 요소를 선택하고 스타일을 변경
+        var elements = document.querySelectorAll(cssSelector);
+        
+        // 토글 상태를 판단하기 위한 변수
+        var isExpanded = false;
+
+        for (var i = 0; i < elements.length; i++) {
+            var element = elements[i];
+            if (element.style.display == "block") {
+                if (i > 2) {
+                    element.style.display = "none";
+                }
+            } else {
+                element.style.display = "block";
+                // 하나라도 보이는 요소가 있으면 isExpanded를 true로 설정
+                isExpanded = true;
+            }
+        }
+        // isExpanded 값에 따라 텍스트를 변경
+        if (isExpanded) {
             $(this).text("간단히보기");
         } else {
             $(this).text("더보기");
         }
     });
 
-
 });
-
 
 </script>
 <section id="cs">
